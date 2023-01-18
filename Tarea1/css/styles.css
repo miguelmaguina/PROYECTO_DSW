@@ -23,12 +23,22 @@ body {
      background-image: linear-gradient(-25deg, #f2f2f2 50%, #5b4a9a 50%);
 }
 
-.contenedor {
-     
+.principal2{
+    background-color: #f2f2f2;
+    padding: 50px 10px;
+}
+
+.relative{
+    color: #333;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.contenedor { 
 	 background-color: #fff;
-	 width: 90%;
+	 width: 95%;
 	 max-width: 1200px;
-	 margin: 90px auto;
+	 margin: 85px auto;
 	 padding: 40px;
 	 border-radius: 10px;
 }
@@ -87,7 +97,7 @@ main .contenedor-img {
 .contenedor-texto .titulo {
      font-size: 45px;
      font-weight: normal;
-     margin-bottom: 40px;
+     margin-bottom: 30px;
 }
 
 .contenedor-texto .mascota {
@@ -115,6 +125,20 @@ main .contenedor-img {
 
 .btn-link:hover {
 	background: #473b71;
+}
+
+.content-table{
+    margin: 20px;
+    font-family: 'Quicksand',sans-serif;
+}
+
+.content-table tr td{
+    padding: 7px 7px;
+}
+
+.content-table tr th{
+    padding: 10px;
+    font-size: 23px;
 }
 
 @media screen and (max-width: 915px) {
