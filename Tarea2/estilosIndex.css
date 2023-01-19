@@ -1,0 +1,52 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+body {
+  font: 200 16px Lato, sans-serif;
+  height: 100%;
+}
+
+#container{
+    width: 100%;
+    margin: 0px auto;
+    border: 1px solid black;
+}
+
+header{
+    background: url("imagenes/index/bannerIndex.png") center;
+    height: 400px;
+    width: 100%;
+    text-align: center;
+    line-height: 400px;
+    color: white;
+}
+
+nav{
+    height: 60px;
+    background-color:#17181C;
+    text-align: center;
+
+}
+nav ul{
+    list-style: none;
+    display: inline-block;
+    padding:20px;
+ }
+
+nav ul li{
+    float: left;
+    margin-top: 5px;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 18px;
+}
+
+.clearfix{
+    clear: both;
+}
