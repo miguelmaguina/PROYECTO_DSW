@@ -24,9 +24,11 @@ header{
 }
 
 nav{
-    height: 60px;
+    width: 100%;
+    height: 9%;
     background-color:#17181C;
     text-align: center;
+    position: relative;
 
 }
 nav ul{
@@ -37,7 +39,7 @@ nav ul{
 
 nav ul li{
     float: left;
-    margin-top: 5px;
+    margin-top: 0.5%;
 }
 
 nav ul li a {
@@ -52,79 +54,39 @@ nav ul li a {
     clear: both;
 }
 
-#content{
-    width: 100%;
-    height: 545px;
+.content{
+    display: flex;
+    justify-content: space-evenly;
     background: #4E4E4E;
 }
-.cuadrado{
-    position: absolute;
-    width: 521px;
-    height: 481px;
-    left: 20px;
-    top: 519px;
-
+.imagen{
+    width: 40%;
+    height: 45%;
+    padding: 60px;
     background: radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #4E4E4E 100%);
 }
-.imagen{
-    position: absolute;
-    width: 510px;
-    height: 395px;
-    left: 45px;
-    top: 554px;
-    
-    background: url("imagenes/index/indexHola.png");
+.content .contenido-texto{
+    width: 35%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 0 rgba(155, 155, 155, 2);
 }
-
-.tarjetaBlanca{
-    position: absolute;
-    width: 555px;
-    height: 418px;
-    left: 650px;
-    top: 543px;
-
-    background: #FFFFFF;
-    border-radius: 25px;
-}
-
-.titulo{
-    position: absolute;
-    width: 206px;
-    height: 42px;
-    left: 696px;
-    top: 623px;
-
+.contenido-texto h3{
     font-weight: 800;
     font-size: 35px;
     line-height: 42px;
-
-    color: #000000;
 }
-.descripcion{
-    position: absolute;
-    width: 460px;
-    height: 187px;
-    left: 696px;
-    top: 698px;
-
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 22px;
+.contenido-texto p{
     text-align: justify;
-
-    color: #000000;
 }
-
-.logomanzana{
-    position: absolute;
-    width: 85px;
-    height: 105px;
-    left: 1065px;
-    top: 570px;
-
-    background: url("imagenes/index/indexManzana.png");
+.content .logoManzana{
+    margin-left: 35%;
+    width: 15%;
+    height: 25%;
 }
-
 footer{
     width: 100%;
     height: 25px;
