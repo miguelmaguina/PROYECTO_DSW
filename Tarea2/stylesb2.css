@@ -10,6 +10,8 @@
     width: 100%;
     display: flex;
     max-width: 1100px;
+    justify-content: center;
+    align-items: center;
 }
 
 .card{
@@ -21,8 +23,6 @@
     box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
     cursor: default;
     transition: all 400ms ease;
-    align-items: center;
-    justify-content: center;
 }
 
 .card:hover{
@@ -68,6 +68,13 @@
 
 /*--------------------- INNOVACIONES -------------------*/
 h1{
+    text-align: center;
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+}
+
+h4{
     text-align: center;
     position: relative;
     width: 80%;
