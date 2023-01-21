@@ -1,3 +1,4 @@
+
 *{
     margin:0px;
     padding: 0px;
@@ -71,9 +72,9 @@ footer{
 }
 
 .contenedor-body{
-    padding: 50px 0;
+    padding: 20px 5px 50px 5px;
     width:100%;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: 0px auto;
     overflow: auto;
     background: #aa5656;
@@ -90,15 +91,15 @@ footer{
 .titulo-parrafo1{
     text-align: center;
     line-height: 20px;
-    color:#fff9f9;
-    text-size-adjust: 10px;
+    color:#d8d1d1;
+    text-size-adjust: 8px;
 }
 
 .titulo-parrafo2{
     text-align: center;
     line-height: 5px;
-    color:#ffffff;
-    text-size-adjust: 10px;
+    color:#535151;
+    text-size-adjust: 8px;
 }
 
 .galeria-port{
@@ -109,7 +110,7 @@ footer{
 
 .imagen-port{
     width: 30%;
-    margin-bottom:10px;
+    margin-bottom:20px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -125,14 +126,21 @@ footer{
 /*.imagen:hover{
     filter:blur(2.5px);
 }*/
+/*APARTADO*/
+
+.descripcion-imagen{
+    width: 92.5%;
+    text-align: justify;
+}
+
 
 .imagen-hover{
     position: absolute;
-    width: 100%;
-    height: 98.5%;
+    width: 92.5%;
+    height: 63.5%;
     top:0;
     transform: scale(0);
-    background: rgba(161, 161, 161, 0.55);
+    background: rgba(161, 161, 161, 0.7);
     transition: transform .5s;
     display: flex;
     flex-direction: column;
@@ -152,7 +160,7 @@ footer{
 /* TIMELINE */
 .timeline {
     position: relative;
-    padding: 0;
+    padding: 0 10px 10px 10px;
     list-style: none;
 }
 
@@ -161,7 +169,7 @@ footer{
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 40px;
+    left: 20px;
     width: 2px;
     margin-left: -1.5px;
     background-color: #f1f1f1;
@@ -169,12 +177,11 @@ footer{
 
 .timeline>li {
     position: relative;
-    margin-bottom: 50px;
-    min-height: 50px;
+    margin-bottom: 0px;
+    min-height: 0px;
 }
 
-.timeline>li:before,
-.timeline>li:after {
+.timeline>li:before, .timeline>li:after {
     content: " ";
     display: table;
 }
@@ -187,53 +194,53 @@ footer{
     float: right;
     position: relative;
     width: 100%;
-    padding: 0 20px 0 100px;
+    padding: 0 20px 0 20px;
     text-align: left;
 }
 
 .timeline>li .timeline-panel:before {
     right: auto;
-    left: -15px;
-    border-right-width: 15px;
+    left: -10px;
+    border-right-width: 14px;
     border-left-width: 0;
 }
 
 .timeline>li .timeline-panel:after {
     right: auto;
-    left: -14px;
+    left: -10px;
     border-right-width: 14px;
     border-left-width: 0;
 }
 
 .timeline>li .timeline-image {
-    z-index: 100;
+    z-index: 200;
     position: absolute;
     left: 0;
-    width: 80px;
-    height: 80px;
+    width: 30px;
+    height: 10px;
     margin-left: 0;
     border: 7px solid #f1f1f1;
-    border-radius: 100%;
+    border-radius: 90%;
     text-align: center;
     color: #fff;
     background-color: #919b99;
 }
 
 .timeline>li .timeline-image h4 {
-    margin-top: 12px;
+    margin-top: 0px;
     font-size: 10px;
     line-height: 14px;
 }
 
 .timeline>li.timeline-inverted>.timeline-panel {
     float: right;
-    padding: 0 20px 0 100px;
+    padding: 0px;
     text-align: left;
 }
 
 .timeline>li.timeline-inverted>.timeline-panel:before {
     right: auto;
-    left: -15px;
+    left: -5px;
     border-right-width: 15px;
     border-left-width: 0;
 }
@@ -265,31 +272,31 @@ footer{
 
 @media(min-width:768px) {
     .timeline:before {
-        left: 50%;
+        left: 49.25%; /*LINEA IZ-DERECHA*/
     }
 
     .timeline>li {
-        margin-bottom: 100px;
+        margin-bottom: 40px;/*MARGEN ENTRE CADA PARRAFO*/
         min-height: 100px;
     }
 
     .timeline>li .timeline-panel {
         float: left;
-        width: 41%;
-        padding: 0 20px 20px 20px;
+        width: 45%;
+        padding: 0px 0px 0px 0px;
         text-align: right;
     }
 
     .timeline>li .timeline-image {
-        left: 50%;
-        width: 100px;
-        height: 100px;
-        margin-left: -50px;
+        left: 49%; /* IZQ-DER CIRCULO*/
+        width: 50px;
+        height: 50px;
+        margin-left: -32px;
     }
 
     .timeline>li .timeline-image h4 {
-        margin-top: 10px;
-        font-size: 13px;
+        margin-top: 0px;
+        font-size: 50px;
         line-height: 18px;
     }
 
