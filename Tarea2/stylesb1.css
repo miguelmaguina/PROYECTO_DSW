@@ -7,34 +7,35 @@ html{
     scroll-behavior: smooth;
 }
 
-section{
-    min-height: 100vh;
-}
 
 .portada{
     background-color:aqua;
+    min-height: 100vh;
     border: 1px;
     text-align: center;
     line-height: 100vh;
 }
 
 .portada h1{
+    height: 100px;
     color: blueviolet;
+    line-height: 100vh;
 }
 
 .contenedor1{
-    /*background-color: #fff;*/
-	 width: 95%;
+    /* background-color: #fff; */
+    /*border: 1px solid #000;*/
+	 width: 90%;
 	 max-width: 1200px;
 	 margin: 20px auto;
-	 padding: 20px;
 }
 .content-b1{
      align-items: center;
-    /*border: 1px solid #000;*/
+     /*border: 1px solid #000; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 200px;
+    padding: 60px 0px;
 }
 .content-b2{
     align-items: center;
@@ -43,6 +44,7 @@ section{
    grid-template-columns: 1fr 1fr;
 }
 .letter{
+    /*border: 1px solid #000;*/
     padding-top: 10px;
     font: 'Roboto', sans-serif;
     font-size: 1rem;
@@ -74,6 +76,8 @@ section{
     background-color:#f2f2f2f2;
 }
 .biografia-3,.biografia-4,.biografia-5,.biografia-6,.biografia-7{
+    border-top: 1px solid #f2f2f2;
+    margin-bottom: -20px;
     background-color: #f2f2f2;
 }
 .content-biography{
@@ -255,7 +259,5 @@ aside{
 .titulo-rec-2{
     /*border: 1px solid #000;*/
     text-align: center;
-    margin: auto 10px;
+    margin: 120px 10px;
 }
-
-/*------------carousel-------------*/
