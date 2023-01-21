@@ -43,7 +43,7 @@ body {
   }
   
   header{
-    background: url("bannerReconocimiento.png") center;
+    background: url("imagenes/reconocimiento/bannerReconocimiento.png") center;
     height: 400px;
     width: 100%;
     text-align: center;
@@ -98,16 +98,6 @@ nav ul li a {
   }
   .ag-timeline_title { /*Reconocimiento*/
 	color: #FFF;
-	/*background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/bg.jpg);*/
-	/*background-repeat: no-repeat;
-	background-position: 50% 50%;
-  
-	background-size: cover;*/
-	/*-webkit-background-clip: text;
-	background-clip: text;*/
-	/*text-fill-color: transparent; No existe en IE o Firefox, mejor usar color*/ 
-	/*color: transparent;*/
-  
 	font-size: 80px;
   }
   
@@ -167,7 +157,7 @@ nav ul li a {
   }
   .ag-timeline-card_point { /*anios*/
 
-	background-image: url(manzanaPloma.png);
+	background-image: url(imagenes/reconocimiento/manzanaPloma.png);
 	background-size: 47px;
 	background-repeat: no-repeat;
 	background-position-x: center;
@@ -185,9 +175,8 @@ nav ul li a {
 	border-radius: 50%;
   }
   .js-ag-active .ag-timeline-card_point {
-	background-image: url(manzanaAmarilla.png);
+	background-image: url(imagenes/reconocimiento/manzanaAmarilla.png);
 	color: #1d1d1b;
-	/*background-color: #FF0;*/
   }
   .ag-timeline-card_meta-box {
 	display: inline-block;
