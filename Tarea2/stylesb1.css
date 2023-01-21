@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+section{
+    min-height: 100vh;
+}
+
+.portada{
+    background-color:aqua;
+    border: 1px;
+    text-align: center;
+    line-height: 100vh;
+}
+
+.portada h1{
+    color: blueviolet;
+}
+
+.contenedor1{
+    /*background-color: #fff;*/
+	 width: 95%;
+	 max-width: 1200px;
+	 margin: 20px auto;
+	 padding: 20px;
+}
+.content-b1{
+     align-items: center;
+    /*border: 1px solid #000;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
+}
+.content-b2{
+    align-items: center;
+   /*border: 1px solid #000;*/
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+.letter{
+    padding-top: 10px;
+    font: 'Roboto', sans-serif;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.tituloizq-b1{
+    font-weight: bold;
+    margin-bottom: 0px;
+    text-align: right;
+    padding: 15px;
+}
+.tituloder-b1{
+    font-weight: bold;
+    margin-bottom: 0px;
+    text-align: left;
+    padding: 15px;
+}
+.textoder{
+    text-align: left;
+    padding: 15px 100px 15px 15px;
+}
+.textoizq{
+    text-align: right;
+    padding: 15px 15px 15px 100px;
+}
+
+.biografia-1{
+    background-color:#f2f2f2f2;
+}
+.biografia-3,.biografia-4,.biografia-5,.biografia-6,.biografia-7{
+    background-color: #f2f2f2;
+}
+.content-biography{
+    background-color: #f2f2f2;
+}
+.content-b1 img{
+    border: 1px;
+    border-radius: 15px;
+    justify-content: center;
+    width: 33vh;
+    object-fit: contain;
+    margin: auto;
+}
+/*-------------RECONOCIMIENTOS----------*/
+.content-rec{
+    /*border: 1px solid #000;*/
+    padding: 20px;
+}
+.reconocimientos{
+    /*border: 1px solid #000;*/
+    display: flex;
+    justify-content: space-evenly;
+}
+.tip-rec{
+    /*border: 1px solid #000;*/
+    display: flex;
+    align-items: center;
+}
+.conjunt-img2{
+    border: 1px;
+    border-radius: 15px;
+    justify-content: center;
+    width: 33vh;
+    height: 80%;
+    object-fit: contain;
+    margin: auto;
+}
+.txt-rec{
+    text-align: center;
+    padding: 20px;
+}
+.titulo-rec{
+    /*border: 1px solid #000;*/
+    text-align: center;
+    margin: auto 10px;
+}
+/*otra forma de ver la biografia--------------------*/
+.content-bi{
+    display: grid;
+    
+    padding: 40px;
+    
+}
+.lado-der{
+    grid-template-columns: 2fr 3fr;
+}
+.lado-izq{
+    grid-template-columns: 3fr 2fr;
+}
+
+.content-img{
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    align-self: center;
+    justify-self: center;
+    
+}
+.contenedor-texto{
+    align-self: center;
+}
+
+.caja-izq{
+    padding-right: 70px;
+}
+.caja-der{
+    padding-left: 70px;
+}
+.txt-izq{
+    text-align: left;
+}
+.txt-der{
+    text-align: right;
+}
+.content-tit{
+    color: #333;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-bottom: 24px;
+}
+
+.content-info{
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+}
+.menunav{
+    background-color: red;
+    padding: 0;
+    margin: 0;
+}
+aside{
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 10%;
+    height: 100%;
+    background: #333;
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+}
+.menutext{
+    margin-top: 0;
+    padding:20px 50px;
+    color: #f2f2f2;
+    text-decoration: none;
+    
+}
+.menutext:hover{
+    background-color: white;
+    color: #333;
+}
+
+.conjunt-img{
+    padding: 15vh;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: minmax(min-content,1fr);
+    grid-auto-columns: minmax(min-content,1fr);
+}
+.conjunt-img1{
+    padding: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: minmax(min-content,1fr);
+    grid-auto-columns: minmax(min-content,1fr);
+}
+.content-img-1{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-big1{
+    grid-area: 1 / 1 / 5 / 3;
+}
+.img-big2{
+    grid-area: 2 / 3 / 5 / 5;
+}
+/*-------------RECONOCIMIENTOS----------*/
+.content-rec-2{
+    /*border: 1px solid #000;*/
+    padding: 0 20px 0 20px;
+}
+.reconocimientos-2{
+    /*border: 1px solid #000;*/
+    display: flex;
+    justify-content: space-evenly;
+}
+.tip-rec-2{
+    /*border: 1px solid #000;*/
+    display: flex;
+    align-items: center;
+}
+.conjunt-img3{
+    border: 1px;
+    border-radius: 15px;
+    justify-content: center;
+    width: 33vh;
+    height: 80%;
+    object-fit: contain;
+    margin: auto;
+}
+.txt-rec-2{
+    text-align: center;
+    padding: 20px;
+}
+.titulo-rec-2{
+    /*border: 1px solid #000;*/
+    text-align: center;
+    margin: auto 10px;
+}
+
+/*------------carousel-------------*/
