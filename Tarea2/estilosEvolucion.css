@@ -82,22 +82,6 @@ footer{
 
 /*INICIO*/
 .titulo-inicio{
-    position: relative;
-    left:50%;
-    top:50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(-45deg, #DFB79E, #DFB79E, #2B0413, #2B0413, #E25D52, #E25D52);
-    background-size: 300%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 900;
-    font-size: 5vw;
-    letter-spacing:-5px;
-    text-transform: uppercase;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation: animated_text 6s ease-in-out infinite;
-    -moz-animation: animated_text 6s ease-in-out infinite;
-    -webkit-animation: animated_text 6s ease-in-out infinite;
     padding: 50px;
     font-size: 50px;
     text-align: center;
@@ -145,8 +129,9 @@ footer{
 /*APARTADO*/
 
 .descripcion-imagen{
-    width: 92.5%;
+    width: 91%;
     text-align: justify;
+    background-color: #fff;
 }
 
 
@@ -164,8 +149,31 @@ footer{
     align-items: center;
 }
 
+.imagen-hover2{
+    position: absolute;
+    width: 92.5%;
+    height: 98.5%;
+    top:0;
+    transform: scale(0);
+    background: rgba(36, 35, 35, 0.7);
+    transition: transform .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-port:hover .imagen-hover2{
+    transform: scale(1);
+}
+
 .imagen-port:hover .imagen-hover{
     transform: scale(1);
+}
+
+.imagen-hover2 img{
+    width:50px;
+    height: 100px;
 }
 
 .imagen-hover img{
@@ -322,4 +330,3 @@ footer{
         text-align: left;
     }
 }
-
