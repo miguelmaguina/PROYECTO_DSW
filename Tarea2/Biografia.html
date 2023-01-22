@@ -14,9 +14,8 @@
     <title>Biografía</title>
 </head>
 <body>
-    <header id="particles-js">
+    <header>
         <h1 ></h1>
-        <div > </div>
     </header>
     <nav>
         <ul>
@@ -464,28 +463,5 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="./scriptB1.js"></script>
 <script src="scriptB2.js"></script>
-
-<script src="./libreria/particles.js"></script>
-<script src="./libreria/app.js"></script>
-<script src="./libreria/lib/stats.js"></script>
-<script>
-    var count_particles, stats, update;
-    stats = new Stats;
-    stats.setMode(0);
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '0px';
-    stats.domElement.style.top = '0px';
-    document.body.appendChild(stats.domElement);
-    count_particles = document.querySelector('.js-count-particles');
-    update = function() {
-      stats.begin();
-      stats.end();
-      if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-      }
-      requestAnimationFrame(update);
-    };
-    requestAnimationFrame(update);
-  </script>
 </body>
 </html>
