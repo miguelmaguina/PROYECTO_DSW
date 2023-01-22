@@ -23,8 +23,7 @@ body {
 #content{
     width: 100%;
     height: auto;
-    background-image: url("/Tarea2/imagenes/evolucion/fondoapple.jpg");
-    background-repeat: repeat;
+    background:#ebe9e9;
 }
 
 header{
@@ -75,7 +74,7 @@ footer{
 .contenedor-body{
     padding: 80px 5px 50px 5px;
     width:100%;
-    max-width: 1350px;
+    max-width: 1500px;
     margin: 0px auto;
     overflow: auto;
     background: #6c6c6c;
@@ -84,7 +83,7 @@ footer{
 .contenedor-body2{
     padding: 80px 5px 50px 5px;
     width:100%;
-    max-width: 1350px;
+    max-width: 1400px;
     margin: 0px auto;
     overflow: auto;
     background: #ebe9e9;
@@ -120,7 +119,7 @@ footer{
     width: auto;
     height: auto;
     padding-top: 265px;
-    text-align:justify;
+    text-align: center;
     line-height: 20px;
     color:#fffefe;
     text-size-adjust: 10px;
@@ -141,7 +140,15 @@ footer{
 
 .titulo-parrafo3{
     padding-bottom: 155px;
-    text-align: justify;
+    text-align: center;
+    color:#fff;
+}
+
+.titulo-parrafo4{
+    padding-top:100px;
+    text-align: center;
+    color:#fff;
+
 }
 
 .galeria-port{
@@ -153,6 +160,13 @@ footer{
 
 .galeria-port2{
     padding-left: 50px;
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+}
+
+.galeria-port3{
+    padding-left: 5px;
     display:flex;
     justify-content:space-evenly;
     flex-wrap:wrap;
@@ -174,6 +188,22 @@ footer{
     position: relative;
     cursor: pointer;
     box-shadow: 0 0 6p 0 #919b99;
+}
+
+.imagen-port3{
+    width: 30%;
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 6p 0 #919b99;
+}
+
+.imagen-port3>img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
 
 .imagen-port2>img{
@@ -213,12 +243,29 @@ footer{
     height: auto;
     top:0;
     transform: scale(0);
-    background: rgba(161, 161, 161, 0.6);
+    background: rgba(170, 169, 169, 0.6);
     transition: transform .5s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:baseline;
+}
+
+.imagen-hover3{
+    position:absolute;
+    width: 100%;
+    height: auto;
+    top:0;
+    transform: scale(0);
+    background: rgba(17, 17, 17, 0.6);
+    transition: transform .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:baseline;
+}
+.imagen-port3:hover .imagen-hover3{
+    transform: scale(1);
 }
 
 .imagen-port2:hover .imagen-hover2{
@@ -234,6 +281,11 @@ footer{
     height: 100px;
 }
 .imagen-hover2 img{
+    width:auto;
+    height: 100px;
+}
+
+.imagen-hover3 img{
     width:auto;
     height: 100px;
 }
@@ -364,7 +416,7 @@ footer{
     }
 
     .timeline>li {
-        margin-bottom: 35px;/*MARGEN ENTRE CADA PARRAFO*/
+        margin-bottom: 20px;/*MARGEN ENTRE CADA PARRAFO*/
         min-height: 100px;
     }
 
