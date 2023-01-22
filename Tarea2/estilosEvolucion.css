@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
 }
 
 #opciones{
@@ -16,7 +17,6 @@ body {
 #container{
     width: 100%;
     margin: 0px auto;
-    border: 1px solid black;
 }
 
 
@@ -27,12 +27,14 @@ body {
 }
 
 header{
-    background: url("imagenes/evolucion/bannerEvolucion.png") center;
-    height: 400px;
     width: 100%;
+    height: 450px;
     text-align: center;
-    line-height: 400px;
     color: white;
+    background: url("imagenes/evolucion/bannerEvolucion.png");
+    background-size: contain;
+    background-attachment: fixed;
+    position: relative;
 }
 
 nav{
