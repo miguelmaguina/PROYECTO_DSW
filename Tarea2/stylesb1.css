@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 :root{
     --bakcground-general: #f2f2f2;
     --color-titulo: #202A3C;
@@ -12,12 +13,14 @@
 header{
     border: 1px solid transparent;
     width: 100%;
-    height: 75vh;
+    /*height: 75vh;*/
+    min-height: 20vh;
     text-align: center;
     background: url("./imagenes/biografia/banners.jpg");
     background-size:contain;
     background-attachment: fixed;
     position: relative;
+    
 }
 nav{
     width: 100%;
@@ -427,7 +430,7 @@ footer{
 } */
 
 /*TARJETITA*/
-.container {
+.container1 {
     background-color: var(--bakcground-general);
     width: 90%;
     max-width: 1200px;
@@ -438,7 +441,7 @@ footer{
 .tarjeta{
     background-color: var(--bakcground-general);
 }
-.card{
+.card1{
     border: 1px solid transparent;
     color: var(--bakcground-general);
     display: flex;
@@ -488,6 +491,7 @@ footer{
 
 .card-img{
     width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -506,8 +510,116 @@ footer{
 .card-job{
     color: #aaa9a9;
 }
+
+
+/* PANEL DESPEGABLE */
+.container-vm {
+    width: 150%;
+    max-width: 98%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+}
+.desplegable{
+    text-align: center;
+}
+
+.desplegable-container{
+
+    display: grid;
+    gap: 2em;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.desplegable-padding{
+    padding: 0;
+    transition: padding .3s;
+    border: 1px solid #5454D4;
+    border-radius: 6px;
+}
+
+.desplegable-padding--add{
+    padding-bottom: 30px;
+}
+
+.desplegable-answer{
+    padding: 0 30px 0;
+    overflow: hidden;
+}
+
+.desplegable-title{
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    font-size: 20px;
+    padding: 30px 0 30px;
+    margin: 0;
+    cursor: pointer;
+    color: var(--color-titulo);
+    justify-content: space-between;
+    font-family: 'Poppins','Quicksand',sans-serif;
+}
+
+.desplegable-arrow{
+    border-radius: 50%;
+    background-color: var(--color-titulo);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    margin-left: 10px;
+    transition:  transform 0.3s;
+}
+
+.desplegable-arrow--rotate{
+    transform: rotate(180deg);
+}
+
+.desplegable-show{
+    border: 1px solid transparent;
+    text-align: left;
+    height: 0;
+    transition: height .9s;
+    margin: 0;
+    padding: 0;
+}
+
+.desplegable-img{
+    display: block;
+}
+
 @media (min-width: 740px){
-    .card{
+    .card1{
         flex-direction: row;
+    }
+}
+
+@media (max-width: 800px){
+    .desplegable-copy{
+        width: 100%;
+    }
+}
+
+@media (max-width:600px){
+    .desplegable-title{
+        font-size: 1rem;
+    }
+}
+@media(max-width:530px){
+    header{
+        min-height: 20vh;
+    }
+}
+@media(min-width:530px){
+    header{
+        min-height: 30vh;
+    }
+}
+@media(min-width:1120px){
+    header{
+        min-height: 75vh;
     }
 }
