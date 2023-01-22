@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-*{
+*,::after,
+::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,6 +23,7 @@ html{
     width: 100%;
     line-height: 100vh;
 }
+/*EN PROCESO*/
 .portada img::before{
     background-size: cover;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
@@ -364,4 +366,74 @@ footer{
 
 .footer-img{
     width: 30px;
+}
+
+/*TARJETITA*/
+
+.card{
+    border: 1px solid #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    padding: 60px 0;
+}
+
+.card-item{
+    background-color:  #1D293F;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5em 1em;
+    border-radius: 4px;
+    box-shadow: 1px 1px 10px -5px rgb(255, 255, 255, .5);
+}
+
+.card-item--first{
+    position: relative;
+}
+
+.card-item--first::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("./imagenes/tarjeta/bg-quotes.png");
+    width: 30px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+
+.card-profile{
+    margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.card-picture{
+    width: 40px;
+    height: 40px;
+}
+
+.card-img{
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-name{
+    font-size: 1.2rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card-job{
+    color: #aaa9a9;
+}
+@media (min-width: 740px){
+    .card{
+        flex-direction: row;
+    }
 }
