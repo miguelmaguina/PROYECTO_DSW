@@ -1,19 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+:root{
+    --bakcground-general: #f2f2f2;
+    --color-titulo: #202A3C;
+}
 *,::after,
 ::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+header{
+    border: 1px solid transparent;
+    width: 100%;
+    height: 75vh;
+    text-align: center;
+    background: url("./imagenes/biografia/banners.jpg");
+    background-size:contain;
+    background-attachment: fixed;
+    position: relative;
+}
+nav{
+    width: 100%;
+    height: 9%;
+    background-color:#17181C;
+    text-align: center;
+    position: relative;
+
+}
+nav ul{
+    list-style: none;
+    display: inline-block;
+    padding:15px;
+ }
+
+nav ul li{
+    float: left;
+    margin-top: 0.5%;
+}
+
+nav ul li > a:hover{
+    text-decoration: underline;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 30px;
+}
+
+.clearfix{
+    clear: both;
+}
 html{
     scroll-behavior: smooth;
 }
 .biografia{
+    background-color: var(--bakcground-general);
     font-family: 'Quicksand',sans-serif;
-    margin-bottom: 30px;
 }
 
-.portada{
+/* .portada{
     border: 1px;
     text-align: center;
 }
@@ -22,12 +70,12 @@ html{
     height: 100%;
     width: 100%;
     line-height: 100vh;
-}
+} */
 /*EN PROCESO*/
-.portada img::before{
+/* .portada img::before{
     background-size: cover;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
-}
+} */
 .contenedor1{
     /* background-color: #fff; */
     /*border: 1px solid #000;*/
@@ -85,15 +133,15 @@ html{
 }
 
 .biografia-1{
-    background-color:#f2f2f2f2;
+    background-color:var(--bakcground-general);
 }
 .biografia-3,.biografia-4,.biografia-5,.biografia-6,.biografia-7{
-    border-top: 1px solid #f2f2f2;
+    border-top: 1px solid var(--bakcground-general);
     margin-bottom: -20px;
-    background-color: #f2f2f2;
+    background-color: var(--bakcground-general);
 }
 .content-biography{
-    background-color: #f2f2f2;
+    background-color: var(--bakcground-general);
 }
 .content-b1 img{
     border: 1px;
@@ -104,18 +152,18 @@ html{
     margin: auto;
 }
 /*-------------RECONOCIMIENTOS----------*/
-.content-rec{
+/* .content-rec{
     width: minmax(100px, 400px);
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     padding: 20px;
 }
 .reconocimientos{
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     display: flex;
     justify-content: space-evenly;
 }
 .tip-rec{
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -137,15 +185,15 @@ html{
     padding: 20px;
 }
 .titulo-rec{
-    /*border: 1px solid #000;*/
+    border: 1px solid #000;
     font-size: 1.5rem;
     text-align: center;
     margin: auto 10px;
-}
+} */
 /*otra forma de ver la biografia--------------------*/
 .content-bi{
     display: grid;
-    padding: 40px;
+    padding: 5px 40px 5px 40px;
     
 }
 .lado-der{
@@ -180,7 +228,7 @@ html{
     text-align: right;
 }
 .content-tit{
-    color: #333;
+    color: var(--color-titulo);
     font-size: 2.5rem;
     font-weight: bolder;
     margin-bottom: 24px;
@@ -196,7 +244,7 @@ html{
     padding: 0;
     margin: 0;
 }
-aside{
+/* aside{
     display: flex;
     justify-content: space-evenly;
     min-width: 10%;
@@ -208,11 +256,11 @@ aside{
     position: sticky;
     top: 0;
     z-index: 1;
-}
+} */
 .menutext{
     margin-top: 0;
     padding:20px 50px;
-    color: #f2f2f2;
+    color: var(--bakcground-general);
     text-decoration: none;
     
 }
@@ -289,7 +337,17 @@ aside{
 }
 
 /* Footer */
-.nav {
+footer{
+    width: 100%;
+    height: 25px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: Lato,sans-serif;
+    line-height: 25px;
+    font-size: 12px;
+}
+/* .nav {
     justify-content: center;
     height: 100%;
     display: flex;
@@ -366,13 +424,23 @@ footer{
 
 .footer-img{
     width: 30px;
-}
+} */
 
 /*TARJETITA*/
-
+.container {
+    background-color: var(--bakcground-general);
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.tarjeta{
+    background-color: var(--bakcground-general);
+}
 .card{
-    border: 1px solid #000;
-    color: #fff;
+    border: 1px solid transparent;
+    color: var(--bakcground-general);
     display: flex;
     flex-direction: column;
     gap: 2.5em;
@@ -384,8 +452,8 @@ footer{
     width: 90%;
     margin: 0 auto;
     padding: 1.5em 1em;
-    border-radius: 4px;
-    box-shadow: 1px 1px 10px -5px rgb(255, 255, 255, .5);
+    /* border-radius: 4px;
+    box-shadow: 1px 1px 10px -5px rgb(255, 255, 255, .5); */
 }
 
 .card-item--first{
@@ -395,15 +463,15 @@ footer{
 .card-item--first::before{
     content: "";
     position: absolute;
-    top: 0;
+    top: -50px;
     left: 0;
     background-image: url("./imagenes/tarjeta/bg-quotes.png");
-    width: 30px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: -1;
+    z-index: 1;
 }
 
 .card-profile{
@@ -427,6 +495,12 @@ footer{
 .card-name{
     font-size: 1.2rem;
     font-family: 'Quicksand', sans-serif;
+}
+.titulo-card{
+    padding-top: 40px;
+    font-size: 2.5rem;
+    text-align: center;
+    justify-content: center;
 }
 
 .card-job{
