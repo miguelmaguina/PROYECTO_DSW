@@ -1,19 +1,19 @@
 window.sr=ScrollReveal();
 
-    sr.reveal('.fijado',{
-        duration: 1500,
-        origin: 'bottom',
-        distance: '-100px'
+    sr.reveal('.content-bi',{
+        duration: 2500,
+        origin: 'top',
+        distance: '-90px'
     });
 
-    sr.reveal('.content-b1',{
-        duration: 2000,
+    sr.reveal('.tarjeta',{
+        duration: 2500,
         origin: 'top',
         distance: '-100px'
     });
 
-    sr.reveal('.content-bi',{
-        duration: 2000,
+    sr.reveal('.desplegable-padding',{
+        duration: 2500,
         origin: 'top',
         distance: '-100px'
     });
