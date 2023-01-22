@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 :root{
-    --bakcground-general: #f2f2f2;
-    --color-titulo: #202A3C;
+    --bakcground-general: #9FA4A6;
+    --color-titulo: #f9f6ec;
+    --color-txt-card: #fff;
+    --colo-txt-general:#E9E9EF;
 }
 *,::after,
 ::before {
@@ -113,7 +115,8 @@ html{
     font-weight: bold;
     font-size: 2.5rem;
     text-align: center;
-    padding: 20px
+    padding: 20px;
+    color: #f2f2f2;
 }
 .tituloizq-b1{
     font-weight: bold;
@@ -244,7 +247,7 @@ html{
 }
 
 .content-info{
-    color: #333;
+    color: var(--colo-txt-general);
     font-size: 1rem;
     margin-bottom: 24px;
 }
@@ -517,6 +520,7 @@ footer{
 }
 
 .card-name{
+    color: var(--color-txt-card);
     font-size: 1.2rem;
     font-family: 'Quicksand', sans-serif;
 }
@@ -536,11 +540,13 @@ footer{
 
 /* PANEL DESPEGABLE */
 .container-vm {
-    width: 150%;
-    max-width: 98%;
-    margin: 0 auto;
+    background-color: var(--bakcground-general);
+    /*width: 150%;*/
+    max-width: 100%;
+    margin: 0;
+    justify-content: stretch;
     overflow: hidden;
-    padding: 10px 0;
+    padding: 10px 20px;
 }
 .desplegable{
     text-align: center;
@@ -557,7 +563,7 @@ footer{
 .desplegable-padding{
     padding: 0;
     transition: padding .3s;
-    border: 1px solid #5454D4;
+    border: 1px solid #f2f2f2;
     border-radius: 6px;
 }
 
@@ -578,14 +584,14 @@ footer{
     padding: 30px 0 30px;
     margin: 0;
     cursor: pointer;
-    color: var(--color-titulo);
+    color: #f2f2f2;
     justify-content: space-between;
     font-family: 'Poppins','Quicksand',sans-serif;
 }
 
 .desplegable-arrow{
     border-radius: 50%;
-    background-color: var(--color-titulo);
+    background-color: #172426;
     width: 25px;
     height: 25px;
     display: flex;
