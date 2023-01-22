@@ -67,31 +67,13 @@ html{
     font-family: 'Quicksand',sans-serif;
 }
 
-/* .portada{
-    border: 1px;
-    text-align: center;
-}
-
-.portada img{
-    height: 100%;
-    width: 100%;
-    line-height: 100vh;
-} */
-/*EN PROCESO*/
-/* .portada img::before{
-    background-size: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
-} */
 .contenedor1{
-    /* background-color: #fff; */
-    /*border: 1px solid #000;*/
 	 width: 90%;
 	 max-width: 1200px;
 	 margin: 20px auto;
 }
 .content-b1{
      align-items: center;
-     /*border: 1px solid #000; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 200px;
@@ -100,12 +82,10 @@ html{
 }
 .content-b2{
     align-items: center;
-   /*border: 1px solid #000;*/
    display: grid;
    grid-template-columns: 1fr 1fr;
 }
 .letter{
-    /*border: 1px solid #000;*/
     padding-top: 10px;
     font-family: 'Quicksand','Roboto', sans-serif;
     font-size: 1rem;
@@ -158,46 +138,6 @@ html{
     object-fit: contain;
     margin: auto;
 }
-/*-------------RECONOCIMIENTOS----------*/
-/* .content-rec{
-    width: minmax(100px, 400px);
-    border: 1px solid #000;
-    padding: 20px;
-}
-.reconocimientos{
-    border: 1px solid #000;
-    display: flex;
-    justify-content: space-evenly;
-}
-.tip-rec{
-    border: 1px solid #000;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.conjunt-img2{
-    border: 1px;
-    border-radius: 15px;
-    justify-content: center;
-    width: 33vh;
-    height: 80%;
-    object-fit: contain;
-    margin: auto;
-}
-.txt-rec{
-    font-weight: bolder;
-    font-size: 2rem;
-    text-align: center;
-    padding: 20px;
-}
-.titulo-rec{
-    border: 1px solid #000;
-    font-size: 1.5rem;
-    text-align: center;
-    margin: auto 10px;
-} */
-/*otra forma de ver la biografia--------------------*/
 .content-bi{
     display: grid;
     padding: 5px 40px 5px 40px;
@@ -251,31 +191,6 @@ html{
     font-size: 1rem;
     margin-bottom: 24px;
 }
-.menunav{
-    background-color: red;
-    padding: 0;
-    margin: 0;
-}
-/* aside{
-    display: flex;
-    justify-content: space-evenly;
-    min-width: 10%;
-    height: 100%;
-    background: #333;
-    opacity: 0.9;
-    font-weight: bold;
-    font-size: 1.1rem;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-} */
-.menutext{
-    margin-top: 0;
-    padding:20px 50px;
-    color: var(--bakcground-general);
-    text-decoration: none;
-    
-}
 .menutext:hover{
     background-color: white;
     color: #333;
@@ -299,13 +214,6 @@ html{
 .img-small:hover{
     transform: scale(1.5);
 }
-/*.conjunt-img1{
-    padding: auto;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-auto-rows: minmax(min-content,1fr);
-    grid-auto-columns: minmax(min-content,1fr);
-} */
 .content-img-1{
     width: 100%;
     height: 100%;
@@ -318,47 +226,6 @@ html{
 .img-big2{
     grid-area: 2 / 4 / 5 / 6;
 }
-/*-------------RECONOCIMIENTOS----------*/
-.content-rec-2{
-    /*border: 1px solid #000;*/
-    width: minmax(100px, 400px);
-    padding: 0 20px 0 20px;
-}
-.reconocimientos-2{
-    /*border: 1px solid #000;*/
-    display: flex;
-    justify-content: space-evenly;
-}
-.tip-rec-2{
-    /*border: 1px solid #000;*/
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-.conjunt-img3{
-    border: 1px;
-    border-radius: 15px;
-    justify-content: center;
-    width: 33vh;
-    height: 80%;
-    object-fit: contain;
-    margin: auto;
-}
-.txt-rec-2{
-    font-weight: bolder;
-    font-size: 2rem;
-    text-align: center;
-    padding: 20px;
-}
-.titulo-rec-2{
-    /*border: 1px solid #000;*/
-    text-align: center;
-    font-size: 1.5rem;
-    text-align: center;
-    margin: auto 10px;
-}
-
 /* Footer */
 footer{
     width: 100%;
@@ -370,85 +237,6 @@ footer{
     line-height: 25px;
     font-size: 12px;
 }
-/* .nav {
-    justify-content: center;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-footer{
-    font-family: 'Poppins', sans-serif;
-}
-.nav-link {
-    margin-left: auto;
-    padding: 0;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
-    gap: 2em;
-}
-.footer{
-    padding: 20px;
-    background-color: #1D293F;
-}
-.nav-items {
-    list-style: none;
-}
-
-.nav-links {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-title, .footer-newsletter{
-    color: #fff;
-}
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 20px 0;
-}
-.footer-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 30px;
-}
-
-.nav--footer{
-    padding-bottom: 10px;
-    display: grid;
-    gap: 1em;
-    grid-auto-flow: row;
-    width: 100%;
-    height: 100%;
-}
-
-.nav-link--footer{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.footer-copy{
-    text-align: center;
-    color: #fff;
-}
-
-.footer-copyright{
-    font-weight: 300;
-}
-
-.footer-icons{
-    margin-bottom: 10px;
-}
-
-.footer-img{
-    width: 30px;
-} */
-
 /*TARJETITA*/
 .container1 {
     background-color: var(--bakcground-general);
@@ -475,8 +263,6 @@ footer{
     margin: 0 auto;
     padding: 1.5em 1em;
     transition: all 300ms;
-    /* border-radius: 4px;
-    box-shadow: 1px 1px 10px -5px rgb(255, 255, 255, .5); */
 }
 .card-item:hover{
     transform: scale(1.04);
