@@ -31,7 +31,7 @@ header{
     height: 450px;
     text-align: center;
     color: white;
-    background: url("imagenes/evolucion/bannerEvolucion.png");
+    background: url("../imagenes/evolucion/bannerEvolucion.png");
     background-size: contain;
     background-attachment: fixed;
     position: relative;

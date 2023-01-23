@@ -18,7 +18,7 @@ header{
     height: 450px;
     text-align: center;
     color: white;
-    background: url("./imagenes/biografia/banners.jpg");
+    background: url("../imagenes/biografia/banners.jpg");
     background-size:contain;
     background-attachment: fixed;
     position: relative;
@@ -436,21 +436,6 @@ footer{
 @media (max-width:600px){
     .desplegable-title{
         font-size: 1rem;
-    }
-}
-@media(max-width:530px){
-    header{
-        min-height: 20vh;
-    }
-}
-@media(min-width:530px){
-    header{
-        min-height: 30vh;
-    }
-}
-@media(min-width:1120px){
-    header{
-        min-height: 75vh;
     }
 }
 @media screen and (max-width: 630px) {

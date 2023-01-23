@@ -57,7 +57,7 @@ body {
     height: 450px;
     text-align: center;
     color: white;
-    background: url("imagenes/reconocimiento/bannerReconocimiento.png");
+    background: url("../imagenes/reconocimiento/bannerReconocimiento.png");
     background-size: contain;
 	background-attachment: fixed;
     position: relative;
@@ -174,7 +174,7 @@ nav ul li a {
   }
   .ag-timeline-card_point { /*anios*/
 
-	background-image: url(imagenes/reconocimiento/manzanaPloma.png);
+	background-image: url(../imagenes/reconocimiento/manzanaPloma.png);
 	background-size: 47px;
 	background-repeat: no-repeat;
 	background-position-x: center;
@@ -192,7 +192,7 @@ nav ul li a {
 	border-radius: 50%;
   }
   .js-ag-active .ag-timeline-card_point {
-	background-image: url(imagenes/reconocimiento/manzanaAmarilla.png);
+	background-image: url(../imagenes/reconocimiento/manzanaAmarilla.png);
 	color: #1d1d1b;
   }
   .ag-timeline-card_meta-box {

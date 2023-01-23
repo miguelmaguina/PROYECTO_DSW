@@ -18,7 +18,7 @@ header{
     height: 450px;
     text-align: center;
     color: white;
-    background: url("imagenes/index/bannerIndex.png");
+    background: url("../imagenes/index/bannerIndex.png");
     background-size: contain;
     background-attachment: fixed;
     position: relative;
