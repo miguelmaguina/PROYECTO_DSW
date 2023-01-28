@@ -28,3 +28,21 @@ td{
 .a{
     background-color: darkblue;
 }
+
+.x {
+    font-size: 200%;
+    color: crimson;
+    font-weight: bold;
+}
+
+.o {
+    font-size: 200%;
+    color: white;
+    font-weight: bold;
+}
+
+.ganador {
+    font-size: 200%;
+    color: gold;
+    font-weight: bold;
+}
