@@ -23,6 +23,7 @@ function handleClick(event) {
         }
     }else
         if((cell.innerText == "X" || cell.innerText == "O") && huboGanador == false && contadorDeTurnos>=9){
+            Swal.fire("Reiniciando por empate");
             contadorDeTurnos=0;
             reiniciarJuego();
         } else
