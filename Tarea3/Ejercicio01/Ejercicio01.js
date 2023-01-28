@@ -17,13 +17,22 @@ function handleClick(event) {
         aplicarColor(cell);
         if (revisarPorGanador()) {
             huboGanador = true;
-            Swal.fire("El ganador es " + turno);
+            Swal.fire({
+                icon: 'success',
+                title: '¡Felicidades!',
+                text: ("El ganador es " + turno),
+            })
+            
         } else {
             cambiarTurno();
         }
     }else
         if((cell.innerText == "X" || cell.innerText == "O") && huboGanador == false && contadorDeTurnos>=9){
-            Swal.fire("Reiniciando por empate");
+            Swal.fire({
+            icon: 'error',
+            title: 'Empate',
+            text: 'Reinciando el juego',
+            })
             contadorDeTurnos=0;
             reiniciarJuego();
         } else
