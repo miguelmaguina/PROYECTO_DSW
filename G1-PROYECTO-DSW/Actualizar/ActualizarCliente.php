@@ -3,6 +3,6 @@ require_once '../DAO/ClienteDAO.php';
 require_once '../Clases/Cliente.php';
 
 
-
+echo 'Hola mundo';
 
 ?>
