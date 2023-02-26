@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/vistaEmpresa.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/vistaEmpresa.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
     
-    <?php require '../components/headerEmpresa.php' ?>
+    <?php require 'headerEmpresa.php' ?>
       
     <div id="myCarousel" class="container-fluid carousel slide contenedor-carrusel p-0" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -23,7 +23,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada3.png" ></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png" ></img>
         <div class="container">
           <div class="carousel-caption text-start">
           <h2 >Descubre productos peruanos</h2>
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="carousel-item active">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada3.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption">
           <h2 >Descubre productos peruanos</h2>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada3.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption text-end">
           <h2 >Descubre productos peruanos</h2>
@@ -81,7 +81,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-1.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-1.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>Enfocados en el cumplimiento del ODS 11</p>
@@ -91,7 +91,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>¡Contacta con clientes a lo largo de todo el territorio nacional!</p>
@@ -101,7 +101,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-3.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-3.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>Tu trabajo, tu sudor, tu precio</p>
@@ -117,7 +117,7 @@
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../img/imgNuevoProducto.png" alt="">
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgNuevoProducto.png" alt="">
                         <span class="button-text">NUEVO PRODUCTO</span>
                         </a>
                     </div>
@@ -125,19 +125,19 @@
                 <div class="row">
                     <div class="button-container col-sm-4 col-md-4 mt-4 text-white  d-flex justify-content-center">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../img/imgReporte.png" alt="">
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgReporte.png" alt="">
                         <span class="button-text">REPORTE</span>
                         </a>
                     </div>
                     <div class="button-container h-100 col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../img/imgProducto.png" alt="">
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgProducto.png" alt="">
                         <span class="button-text">PRODUCTO</span>
                         </a>
                     </div>
                     <div class="button-container col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../img/imgClientes.png" alt="">
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgClientes.png" alt="">
                         <span class="button-text">MIS CLIENTES</span>
                         </a>
                     </div>
@@ -159,7 +159,7 @@
             </div>
         </footer>
 
-        <script src="../js/index.js"></script>
+        <script src="../../js/index.js"></script>
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         

@@ -7,18 +7,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gráficos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/vistaDatosGraficos.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/vistaDatosGraficos.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
-    <?php require '../components/headerEmpresa.php'?>
+    <?php require 'headerEmpresa.php'?>
+
+
+    <!--tarjetas --+ 3 -->
 
 <section class="pt-4 d-flex justify-content-center" style="background-color: #E5E1E1;">
 <div class="row container">
+
+
     <div class="col-xxl-4 col-md-6 mb-3">
         <div class="card info-card sales-card">
            <div class="card-body">
@@ -33,6 +38,8 @@
            </div>
         </div>
      </div>
+
+
      <div class="col-xxl-4 col-md-6 mb-3">
         <div class="card info-card revenue-card">
            <div class="card-body">
@@ -47,6 +54,8 @@
            </div>
         </div>
      </div>
+
+
      <div class="col-xxl-4 col-xl-12 mb-3">
         <div class="card info-card customers-card">
            <div class="card-body">
@@ -67,6 +76,7 @@
     <section class="container-fluid py-1 dashboard">
 
         
+    <!-- grafico principal -->
         <div class="row">
 
             <div class="col-12">
@@ -143,6 +153,7 @@
         </div>
         </div>
 
+        <!-- grafico de barras -->
 
         <div class="row">
 
@@ -183,6 +194,7 @@
                 </div>
              </div>
 
+             <!-- grafico de barras -->
 
              <div class="col-lg-6">
                 <div class="contenedor-grafico">
@@ -237,6 +249,7 @@
 
         </div>
 
+        <!-- grafico circular -->
 
         <div class="row">
 
@@ -280,7 +293,7 @@
 
                 </div>
 
-
+<!-- grafico radar -->
 
                 <div class="col-lg-6">
                     <div class="contenedor-grafico">
@@ -354,10 +367,10 @@
             </div>
         </footer>
 
-        <script src="../js/index.js"></script>  
-      <script src="../js/apexcharts.min.js"></script>
-        <script src="../js/chart.min.js"></script>
-        <script src="../js/echarts.min.js"></script>
+        <script src="../../js/index.js"></script>  
+      <script src="../../js/apexcharts.min.js"></script>
+        <script src="../../js/chart.min.js"></script>
+        <script src="../../js/echarts.min.js"></script>
       
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

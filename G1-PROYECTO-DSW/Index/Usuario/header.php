@@ -4,7 +4,7 @@
 <nav class="navbar p-3 navbar-expand-md bg-white">
         <div class="container-fluid col">
             <div class="d-flex align-items-center justify-content-between"> 
-                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="../../Image/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
+                <a href="../index.php" class="logo d-flex align-items-center text-decoration-none"> <img src="../../Image/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
              </div>
              <div class="search-bar">
                 <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
