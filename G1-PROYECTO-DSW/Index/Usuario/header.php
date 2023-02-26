@@ -4,7 +4,7 @@
 <nav class="navbar p-3 navbar-expand-md bg-white">
         <div class="container-fluid col">
             <div class="d-flex align-items-center justify-content-between"> 
-                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="../img/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
+                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="../../Image/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
              </div>
              <div class="search-bar">
                 <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
@@ -37,10 +37,10 @@
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li class="nav-item nav-carrito car">
-                        <img src="../img/carrito.png" alt="Profile" class="rounded-circle">
+                        <img src="../../Image/carrito.png" alt="Profile" class="rounded-circle">
                     </li>
                    <li class="nav-item dropdown pe-3">
-                      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../img/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
+                      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
                       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                          <li class="dropdown-header">
                             <h6>admin</h6>

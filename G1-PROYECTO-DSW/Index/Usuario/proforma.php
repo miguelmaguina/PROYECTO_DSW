@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/header.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/styleProforma.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/styleProforma.css?v=<?php echo time(); ?>">
     
 
 
@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<?php  require '../components/header.php'; ?>
+<?php  require 'header.php'; ?>
 
     <section class="section-p container-fluid py-1">
         <div class="row d-flex justify-content-center">  
@@ -28,6 +28,7 @@
             <div class="col-lg-8">
                 <div class="text-start fs-3 pt-3">Proforma (5 productos)</div>
                 
+<!--repeticion-->
 
                 <div class="row">
                     <div class="contenedor-p">
@@ -42,25 +43,25 @@
 
 <div class="carousel-inner mx-auto">
     <div class="carousel-item carrusel-img active">
-      <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
     </div>
 </div>
 
 <ol class="carousel-indicators">
   <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel1" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel1" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
 </ol>
 
@@ -137,6 +138,11 @@
                 </div>
 
 
+
+
+<!--repeticion-->
+
+
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -150,25 +156,25 @@
 
 <div class="carousel-inner mx-auto">
     <div class="carousel-item carrusel-img active">
-      <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
     </div>
 </div>
 
 <ol class="carousel-indicators">
   <li data-bs-target="#carousel2" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel2" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel2" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
 </ol>
 
@@ -245,6 +251,10 @@
                 </div>
 
 
+<!--repeticion-->
+
+
+
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -257,25 +267,25 @@
 
 <div class="carousel-inner mx-auto">
     <div class="carousel-item carrusel-img active">
-      <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
     </div>
 </div>
 
 <ol class="carousel-indicators">
   <li data-bs-target="#carousel3" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel3" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel3" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
 </ol>
 
@@ -352,6 +362,9 @@
                 </div>
 
 
+<!--repeticion-->
+
+
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -364,25 +377,25 @@
 
 <div class="carousel-inner mx-auto">
     <div class="carousel-item carrusel-img active">
-      <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
     </div>
 </div>
 
 <ol class="carousel-indicators">
   <li data-bs-target="#carousel4" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel4" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel4" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
 </ol>
 
@@ -459,6 +472,10 @@
                 </div>
 
 
+<!--repeticion-->
+
+
+
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -471,25 +488,25 @@
 
 <div class="carousel-inner mx-auto">
     <div class="carousel-item carrusel-img active">
-      <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
     </div>
     <div class="carousel-item carrusel-img">
-        <img src="../img/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
     </div>
 </div>
 
 <ol class="carousel-indicators">
   <li data-bs-target="#carousel5" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel5" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
   <li data-bs-target="#carousel5" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../img/juguete.png" alt="">
+    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
   </li>
 </ol>
 
@@ -564,6 +581,10 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <!--repeticion-->
 
 
             </div>

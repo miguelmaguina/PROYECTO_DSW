@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/header.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/styleTienda1.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/styleTienda1.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
     
-<?php  require '../components/header.php' ?>
+<?php  require 'header.php' ?>
 
       
 
@@ -27,7 +27,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada-online.png" ></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png" ></img>
         <div class="container">
           <div class="carousel-caption text-start">
           <h2 >Descubre productos peruanos</h2>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="carousel-item active">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada-online.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
           <div class="carousel-caption">
           <h2 >Descubre productos peruanos</h2>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../img/portada-online.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
           <div class="carousel-caption text-end">
           <h2 >Descubre productos peruanos</h2>
@@ -77,7 +77,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-1.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-1.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>Variedad de productos peruanos seleccionados</p>
@@ -87,7 +87,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>Envios garantizados a nivel snacional</p>
@@ -97,7 +97,7 @@
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 col-lg-4">
-                        <img src="../img/t-o-3.png" class="img-fluid p-2" alt="Producto 1">
+                        <img src="../../Image/t-o-3.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
                         <p>Descubre los mejores alimentos y productos del Perú</p>
@@ -106,6 +106,8 @@
             </div>
         </div>
     </section>
+
+<!--parte estatica-->
 
     <section class="section-t-o container-fluid py-1">
         <div class="contenedor-t">
@@ -119,7 +121,7 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -134,7 +136,7 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -150,7 +152,7 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -166,7 +168,7 @@
                                 <div class="card card-t mb-3 border border-none ">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -186,7 +188,7 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -201,23 +203,7 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <div class="col-sm-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -233,7 +219,23 @@
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img src="../img/juguete.png" class="card-img" alt="Imagen">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                            <h5 class="card-title">JUGUETE</h5>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+
+                            <div class="col-sm-3 col-md-4 col-lg-3">
+                                <div class="card card-t mb-3 border border-none">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -263,6 +265,10 @@
         </div>
     </section>
 
+    <!--parte dinamica-->
+
+    <!--inicio de los productos que se mostrarán-->
+
     <div class="container-fluid content-productos">
         <div class="contenedor-t">
         <div class="row border">
@@ -287,41 +293,11 @@
             <div class="col-md-9 contenedor-de-producto">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
+
+                <!--repeticion-->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative m-2">
-                            <img src="../img/Artesanos.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative m-2">
-                            <img src="../img/imgReporte.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative m-2">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/Artesanos.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -335,12 +311,45 @@
                         </div>
                     </div>
 
-                <!-- </div>
+                    <!--repeticion-->
     
-                <div class="row"> -->
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card card-t-o position-relative m-2">
+                            <img src="../../Image/imgReporte.png" class="card-img-top" alt="Imagen del producto">
+                            <div class="position-absolute favorito">
+                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                            </div>
+                            <div class="position-absolute carrito">
+                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text">Nombre del producto</h5>
+                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!--repeticion-->
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card card-t-o position-relative m-2">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <div class="position-absolute favorito">
+                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                            </div>
+                            <div class="position-absolute carrito">
+                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text">Nombre del producto</h5>
+                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--repeticion-->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -354,9 +363,11 @@
                         </div>
                     </div>
 
+<!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -370,9 +381,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -386,12 +399,11 @@
                         </div>
                     </div>
 
-                <!-- </div>
-
-                <div class="row"> -->
+                <!--repeticion-->
+                    
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -405,9 +417,11 @@
                         </div>
                     </div>
 
+<!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -421,9 +435,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -437,12 +453,11 @@
                         </div>
                     </div>
 
-                <!-- </div>
+<!--repeticion-->
 
-                <div class="row"> -->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -456,9 +471,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -472,9 +489,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -487,16 +506,12 @@
                             </div>
                         </div>
                     </div>
-<!-- 
-                </div>
 
-
-
-
-                <div class="row"> -->
+                    <!--repeticion-->
+                    
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -510,9 +525,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -525,10 +542,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--repeticion-->
 
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative ">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -542,12 +561,11 @@
                         </div>
                     </div>
 
-                <!-- </div>
+            <!--repeticion-->
 
-                <div class="row"> -->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -561,9 +579,11 @@
                         </div>
                     </div>
 
+<!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -577,9 +597,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -593,9 +615,11 @@
                         </div>
                     </div>
 
+                    <!--repeticion-->
+
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
-                            <img src="../img/juguete.png" class="card-img-top" alt="Imagen del producto">
+                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
                                 <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                             </div>
@@ -608,6 +632,9 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <!--repeticion-->
 
                 </div>
 
@@ -637,8 +664,8 @@
             </div>
         </footer>
 
-        <script src="../js/index.js"></script>
-        <script src="../js/script.js"></script>
+        <script src="../../js/index.js"></script>
+        <script src="../../js/script.js"></script>
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         

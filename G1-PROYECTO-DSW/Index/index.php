@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/styleIndex.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../Estilos/header.css">
+    <link rel="stylesheet" href="../Estilos/styleIndex.css?v=<?php echo time(); ?>">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -21,7 +21,7 @@
 <nav class="navbar p-3 navbar-expand-md bg-white">
         <div class="container-fluid col">
             <div class="d-flex align-items-center justify-content-between"> 
-                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="img/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
+                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="../Image/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
              </div>
              <div class="search-bar">
                 <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
@@ -54,10 +54,10 @@
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li class="nav-item nav-carrito car">
-                        <img src="img/carrito.png" alt="Profile" class="rounded-circle">
+                        <img src="../Image/carrito.png" alt="Profile" class="rounded-circle">
                     </li>
                    <li class="nav-item dropdown pe-3">
-                      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="img/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
+                      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
                       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                          <li class="dropdown-header">
                             <h6>admin</h6>
@@ -218,7 +218,7 @@
                                         <h5 class="card-title">Bolsita</h5>
                                         <p class="card-text">Descripción de la opinion</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@
                                         <h5 class="card-title">Artesania</h5>
                                         <p class="card-text">Descripción de la opinion</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +244,7 @@
                                         <h5 class="card-title">Queso</h5>
                                         <p class="card-text">Descripción de la opinion.</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -261,7 +261,7 @@
                                         <h5 class="card-title">Queso</h5>
                                         <p class="card-text">Descripción de la opinion.</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@
                                         <h5 class="card-title">Queso</h5>
                                         <p class="card-text">Descripción de la opinion.</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +287,7 @@
                                         <h5 class="card-title">Artesania</h5>
                                         <p class="card-text">Descripción de la opinion</p>
                                         <div class="contenido-img-span">
-                                            <img src="img/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
                                         </div>
                                     </div>
                                 </div>
@@ -327,7 +327,7 @@
         </div>
     </footer>
 
-    <script src="js/index.js"></script>
+    <script src="../js/index.js"></script>
     <!-- Scripts de Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     
