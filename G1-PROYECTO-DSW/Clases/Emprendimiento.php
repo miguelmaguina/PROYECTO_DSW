@@ -12,10 +12,10 @@ class Emprendimiento
     private $Direccion;
     private $Logo;
     private $Fecha_Creacion;
-    private $URL_WEB;
+    private $URL_Web;
     private $URL_Facebook;
     private $URL_Instagram;
-    //private $URL_Otros;
+    private $URL_Otros;
 
     //Constructor vacío
     public function Emprendimiento(){}
@@ -71,9 +71,9 @@ class Emprendimiento
         return $this->Fecha_Creacion;
     }
 
-    public function getURL_WEB()
+    public function getURL_Web()
     {
-        return $this->URL_WEB;
+        return $this->URL_Web;
     }
 
     public function getURL_Facebook()
@@ -86,10 +86,10 @@ class Emprendimiento
         return $this->URL_Instagram;
     }
 
-    /*public function getURL_Otros()
+    public function getURL_Otros()
     {
         return $this->URL_Otros;
-    }*/
+    }
 
     //Setters
     public function setID_Emprendimiento($ID_Emprendimiento)
@@ -142,9 +142,9 @@ class Emprendimiento
         $this->Fecha_Creacion=$Fecha_Creacion;
     }
 
-    public function setURL_WEB($URL_WEB)
+    public function setURL_Web($URL_Web)
     {
-        $this->URL_WEB=$URL_WEB;
+        $this->URL_Web=$URL_Web;
     }
 
     public function setURL_Facebook($URL_Facebook)
@@ -157,10 +157,10 @@ class Emprendimiento
         $this->URL_Instagram=$URL_Instagram;
     }
 
-    /*public function setURL_Otros($URL_Otros)
+    public function setURL_Otros($URL_Otros)
     {
         $this->URL_Otros=$URL_Otros;
-    }*/
+    }
 }
 
 ?>
