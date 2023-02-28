@@ -193,5 +193,5 @@
     background: none;
     }
     .search-form button i {
-    color: #035941;
+    color: var(--colorgreen1);
     }

@@ -2,7 +2,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 </head>
 <body>
     
@@ -35,7 +42,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
+            <p><a class="btn btn-lg btn-success" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -46,7 +53,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
+            <p><a class="btn btn-lg btn-success" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -57,7 +64,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">¡Aprender más!</a></p>
+            <p><a class="btn btn-lg btn-success" href="#">¡Aprender más!</a></p>
           </div>
         </div>
       </div>
@@ -218,7 +225,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary w-50 d-flex justify-content-center">Guardar</button>
+                        <button type="submit" class="btn btn-success w-50 d-flex justify-content-center">Guardar</button>
                     </div>
                     </form>
                 </div>
