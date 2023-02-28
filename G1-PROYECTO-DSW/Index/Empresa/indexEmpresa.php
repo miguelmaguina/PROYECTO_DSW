@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../Estilos/vistaEmpresa.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/vistaIndexEmpresa.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 </head>
 <body>
     
@@ -29,7 +36,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
+            <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -40,7 +47,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
+            <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -51,7 +58,7 @@
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">¡Aprender más!</a></p>
+            <p><a class="btn btn-lg btn-izq" href="#">¡Aprender más!</a></p>
           </div>
         </div>
       </div>
