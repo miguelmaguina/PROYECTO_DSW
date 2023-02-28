@@ -91,7 +91,7 @@ class ProductoDAO
         }
     }
 
-    public function update(Emprendimiento $emprendimiento) {
+    public function update(Producto $producto) {
         
         $query = "UPDATE producto SET Nombre=?, Precio=?, Descripcion=?, ID_Categoria=?, ID_Subcategoria=?, Descuento=?, Fecha=?, ID_Emprendimiento=?, Disponibilidad=?, Foto_Secundaria1=?, Foto_Secundaria2=?, Foto_Secundaria3=?  WHERE ID_Producto=?";
         
@@ -138,7 +138,7 @@ class ProductoDAO
         }
     }
 
-    public function listarPorIdEmprendimiento($ID_Producto_Buscado){
+    public function listarPorIdProducto($ID_Producto_Buscado){
 
         $query = "SELECT * FROM Producto WHERE ID_Producto=?";
 
