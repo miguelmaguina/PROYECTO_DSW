@@ -77,7 +77,7 @@ class CategoriaDAO {
         }
     }
 
-    public function update(Emprendimiento $categoria) {
+    public function update(Categoria $categoria) {
         
         $query = "UPDATE categoria SET Nombre=?, Descripcion=? WHERE ID_Categoria=?";
         
@@ -85,7 +85,7 @@ class CategoriaDAO {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             $Nombre = $categoria->getNombre(); //s
-            $Descripcion = $categoria->getUsuario(); //s            
+            $Descripcion = $categoria->getDescripcion(); //s            
 
             mysqli_stmt_bind_param($stmt, "ssssssssssssss", $Nombre, $Descripcion);
             mysqli_stmt_execute($stmt);
