@@ -44,7 +44,7 @@ class Cliente {
         return $this->Celular;
     }
 
-    public function getContraseña()
+    public function getContrasena()
     {
         return $this->Contrasena;
     }
