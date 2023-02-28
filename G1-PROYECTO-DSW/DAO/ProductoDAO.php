@@ -1,5 +1,6 @@
 <?php
 
+//Librerías
 include "../Conexion/Conexion.php";
 include "../Clases/Producto.php";
 
