@@ -69,7 +69,7 @@ class EmprendimientoDAO {
 
     public function insert(Emprendimiento $emprendimiento){
 
-        $query = "INSERT INTO Emprendimiento(Nombre, Usuario,email, Celular,Contraseña,Departamento,Direccion,Logo,Fecha_Creacion,URL_WEB,URL_Facebook,URL_Instagram,URL_Otros) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO Emprendimiento(Nombre, Usuario,email, Celular,Contrasena,Departamento,Direccion,Logo,Fecha_Creacion,URL_WEB,URL_Facebook,URL_Instagram,URL_Otros) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
