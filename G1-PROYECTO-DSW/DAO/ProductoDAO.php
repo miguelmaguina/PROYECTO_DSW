@@ -61,7 +61,7 @@ class ProductoDAO
 
     public function insert(Producto $producto){
 
-        $query = "INSERT INTO Producto VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO Producto(Nombre, Precio, Descripcion, ID_Categoria, ID_Subcategoria, Descuento, Fecha, ID_Emprendimiento, Disponibilidad, Foto_Secundaria1, Foto_Secundaria2, Foto_Secundaria3) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
