@@ -33,7 +33,7 @@
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png" ></img>
         <div class="container">
           <div class="carousel-caption text-start">
-          <h2 >Descubre productos peruanos</h2>
+          <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
             <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
@@ -44,7 +44,7 @@
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption">
-          <h2 >Descubre productos peruanos</h2>
+          <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
             <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
@@ -55,7 +55,7 @@
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption text-end">
-          <h2 >Descubre productos peruanos</h2>
+          <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
             <p><a class="btn btn-lg btn-izq" href="#">¡Aprender más!</a></p>

@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+:root{
+    --colorgreen1: #035941;
+    --colorgreen1hover:#01412f;
+    --colorgreen2: #7DA641;
+    --colorgreen2hover: #6b9133;
+    --colornaranja1: #F2AC57;
+    --colornaranja2: #F2CEA2;
+    --colorbackground: #E5E1E1;
+    --colorlight: #FAFAFA;
+    --colorblanco: #fff;
+    --colornegro:#000;
+  }
   
  /*-----------------------------------------------------------------  tiendaOnline1.html -------------------------------------------------------*/
   
@@ -19,7 +31,7 @@
 .card-t::after{
     content: "";
     display: block;
-    background: #000;
+    background: var(--colornegro);
     width: 100%;
     margin-top: 15px;
     height: 3px;
@@ -39,7 +51,7 @@
 
 
 .section-t-o{
-    background-color: #E5E1E1;
+    background-color: var(--colorbackground);
 }
 
 @media only screen and (max-width: 768px){
@@ -63,62 +75,9 @@
     margin: 0px auto;
 }
 
-.favorito{
-    top: 10px;
-    left: 10px;
-}
-.favorito a{
-    border: none;
-    border-radius: 50%;
-    background-color: rgba(255,255,255, 0.62);
-}
-
-.favorito a:hover{
-    transform: scale(1.3);
-    color:#1259C3;
-}
-
-
-.carrito{
-    top: 10px;
-    right: 10px;
-}
-
-.carrito a{
-    border: none;
-    border-radius: 50%;
-    background-color: rgba(255,255,255, 0.62);
-}
-
-.carrito a:hover{
-    transform: scale(1.3);
-    color:#1259C3;
-}
-
-
-
-.card-t-o{
-    width: auto;
-    background-color: #fff;
-    margin: 0 0.5em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: none;
-    transition: 0.2s all;
-}
-.card-t-o:hover{
-    scale:1.1;
-}
-
-.card-t-o img{
-    object-fit: contain;
-    min-height: 199px;
-    max-height: 200px;
-    max-width: 100%;
-}
-
 
 .content-productos{
-    background-color: #E5E1E1;
+    background-color: var(--colorbackground);
 }
 
 
@@ -131,7 +90,7 @@
   }
 
   .carousel-control-next{
-    background-color: #fff;
+    background-color: var(--colorblanco);
     width: 6vh;
     height: 6vh;
     border-radius: 50%;
@@ -139,7 +98,7 @@
     transform: translateY(-50%);
   }
   .carousel-control-prev{
-    background-color: #fff;
+    background-color: var(--colorblanco);
     width: 6vh;
     height: 6vh;
     border-radius: 50%;
@@ -151,11 +110,12 @@
 
 
 .text-cabecera{
-    color: #0B0E58;
+    color: var(--colorgreen1);
+    font-weight: bold;
 }
 
   .card-emp {
-    background-color: #ffffff;
+    background-color: var(--colorblanco);
     width: auto;
     border: none;
     border-radius: 18px;
@@ -166,7 +126,7 @@
   }
 
   .card-emp:hover{
-    scale:1.1;
+    scale:1.02;
 }
   
   .card-emp .row {
@@ -181,8 +141,8 @@
   .card-titulo {
     font-size: 18px;
     margin-bottom: 10px;
-    font-weight: bold;
-    color: #0B0E58;
+    font-weight: 600;
+    color: var(--colorgreen1);
   }
   
   .card-texto {
@@ -197,6 +157,6 @@
 /*--------------- footer  ---------------------*/
 footer{
     height: 300px;
-    background-color: #060D54;
-    color: #fff;
+    background-color: var(--colorgreen1);
+    color: var(--colorblanco);
 }
