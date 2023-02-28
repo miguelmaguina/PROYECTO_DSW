@@ -4,29 +4,42 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root{
+  --colorgreen1: #035941;
+  --colorgreen1hover:#01412f;
+  --colorgreen2: #7DA641;
+  --colorgreen2hover: #6b9133;
+  --colornaranja1: #F2AC57;
+  --colornaranja2: #F2CEA2;
+  --colorbackground: #E5E1E1;
+  --colorlight: #FAFAFA;
+  --colorblanco: #fff;
+  --colornegro:#000;
+}
   /*---------------- seccion portada ------------------*/
 
 .portada1 {
     position: relative;
+    transition: 0.7s;
   }
 
   .portada1{
     background-image: url(../Image/Artesanos.png);
-    height: 60vh;
+    height: 70vh;
   }
 
   .tittle-1{
     font-size: 500px;
-    color: white;
+    color: var(--colorblanco);
   }
   .tittle-2{
     font-size: 20px;
-    color: #1259C3;
+    color: var(--colorgreen1);
   }
 
   .descripcion{
     font-size: 15px;
-    color: white;
+    color: var(--colorblanco);
   }
 
   @media (max-width:768px) {
@@ -40,7 +53,7 @@
   
   h2{
     font-weight: bold;
-    color: #0B0E58;
+    color: var(--colorgreen1);
   }
   /*-----------------------------------------------------------------  index.html -------------------------------------------------------*/
 
@@ -140,11 +153,36 @@
     transform: translateY(-50%);
   }
 
+  .btn-izq{
+    background-color: var(--colorgreen1);
+    color: var(--colorblanco);
+  }
+  .btn-izq:hover{
+    background-color: var(--colorgreen1hover);
+    color: var(--colorblanco);
+  }
+  .btn-der{
+    background-color: var(--colorgreen2);
+    color: var(--colorblanco);
+  }
+  .btn-der:hover{
+    background-color: var(--colorgreen2hover);
+    color: var(--colorblanco);
+  }
+
+  .card-title{
+    color: var(--colorgreen1);
+    font-weight: bold;
+  }
+  small{
+    color: var(--colorgreen2);
+  }
+
 
 /*--------------- footer  ---------------------*/
 footer{
     height: 300px;
-    background-color: #060D54;
+    background-color: var(--colorgreen1);
     color: #fff;
 }
 

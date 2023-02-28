@@ -3,14 +3,32 @@
     margin: 0;
     box-sizing: border-box;
 }
+:root{
+  --colorgreen1: #035941;
+  --colorgreen2: #7DA641;
+  --colornaranja1: #F2AC57;
+  --colornaranja2: #F2CEA2;
+  --colorgris: #E5E1E1;
+  --colorblanco: #fff;
+  --colornegro:#000;
+}
 
 
 /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
+  .navbar{
+    transition: 0.7s;
+  }
+  
+/* 
+  header .deslizar{
+    background: #fff;
+
+  } */
 
   .mavbar-btand{
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 .navbar-nav{
     width: 32rem;
@@ -18,16 +36,22 @@
 }
 
 .nav-item{
-    color: #000;
+    color: var(--colornegro);
     font-size: 1rem;
     font-weight: bold;
     font-family: "Nunito", sans-serif;
     --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
 }
+.nav-item .nav-link{
+  color: var(--colorgreen2);
+}
+.nav-item .nav-link:hover{
+  color: var(--colorgreen1);
+}
 .nav-item::after{
     content: "";
     display: block;
-    background: #000;
+    background: var(--colorgreen1);
     width: 100%;
     margin-top: 3px;
     height: 3px;
@@ -48,12 +72,12 @@
   }
   .logo img {
 	max-height: 40px;
-	margin-right: 6px;
+	margin-right: 4px;
   }
   .logo span {
 	font-size: 26px;
 	font-weight: 700;
-	color: #012970;
+	color: var(--colorgreen1);
 	font-family: "Nunito", sans-serif;
   }
 
@@ -67,10 +91,10 @@
   }
   .header-nav .nav-icon {
 	font-size: 20px;
-	color: #012970;
+	color: var(--colorgreen1);
   }
   .header-nav .nav-profile {
-	color: #012970;
+	color: var(--colorgreen1);
   }
   .header-nav .nav-profile img {
 	max-height: 36px;
@@ -103,15 +127,19 @@
 	line-height: 0;
   }
   .header-nav .profile .dropdown-item:hover {
-	background-color: #f6f9ff;
+	background-color: #d4fff3;
   }
 
-  .header-nav .nav-carrito img {
+  .header-nav .nav-carrito i {
 	max-height: 40px;
+  font-size:30px;
   }
 
   .car{
-    margin: 0.1rem;
+    margin-right: 0.3rem;
+  }
+  .icono-1{
+    color: var(--colorgreen2);
   }
 
 
@@ -128,7 +156,7 @@
       right: 0;
       padding: 20px;
       box-shadow: 0px 0px 15px 0px rgba(1, 41, 112, 0.1);
-      background: white;
+      background: var(--colorblanco);
       z-index: 9999;
       transition: 0.3s;
       visibility: hidden;
@@ -146,7 +174,7 @@
     .search-form input {
     border: 0;
     font-size: 14px;
-    color: #012970;
+    color: var(--colorgreen1);
     border: 1px solid rgba(1, 41, 112, 0.2);
     padding: 7px 38px 7px 8px;
     border-radius: 3px;
@@ -155,8 +183,8 @@
     }
     .search-form input:focus, .search-form input:hover {
     outline: none;
-    box-shadow: 0 0 10px 0 rgba(1, 41, 112, 0.15);
-    border: 1px solid rgba(1, 41, 112, 0.3);
+    box-shadow: 0 0 10px 0 rgba(0, 105, 14, 0.15);
+    border: 1px solid rgba(0, 105, 14, 0.3);
     }
     .search-form button {
     border: 0;
@@ -165,5 +193,5 @@
     background: none;
     }
     .search-form button i {
-    color: #012970;
+    color: #035941;
     }

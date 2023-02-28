@@ -13,13 +13,21 @@
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
+
 </head>
 <body>
     <?php require 'header.php';  ?>
 
     <section class="section-p container-fluid py-1">
         <div class="contenedor-p">
-            <h2 class="py-2 text-center">Lista de Favoritos</h2>
+            <h2 class="titulo fw-bold py-2 text-center">Lista de Favoritos</h2>
             
             <!-- aqui se repite varias veces, puede ir dentro de un ciclo-->
             

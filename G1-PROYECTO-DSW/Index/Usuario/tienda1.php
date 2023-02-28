@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/styleTienda1.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 
 </head>
 <body>
@@ -90,7 +97,7 @@
                         <img src="../../Image/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
-                        <p>Envios garantizados a nivel snacional</p>
+                        <p>Envios garantizados a nivel nacional</p>
                     </div>
                 </div>
             </div>
@@ -664,7 +671,7 @@
             </div>
         </footer>
 
-        <script src="../../js/index.js"></script>
+        <script src="../../js/index.js?v=<?php echo time(); ?>"></script>
         <script src="../../js/script.js"></script>
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

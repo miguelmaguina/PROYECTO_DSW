@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,13 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 
 </head>
 <body>
@@ -26,7 +33,7 @@
         <div class="row d-flex justify-content-center">  
         
             <div class="col-lg-8">
-                <div class="text-start fs-3 pt-3">Proforma (5 productos)</div>
+                <div class="titulo-1 text-start fs-3 pt-3">Proforma (5 productos)</div>
                 
 <!--repeticion-->
 
@@ -590,11 +597,11 @@
             </div>
 
             <div class="col-lg-2">
-                <div class="text-start fs-3 pt-3">Resumen</div>
+                <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
                 <div class="contenedor-p">
                     <h3>Total:</h3>
                     <span>S/4059.99</span>
-                    <button class="btn btn-primary w-100 mt-2">Generar</button>
+                    <button class="btn btn-izq w-100 mt-2">Generar</button>
                 </div>
                 </div>
             </div>

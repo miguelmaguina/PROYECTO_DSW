@@ -14,6 +14,13 @@
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 </head>
 <body>
 
@@ -22,11 +29,11 @@
 <div class="portada1 container-fluid py-1 d-flex align-items-center">
         <div class="row">
             <div class="contenedor col-lg-9 mx-auto text-center">
-                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 h2" style="color: #1259C3;">por comunidades nativas del Perú</p>
+                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 h2" style="color: #035941;">por comunidades nativas del Perú</p>
                 <p class="descripcion">Déjese sorprender por la belleza y autenticidad de los productos hechos a mano por las comunidades nativas peruanas. Desde ropa tejida con técnicas tradicionales hasta joyas y objetos de decoración únicos, cada uno de nuestros productos cuenta con una historia y una cultura detrás. Al comprar en nuestro e-commerce, no solo estará llevándose a casa un objeto hermoso, sino que también estará apoyando a las comunidades nativas y preservando sus tradiciones. ¡Descubra la belleza de las comunidades nativas peruanas hoy mismo!</p>
                 <div class="btn-group">
-                <a href="#" class="btn btn-primary btn-block mx-4 rounded fw-bold">Ir a la tienda virtual</a>
-                <a href="#" class="btn btn-light btn-block mx-4 rounded fw-bold">¡Regístrese!</a>
+                <a href="#" class="btn btn-izq btn-block mx-4 rounded fw-bold">Ir a la tienda virtual</a>
+                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Regístrese!</a>
                 </div>
             </div>
         </div>
@@ -40,7 +47,7 @@
                 </div>
                 <div class="col-md-6 p-5">
                   <h2 >¿Qué somos?</h2>
-                  <p class="texto">Somos un e-commerce dedicado a conectar a los consumidores con las comunidades nativas peruanas. Creemos en la importancia de preservar las tradiciones y culturas locales, y queremos compartir la riqueza de estas comunidades con el mundo. Todos nuestros productos son hechos a mano por artesanos locales y están cuidadosamente seleccionados para ofrecer solo lo mejor. Al comprar en nuestro e-commerce, no solo estará obteniendo productos únicos y hermosos, sino que también estará apoyando directamente a las comunidades nativas y a sus tradiciones. </p><p>¡Bienvenido a nuestro mundo auténtico de comunidades nativas peruanas!.</p>
+                  <p class="texto">Somos un e-commerce dedicado a conectar a los consumidores con las comunidades nativas peruanas. Creemos en la importancia de preservar las tradiciones y culturas locales, y queremos compartir la riqueza de estas comunidades con el mundo. Todos nuestros productos son hechos a mano por artesanos locales y están cuidadosamente seleccionados para ofrecer solo lo mejor. Al comprar en nuestro e-commerce, no solo estará obteniendo productos únicos y hermosos, sino que también estará apoyando directamente a las comunidades nativas y a sus tradiciones. </p><p class="texto">¡Bienvenido a nuestro mundo auténtico de comunidades nativas peruanas!.</p>
                 </div>
             </div>
         </div>

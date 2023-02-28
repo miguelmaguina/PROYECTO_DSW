@@ -10,18 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Estilos/header.css">
+    <link rel="stylesheet" href="../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Estilos/styleIndex.css?v=<?php echo time(); ?>">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 </head>
 <body>
 
-<nav class="navbar p-3 navbar-expand-md bg-white">
+<header>
+<nav class="navbar p-3 navbar-expand-md">
         <div class="container-fluid col">
             <div class="d-flex align-items-center justify-content-between"> 
-                <a href="index.html" class="logo d-flex align-items-center text-decoration-none"> <img src="../Image/logo1.png" alt=""> <span class="d-none d-lg-block">Prueba</span> </a>
+                <a href="#" class="logo d-flex align-items-center text-decoration-none"> <img src="../Image/hallpa.png" alt=""> <span class="titulo-logo d-none d-lg-block">Hallpa</span> </a>
              </div>
              <div class="search-bar">
                 <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
@@ -50,11 +58,11 @@
         <div class="container-fluid col ">
             <nav class="header-nav ms-auto position-absolute" style="right: 20px; top:16px;">
                 <ul class="d-flex align-items-center">
-                    <li class="nav-item d-block d-lg-none p-1">
+                    <li class="nav-item d-block d-xl-none p-1">
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li class="nav-item nav-carrito car">
-                        <img src="../Image/carrito.png" alt="Profile" class="rounded-circle">
+                        <a href="#" class="nav-link nav-icon" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
                     </li>
                    <li class="nav-item dropdown pe-3">
                       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
@@ -85,16 +93,17 @@
              </nav>
         </div>
     </nav>
+</header>
 
     
 <div class="portada1 container-fluid py-1 d-flex align-items-center">
         <div class="row">
             <div class="contenedor col-lg-9 mx-auto text-center">
-                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 h2" style="color: #1259C3;">por comunidades nativas del Perú</p>
+                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 fw-bold h2" style="color: #035941;">por comunidades nativas del Perú</p>
                 <p class="descripcion">Déjese sorprender por la belleza y autenticidad de los productos hechos a mano por las comunidades nativas peruanas. Desde ropa tejida con técnicas tradicionales hasta joyas y objetos de decoración únicos, cada uno de nuestros productos cuenta con una historia y una cultura detrás. Al comprar en nuestro e-commerce, no solo estará llevándose a casa un objeto hermoso, sino que también estará apoyando a las comunidades nativas y preservando sus tradiciones. ¡Descubra la belleza de las comunidades nativas peruanas hoy mismo!</p>
                 <div class="btn-group">
-                <a href="#" class="btn btn-primary btn-block mx-4 rounded fw-bold">Ir a la tienda virtual</a>
-                <a href="#" class="btn btn-light btn-block mx-4 rounded fw-bold">¡Regístrese!</a>
+                <a href="#" class="btn btn-izq btn-block mx-4 rounded fw-bold">Ir a la tienda virtual</a>
+                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Regístrese!</a>
                 </div>
             </div>
         </div>
@@ -117,7 +126,7 @@
                                     <div class="card card-p mb-3">
                                         <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 1">
                                         <div class="card-body">
-                                            <h5 class="card-title">Manto artesanal para abrigarte</h5>
+                                            <h5 class="card-title">Manto artesanal</h5>
                                             <p class="card-text">Descripción del producto 1.</p>
                                             <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
                                         </div>

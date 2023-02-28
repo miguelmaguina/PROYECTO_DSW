@@ -1,8 +1,7 @@
 <?php
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +11,14 @@
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/styleVerProducto.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector(".navbar");
+            header.classList.toggle("bg-white",window.scrollY>0);
+            header.classList.toggle("fixed-top",window.scrollY>0);
+		})
+	</script>
 
 </head>
 <body>
@@ -80,7 +87,7 @@
                         <p>Ubicación: Lima</p>
                         <div class="row mt-5">
                             <div class="col-sm-10">
-                                <button class="btn btn-primary w-100 ">Contactar</button>
+                                <button class="btn btn-izq w-100 ">Contactar</button>
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
@@ -90,8 +97,8 @@
             </div>
 
             <div class="row accordion-p">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
+                <div class="accordion accordion-flush"  id="accordionFlushExample">
+                    <div class="accordion-item" >
                       <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                           Detalles del Vendedor
