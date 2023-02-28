@@ -68,7 +68,7 @@ class ProductoDAO
 
             //$ID_Producto = $producto->getID_Producto(); //i
             $Nombre=$producto->getNombre(); //s
-            $Precio=$producto->ggetPrecio(); //s
+            $Precio=$producto->getPrecio(); //s
             $Descripcion=$producto->getDescripcion(); //s
             $ID_Categoria=$producto->getID_Categoria() //s
             $ID_Subcategoria=$producto->getID_Subcategoria(); //s
@@ -99,7 +99,7 @@ class ProductoDAO
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             $Nombre=$producto->getNombre(); //s
-            $Precio=$producto->ggetPrecio(); //s
+            $Precio=$producto->getPrecio(); //s
             $Descripcion=$producto->getDescripcion(); //s
             $ID_Categoria=$producto->getID_Categoria() //s
             $ID_Subcategoria=$producto->getID_Subcategoria(); //s
@@ -153,7 +153,7 @@ class ProductoDAO
 
                 $ID_Producto = $producto->getID_Producto(); //i
                 $Nombre=$producto->getNombre(); //s
-                $Precio=$producto->ggetPrecio(); //s
+                $Precio=$producto->getPrecio(); //s
                 $Descripcion=$producto->getDescripcion(); //s
                 $ID_Categoria=$producto->getID_Categoria() //s
                 $ID_Subcategoria=$producto->getID_Subcategoria(); //s
