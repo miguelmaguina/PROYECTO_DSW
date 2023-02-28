@@ -140,7 +140,7 @@ class ClienteDAO {
         }
     }
 
-    public function listarPorIdEmprendimiento($ID_Emprendimiento_Buscado){
+    public function listarPorIdCliente($ID_Cliente_Buscado){
 
         $query = "SELECT * FROM Cliente WHERE ID_Cliente=?";
 
