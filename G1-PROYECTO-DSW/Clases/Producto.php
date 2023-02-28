@@ -21,7 +21,7 @@ class Producto
     public function Producto(){}
 
     //Getters
-    public function ID_Producto()
+    public function getID_Producto()
     {
         return $this->ID_Producto;
     }
