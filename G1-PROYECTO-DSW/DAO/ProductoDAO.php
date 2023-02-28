@@ -70,7 +70,7 @@ class ProductoDAO
             $Nombre=$producto->getNombre(); //s
             $Precio=$producto->getPrecio(); //s
             $Descripcion=$producto->getDescripcion(); //s
-            $ID_Categoria=$producto->getID_Categoria() //s
+            $ID_Categoria=$producto->getID_Categoria(); //s
             $ID_Subcategoria=$producto->getID_Subcategoria(); //s
             $Descuento=$producto->getDescuento(); //s
             $Fecha=$producto->getFecha(); //s
@@ -101,7 +101,7 @@ class ProductoDAO
             $Nombre=$producto->getNombre(); //s
             $Precio=$producto->getPrecio(); //s
             $Descripcion=$producto->getDescripcion(); //s
-            $ID_Categoria=$producto->getID_Categoria() //s
+            $ID_Categoria=$producto->getID_Categoria(); //s
             $ID_Subcategoria=$producto->getID_Subcategoria(); //s
             $Descuento=$producto->getDescuento(); //s
             $Fecha=$producto->getFecha(); //s
@@ -155,7 +155,7 @@ class ProductoDAO
                 $Nombre=$producto->getNombre(); //s
                 $Precio=$producto->getPrecio(); //s
                 $Descripcion=$producto->getDescripcion(); //s
-                $ID_Categoria=$producto->getID_Categoria() //s
+                $ID_Categoria=$producto->getID_Categoria(); //s
                 $ID_Subcategoria=$producto->getID_Subcategoria(); //s
                 $Descuento=$producto->getDescuento(); //s
                 $Fecha=$producto->getFecha(); //s
