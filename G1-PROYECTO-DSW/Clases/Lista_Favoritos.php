@@ -6,6 +6,7 @@ class Lista_Favoritos {
    private $ID_Lista_Favoritos;
    private $ID_Cliente;
    private $ID_Producto;
+   private $Fecha;
 
    //Constructor vacio
    public function Lista_Favoritos(){
@@ -25,6 +26,10 @@ class Lista_Favoritos {
        return $this->ID_Producto;
    }
 
+   public function getFecha(){
+    return $this->Fecha;
+}
+
    //Setters
 
    public function setIdListaFavoritos($ID_Lista_Favoritos){
@@ -37,7 +42,11 @@ class Lista_Favoritos {
 
    public function setIdProducto($ID_Producto){
        $this->ID_Producto = $ID_Producto;
-   }    
+   } 
+   
+   public function setFecha($Fecha){
+    $this->Fecha = $Fecha;
+}
 
 }
 
