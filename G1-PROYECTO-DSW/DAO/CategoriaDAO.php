@@ -29,7 +29,7 @@ class CategoriaDAO {
 
             while (mysqli_stmt_fetch($stmt)) {
                 $categoria = new Categoria();
-                $categoria->setID_Categoria($ID_Categoria);
+                $categoria->setIDCategoria($ID_Categoria);
                 $categoria->setNombre($Nombre);
                 $categoria->setDescripcion($Descripcion);                
                 $categorias[] = $categoria;
@@ -125,7 +125,7 @@ class CategoriaDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $categoria = new Categoria();
-                $ID_Categoria = $categoria->getID_Categoria(); //i
+                $ID_Categoria = $categoria->getIDCategoria(); //i
                 $Nombre = $categoria->getNombre(); //s
                 $Descripcion = $categoria->getDescripcion(); //s                
             }
