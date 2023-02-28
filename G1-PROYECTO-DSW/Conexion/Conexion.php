@@ -6,7 +6,7 @@ class Conexion {
     private $host = "localhost";
     private $usuario = "root";
     private $password = "";
-    private $base = "ProyFinal_DSW_G1";
+    private $base = "proyfinal_dsw_g1";
     private $conexion; // Variable para almacenar la conexión
     
     // Constructor
