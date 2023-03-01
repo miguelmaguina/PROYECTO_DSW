@@ -131,13 +131,13 @@
                 </div>
                 <div class="row">
                     <div class="button-container col-sm-4 col-md-4 mt-4 text-white  d-flex justify-content-center">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <a href="datosGraficos.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgReporte.png" alt="">
                         <span class="button-text">REPORTE</span>
                         </a>
                     </div>
                     <div class="button-container h-100 col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <a href="verProductoEmp2.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgProducto.png" alt="">
                         <span class="button-text">PRODUCTO</span>
                         </a>
@@ -145,7 +145,7 @@
                     <div class="button-container col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgClientes.png" alt="">
-                        <span class="button-text">MIS CLIENTES</span>
+                        <span class="button-text">QUITAR OPC</span>
                         </a>
                     </div>
                 </div>
