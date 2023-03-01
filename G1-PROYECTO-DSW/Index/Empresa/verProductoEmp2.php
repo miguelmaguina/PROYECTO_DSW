@@ -21,6 +21,9 @@
 		})
 	</script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+
 </head>
 <body>
     
@@ -30,170 +33,119 @@
         <div class="contenedor-t">
         <div class="row">
             <div class="col-md-12 mx-auto text-center">
-                    <div id="carouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <div class="row">
+            <div class="carousel">
+                        <div class="carousel__contenedor">
+                            <button aria-label="Anterior" class="carousel__anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
 
-                        <!-- repeticion -->
-                            <div class="col-sm-3 col-md-4 col-lg-3">
+                            <div class="carousel__lista">
+                                
+                            <div class="card card-t mb-3 border border-none">
+                                    <div class="row no-gutters">
+                                        <div class="col-4">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        </div>
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
+                                            <div class="card-body">
+                                            <h5 class="card-title">JUGUETE</h5>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4">
+                                        <div class="col-4">
                                             <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
                                             <h5 class="card-title">JUGUETE</h5>
                                             
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
-                            </div>
+                                </div> 
 
-                            <!-- repeticion -->
-                            <div class="col-md-3 col-md-4 col-lg-3">
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4">
+                                        <div class="col-4">
                                             <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
                                             <h5 class="card-title">JUGUETE</h5>
                                             
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
-                            </div>
-                            <!-- repeticion -->
+                                </div> 
 
-                            <div class="col-md-3 col-md-4 col-lg-3">
                                 <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4">
+                                        <div class="col-4">
                                             <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
                                             <h5 class="card-title">JUGUETE</h5>
                                             
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
-                            </div>
+                                </div> 
 
-                            <!-- repeticion -->
-
-                            <div class="col-md-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none ">
+                                <div class="card card-t mb-3 border border-none">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4">
+                                        <div class="col-4">
                                             <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
                                             <h5 class="card-title">JUGUETE</h5>
                                             
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
+                                </div> 
+
+                                <div class="card card-t mb-3 border border-none">
+                                    <div class="row no-gutters">
+                                        <div class="col-4">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        </div>
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
+                                            <div class="card-body">
+                                            <h5 class="card-title">JUGUETE</h5>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="card card-t mb-3 border border-none">
+                                    <div class="row no-gutters">
+                                        <div class="col-4">
+                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        </div>
+                                        <div class="col-8 d-flex justify-content-center align-items-center">
+                                            <div class="card-body">
+                                            <h5 class="card-title">JUGUETE</h5>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                
                             </div>
 
-                            <!-- repeticion -->
+                            <button aria-label="Siguiente" class="carousel__siguiente">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
-                        </div>
 
-                        <div class="carousel-item">
-                        <div class="row">
-
-                        <!-- repeticion -->
-                            <div class="col-sm-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <!-- repeticion -->
-                            <div class="col-sm-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <!-- repeticion -->
-
-                            <div class="col-sm-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <!-- repeticion -->
-
-                            <div class="col-sm-3 col-md-4 col-lg-3">
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-
-                            <!-- repeticion -->
-
-                        </div>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
 
             </div>
@@ -644,6 +596,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         
 
+        <script src="../../js/carousel2.js?v=<?php echo time(); ?>"></script>
+        <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+	    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

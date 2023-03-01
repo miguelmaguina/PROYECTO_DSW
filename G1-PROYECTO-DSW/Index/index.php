@@ -203,7 +203,7 @@
                             </button>
                         </div> -->
 
-                        <div class="carousel">
+                    <div class="carousel">
                         <div class="carousel__contenedor">
                             <button aria-label="Anterior" class="carousel__anterior">
                                 <i class="fas fa-chevron-left"></i>
