@@ -151,6 +151,19 @@ include '../Conexion/Conexion.php';
                                 </div>
                             </div>
                         </div>
+
+                        <div class="inputBox">
+                            <span>image 01 (required)</span>
+                                <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>image 02 (required)</span>
+                                <input type="file" name="image_02" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>image 03 (required)</span>
+                                <input type="file" name="image_03" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
+                        </div>
                     
                         <div class="mb-3">
                             <div class="col-md-12">
