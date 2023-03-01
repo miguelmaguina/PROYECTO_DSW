@@ -52,7 +52,7 @@ class ProformaDAO {
 
     public function insert(Proforma $proforma){
 
-        $query = "INSERT INTO Proforma(ID_Carrito, ID_Cliente, ID_Producto, Cantidad, Fecha) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Proforma(ID_Cliente, ID_Producto, Cantidad, Fecha) VALUES (?,?,?,?)";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
