@@ -98,6 +98,216 @@
 </header>    
 
 
+<div class="portada1 container-fluid py-1 d-flex align-items-center justify-content-center">
+        <div class="row d-flex align-items-center">
+            <div class="contenedor col-lg-9 mx-auto text-center">
+                <p class="title-1 fs-2 h3" style="color: white;">Crea una cuenta en Hallpa</p><p class="title-2 fs-1 fw-bold h2" style="color: #035941;">¿Eres un cliente o emprendimiento?</p>
+                <p class="descripcion">Si eres un cliente podrás acceder a nuestra tienda online y realizar un recorrido por todos los productos que los emprendedores tienen para ti. Además de probar funciones que te ayudarán a contactarlos para que puedas adquirir alguno de sus productos.</p><p class="descripcion">En cambio, si eres emprendedor podrás crear una sección especial para ofertar tus productos, además de poder contar con herramientas para agilizar tus ventas y mejorar la relación con tus potenciales clientes.</p>
+                <div class="btn-group" id="login-btn">
+                <a href="#" class="btn btn-izq btn-block mx-4 rounded fw-bold">¡Soy cliente!</a>
+                </div>
+                <div class="btn-group">
+                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Soy emprendedor!</a>
+                </div>
+                <!-- <div id="login-btn">
+                    <button class="btn1">login</button>
+                    <i class="far fa-user"></i>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+<div class="login-form-container">
+
+    <span id="close-login-form" class="fas fa-times"></span>
+
+    <!-- <form action="">
+        <h3>user login</h3>
+        <input type="email" placeholder="email" class="box">
+        <input type="password" placeholder="password" class="box">
+        <input type="email" placeholder="email" class="box">
+        <input type="password" placeholder="password" class="box">
+        <input type="email" placeholder="email" class="box">
+        <input type="password" placeholder="password" class="box">
+        <p> forget your password <a href="#">click here</a> </p>
+        <input type="submit" value="login" class="btn1">
+        <p> don't have an account <a href="#">create one</a> </p>
+    </form> -->
+
+        
+        
+        <div class="contenedor-newproduct content-sign-in">
+        
+            <form class="mx-auto">
+                <div class="text-secondary" >
+                    <div class="d-flex justify-content-center">
+                        <img src="../Image/login-register/login-icon.svg" alt="login-icon" style="height: 7rem"/>
+                    </div>
+                    <div class="text-center fs-1 fw-bold">Inicio Usuario</div>
+                        <div class="input-group mt-4">
+                        
+                        <div class="form-floating"> <input type="text" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email</label></div>
+                        </div>
+                        <div class="input-group mt-1">
+                        
+                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Password</label></div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-1">
+                        <div class="d-flex align-items-center gap-1">
+                        <input class="form-check-input" type="checkbox" />
+                        <div class="pt-1" style="font-size: 0.9rem">Remember me</div>
+                        </div>
+                        <div class="pt-1">
+                        <a
+                            href="#"
+                            class="text-decoration-none text-info fw-semibold fst-italic"
+                            style="font-size: 0.9rem"
+                            >Forgot your password?</a
+                        >
+                        </div>
+                    </div>
+                    <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
+                        Login
+                    </div>
+                    
+                    <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
+                        <div>Don't have an account?</div>
+                        <a href="#" class="text-decoration-none text-info fw-semibold"
+                        >Register</a
+                        >
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="contenedor-newproduct content-sign-up register">
+
+            <form class="mx-auto" >
+                <div class="text-secondary" >
+                    <div class="text-center fs-1 fw-bold">Registro Cliente</div>
+                    <div class="row">
+                        <div class="col-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" required> <label for="floatingNombre">Nombre *</label></div>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" required> <label for="floatingApellido">Apellido *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating"> <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email *</label></div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingCelular" placeholder="Celular" name="celular" required> <label for="floatingCelular">Celular *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDNI" placeholder="DNI" name="dni" required> <label for="floatingDNI">DNI *</label></div>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDepartamento" placeholder="Departamento" name="departamento" required> <label for="floatingDepartamento">Departamento *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingUsuario" placeholder="Usuario" name="usuario" required> <label for="floatingUsuario">Usuario *</label></div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating"> <input type="file" class="form-control" id="floatingFoto" placeholder="Foto" name="foto" required> <label for="floatingFoto">Foto *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-2">
+                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Ingrese su contraseña *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-2">
+                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password2" required> <label for="floatingPassword">Confirme su contraseña *</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-1">
+                        <div class="d-flex align-items-center gap-1">
+                        <input class="form-check-input" type="checkbox" />
+                        <div class="pt-1" style="font-size: 0.9rem">Acepto los términos y condiciones</div>
+                        </div>
+                    </div>
+                    <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
+                        Login
+                    </div>
+                    
+                    <div id="btn-cambio2" class="d-flex gap-1 justify-content-center mt-1">
+                        <div>Have an account?</div>
+                        <a href="#" class="text-decoration-none text-info fw-semibold"
+                        >Login</a
+                        >
+                    </div>
+                </div>
+            </form>
+        
+            <!-- <div class="container my-5">
+                
+                <div class="row d-flex justify-content-center align-items-center">
+                    <form>
+                    <h2 class="text-center mb-4">Registro Cliente</h2>
+                    <div class="row">
+                        <div class="col-md-6  mb-3">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" required> <label for="floatingNombre">Nombre *</label></div>
+                        </div>
+                        <div class="col-md-6  mb-3">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" required> <label for="floatingApellido">Apellido *</label></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating"> <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingCelular" placeholder="Celular" name="celular" required> <label for="floatingCelular">Celular *</label></div>
+                        </div>
+                        <div class="col-md-6  mb-3">
+                            <div class="form-floating">
+                                <select class="form-select" id="genero" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <option value="ejemplo2">Femenino</option>
+                                <option value="ejemeplo3">Masculino</option>
+                                </select>
+                                <label for="departamento">Otros</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="direccion" name="direccion" placeholder="Direccion"></textarea>
+                                <label for="comment">Dirección *</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"></textarea>
+                                <label for="comment">Descripción *</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class=" btn btn-success w-50 d-flex justify-content-center">Guardar</button>
+                    </div>
+                    </form>
+                    <div class="d-flex justify-content-center" id="btn-cambio2">
+                        <button class=" btn btn-success w-50 d-flex justify-content-center">Guardar</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+</div>
 
 
 
@@ -132,6 +342,24 @@
             <p>Derechos reservados &copy; 2023 Mi sitio web</p>
         </div>
     </footer>
+
+    <script>
+        document.querySelector('#login-btn').onclick = () =>{
+        document.querySelector('.login-form-container').classList.toggle('active');
+        }
+
+        document.querySelector('#close-login-form').onclick = () =>{
+        document.querySelector('.login-form-container').classList.remove('active');
+        }
+        document.querySelector('#btn-cambio1').onclick = () =>{
+        document.querySelector('.content-sign-in').classList.toggle('login');
+        document.querySelector('.content-sign-up').classList.remove('register');
+        }
+        document.querySelector('#btn-cambio2').onclick = () =>{
+        document.querySelector('.content-sign-up').classList.toggle('register');
+        document.querySelector('.content-sign-in').classList.remove('login');
+        }
+    </script>
 
     <script src="../js/index.js"></script>
     <script src="../js/carousel.js"></script>
