@@ -1,4 +1,8 @@
-<?php ?>
+<?php
+
+include '../Conexion/Conexion.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -149,7 +153,7 @@
                                         <option value="ejemplo2">Femenino</option>
                                         <option value="ejemeplo3">Masculino</option>
                                         </select>
-                                        <label for="departamento">Otros</label>
+                                        <label for="departamento">Sexo</label>
                                     </div>
                                 </div>
                             </div>
