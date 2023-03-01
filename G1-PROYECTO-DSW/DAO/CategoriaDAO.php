@@ -127,7 +127,7 @@ class CategoriaDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $categoria = new Categoria();
-                $ID_Categoria = $categoria->getIDCategoria(); //i
+                $ID_Categoria = $categoria->getID_Categoria(); //i
                 $Nombre = $categoria->getNombre(); //s
                 $Descripcion = $categoria->getDescripcion(); //s                
             }
