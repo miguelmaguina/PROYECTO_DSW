@@ -15,15 +15,15 @@ class Review {
     }
  
     //Getters
-    public function getIdReview(){
+    public function getID_Review(){
         return $this->ID_Review;
     }
  
-    public function getIdCliente(){
+    public function getID_Cliente(){
         return $this->ID_Cliente;
     }
  
-    public function getIdProducto(){
+    public function getID_Producto(){
         return $this->ID_Producto;
     }
 
@@ -42,15 +42,15 @@ class Review {
  
     //Setters
  
-    public function setIdReview($ID_Review){
+    public function setID_Review($ID_Review){
         $this->ID_Review = $ID_Review;
     }
  
-    public function setIdCliente($ID_Cliente){
+    public function setID_Cliente($ID_Cliente){
         $this->ID_Cliente = $ID_Cliente;
     }
  
-    public function setIdProducto($ID_Producto){
+    public function setID_Producto($ID_Producto){
         $this->ID_Producto = $ID_Producto;
     }   
 

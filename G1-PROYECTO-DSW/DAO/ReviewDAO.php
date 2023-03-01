@@ -30,9 +30,9 @@ public function listar(){
         while (mysqli_stmt_fetch($stmt)) {
             $review = new Review();
 
-            $review->setIdReview($ID_Review);
-            $review->setIdCliente($ID_Cliente);
-            $review->setIdProducto($ID_Producto);
+            $review->setID_Review($ID_Review);
+            $review->setID_Cliente($ID_Cliente);
+            $review->setID_Producto($ID_Producto);
             $review->setEstado($Estado);
             $review->setComentario($Comentario);          
             $review->setFecha($Fecha);
@@ -58,9 +58,9 @@ public function insert(Review $review){
     try{
         $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-        //$ID_Review=$review->getIdReview(); //i
-        $ID_Cliente=$review->getIdCliente(); //s
-        $ID_Producto=$review->getIdProducto(); //s
+        //$ID_Review=$review->getID_Review(); //i
+        $ID_Cliente=$review->getID_Cliente(); //s
+        $ID_Producto=$review->getID_Producto(); //s
         $Estado=$review->getEstado(); //i
         $Comentario=$review->getComentario(); //s
         $Fecha=$review->getFecha(); //s
@@ -83,8 +83,8 @@ public function update(Review $review) {
     try {
         $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-        $ID_Cliente=$review->getIdCliente(); //i
-        $ID_Producto=$review->getIdProducto(); //i
+        $ID_Cliente=$review->getID_Cliente(); //i
+        $ID_Producto=$review->getID_Producto(); //i
         $Estado=$review->getEstado(); //i
         $Comentario=$review->getComentario(); //s
         $Fecha=$review->getFecha(); //s
@@ -129,9 +129,9 @@ public function listarPorIdReview($ID_Review_Buscado){
         if (mysqli_stmt_fetch($stmt)) {
             $review = new Review();
 
-            $ID_Review=$review->getIdReview(); //i
-            $ID_Cliente=$review->getIdCliente(); //i
-            $ID_Producto=$review->getIdProducto(); //i
+            $ID_Review=$review->getID_Review(); //i
+            $ID_Cliente=$review->getID_Cliente(); //i
+            $ID_Producto=$review->getID_Producto(); //i
             $Estado=$review->getEstado(); //i
             $Comentario=$review->getComentario(); //s
             $Fecha=$review->getFecha(); //s
