@@ -111,11 +111,3 @@ del{
     width: 500px;
     
   }
-
-
-  /*--------------- footer  ---------------------*/
-footer{
-    height: 300px;
-    background-color: var(--colorgreen1);
-    color: #fff;
-}

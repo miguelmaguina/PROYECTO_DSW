@@ -216,11 +216,3 @@
   .carousel__indicadores .glider-dot.active {
     opacity: 1;
   }
-
-
-/*--------------- footer  ---------------------*/
-footer{
-    height: 300px;
-    background-color: #060D54;
-    color: #fff;
-}

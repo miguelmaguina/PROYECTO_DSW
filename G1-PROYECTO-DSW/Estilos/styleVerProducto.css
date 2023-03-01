@@ -111,11 +111,3 @@
   del{
     color: rgb(151, 38, 38);
   }
-
-
-/*--------------- footer  ---------------------*/
-footer{
-    height: 300px;
-    background-color: var(--colorgreen1);
-    color: #fff;
-}
