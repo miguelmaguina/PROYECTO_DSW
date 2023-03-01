@@ -103,7 +103,7 @@ html{
 }
 
 .contenedor-newproduct form{
-    margin-top:0.9rem;
+    margin-top:1rem;
     text-align: center;
     padding:1.5rem;
     max-width:32rem;
@@ -133,12 +133,20 @@ html{
     text-transform: uppercase;
 }
 
-.login-form-container #close-login-form{
+.login-form-container #close-login-form-usuario{
     position: absolute;
     top:1.5rem; right:2.5rem;
     font-size: 5rem;
     color: #000;
     cursor: pointer;
+}
+
+.login-form-container #close-login-form-emprendimiento{
+  position: absolute;
+  top:1.5rem; right:2.5rem;
+  font-size: 5rem;
+  color: #000;
+  cursor: pointer;
 }
 
 #login-btn i{
@@ -159,37 +167,17 @@ html{
 .login{
   display: none;
 }
-.register{
-  display: none;
-}
-
 
 
 
 @media (max-width:768px){
 
-  .login-form-container #close-login-form{
+  .login-form-container #close-login-form-usuario{
     font-size: 1.5rem;
   }
-
-  .register{
-    margin-top: 320px;
+  .login-form-container #close-login-form-emprendimiento{
+    font-size: 1.5rem;
   }
-
 }
 
-@media (max-height:460px){
-
-  .contenedor-newproduct form{
-    margin-top:100vh;
-  }
-
-}
-@media (max-height:660px){
-
-  .contenedor-newproduct form{
-    margin-top:50vh;
-  }
-
-}
 
