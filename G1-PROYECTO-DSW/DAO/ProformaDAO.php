@@ -57,13 +57,13 @@ class ProformaDAO {
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            //$ID_Carrito=$proforma->getIdCarrito(); //ai
-            $ID_Cliente=$proforma->getIdCliente(); //s
-            $ID_Producto=$proforma->getIdProducto(); //s
-            $Cantidad=$proforma->getCantidad(); //s
+            //$ID_Carrito=$proforma->getIdCarrito(); //i
+            $ID_Cliente=$proforma->getIdCliente(); //i
+            $ID_Producto=$proforma->getIdProducto(); //i
+            $Cantidad=$proforma->getCantidad(); //i
             $Fecha=$proforma->getFecha(); //s
 
-            mysqli_stmt_bind_param($stmt, "sssssssssssss", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
+            mysqli_stmt_bind_param($stmt, "iiis", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al insertar favorito: " . $e->getMessage();
@@ -81,12 +81,14 @@ class ProformaDAO {
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            $ID_Cliente=$proforma->getIdCliente(); //s
-            $ID_Producto=$proforma->getIdProducto(); //s
-            $Cantidad=$proforma->getCantidad(); //s
+            $ID_Cliente=$proforma->getIdCliente(); //i
+            $ID_Producto=$proforma->getIdProducto(); //i
+            $Cantidad=$proforma->getCantidad(); //i
             $Fecha=$proforma->getFecha(); //s
+
+            $ID_Carrito=$proforma->getID_Carrito();//i
   
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
+            mysqli_stmt_bind_param($stmt, "iiisi", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar la proforma: " . $e->getMessage();
@@ -101,7 +103,7 @@ class ProformaDAO {
         $query = "DELETE FROM Proforma WHERE ID_Carrito=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
-            mysqli_stmt_bind_param($stmt, "s", $ID_Carrito);
+            mysqli_stmt_bind_param($stmt, "i", $ID_Carrito);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al eliminar la proforma: " . $e->getMessage();
@@ -125,11 +127,13 @@ class ProformaDAO {
             if (mysqli_stmt_fetch($stmt)) {
                 $proforma = new Proforma();
 
-                $ID_Carrito = $proforma->getIdListaFavoritos(); //i
-                $ID_Cliente=$proforma->getIdCliente(); //s
-                $ID_Producto=$proforma->getIdProducto(); //s
+                $ID_Carrito = $proforma->getID_Carrito(); //i
+                $ID_Cliente=$proforma->getID_Cliente(); //s
+                $ID_Producto=$proforma->getID_Producto(); //s
                 $Cantidad=$proforma->getCantidad(); //s
                 $Fecha=$proforma->getFecha(); //s
+
+                
             }
 
         } catch (Exception $e) {

@@ -15,15 +15,15 @@ class Proforma {
     }
  
     //Getters
-    public function getIdCarrito(){
+    public function getID_Carrito(){
         return $this->ID_Carrito;
     }
  
-    public function getIdCliente(){
+    public function getID_Cliente(){
         return $this->ID_Cliente;
     }
  
-    public function getIdProducto(){
+    public function getID_Producto(){
         return $this->ID_Producto;
     }
 
@@ -38,15 +38,15 @@ class Proforma {
  
     //Setters
  
-    public function setIdCarrito($ID_Carrito){
+    public function setID_Carrito($ID_Carrito){
         $this->ID_Carrito = $ID_Carrito;
     }
  
-    public function setIdCliente($ID_Cliente){
+    public function setID_Cliente($ID_Cliente){
         $this->ID_Cliente = $ID_Cliente;
     }
  
-    public function setIdProducto($ID_Producto){
+    public function setID_Producto($ID_Producto){
         $this->ID_Producto = $ID_Producto;
     }   
    

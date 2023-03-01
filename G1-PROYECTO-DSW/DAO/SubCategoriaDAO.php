@@ -29,10 +29,11 @@ class SubCategoriaDAO {
 
             while (mysqli_stmt_fetch($stmt)) {
                 $subcategoria = new SubCategoria();
-                $subcategoria->setIDSubCategoria($ID_SubCategoria);
-                $subcategoria->setIDCategoria($ID_Categoria);
+                $subcategoria->setID_SubCategoria($ID_SubCategoria);
+                $subcategoria->setID_Categoria($ID_Categoria);
                 $subcategoria->setNombre($Nombre);
-                $subcategoria->setDescripcion($Descripcion);                
+                $subcategoria->setDescripcion($Descripcion); 
+
                 $subcategorias[] = $subcategoria;
             }
 
@@ -47,18 +48,19 @@ class SubCategoriaDAO {
         return $subcategorias;
     }
     
-    public function insert(SubCategoria $subcategoria){
+    public function insert(Subcategoria $subcategoria){
 
-        $query = "INSERT INTO SubCategoria(Nombre, Descripcion) VALUES (?,?)";
+        $query = "INSERT INTO Subcategoria(ID_Categoria,Nombre, Descripcion) VALUES (?,?)";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             //$ID_Categoria = $categoria->getID_Categoria(); //i
+            $ID_Categoria =  $subcategoria->getID_Categoria();//i
             $Nombre = $subcategoria->getNombre(); //s
             $Descripcion = $subcategoria->getDescripcion(); //s            
 
-            mysqli_stmt_bind_param($stmt, "sssssssssssss", $Nombre, $Descripcion);
+            mysqli_stmt_bind_param($stmt, "iss", $ID_Categoria,$Nombre, $Descripcion);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al insertar categoria: " . $e->getMessage();
@@ -71,15 +73,18 @@ class SubCategoriaDAO {
 
     public function update(SubCategoria $subcategoria) {
         
-        $query = "UPDATE subcategoria SET Nombre=?, Descripcion=? WHERE ID_Categoria=?";
+        $query = "UPDATE subcategoria SET ID_Categoria=?, Nombre=?, Descripcion=? WHERE ID_Categoria=?";
         
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
+            $ID_Categoria = $subcategoria->getID_Categoria();
             $Nombre = $subcategoria->getNombre(); //s
-            $Descripcion = $subcategoria->getDescripcion(); //s            
+            $Descripcion = $subcategoria->getDescripcion(); //s
+            
+            $ID_SubCategoria = $subcategoria->getID_SubCategoria();
 
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $Nombre, $Descripcion);
+            mysqli_stmt_bind_param($stmt, "issi", $ID_Categoria,$Nombre, $Descripcion);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar categoria: " . $e->getMessage();
@@ -117,8 +122,8 @@ class SubCategoriaDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $subcategoria = new SubCategoria();
-                $ID_SubCategoria = $subcategoria->getIDCategoria(); //i
-                $ID_Categoria = $subcategoria->getIDCategoria(); //i
+                $ID_SubCategoria = $subcategoria->getID_SubCategoria(); //i
+                $ID_Categoria = $subcategoria->getID_Categoria(); //i
                 $Nombre = $subcategoria->getNombre(); //s
                 $Descripcion = $subcategoria->getDescripcion(); //s                
             }

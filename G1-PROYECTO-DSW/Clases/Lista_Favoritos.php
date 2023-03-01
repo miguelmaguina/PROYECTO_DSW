@@ -14,15 +14,15 @@ class Lista_Favoritos {
    }
 
    //Getters
-   public function getIdListaFavoritos(){
+   public function getID_Lista_Favoritos(){
        return $this->ID_Lista_Favoritos;
    }
 
-   public function getIdCliente(){
+   public function getID_Cliente(){
        return $this->ID_Cliente;
    }
 
-   public function getIdProducto(){
+   public function getID_Producto(){
        return $this->ID_Producto;
    }
 
@@ -32,15 +32,15 @@ class Lista_Favoritos {
 
    //Setters
 
-   public function setIdListaFavoritos($ID_Lista_Favoritos){
+   public function setID_Lista_Favoritos($ID_Lista_Favoritos){
        $this->ID_Lista_Favoritos = $ID_Lista_Favoritos;
    }
 
-   public function setIdCliente($ID_Cliente){
+   public function setID_Cliente($ID_Cliente){
        $this->ID_Cliente = $ID_Cliente;
    }
 
-   public function setIdProducto($ID_Producto){
+   public function setID_Producto($ID_Producto){
        $this->ID_Producto = $ID_Producto;
    } 
    

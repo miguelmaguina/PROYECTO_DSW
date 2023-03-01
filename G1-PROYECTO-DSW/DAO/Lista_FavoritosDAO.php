@@ -30,9 +30,9 @@ class Lista_FavoritosDAO {
             while (mysqli_stmt_fetch($stmt)) {
                 $favorito = new Lista_Favoritos();
 
-                $favorito->setIdListaFavoritos($ID_Lista_Favoritos);
-                $favorito->setIdCliente($ID_Cliente);
-                $favorito->setIdProducto($ID_Producto);
+                $favorito->setID_Lista_Favoritos($ID_Lista_Favoritos);
+                $favorito->setID_Cliente($ID_Cliente);
+                $favorito->setID_Producto($ID_Producto);
                 $favorito->setFecha($Fecha);
 
                 $favoritos[] = $favorito;
@@ -56,12 +56,12 @@ class Lista_FavoritosDAO {
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            //$ID_Lista_Favoritos=$favorito->getIdListaFavoritos(); //ai
-            $ID_Cliente=$favorito->getIdCliente(); //s
-            $ID_Producto=$favorito->getIdProducto(); //s
+            //$ID_Lista_Favoritos=$favorito->getIdListaFavoritos(); //i
+            $ID_Cliente=$favorito->getIdCliente(); //i
+            $ID_Producto=$favorito->getIdProducto(); //i
             $Fecha=$favorito->getFecha(); //s
 
-            mysqli_stmt_bind_param($stmt, "sssssssssssss", $ID_Cliente, $ID_Producto, $Fecha);
+            mysqli_stmt_bind_param($stmt, "iis", $ID_Cliente, $ID_Producto, $Fecha);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al insertar favorito: " . $e->getMessage();
@@ -79,11 +79,13 @@ class Lista_FavoritosDAO {
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            $ID_Cliente=$favorito->getIdCliente(); //s
-            $ID_Producto=$favorito->getIdProducto(); //s
+            $ID_Cliente=$favorito->getIdCliente(); //i
+            $ID_Producto=$favorito->getIdProducto(); //i
             $Fecha=$favorito->getFecha(); //s
+
+            $ID_Lista_Favoritos->getID_Lista_Favoritos();//i            
   
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $ID_Cliente, $ID_Producto, $Fecha);
+            mysqli_stmt_bind_param($stmt, "iisi", $ID_Cliente, $ID_Producto, $Fecha);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar la lista de favoritos: " . $e->getMessage();
@@ -98,7 +100,7 @@ class Lista_FavoritosDAO {
         $query = "DELETE FROM Lista_Favoritos WHERE ID_Lista_Favoritos=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
-            mysqli_stmt_bind_param($stmt, "s", $ID_Lista_Favoritos);
+            mysqli_stmt_bind_param($stmt, "i", $ID_Lista_Favoritos);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al eliminar de la lista de productos: " . $e->getMessage();
@@ -123,8 +125,8 @@ class Lista_FavoritosDAO {
                 $favorito = new Lista_Favoritos();
 
                 $ID_Lista_Favoritos = $favorito->getIdListaFavoritos(); //i
-                $ID_Cliente=$favorito->getIdCliente(); //s
-                $ID_Producto=$favorito->getIdProducto(); //s
+                $ID_Cliente=$favorito->getIdCliente(); //i
+                $ID_Producto=$favorito->getIdProducto(); //i
                 $Fecha=$favorito->getFecha(); //s
             }
 

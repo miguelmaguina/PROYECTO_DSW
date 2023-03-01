@@ -13,7 +13,7 @@ class Categoria {
     }
 
     //Getters
-    public function getIdCategoria(){
+    public function getID_Categoria(){
         return $this->ID_Categoria;
     }
 
@@ -27,7 +27,7 @@ class Categoria {
 
     //Setters
 
-    public function setIdCategoria($ID_Categoria){
+    public function setID_Categoria($ID_Categoria){
         $this->ID_Categoria = $ID_Categoria;
     }
 

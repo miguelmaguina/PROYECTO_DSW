@@ -14,11 +14,11 @@ class SubCategoria {
     }
 
     //Getters
-    public function getIdSubcategoria(){
+    public function getID_Subcategoria(){
         return $this->ID_Subcategoria;
     }
 
-    public function getIdCategoria(){
+    public function getID_Categoria(){
         return $this->ID_Categoria;
     }
 
@@ -31,11 +31,11 @@ class SubCategoria {
     }
 
     //Setters
-    public function setIdSubcategoria($ID_Subcategoria){
+    public function setID_Subcategoria($ID_Subcategoria){
         $this->ID_Subcategoria = $ID_Subcategoria;
     }
 
-    public function setIdCategoria($ID_Categoria){
+    public function setID_Categoria($ID_Categoria){
         $this->ID_Categoria = $ID_Categoria;
     }
 

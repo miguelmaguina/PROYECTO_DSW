@@ -29,7 +29,7 @@ class CategoriaDAO {
 
             while (mysqli_stmt_fetch($stmt)) {
                 $categoria = new Categoria();
-                $categoria->setIDCategoria($ID_Categoria);
+                $categoria->setID_Categoria($ID_Categoria);
                 $categoria->setNombre($Nombre);
                 $categoria->setDescripcion($Descripcion);                
                 $categorias[] = $categoria;
@@ -66,7 +66,7 @@ class CategoriaDAO {
             $Nombre = $categoria->getNombre(); //s
             $Descripcion = $categoria->getDescripcion(); //s            
 
-            mysqli_stmt_bind_param($stmt, "sssssssssssss", $Nombre, $Descripcion);
+            mysqli_stmt_bind_param($stmt, "ss", $Nombre, $Descripcion);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al insertar categoria: " . $e->getMessage();
@@ -85,9 +85,11 @@ class CategoriaDAO {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             $Nombre = $categoria->getNombre(); //s
-            $Descripcion = $categoria->getDescripcion(); //s            
+            $Descripcion = $categoria->getDescripcion(); //s 
+            
+            $ID_Categoria = $categoria->getID_Categoria();//i
 
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $Nombre, $Descripcion);
+            mysqli_stmt_bind_param($stmt, "ssi", $Nombre, $Descripcion);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar categoria: " . $e->getMessage();
@@ -102,7 +104,7 @@ class CategoriaDAO {
         $query = "DELETE FROM Categoria WHERE ID_Categoria=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
-            mysqli_stmt_bind_param($stmt, "s", $ID_Categoria);
+            mysqli_stmt_bind_param($stmt, "i", $ID_Categoria);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al eliminar categoria: " . $e->getMessage();
