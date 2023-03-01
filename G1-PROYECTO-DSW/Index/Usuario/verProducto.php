@@ -122,12 +122,140 @@
                   </div>
             </div>
 
-            
+        <!--Seccion comentarios-->
+        <div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="card text-dark">
+                <div class="card-body p-4">
+                  <h4 class="mb-0">Comentarios</h4>
+                  <p class="fw-light mb-4 pb-2">Últimos comentarios de los usuarios</p>
+
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="../../Image/usuario_review.png" alt="" width="60" height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Isabela Merced</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          Febrero 20, 2023
+                        </p>
+                      </div>
+                      <p class="mb-0">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text ever
+                        since the 1500s, when an unknown printer took a galley of type and
+                        scrambled it.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-0" />
+
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Oscar Perez</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          Marzo 01, 2023
+                        </p>
+                      </div>
+                      <p class="mb-0">
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+                        has roots in a piece of classical Latin literature from 45 BC, making it
+                        over 2000 years old. Richard McClintock, a Latin professor at
+                        Hampden-Sydney College in Virginia, looked up one of the more obscure
+                        Latin words, consectetur, from a Lorem Ipsum passage, and going through
+                        the cites.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-0" style="height: 1px;" />
+
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Alex Diaz</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          Enero 05, 2023
+                        </p>
+                      </div>
+                      <p class="mb-0">
+                        There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some form, by injected humour, or
+                        randomised words which don't look even slightly believable. If you are
+                        going to use a passage of Lorem Ipsum, you need to be sure.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="my-0" />
+
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Patty Casas</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          Febrero 07, 2023
+                        </p>
+                      </div>
+                      <p class="mb-0">
+                        It uses a dictionary of over 200 Latin words, combined with a handful of
+                        model sentence structures, to generate Lorem Ipsum which looks
+                        reasonable. The generated Lorem Ipsum is therefore always free from
+                        repetition, injected humour, or non-characteristic words etc.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--AÑADIR MI COMENTARIO-->
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-12 col-lg-10">
+                <div class="card">
+                  <div class="card-body p-4">
+                    <div class="d-flex flex-start w-100">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
+                      <div class="w-100">
+                        <h5>Añade un comentario</h5>
+                        <div class="form-outline">
+                          <textarea class="form-control" id="textAreaExample" rows="3"></textarea>
+                          <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                          <button type="button" class="btn btn-success">Danger</button>
+                          <button type="button" class="btn btn-danger">
+                            Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>   
 
 
         </div>
     </div>
-                  
 
         <!-- Footer -->
         <footer>
