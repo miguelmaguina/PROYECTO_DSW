@@ -133,51 +133,44 @@ include '../Conexion/Conexion.php';
                                     <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" required> <label for="floatingNombre">Nombre *</label></div>
                                 </div>
                                 <div class="col-md-6  mb-3">
-                                    <div class="form-floating"> <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" required> <label for="floatingApellido">Apellido *</label></div>
+                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingPrecio" placeholder="precio" name="precio" required> <label for="floatingPrecio">Precio *</label></div>
                                 </div>
                             </div>
-                            
-                            <div class="mb-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating"> <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email *</label></div>
+
+                        <div class="row">
+                            <div class="col-md-6  mb-3">
+                                <div class="form-floating">
+                                    <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                    <option selected value="ejemplo1">Seleccione una opción</option>
+                                    <option value="ejemplo2">Hogar y Decoración</option>
+                                    <option value="ejemplo3">Bebidas</option>
+                                    <option value="ejemplo4">Alimentos</option>
+                                    <option value="ejemplo5">Moda y Accesorios</option>
+                                    </select>
+                                    <label for="departamento">Categoria</label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingCelular" placeholder="Celular" name="celular" required> <label for="floatingCelular">Celular *</label></div>
+                        </div>
+                    
+                        <div class="mb-3">
+                            <div class="col-md-12">
+                                <div class="col-md-6  mb-3">
+                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="descuento" name="descuento" required> <label for="floatingDscto">Descuento *</label></div>
                                 </div>
                                 <div class="col-md-6  mb-3">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="genero" aria-label="Floating label select example">
-                                        <option selected value="ejemplo1">Seleccione una opción</option>
-                                        <option value="ejemplo2">Femenino</option>
-                                        <option value="ejemeplo3">Masculino</option>
-                                        </select>
-                                        <label for="departamento">Sexo</label>
-                                    </div>
+                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disponibilidad" name="disponibilidad" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"></textarea>
+                                    <label for="comment">Descripción *</label>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="direccion" name="direccion" placeholder="Direccion"></textarea>
-                                        <label for="comment">Dirección *</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"></textarea>
-                                        <label for="comment">Descripción *</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success w-50 d-flex justify-content-center">Guardar</button>
-                            </div>
-                            </form>
                         </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success w-50 d-flex justify-content-center">Guardar</button>
+                        </div>
+                        </form>
+                    </div>
                     </div>
                 </div>
             </div>
