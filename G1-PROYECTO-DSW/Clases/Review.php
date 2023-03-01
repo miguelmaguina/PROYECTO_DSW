@@ -5,6 +5,7 @@ class Review {
     private $ID_Review;
     private $ID_Cliente;
     private $ID_Producto;
+    private $Estado;
     private $Comentario;
     private $Fecha;
  
@@ -24,6 +25,10 @@ class Review {
  
     public function getIdProducto(){
         return $this->ID_Producto;
+    }
+
+    public function getEstado(){
+        return $this->Estado;
     }
 
     public function getComentario(){
@@ -48,6 +53,10 @@ class Review {
     public function setIdProducto($ID_Producto){
         $this->ID_Producto = $ID_Producto;
     }   
+
+    public function setEstado($Estado){
+        $this->Estado = $Estado;
+    } 
    
     public function setComentario($Comentario){
         $this->Comentario = $Comentario;
