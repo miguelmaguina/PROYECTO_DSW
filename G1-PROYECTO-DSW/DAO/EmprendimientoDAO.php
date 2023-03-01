@@ -122,7 +122,7 @@ class EmprendimientoDAO {
             $URL_Otros = $emprendimiento->getURL_Otros(); //s
             $ID_Emprendimiento = $emprendimiento->getID_Emprendimiento(); //i
 
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $Nombre, $Usuario, $Email, $Celular, $Contrasena, $Departamento, $Direccion, $Logo, $Fecha_Creacion, $URL_Web, $URL_Facebook, $URL_Instagram, $URL_Otros, $ID_Emprendimiento);
+            mysqli_stmt_bind_param($stmt, "sssssssssssssi", $Nombre, $Usuario, $Email, $Celular, $Contrasena, $Departamento, $Direccion, $Logo, $Fecha_Creacion, $URL_Web, $URL_Facebook, $URL_Instagram, $URL_Otros, $ID_Emprendimiento);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar emprendimiento: " . $e->getMessage();
