@@ -123,7 +123,7 @@
             <h2 class="text-center">¡Bienvenido! Haga click en la imagen</h2>
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <a href="registroProducto.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgNuevoProducto.png" alt="">
                         <span class="button-text">NUEVO PRODUCTO</span>
                         </a>
