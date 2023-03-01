@@ -60,6 +60,15 @@ class ProductoDAO
         return $productos;
     }
 
+    /*
+    Nota: El primero parametro de la funcion 'bind_param' requiere que se especifique el tipo de elemento que se le pasa.
+        i: para variables de tipo entero
+        d: para variables de tipo punto flotante
+        s: para variables de tipo cadena (string)
+        b: para variables de tipo blob
+        ETC...
+    */
+
     public function insert(Producto $producto){
 
         $query = "INSERT INTO Producto(Nombre, Precio, Descripcion, ID_Categoria, ID_Subcategoria, Descuento, Fecha, ID_Emprendimiento, Disponibilidad, Foto_Secundaria1, Foto_Secundaria2, Foto_Secundaria3) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -69,19 +78,19 @@ class ProductoDAO
 
             //$ID_Producto = $producto->getID_Producto(); //i
             $Nombre=$producto->getNombre(); //s
-            $Precio=$producto->getPrecio(); //s
+            $Precio=$producto->getPrecio(); //d
             $Descripcion=$producto->getDescripcion(); //s
-            $ID_Categoria=$producto->getID_Categoria(); //s
-            $ID_Subcategoria=$producto->getID_Subcategoria(); //s
-            $Descuento=$producto->getDescuento(); //s
+            $ID_Categoria=$producto->getID_Categoria(); //i
+            $ID_Subcategoria=$producto->getID_Subcategoria(); //i
+            $Descuento=$producto->getDescuento(); //d
             $Fecha=$producto->getFecha(); //s
-            $ID_Emprendimiento=$producto->getID_Emprendimiento(); //s
-            $Disponibilidad=$producto->getDisponibilidad(); //s
+            $ID_Emprendimiento=$producto->getID_Emprendimiento(); //i
+            $Disponibilidad=$producto->getDisponibilidad(); //i
             $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //s
             $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //s
             $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //s
 
-            mysqli_stmt_bind_param($stmt, "sssssssssssss", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
+            mysqli_stmt_bind_param($stmt, "isdsiidsiisss", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al insertar producto: " . $e->getMessage();
@@ -100,20 +109,20 @@ class ProductoDAO
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             $Nombre=$producto->getNombre(); //s
-            $Precio=$producto->getPrecio(); //s
+            $Precio=$producto->getPrecio(); //d
             $Descripcion=$producto->getDescripcion(); //s
-            $ID_Categoria=$producto->getID_Categoria(); //s
-            $ID_Subcategoria=$producto->getID_Subcategoria(); //s
-            $Descuento=$producto->getDescuento(); //s
+            $ID_Categoria=$producto->getID_Categoria(); //i
+            $ID_Subcategoria=$producto->getID_Subcategoria(); //i
+            $Descuento=$producto->getDescuento(); //d
             $Fecha=$producto->getFecha(); //s
-            $ID_Emprendimiento=$producto->getID_Emprendimiento(); //s
-            $Disponibilidad=$producto->getDisponibilidad(); //s
+            $ID_Emprendimiento=$producto->getID_Emprendimiento(); //i
+            $Disponibilidad=$producto->getDisponibilidad(); //i
             $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //s
             $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //s
             $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //s
             $ID_Producto = $producto->getID_Producto(); //i
 
-            mysqli_stmt_bind_param($stmt, "ssssssssssssss", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3, $ID_Producto);
+            mysqli_stmt_bind_param($stmt, "sdsiidsiisssi", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3, $ID_Producto);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al actualizar producto: " . $e->getMessage();
@@ -154,14 +163,14 @@ class ProductoDAO
 
                 $ID_Producto = $producto->getID_Producto(); //i
                 $Nombre=$producto->getNombre(); //s
-                $Precio=$producto->getPrecio(); //s
+                $Precio=$producto->getPrecio(); //d
                 $Descripcion=$producto->getDescripcion(); //s
-                $ID_Categoria=$producto->getID_Categoria(); //s
-                $ID_Subcategoria=$producto->getID_Subcategoria(); //s
-                $Descuento=$producto->getDescuento(); //s
+                $ID_Categoria=$producto->getID_Categoria(); //i
+                $ID_Subcategoria=$producto->getID_Subcategoria(); //i
+                $Descuento=$producto->getDescuento(); //d
                 $Fecha=$producto->getFecha(); //s
-                $ID_Emprendimiento=$producto->getID_Emprendimiento(); //s
-                $Disponibilidad=$producto->getDisponibilidad(); //s
+                $ID_Emprendimiento=$producto->getID_Emprendimiento(); //i
+                $Disponibilidad=$producto->getDisponibilidad(); //i
                 $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //s
                 $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //s
                 $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //s
