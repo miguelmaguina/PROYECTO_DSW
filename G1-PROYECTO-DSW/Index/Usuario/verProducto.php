@@ -1,5 +1,65 @@
 <?php
+
+require '../../Conexion/Conexion.php';
+$con = conectar();
+
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+$token = isset($_GET['token']) ? $_GET['token']: '';
+
+if($id == '' || $token == ''){
+    echo 'Error al procesar la petición';
+    exit;
+}else{
+    $token_tmp = hash_hmac('sha1',$id,KEY_TOKEN);
+
+    if($token == $token_tmp){
+        $sql = $con->prepare("SELECT count(id) FROM productos WHERE id=? AND activo=1");
+        $sql->execute([$id]);
+
+        if($sql->fetchColumn() > 0){
+            $sql = $con->prepare("SELECT nombre, descripcion, precio, descuento FROM productos WHERE id=? AND activo=1 LIMIT 1");
+            $sql->execute([$id]);
+            $row = $sql->fetch(PDO::FETCH_ASSOC);
+            $nombre = $row['nombre'];
+            $descripcion = $row['descripcion'];
+            $precio = $row['precio'];
+            $descuento = $row['descuento'];
+            $precio_desc = $precio - (($precio*$descuento)/100);
+            $dir_images = '../../Image/Productos/'.$id.'/';
+            $dir_images = '../../Image/Productos/'.$id.'/';
+            $dir_images = '../../Image/Productos/'.$id.'/';
+
+
+            $rutaImg = $dir_images . 'principal.jpg';
+
+            if(!file_exists($rutaImg)){
+                $rutaImg = 'images/none.png';
+            }
+
+            $images = array();
+            if(file_exists($dir_images)){
+                $dir = dir($dir_images);
+
+                while(($archivo = $dir->read()) != false){
+                    if($archivo != 'principal.jpg' && (strpos($archivo,'jpg') || strpos($archivo,'jpge'))){
+                        $imagenes[] = $dir_images . $archivo;
+                    }
+                }
+                $dir->close();
+            }
+        }
+    }else{
+        echo 'error al procesar la petición2';
+        exit;
+    }
+    
+}
+
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,7 +148,10 @@
                         <p>Ubicación: Lima</p>
                         <div class="row mt-5">
                             <div class="col-sm-10">
-                                <button class="btn btn-izq w-100 ">Contactar</button>
+                                <button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>
+                                <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 " onclick="disable(this)">
+                                    Dejar Review
+                                </button>
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
@@ -129,7 +192,7 @@
             <div class="col-md-12 col-lg-10">
               <div class="card text-dark">
                 <div class="card-body p-4">
-                  <h4 class="mb-0">Comentarios</h4>
+                  <h4 class="mb-0">Reviews</h4>
                   <p class="fw-light mb-4 pb-2">Últimos comentarios de los usuarios</p>
 
                   <div class="d-flex flex-start">
@@ -226,7 +289,7 @@
             </div>
           </div>
 
-          <!--AÑADIR MI COMENTARIO-->
+          <!--AÑADIR MI COMENTARIO/REVIEW-->
           <div class="row d-flex justify-content-center">
               <div class="col-md-12 col-lg-10">
                 <div class="card">
@@ -235,7 +298,7 @@
                       <img class="rounded-circle shadow-1-strong me-3"
                         src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
                       <div class="w-100">
-                        <h5>Añade un comentario</h5>
+                        <h5>Añade una review</h5>
                         <div class="form-outline">
                           <textarea class="form-control" id="textAreaExample" rows="3"></textarea>
                           <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
@@ -267,7 +330,7 @@
 
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         
-
-
+        <!-- Scripts Boton de Review -->
+        <script src="../../js/botonreview.js"></script>
 </body>
 </html>
