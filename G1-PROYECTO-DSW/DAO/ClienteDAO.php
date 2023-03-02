@@ -1,7 +1,8 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/Cliente.php";
+require '../../Conexion/Conexion.php';
+require '../../Clases/Cliente.php';
+// si tienes problemas quitale "../"
 
 class ClienteDAO {
     //Atributos
@@ -175,6 +176,28 @@ class ClienteDAO {
             }
         }
         return $cliente;
+    }
+
+    public function verificaUsuario($user){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT Usuario FROM Cliente WHERE usuario=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $user);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Usuario);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Cliente'];
+                $r=1;
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
     }
 
 }
