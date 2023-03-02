@@ -1,4 +1,8 @@
 <?php
+require '../../Conexion/Conexion.php';
+require '../../Clases/Cliente.php';
+require '../Components/mensaje.php';
+
 require '../../DAO/ClienteDAO.php';
 
 require 'procesoRegistro.php';
@@ -38,7 +42,7 @@ require 'procesoRegistro.php';
                             <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" pattern="[A-Za-z\s]*" maxlength="20" required> <label for="floatingNombre">Nombre *</label></div>
                         </div>
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" pattern="[A-Za-z\s]*"" maxlength="20" required> <label for="floatingApellido">Apellido *</label></div>
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido" name="apellido" pattern="[A-Za-z\s]*" maxlength="20" required> <label for="floatingApellido">Apellido *</label></div>
                         </div>
                     </div>
                     <div class="row">

@@ -80,37 +80,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $clienteDAO=new ClienteDAO();
 
-    if($clienteDAO->verificaUsuario($usuario)==0){
-        if($contrasena==$contrasena2){
-            if (move_uploaded_file($archivo_tmp, '../../tmp/usuario/'.$nuevo_nombre)) {
-                $client=new Cliente();
-                $client->setNombres($nombre);
-                $client->setApellidos($apellido);
-                $client->setEmail($email);
-                $client->setCelular($celular);
-                $client->setContrasena($contrasena);
-                $client->setDepartamento($departamento);
-                $client->setUsuario($usuario);
-                $client->setDNI($dni);
-                $client->setFecha_Creacion($fecha);
-                $client->setFoto_Perfil($nuevo_nombre);
-                $clienteDAO->insert($client);
-                exito("Cliente registrado exitosamente");
-            } else {
-                peligro("Hubo un error al subir la imagen, vuelva a intentarlo");
-            }
+    if($clienteDAO->verificaEmail($email)==0){
+        if($clienteDAO->verificaUsuario($usuario)==0){
+            if($contrasena==$contrasena2){
+                if (move_uploaded_file($archivo_tmp, '../../tmp/usuario/'.$nuevo_nombre)) {
+                    $client=new Cliente();
+                    $client->setNombres($nombre);
+                    $client->setApellidos($apellido);
+                    $client->setEmail($email);
+                    $client->setCelular($celular);
+                    $client->setContrasena($contrasena);
+                    $client->setDepartamento($departamento);
+                    $client->setUsuario($usuario);
+                    $client->setDNI($dni);
+                    $client->setFecha_Creacion($fecha);
+                    $client->setFoto_Perfil($nuevo_nombre);
+                    $clienteDAO->insert($client);
+                    exito("Cliente registrado exitosamente");
+                } else {
+                    peligro("Hubo un error al subir la imagen, vuelva a intentarlo");
+                }
 
+            }else{
+                alerta("Las contraseñas no son iguales");
+            }
         }else{
-            alerta("Las contraseñas no son iguales");
+            alerta("El usuario ya existe");
         }
     }else{
-        alerta("El usuario ya existe");
+        alerta("Email ya registrado");
     }
-
-    
-
-    
-    
 
 }
 
@@ -121,31 +120,5 @@ function test_input($data) {
     return $data;
 }
 
-function alerta($mensaje){
-    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <i class="fas fa-exclamation-triangle me-2"></i> '.$mensaje.'
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-}
-
-function peligro($mensaje){
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <i class="fas fa-exclamation-triangle me-2"></i>'.$mensaje.'
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-}
-
-function info($mensaje){
-    echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
-        <i class="fas fa-info-circle me-2"></i>'.$mensaje.'
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-}
-function exito($mensaje){
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="fas fa-check-circle me-2"></i>'.$mensaje.'
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-}
 
 ?>

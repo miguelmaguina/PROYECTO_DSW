@@ -1,7 +1,6 @@
 <?php
-
-require '../../Conexion/Conexion.php';
-require '../../Clases/Cliente.php';
+//require '../../Conexion/Conexion.php';
+//require '../../Clases/Cliente.php';
 // si tienes problemas quitale "../"
 
 class ClienteDAO {
@@ -233,11 +232,11 @@ class ClienteDAO {
 
             if(mysqli_stmt_fetch($stmt)){
                 //$_SESSION['user_id']=$row['ID_Cliente'];
-                echo "el id es:".$ID_Cliente." ";
+                //echo "el id es:".$ID_Cliente." ";
                 $r=1;
-            }else{
-                echo "No hay";
-            }
+            }// }else{
+            //     echo "No hay";
+            // }
 
             
         }catch(PDOException $e){

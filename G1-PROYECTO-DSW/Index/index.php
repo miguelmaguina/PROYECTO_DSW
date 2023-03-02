@@ -1,4 +1,21 @@
 <?php
+
+require '../Conexion/Conexion.php';
+require 'Components/mensaje.php';
+
+if(isset($_POST["submit1"])){
+    require '../Clases/Cliente.php';
+    require '../DAO/ClienteDAO.php';
+    require 'Usuario/procesoIniciarSesion.php';
+}else{
+    require '../Clases/Emprendimiento.php';
+    require '../DAO/EmprendimientoDAO.php';
+    require 'Empresa/procesoIniciarSesion.php';
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -123,7 +140,7 @@
         
         <div class="content contenedor-newproduct content-sign-in">
         
-            <form class="mx-auto">
+            <form class="mx-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <div class="text-secondary" >
                     <div class="d-flex justify-content-center">
                         <img src="../Image/login-register/login-icon.svg" alt="login-icon" style="height: 7rem"/>
@@ -131,11 +148,11 @@
                     <div class="text-center fs-1 fw-bold">Inicio Usuario</div>
                         <div class="input-group mt-4">
                         
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email</label></div>
+                        <div class="form-floating"> <input type="text" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email *</label></div>
                         </div>
                         <div class="input-group mt-1">
                         
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Password</label></div>
+                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Contraseña *</label></div>
                     </div>
                     <div class="d-flex justify-content-around mt-1">
                         <div class="d-flex align-items-center gap-1">
@@ -147,19 +164,17 @@
                             href="#"
                             class="text-decoration-none text-info fw-semibold fst-italic"
                             style="font-size: 0.9rem"
-                            >Forgot your password?</a
-                        >
+                            >Forgot your password?</a>
                         </div>
                     </div>
-                    <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
-                        Login
+                    <div >
+                        <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Iniciar Sesión" name="submit1">
                     </div>
                     
                     <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
-                        <div>Don't have an account?</div>
+                        <div>¿No tienes una cuenta?</div>
                         <a href="Usuario/registroUsuario.php" class="text-decoration-none text-info fw-semibold"
-                        >Register</a
-                        >
+                        >Regístrate</a>
                     </div>
                 </div>
             </form>
@@ -173,7 +188,7 @@
         
         <div class="content contenedor-newproduct content-sign-in">
         
-            <form class="mx-auto">
+            <form class="mx-auto" class="mx-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <div class="text-secondary" >
                     <div class="d-flex justify-content-center">
                         <img src="../Image/hallpa.png" alt="login-icon" style="height: 7rem"/>
@@ -197,12 +212,11 @@
                             href="#"
                             class="text-decoration-none text-info fw-semibold fst-italic"
                             style="font-size: 0.9rem"
-                            >Forgot your password?</a
-                        >
+                            >Forgot your password?</a>
                         </div>
                     </div>
-                    <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
-                        Login
+                    <div >
+                        <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Iniciar Sesión" name="submit2">
                     </div>
                     
                     <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
