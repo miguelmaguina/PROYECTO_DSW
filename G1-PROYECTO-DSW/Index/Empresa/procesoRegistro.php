@@ -85,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($emprendimientoDAO->verificaEmail($email)==0){
         if($emprendimientoDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
-                if (move_uploaded_file($archivo_tmp, '../../tmp/usuario/'.$nuevo_nombre)) {
+                if (move_uploaded_file($archivo_tmp, '../../tmp/empresa/'.$nuevo_nombre)) {
                     $empren=new Emprendimiento();
                     $empren->setNombre($nombre);
                     $empren->setUsuario($usuario);
