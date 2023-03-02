@@ -72,3 +72,18 @@
     margin: auto;
     cursor: pointer;
   }
+  .alert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    width: 300px;
+  }
+  
+  .alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.7rem;
+    color: inherit;
+  }

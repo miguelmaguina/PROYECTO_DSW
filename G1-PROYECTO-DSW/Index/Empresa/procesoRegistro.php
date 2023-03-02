@@ -1,6 +1,6 @@
 <?php
 
-$name = $apellido = $email = $celular = $contrasena = $contrasena2 = $departamento = $usuario = $dni = $fecha = $nuevo_nombre = "";
+$name = $usuario = $email = $celular = $contrasena = $contrasena2 = $departamento = $direccion = $logo = $fecha = $web  = $facebook  = $instagram  = $otros = $nuevo_nombre = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -10,10 +10,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre=test_input($_POST["nombre"]);
     }
 
-    if(empty($_POST["apellido"])){
-        alerta("Se requiere el apellido");
+    if(empty($_POST["usuario"])){
+        alerta("Se requiere el usuario");
     }else{
-        $apellido=test_input($_POST["apellido"]);
+        $usuario=test_input($_POST["usuario"]);
     }
 
     if(empty($_POST["email"])){
@@ -46,26 +46,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $departamento=test_input($_POST["departamento"]);
     }
 
-    if(empty($_POST["usuario"])){
-        alerta("Se requiere el usuario");
+    if(empty($_POST["direccion"])){
+        alerta("Se requiere el direccion");
     }else{
-        $usuario=test_input($_POST["usuario"]);
+        $direccion=test_input($_POST["direccion"]);
     }
 
-    if(empty($_POST["dni"])){
-        alerta("Se requiere el dni");
-    }else{
-        $dni=test_input($_POST["dni"]);
+    if(!empty($_POST["web"])){
+        $web=test_input($_POST["web"]);
+    }
+
+    if(!empty($_POST["facebook"])){
+        $facebook=test_input($_POST["facebook"]);
+    }
+
+    if(!empty($_POST["instagram"])){
+        $instagram=test_input($_POST["instagram"]);
+    }
+
+    if(!empty($_POST["otros"])){
+        $otros=test_input($_POST["otros"]);
     }
     
-    // $apellido=$_POST["apellido"];
-    // $email=$_POST["email"];
-    // $celular=$_POST["celular"];
-    // $contrasena=$_POST["password"];
-    // $contrasena2=$_POST["password2"];
-    // $departamento=$_POST["departamento"];
-    // $usuario=$_POST["usuario"];
-    // $dni=$_POST["dni"];
     $fecha=date('Y/m/d');
 
     $archivo_nombre = $_FILES['upload-button']['name'];
@@ -78,25 +80,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nuevo_nombre = $usuario.'.'.$archivo_ext;
     
 
-    $clienteDAO=new ClienteDAO();
+    $emprendimientoDAO=new EmprendimientoDAO();
 
-    if($clienteDAO->verificaEmail($email)==0){
-        if($clienteDAO->verificaUsuario($usuario)==0){
+    if($emprendimientoDAO->verificaEmail($email)==0){
+        if($emprendimientoDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
                 if (move_uploaded_file($archivo_tmp, '../../tmp/usuario/'.$nuevo_nombre)) {
-                    $client=new Cliente();
-                    $client->setNombres($nombre);
-                    $client->setApellidos($apellido);
-                    $client->setEmail($email);
-                    $client->setCelular($celular);
-                    $client->setContrasena($contrasena);
-                    $client->setDepartamento($departamento);
-                    $client->setUsuario($usuario);
-                    $client->setDNI($dni);
-                    $client->setFecha_Creacion($fecha);
-                    $client->setFoto_Perfil($nuevo_nombre);
-                    $clienteDAO->insert($client);
-                    exito("Cliente registrado exitosamente");
+                    $empren=new Emprendimiento();
+                    $empren->setNombre($nombre);
+                    $empren->setUsuario($usuario);
+                    $empren->setEmail($email);
+                    $empren->setCelular($celular);
+                    $empren->setContrasena($contrasena);
+                    $empren->setDepartamento($departamento);
+                    $empren->setDireccion($direccion);
+                    $empren->setLogo($nuevo_nombre);
+                    $empren->setFecha_Creacion($fecha);
+                    $empren->setURL_Web($web);
+                    $empren->setURL_Facebook($facebook);
+                    $empren->setURL_Instagram($instagram);
+                    $empren->setURL_Otros($otros);
+                    
+                    
+                    $emprendimientoDAO->insert($empren);
+                    exito("Emprendimiento registrado exitosamente");
                 } else {
                     peligro("Hubo un error al subir la imagen, vuelva a intentarlo");
                 }
@@ -110,7 +117,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         alerta("Email ya registrado");
     }
-
 }
 
 function test_input($data) {

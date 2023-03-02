@@ -1,7 +1,7 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/Emprendimiento.php";
+//include "../Conexion/Conexion.php";
+//include "../Clases/Emprendimiento.php";
 
 class EmprendimientoDAO {
 
@@ -187,6 +187,74 @@ class EmprendimientoDAO {
         return $emprendimiento;
     }
     
+    public function verificaUsuario($user){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT Usuario FROM emprendimiento WHERE usuario=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $user);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Usuario);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Cliente'];
+                $r=1;
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
+    }
+
+    public function verificaEmail($emai){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT Usuario FROM emprendimiento WHERE email=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $emai);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Usuario);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Cliente'];
+                $r=1;
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
+    }
+
+    public function verificaLogin($email,$contra){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT ID_Emprendimiento FROM Cliente WHERE Email=? AND Contrasena=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "ss", $email, $contra);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Emprendimiento);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Emp$ID_Emprendimiento'];
+                //echo "el id es:".$ID_Emprendimiento." ";
+                $r=1;
+            }// }else{
+            //     echo "No hay";
+            // }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
+    }
 
 }
 

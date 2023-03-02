@@ -1,5 +1,8 @@
 <?php
 
+require '../../Conexion/Conexion.php';
+require '../../Clases/Cliente.php';
+
 require '../../DAO/ClienteDAO.php';
 
 require 'procesoIniciarSesion.php';
@@ -38,7 +41,20 @@ require 'procesoIniciarSesion.php';
                     </div>
                     <div class="row">
                         <div class="mt-2">
-                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Ingrese su contraseña *</label></div>
+                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Contraseña *</label></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around mt-1">
+                        <div class="d-flex align-items-center gap-1">
+                        <input class="form-check-input" type="checkbox" />
+                        <div class="pt-1" style="font-size: 0.9rem">Remember me</div>
+                        </div>
+                        <div class="pt-1">
+                        <a
+                            href="#"
+                            class="text-decoration-none text-info fw-semibold fst-italic"
+                            style="font-size: 0.9rem"
+                            >Forgot your password?</a>
                         </div>
                     </div>
                     
