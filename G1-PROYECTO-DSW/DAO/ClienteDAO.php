@@ -200,6 +200,53 @@ class ClienteDAO {
         return $r;
     }
 
+    public function verificaEmail($emai){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT Usuario FROM Cliente WHERE email=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $emai);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Usuario);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Cliente'];
+                $r=1;
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
+    }
+
+    public function verificaLogin($email,$contra){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT ID_Cliente FROM Cliente WHERE Email=? AND Contraseña=?";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "ss", $email, $contra);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Cliente);
+
+            if(mysqli_stmt_fetch($stmt)){
+                //$_SESSION['user_id']=$row['ID_Cliente'];
+                echo "el id es:".$ID_Cliente." ";
+                $r=1;
+            }else{
+                echo "No hay";
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+        
+        return $r;
+    }
+
 }
 ?> 
 
