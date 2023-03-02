@@ -161,8 +161,8 @@
             <div class=" contenedor-de-producto">
                 <div class="row row-cols-sm-2">
 
-                <!-- repeticion -->
-
+                    <!-- repeticion -->
+    
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
@@ -177,15 +177,20 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-success w-100 m-1">Editar</button>
+                                        <a href="actualizarProducto.php" target="_self">
+                                            <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button class="btn btn-danger w-100 m-1">Eliminar</button>
+                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
                                         </div>
+                                        
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +214,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -218,41 +225,9 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- repeticion -->
-
-
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -261,7 +236,7 @@
                     </div>
 
                     <!-- repeticion -->
-
+    
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
@@ -276,7 +251,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -285,7 +262,9 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -293,10 +272,9 @@
                         </div>
                     </div>
 
-               <!-- repeticion -->
-
-
-                    <div class="col-sm-6 mb-4">
+                     <!-- repeticion -->
+    
+                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
                             <div class="row">
@@ -310,7 +288,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -319,74 +299,9 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- repeticion -->
-
-
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -395,7 +310,7 @@
                     </div>
 
                     <!-- repeticion -->
-
+    
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
@@ -410,7 +325,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -419,41 +336,9 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- repeticion -->
-
-
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -462,7 +347,7 @@
                     </div>
 
                     <!-- repeticion -->
-
+    
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
@@ -477,7 +362,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -486,41 +373,9 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <!-- repeticion -->
-
-
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -529,8 +384,8 @@
                     </div>
 
                     <!-- repeticion -->
-
-                   <div class="col-sm-6 mb-4">
+    
+                    <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
                             <div class="row">
@@ -544,7 +399,9 @@
                                     <p class="text-center">S/ <span>485.99</span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
                                         </div>
                                         <div class="col-lg-6">
                                             <button class="btn w-100 m-1 btn-danger">Eliminar</button>
@@ -553,7 +410,157 @@
                                     </div>
                                     <div class="row text-center">
                                         <div class="col-12">
-                                        <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- repeticion -->
+    
+                    <div class="col-sm-6 mb-4">
+                        <div class="card card-emp m-2">
+                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-titulo">Curaca Amazonian Art</p>
+                                    <p class="card-texto">Código <span>882041329</span></p>
+                                    <p class="card-texto">Disponible: <span>Sí</span></p>
+                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <div class="row text-center">
+                                        <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
+                                            <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- repeticion -->
+    
+                    <div class="col-sm-6 mb-4">
+                        <div class="card card-emp m-2">
+                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-titulo">Curaca Amazonian Art</p>
+                                    <p class="card-texto">Código <span>882041329</span></p>
+                                    <p class="card-texto">Disponible: <span>Sí</span></p>
+                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <div class="row text-center">
+                                        <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
+                                            <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- repeticion -->
+    
+                    <div class="col-sm-6 mb-4">
+                        <div class="card card-emp m-2">
+                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-titulo">Curaca Amazonian Art</p>
+                                    <p class="card-texto">Código <span>882041329</span></p>
+                                    <p class="card-texto">Disponible: <span>Sí</span></p>
+                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <div class="row text-center">
+                                        <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
+                                            <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- repeticion -->
+    
+                    <div class="col-sm-6 mb-4">
+                        <div class="card card-emp m-2">
+                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-titulo">Curaca Amazonian Art</p>
+                                    <p class="card-texto">Código <span>882041329</span></p>
+                                    <p class="card-texto">Disponible: <span>Sí</span></p>
+                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <div class="row text-center">
+                                        <div class="col-lg-6">
+                                        <a href="actualizarProducto.php" target="_self">
+                                            <button class="btn w-100 m-1 btn-success">Editar</button>
+                                        </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                        <a href="listaCompradores.php" target="_self">
+                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>

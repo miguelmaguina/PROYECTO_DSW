@@ -39,13 +39,13 @@
                 <div class="row">
                     
                     <div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
                         <span class="button-text">SOLICITUDES PENDIENTES</span>
                         </a>
                     </div>
                     <div class="button-container col-md-6 mt-4 text-white d-flex justify-content-center">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <a href="listaCompradores.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/listComprador.png" alt="">
                         <span class="button-text">LISTADO DE COMPRADORES</span>
                         </a>
