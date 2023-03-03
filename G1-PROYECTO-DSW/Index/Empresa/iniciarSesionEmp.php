@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(isset($_SESSION['nombre_c'])){
+    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+}else{
+    echo "sesion no iniciada";
+}
 
 require '../../Conexion/Conexion.php';
 require '../Components/mensaje.php';

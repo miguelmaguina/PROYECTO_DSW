@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(isset($_SESSION['nombre_c'])){
+    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+}else{
+    echo "sesion no iniciada";
+}
+//session_destroy();
+//session_unset();
 
 require '../Conexion/Conexion.php';
 require 'Components/mensaje.php';
@@ -59,7 +67,7 @@ if(isset($_POST["submit1"])){
             <div class="mavbar-btand collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="Usuario/inicio.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Nosotros</a>
@@ -164,7 +172,7 @@ if(isset($_POST["submit1"])){
                             href="#"
                             class="text-decoration-none text-info fw-semibold fst-italic"
                             style="font-size: 0.9rem"
-                            >Forgot your password?</a>
+                            >¿Olvidaste tu contraseña?</a>
                         </div>
                     </div>
                     <div >

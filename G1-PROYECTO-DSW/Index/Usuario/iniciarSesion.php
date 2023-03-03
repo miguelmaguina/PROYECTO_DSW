@@ -1,11 +1,33 @@
 <?php
+session_start();
+// $_SESSION['id_usuario_c'] = null;
+// $_SESSION['nombre_c'] = null;
+// $_SESSION['nombre_c'] = null;
+// $_SESSION['tipo_usuario'] = null;
 
 require '../../Conexion/Conexion.php';
 require '../../Clases/Cliente.php';
+require '../Components/mensaje.php';
 
 require '../../DAO/ClienteDAO.php';
 
 require 'procesoIniciarSesion.php';
+
+if(isset($_SESSION['nombre_c'])){
+    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+}else{
+    echo "sesion no iniciada";
+}
+
+// session_destroy();
+// session_unset();
+
+// if(isset($_SESSION['nombre_c'])){
+//     echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+// }else{
+//     echo "sesion no iniciada";
+// }
+
 
 ?>
 

@@ -1,7 +1,15 @@
 <?php  
+/*session_start();
+
+if(isset($_SESSION['nombre_c'])){
+  echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+}else{
+  echo "sesion no iniciada";
+}
+*/
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../Estilos/vistaRegistroEmpren.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/vistaRegistroEmpren.css?v=<//?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/header.css?v=<//?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script type="text/javascript">
@@ -24,7 +32,7 @@
 <body>
     
 
-<?php require 'headerEmpresa.php' ?>
+<?php/* require 'headerEmpresa.php' */?>
 
       
 
@@ -240,7 +248,6 @@
       
                   
 
-        <!-- Footer -->
         <footer>
             <div class="container">
                 <p>Derechos reservados &copy; 2023 Mi sitio web</p>
@@ -248,10 +255,10 @@
         </footer>
 
         <script src="../../js/index.js"></script>
-        <!-- Scripts de Bootstrap 5 -->
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         
 
 
 </body>
-</html>
+</html> -->
