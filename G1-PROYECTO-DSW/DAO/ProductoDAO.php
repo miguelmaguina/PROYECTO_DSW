@@ -1,8 +1,8 @@
 <?php
 
 //Librerías
-include "../Conexion/Conexion.php";
-include "../Clases/Producto.php";
+include "../../Conexion/Conexion.php";
+include "../../Clases/Producto.php";
 
 class ProductoDAO
 {
@@ -46,6 +46,7 @@ class ProductoDAO
                 $producto->setFoto_Secundaria2($Foto_Secundaria2);
                 $producto->setFoto_Secundaria3($Foto_Secundaria3);
 
+
                 $productos[] = $producto;
             }
 
@@ -86,9 +87,10 @@ class ProductoDAO
             $Fecha=$producto->getFecha(); //s
             $ID_Emprendimiento=$producto->getID_Emprendimiento(); //i
             $Disponibilidad=$producto->getDisponibilidad(); //i
-            $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //s
-            $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //s
-            $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //s
+            $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //i
+            $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //i
+            $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //i
+            
 
             mysqli_stmt_bind_param($stmt, "isdsiidsiisss", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
             mysqli_stmt_execute($stmt);

@@ -273,6 +273,52 @@
             <div class="col-md-9 contenedor-de-producto">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
+                <!--repeticion PRUEBA-->
+            
+                <?php 
+                    require_once '../../DAO/ProductoDAO.php';
+                    $productoDAO_Index = new ProductoDAO();
+                    $productos = $productoDAO_Index->listar();
+                    foreach($productos as $producto) {?>
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card card-t-o position-relative m-2">
+                        
+                        <img class="card-img-top" alt="Imagen del producto" src="<?= $pathFoto?>">
+                        <?php
+                            $var=$producto->getFoto_Secundaria1();
+                            $pathFoto="../../Image/Productos/Foto_Secundaria1/$var";
+                            if(!file_exists($pathFoto)){
+                                $pathFoto="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+                            }
+                        ?>
+                        <div class="position-absolute favorito">
+                            <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="position-absolute carrito">
+                            <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
+                        </div>
+
+                        <div class="card-body">
+                                <h5 class="card-title text text-truncate">
+                                    <?= $producto->getNombre() ?>
+                                </h5>
+                                <span class="card-text">
+                                    S/<?= number_format($producto->getPrecio(),2,'.',','); ?>
+                                </span> 
+                                <small style="color: green">
+                                    <?= 
+                                        $num=$producto->getDescuento();
+                                        number_format($num*100);
+                                    ?>% descuento
+                                </small>
+                        </div>
+
+                    </div>
+                </div>
+            <?php } ?>
+            
+                            
+        
 
                 <!--repeticion-->
                     <div class="col-sm-6 col-lg-4 mb-4">
