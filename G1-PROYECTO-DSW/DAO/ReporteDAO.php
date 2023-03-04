@@ -51,7 +51,7 @@ class ReporteDAO {
                     FROM Review
                     INNER JOIN Producto ON Review.ID_Producto = Producto.ID_Producto
                     WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}
-                    AND MONTH(Review.Fecha)-1 = MONTH(NOW())-1
+                    AND MONTH(Review.Fecha) = MONTH(NOW())-1
                     AND YEAR(Review.Fecha) = YEAR(NOW())";
         
         try{
@@ -142,7 +142,7 @@ class ReporteDAO {
                     FROM Lista_Favoritos
                     INNER JOIN Producto ON Lista_Favoritos.ID_Producto = Producto.ID_Producto
                     WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}
-                    AND MONTH(Lista_Favoritos.Fecha)-1 = MONTH(NOW())-1
+                    AND MONTH(Lista_Favoritos.Fecha) = MONTH(NOW())-1
                     AND YEAR(Lista_Favoritos.Fecha) = YEAR(NOW())";
         
         try{
@@ -200,7 +200,7 @@ class ReporteDAO {
                     FROM Proforma
                     INNER JOIN Producto ON Proforma.ID_Producto = Producto.ID_Producto
                     WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}
-                    AND MONTH(Proforma.Fecha)-1 = MONTH(NOW())-1
+                    AND MONTH(Proforma.Fecha) = MONTH(NOW())-1
                     AND YEAR(Proforma.Fecha) = YEAR(NOW())";
         
         try{
