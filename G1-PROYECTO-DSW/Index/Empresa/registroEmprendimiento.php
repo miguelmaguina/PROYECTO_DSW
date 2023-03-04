@@ -32,9 +32,9 @@ if(isset($_SESSION['nombre_c'])){
 <body>
     
 
-<?php/* require 'headerEmpresa.php' */?>
-
-      
+<?php
+/* require 'headerEmpresa.php' */
+?>    
 
 <div id="myCarousel" class="container-fluid carousel slide contenedor-carrusel p-0" data-bs-ride="carousel">
     <div class="carousel-indicators">

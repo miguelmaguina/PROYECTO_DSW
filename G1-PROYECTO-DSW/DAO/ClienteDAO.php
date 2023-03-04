@@ -233,9 +233,9 @@ class ClienteDAO {
             if(mysqli_stmt_fetch($stmt)){
                 //$_SESSION['user_id']=$row['ID_Cliente'];
                 //echo "el id es:".$ID_Cliente." ";
-                $_SESSION['id_usuario_c'] = $ID_Cliente;
+                $_SESSION['id_c'] = $ID_Cliente;
                 $_SESSION['nombre_c'] = $Nombres;
-                $_SESSION['nombre_c'] = $Usuario;
+                $_SESSION['usuario_c'] = $Usuario;
                 $_SESSION['tipo_usuario'] = 'cliente';
                 $r=1;
             }// }else{

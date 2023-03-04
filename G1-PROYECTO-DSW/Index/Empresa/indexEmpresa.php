@@ -1,3 +1,21 @@
+<?php
+session_start();
+$nombre='';
+
+if(isset($_SESSION['tipo_usuario'])){
+    if($_SESSION['tipo_usuario']== 'cliente'){
+        header("Location: ../index.php");
+        exit();
+    }else{
+        $nombre=$_SESSION['nombre_e'];
+    }
+}else{
+    header("Location: ../Usuario/iniciar.php");
+    exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -120,7 +138,7 @@
 
     <section class="section-t-o container-fluid py-5">
         <div class="contenedor-t">
-            <h2 class="text-center">¡Bienvenido! Haga click en la imagen</h2>
+            <h2 class="text-center">¡Bienvenido <?php echo"$nombre"; ?>! Haga click en la imagen para comenzar</h2>
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="registroProducto.php" class="btn boton-Vista-Empresa image-button">

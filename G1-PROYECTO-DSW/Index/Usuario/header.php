@@ -26,7 +26,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tienda Online</a>
                     </li>
-                    
                 </ul>
             </div>
         </div>
@@ -37,33 +36,72 @@
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
                     <li class="nav-item nav-carrito car">
-                        <a href="nav-link nav-icon" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
+                        <a class="nav-link nav-icon" href="#" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
                     </li>
-                   <li class="nav-item dropdown pe-3">
-                      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
-                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                         <li class="dropdown-header">
-                            <h6>admin</h6>
-                            <span>Desarrollo de Sistema Web</span>
-                         </li>
-                         <li>
-                            <hr class="dropdown-divider">
-                         </li>
-                         <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="bi bi-person"></i> <span>Mi perfil</span> </a></li>
-                         <li>
-                            <hr class="dropdown-divider">
-                         </li>
-                         <li> <a class="dropdown-item d-flex align-items-center" href="#"> <span>Iniciar Sesión</span> </a></li>
-                         <li>
-                            <hr class="dropdown-divider">
-                         </li>
-                         <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="bi bi-question-circle"></i> <span>Crear cuenta</span> </a></li>
-                         <li>
-                            <hr class="dropdown-divider">
-                         </li>
-                         <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="bi bi-box-arrow-right"></i> <span>Cerrar Sesión</span> </a></li>
-                      </ul>
-                   </li>
+                    <?php
+                        if($tipo==0){
+                            echo'<li class="nav-item dropdown pe-3">';
+
+                            echo '
+                            <a href="iniciar.php"><button href="#" type="button" class="btn btn-outline-success">!Vamos¡</button></a>
+                            ';
+
+                            echo '</li>';
+                        }elseif($tipo==1){//tipo cliente
+                            echo'<li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2"></span> </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6>'.$_SESSION['nombre_c'].'</h6>
+                                    <span>Desarrollo de Sistema Web</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-circle-user"></i><span>Mi perfil</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="../Components/cerrarSesionUsuario.php"><i class="fa-solid fa-right-to-bracket"></i><span>Cerrar Sesión</span> </a></li>
+                            </ul>
+                            </li>';
+                        }else{//tipo emprendimiento
+                            echo'<li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2" ></span> </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6>Emprendimiento</h6>
+                                    <span>Desarrollo de Sistema Web</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-layer-group"></i><span>Aqui va algo</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="../Components/cerrarSesionEmprendimiento.php"> <i class="fa-solid fa-right-to-bracket"></i> <span>Cerrar Sesión</span> </a></li>
+                            </ul>
+                            </li>';
+                        }
+
+                    ?>
                 </ul>
              </nav>
         </div>

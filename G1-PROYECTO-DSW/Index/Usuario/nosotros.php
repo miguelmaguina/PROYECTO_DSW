@@ -1,4 +1,16 @@
 <?php
+session_start();
+$tipo=0;//0 no está logueado
+// 1 está logueado como cliente
+// 2 logueado como emprendimiento
+
+if(isset($_SESSION['tipo_usuario'])){
+  if($_SESSION['tipo_usuario']== 'cliente'){
+      $tipo=1;
+  }else{
+    $tipo=2;
+  }
+}
 
 ?>
 

@@ -82,6 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $emprendimientoDAO=new EmprendimientoDAO();
 
+if($archivo_nombre=='' || $archivo_nombre==null){
     if($emprendimientoDAO->verificaEmail($email)==0){
         if($emprendimientoDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
@@ -100,10 +101,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $empren->setURL_Facebook($facebook);
                     $empren->setURL_Instagram($instagram);
                     $empren->setURL_Otros($otros);
-                    
-                    
                     $emprendimientoDAO->insert($empren);
                     exito("Emprendimiento registrado exitosamente");
+                    header("Location: iniciarSesionEmp.php");
+                    exit();
                 } else {
                     peligro("Hubo un error al subir la imagen, vuelva a intentarlo");
                 }
@@ -117,6 +118,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         alerta("Email ya registrado");
     }
+}else{
+    alerta("Se requiere el logo");
+}
 }
 
 function test_input($data) {

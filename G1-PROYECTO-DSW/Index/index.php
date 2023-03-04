@@ -1,11 +1,19 @@
 <?php
 session_start();
+$tipo=0;//0 no está logueado
+// 1 está logueado como cliente
+// 2 logueado como emprendimiento
 
-if(isset($_SESSION['nombre_c'])){
-  echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
-}else{
-  echo "sesion no iniciada";
+if(isset($_SESSION['tipo_usuario'])){
+  if($_SESSION['tipo_usuario']== 'cliente'){
+      $tipo=1;
+  }else{
+    $tipo=2;
+  }
 }
+
+// session_destroy();
+// session_unset();
 
 ?>
 
@@ -76,7 +84,7 @@ if(isset($_SESSION['nombre_c'])){
                     <li class="nav-item nav-carrito car">
                         <a href="#" class="nav-link nav-icon" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
                     </li>
-                   <li class="nav-item dropdown pe-3">
+                    <!--<li class="nav-item dropdown pe-3">
                       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>
                       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                          <li class="dropdown-header">
@@ -100,7 +108,71 @@ if(isset($_SESSION['nombre_c'])){
                          </li>
                          <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="bi bi-box-arrow-right"></i> <span>Cerrar Sesión</span> </a></li>
                       </ul>
-                   </li>
+                    </li>-->
+                    <?php
+                        if($tipo==0){
+                            echo'<li class="nav-item dropdown pe-3">';
+
+                            echo '
+                            <a href="Usuario/iniciar.php"><button href="#" type="button" class="btn btn-outline-success">!Vamos¡</button></a>
+                            ';
+
+                            echo '</li>';
+                        }elseif($tipo==1){//tipo cliente
+                            echo'<li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2"></span> </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6>'.$_SESSION['nombre_c'].'</h6>
+                                    <span>Desarrollo de Sistema Web</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-circle-user"></i><span>Mi perfil</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="Components/cerrarSesionUsuario.php"><i class="fa-solid fa-right-to-bracket"></i><span>Cerrar Sesión</span> </a></li>
+                            </ul>
+                            </li>';
+                        }else{//tipo emprendimiento
+                            echo'<li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2" ></span> </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li class="dropdown-header">
+                                    <h6>Emprendimiento</h6>
+                                    <span>Desarrollo de Sistema Web</span>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-layer-group"></i><span>Aqui va algo</span> </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="Components/cerrarSesionEmprendimiento.php"> <i class="fa-solid fa-right-to-bracket"></i> <span>Cerrar Sesión</span> </a></li>
+                            </ul>
+                            </li>';
+                        }
+
+                    ?>
                 </ul>
              </nav>
         </div>

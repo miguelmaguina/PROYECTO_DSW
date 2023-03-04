@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+if(isset($_SESSION['tipo_usuario'])){
+    if($_SESSION['tipo_usuario']== 'emprendimiento'){
+        header("Location: ../Empresa/indexEmpresa.php");
+        exit();
+    }else{
+        header("Location: ../index.php");
+        exit();
+    }
+}
+
 require '../../Conexion/Conexion.php';
 require '../../Clases/Cliente.php';
 require '../Components/mensaje.php';

@@ -1,4 +1,16 @@
 <?php
+session_start();
+$tipo=0;//0 no está logueado y aun puede estar en la página
+// 1 está logueado como cliente
+
+if(isset($_SESSION['tipo_usuario'])){
+  if($_SESSION['tipo_usuario']== 'emprendimiento'){
+      header("Location: ../index.php");
+      exit();
+  }else{
+    $tipo=1;
+  }
+}//si no está logueado le aparece que necesita loguearse
 
 ?>
 

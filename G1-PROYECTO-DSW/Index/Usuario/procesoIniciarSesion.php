@@ -20,7 +20,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($clienteDAO->verificaEmail($email)==1){
         if($clienteDAO->verificaLogin($email,$contrasena)==1){
-            exito("Sesion iniciada, cliente");
+            exito("Sesion iniciada");
+            header("Location: ../index.php");
+            exit();
 
         }else{
             alerta("Usuario o contraseña incorrecta, cliente");
