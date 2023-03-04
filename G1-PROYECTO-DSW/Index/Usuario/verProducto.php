@@ -1,57 +1,3 @@
-<?php
-
-require '../../Conexion/Conexion.php';
-$con = conectar();
-
-$id = isset($_GET['id']) ? $_GET['id'] : '';
-$token = isset($_GET['token']) ? $_GET['token']: '';
-
-if($id == '' || $token == ''){
-    echo 'Error al procesar la petición';
-    exit;
-}else{
-    $token_tmp = hash_hmac('sha1',$id,KEY_TOKEN);
-
-    if($token == $token_tmp){
-        $sql = $con->prepare("SELECT count(id) FROM productos WHERE ID_Producto=? AND Disponibilidad=1");
-        $sql->execute([$id]);
-
-        if($sql->fetchColumn() > 0){
-            $sql = $con->prepare("SELECT Nombre, Precio, Descripcion, Descuento, Foto_Secundaria1, Foto_Secundaria2, Foto_Secundaria3 FROM productos WHERE ID_Producto=? AND Disponibilidad=1 LIMIT 1");
-            $sql->execute([$id]);
-            $row = $sql->fetch(PDO::FETCH_ASSOC);
-            $Nombre = $row['Nombre'];
-            $Descripcion = $row['Descripcion'];
-            $precio_desc = $Precio - (($Precio*$Descuento)/100);
-            $Foto_Secundaria1 = '../../Image/Productos/Foto_Secundaria1/';
-            $Foto_Secundaria2 = '../../Image/Productos/Foto_Secundaria2/';
-            $Foto_Secundaria3 = '../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3/';
-
-
-            $rutaImg1 = $Foto_Secundaria1 . 'Foto_Secundaria1_'.$id.'.jpg';
-            $rutaImg2 = $Foto_Secundaria2 . 'Foto_Secundaria2_'.$id.'.jpg';
-            $rutaImg3 = $Foto_Secundaria3 . 'Foto_Secundaria3_'.$id.'.jpg';
-
-
-            if(!file_exists($rutaImg1)){
-              $rutaImg1 = 'Image/none.png';
-            }
-            if(!file_exists($rutaImg2)){
-              $rutaImg2 = 'Image/none.png';
-            }
-            if(!file_exists($rutaImg1)){
-              $rutaImg3 = 'Image/none.png';
-            }
-        }
-    }else{
-        echo 'error al procesar la petición';
-        exit;
-    }
-    
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -118,10 +64,20 @@ if($id == '' || $token == ''){
                             </a>
                         </div>
                     </div>
+                    <?php
+                      require_once '../../DAO/ProductoDAO.php';
+                      
+                      $idProd = isset($_GET['id']) ? $_GET['id'] : '';
+
+                      $productoDAO_ver = new ProductoDAO();
+                      $producto = $productoDAO_ver->listarPorIdProducto(intval($idProd));
+                      
+                    ?>
+                    
                     <div class="p1 col-sm-12 col-md-12 col-lg-5">
                         <div class="row">
                             <div class="col-9 col-sm-10">
-                                <h2>MANTA ARTESANAL PARA ABRIGARTE</h2>
+                                <h2><?= $producto->getNombre()?>OLA</h2>
                             </div>
                             <div class="col-3 col-sm-2">
                                 <button class="btn btn-light w-75 "><i class="far fa-heart"></i></button>
@@ -151,7 +107,7 @@ if($id == '' || $token == ''){
                         </div>
                     </div>
             </div>
-
+            
             <div class="row accordion-p">
                 <div class="accordion accordion-flush"  id="accordionFlushExample">
                     <div class="accordion-item" >

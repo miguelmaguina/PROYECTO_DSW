@@ -282,8 +282,7 @@
                     foreach($productos as $producto) {?>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-t-o position-relative m-2">
-                        
-                        <img class="card-img-top" alt="Imagen del producto" src="<?= $pathFoto?>">
+                        <a href="verProducto.php?id=<?= $producto->getID_Producto();?>">
                         <?php
                             $var=$producto->getFoto_Secundaria1();
                             $pathFoto="../../Image/Productos/Foto_Secundaria1/$var";
@@ -291,6 +290,9 @@
                                 $pathFoto="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
                             }
                         ?>
+                        
+                        <img class="card-img-top" alt="Imagen del producto" src="<?= $pathFoto?>">
+              
                         <div class="position-absolute favorito">
                             <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
                         </div>
@@ -312,8 +314,8 @@
                                     ?>% descuento
                                 </small>
                         </div>
-
                     </div>
+                    </a>
                 </div>
             <?php } ?>
             
