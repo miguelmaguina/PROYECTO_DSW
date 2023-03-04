@@ -1,8 +1,8 @@
 <?php
 
 //Librerías
-require "../../Conexion/Conexion.php";
-require "../../Clases/Producto.php";
+//require "../../Conexion/Conexion.php";
+//require "../../Clases/Producto.php";
 
 class ProductoDAO
 {

@@ -151,11 +151,8 @@ if(isset($_SESSION['tipo_usuario'])){
                         '.($vacio==1 ?'<del><small>S/'.round($descuentoActual,2).'</small></del>' : '').'
                         <p class="fs-2">S/'.$producto->getPrecio().' '. ($vacio==1?'<small class="desc">'.$producto->getDescuento().'% descuento</small>':'' ).'</p>
                         <div class="row">
-                            <div class="col-sm-2">
-                                <p>Marca</p>
-                            </div>
-                            <div class="col-sm-10">
-                                <p>'.$emprendimiento->getNombre().'</p>
+                            <div class="col-12">
+                                <p>Marca: '.$emprendimiento->getNombre().'</p>
                             </div>
                         </div>
                         <p>Fecha: '.$valor->getFecha().'</p>

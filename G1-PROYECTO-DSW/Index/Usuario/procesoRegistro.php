@@ -68,6 +68,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // $dni=$_POST["dni"];
     $fecha=date('Y/m/d');
 
+    $clienteDAO=new $CleinteDAO();
+    $id=$clienteDAO->obtenerUltimoId();
+    $id=$id+1;
+
     $archivo_nombre = $_FILES['upload-button']['name'];
     $archivo_tipo = $_FILES['upload-button']['type'];
     //$archivo_tamano = $_FILES['upload-button']['size'];
@@ -75,16 +79,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       
     $archivo_ext = pathinfo($archivo_nombre, PATHINFO_EXTENSION);
     
-    $nuevo_nombre = $usuario.'.'.$archivo_ext;
+    $nuevo_nombre = 'fotoPerfil_'.$id.'.'.$archivo_ext;
     
-
-    $clienteDAO=new ClienteDAO();
 
 if($archivo_nombre!='' || $archivo_nombre!=null){
     if($clienteDAO->verificaEmail($email)==0){
         if($clienteDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
-                if (move_uploaded_file($archivo_tmp, '../../tmp/usuario/'.$nuevo_nombre)) {
+                if (move_uploaded_file($archivo_tmp, '../../Image/Clientes/'.$nuevo_nombre)) {
                     $client=new Cliente();
                     $client->setNombres($nombre);
                     $client->setApellidos($apellido);

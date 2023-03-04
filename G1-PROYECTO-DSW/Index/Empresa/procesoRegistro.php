@@ -70,6 +70,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $fecha=date('Y/m/d');
 
+    $emprendimientoDAO=new EmprendimientoDAO();
+    $id=$emprendimientoDAO->obtenerUltimoId();
+    $id=$id+1;
+
     $archivo_nombre = $_FILES['upload-button']['name'];
     $archivo_tipo = $_FILES['upload-button']['type'];
     //$archivo_tamano = $_FILES['upload-button']['size'];
@@ -77,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       
     $archivo_ext = pathinfo($archivo_nombre, PATHINFO_EXTENSION);
     
-    $nuevo_nombre = $usuario.'.'.$archivo_ext;
+    $nuevo_nombre = 'logo_'.$id.'.'.$archivo_ext;
     
 
     $emprendimientoDAO=new EmprendimientoDAO();
@@ -86,7 +90,7 @@ if($archivo_nombre!='' || $archivo_nombre!=null){
     if($emprendimientoDAO->verificaEmail($email)==0){
         if($emprendimientoDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
-                if (move_uploaded_file($archivo_tmp, '../../tmp/empresa/'.$nuevo_nombre)) {
+                if (move_uploaded_file($archivo_tmp, '../../Image/Emprendimiento/'.$nuevo_nombre)) {
                     $empren=new Emprendimiento();
                     $empren->setNombre($nombre);
                     $empren->setUsuario($usuario);
