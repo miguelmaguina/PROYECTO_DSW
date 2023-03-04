@@ -243,9 +243,9 @@ class EmprendimientoDAO {
             if(mysqli_stmt_fetch($stmt)){
                 //$_SESSION['user_id']=$row['ID_Emp$ID_Emprendimiento'];
                 //echo "el id es:".$ID_Emprendimiento." ";
-                $_SESSION['id_usuario_e'] = $ID_Emprendimiento;
+                $_SESSION['id_e'] = $ID_Emprendimiento;
                 $_SESSION['nombre_e'] = $Nombre;
-                $_SESSION['nombre_e'] = $Usuario;
+                $_SESSION['usuario_e'] = $Usuario;
                 $_SESSION['tipo_usuario'] = 'emprendimiento';
                 $r=1;
             }// }else{

@@ -1,10 +1,17 @@
 <?php
 session_start();
-if(isset($_SESSION['nombre_c'])){
-    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
-}else{
-    echo "sesion no iniciada";
+$tipo=0;
+
+if(isset($_SESSION['tipo_usuario'])){
+    if($_SESSION['tipo_usuario']== 'cliente'){
+        header("Location: ../index.php");
+        exit();
+    }else{
+        header("Location: ../Empresa/indexEmpresa.php");
+        exit();
+    }
 }
+
 //session_destroy();
 //session_unset();
 

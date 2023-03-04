@@ -4,6 +4,15 @@ session_start();
 // $_SESSION['nombre_c'] = null;
 // $_SESSION['nombre_c'] = null;
 // $_SESSION['tipo_usuario'] = null;
+if(isset($_SESSION['tipo_usuario'])){
+    if($_SESSION['tipo_usuario']== 'emprendimiento'){
+        header("Location: ../Empresa/indexEmpresa.php");
+        exit();
+    }else{
+        header("Location: ../index.php");
+        exit();
+    }
+}
 
 require '../../Conexion/Conexion.php';
 require '../../Clases/Cliente.php';
@@ -13,20 +22,6 @@ require '../../DAO/ClienteDAO.php';
 
 require 'procesoIniciarSesion.php';
 
-if(isset($_SESSION['nombre_c'])){
-    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
-}else{
-    echo "sesion no iniciada";
-}
-
-// session_destroy();
-// session_unset();
-
-// if(isset($_SESSION['nombre_c'])){
-//     echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
-// }else{
-//     echo "sesion no iniciada";
-// }
 
 
 ?>

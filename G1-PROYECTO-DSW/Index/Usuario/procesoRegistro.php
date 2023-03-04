@@ -80,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $clienteDAO=new ClienteDAO();
 
+if($archivo_nombre=='' || $archivo_nombre==null){
     if($clienteDAO->verificaEmail($email)==0){
         if($clienteDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
@@ -96,7 +97,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $client->setFecha_Creacion($fecha);
                     $client->setFoto_Perfil($nuevo_nombre);
                     $clienteDAO->insert($client);
-                    exito("Cliente registrado exitosamente");
+                    exito("Registrado exitosamente");
+                    header("Location: iniciarSesion.php");
+                    exit();
                 } else {
                     peligro("Hubo un error al subir la imagen, vuelva a intentarlo");
                 }
@@ -108,8 +111,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             alerta("El usuario ya existe");
         }
     }else{
-        alerta("Email ya registrado");
+        alerta("Email ya registrado ");
     }
+}else{
+    alerta("Se requiere su foto");
+}
 
 }
 

@@ -1,4 +1,17 @@
 <?php
+
+session_start();
+
+if(isset($_SESSION['tipo_usuario'])){
+    if($_SESSION['tipo_usuario']== 'cliente'){
+        header("Location: ../index.php");
+        exit();
+    }
+}else{
+    header("Location: ../Usuario/iniciar.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
