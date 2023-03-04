@@ -23,7 +23,7 @@ include '../../Conexion/Conexion.php';
         <div class="container my-5 text-secondary">
             <div class="row">
                 <div class="col-12 text-center">
-                    <img class="img-fluid" id="chosen-image" src="../../Image/login-register/login-icon.svg" alt="login-icon" style="max-height: 200px; object-fit:cover;"/>
+                    <img class="img-fluid" id="chosen-image" src="../../Image/nvoProd.png" alt="login-icon" style="max-height: 200px; object-fit:cover;"/>
                         
                 </div>
             </div>
@@ -78,7 +78,7 @@ include '../../Conexion/Conexion.php';
                             <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="dscto" name="dscto" maxlength="6" required> <label for="floatingDscto">Descuento *</label></div>
                         </div>
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" maxlength="10" required> <label for="floatingFecha">Fecha *</label></div>
+                            <div class="form-floating"> <input type="date" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" required> <label for="floatingFecha">Fecha *</label></div>
                         </div>
                     </div>
 
