@@ -211,12 +211,12 @@ $reporteDAO = new ReporteDAO();
                 <div class="contenedor-grafico">
                 <div class="card">
                    <div class="card-body">
-                      <h5 class="card-title">Bar Chart</h5>
+                      <h5 class="card-title">Productos más deseados</h5>
                       <div id="barChart1"></div>
                       <script>document.addEventListener("DOMContentLoaded", () => {
                          new ApexCharts(document.querySelector("#barChart1"), {
                            series: [{
-                             data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+                             data: <?php echo json_encode($reporteDAO->getArrayNroProductosPopulares()); ?>,
                            }],
                            chart: {
                              type: 'bar',
@@ -232,9 +232,7 @@ $reporteDAO = new ReporteDAO();
                              enabled: false
                            },
                            xaxis: {
-                             categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                               'United States', 'China', 'Germany'
-                             ],
+                              categories: <?php echo json_encode($reporteDAO->getArrayProductosPopulares()); ?>,
                            }
                          }).render();
                          });
@@ -250,7 +248,7 @@ $reporteDAO = new ReporteDAO();
                 <div class="contenedor-grafico">
                     <div class="card">
                         <div class="card-body">
-                           <h5 class="card-title">Bar CHart</h5>
+                           <h5 class="card-title">Productos con más reseñas</h5>
                            <canvas id="barChart" style="max-height: 400px;"></canvas>
                            <script>document.addEventListener("DOMContentLoaded", () => {
                               new Chart(document.querySelector('#barChart'), {

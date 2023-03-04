@@ -223,9 +223,73 @@ class ReporteDAO {
         return $nroDeProforma;
     }
 
-/*
+    public function getArrayProductosPopulares(){
+        $ArrayProductosPopulares;
+        $ArrayNroDeProductosPopulares;
+        
+        $query = "  SELECT p.Nombre AS Producto, COALESCE(COUNT(lf.ID_Lista_Favoritos), 0) AS VecesFavorito
+                    FROM Producto p
+                    LEFT JOIN Lista_Favoritos lf ON p.ID_Producto = lf.ID_Producto
+                    WHERE p.ID_Emprendimiento = {$_SESSION['id_e']}
+                    GROUP BY p.Nombre
+                    ORDER BY COALESCE(COUNT(lf.ID_Lista_Favoritos), 0) DESC, p.Nombre ASC
+                    LIMIT 5";
 
-*/
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Producto, $VecesFavorito);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayProductosPopulares [] = $Producto;
+                $ArrayNroDeProductosPopulares[] = $VecesFavorito;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de productos populares " . $e->getMessage();
+            $ArrayProductosPopulares = null;
+            $ArrayNroDeProductosPopulares = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayProductosPopulares;
+    }
+
+    public function getArrayNroProductosPopulares(){
+        $ArrayProductosPopulares;
+        $ArrayNroDeProductosPopulares;
+        
+        $query = "  SELECT p.Nombre AS Producto, COALESCE(COUNT(lf.ID_Lista_Favoritos), 0) AS VecesFavorito
+                    FROM Producto p
+                    LEFT JOIN Lista_Favoritos lf ON p.ID_Producto = lf.ID_Producto
+                    WHERE p.ID_Emprendimiento = {$_SESSION['id_e']}
+                    GROUP BY p.Nombre
+                    ORDER BY COALESCE(COUNT(lf.ID_Lista_Favoritos), 0) DESC, p.Nombre ASC
+                    LIMIT 5";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $Producto, $VecesFavorito);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayProductosPopulares [] = $Producto;
+                $ArrayNroDeProductosPopulares[] = $VecesFavorito;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de productos populares " . $e->getMessage();
+            $ArrayProductosPopulares = null;
+            $ArrayNroDeProductosPopulares = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayNroDeProductosPopulares;
+    }
 
 }
 
