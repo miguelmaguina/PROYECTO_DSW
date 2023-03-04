@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['tipo_usuario'])){
-    if($_SESSION['tipo_usuario']== 'emprendimiento'){
+    if($_SESSION['tipo_usuario']== 'cliente'){
         header("Location: ../Empresa/indexEmpresa.php");
         exit();
     }else{

@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['tipo_usuario'])){
-    if($_SESSION['tipo_usuario']== 'cliente'){
+    if($_SESSION['tipo_usuario']== 'emprendimiento'){
         header("Location: ../index.php");
         exit();
     }else{
