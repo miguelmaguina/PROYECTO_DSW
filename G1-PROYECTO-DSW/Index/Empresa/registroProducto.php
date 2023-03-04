@@ -44,15 +44,72 @@ include '../../Conexion/Conexion.php';
                             <div class="form-floating"> <input type="text" class="form-control" id="floatingDesc" placeholder="descripcion" name="descripcion" maxlength="500" required> <label for="floatingDesc">Descripción *</label></div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDNI" placeholder="DNI" name="dni" maxlength="12" required> <label for="floatingDNI">DNI *</label></div>
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>
+                                </select>
+                                <label for="departamento">Categoria</label>
+                            </div>
                         </div>
+
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingDepartamento" placeholder="Departamento" name="departamento" maxlength="20" required> <label for="floatingDepartamento">Departamento *</label></div>
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <!--<option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                </select>
+                                <label for="departamento">Subcategoria</label>
+                            </div>
                         </div>
                     </div>
+
                     <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="dscto" name="dscto" maxlength="6" required> <label for="floatingDscto">Descuento *</label></div>
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" maxlength="10" required> <label for="floatingFecha">Fecha *</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <!--<option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                </select>
+                                <label for="departamento">Emprendimiento</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="6" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <p>Colocar fotos del nuevo producto</p>
+                        </div>
+                    </div>
+
+                    <!--Sección de fotos-->
+                    <div class="row">
+
+                        <!--Foto 1-->
                         <div class="col-md-6 mt-2">
                             <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
                             <label class="label-button" for="upload-button">
@@ -60,40 +117,34 @@ include '../../Conexion/Conexion.php';
                             </label>
                         </div>
                         <div class="col-md-6 mt-2">
-                            
+                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                        </div>
+
+                        <!--Foto 2-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <label class="label-button" for="upload-button">
+                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                        </div>
+
+                        <!--Foto 3-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <label class="label-button" for="upload-button">
+                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
                             <figcaption class="text-center text-truncate" id="file-name"></figcaption>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingUsuario" placeholder="Usuario" name="usuario" maxlength="20" required> <label for="floatingUsuario">Usuario *</label></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mt-2">
-                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" maxlength="20" required> <label for="floatingPassword">Ingrese su contraseña *</label></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mt-2">
-                            <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="20" name="password2" required> <label for="floatingPassword">Confirme su contraseña *</label></div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-start mt-1">
-                        <div class="d-flex align-items-center gap-1">
-                        <input class="form-check-input" type="checkbox" required/>
-                        <div class="pt-1" style="font-size: 0.9rem"><small>Acepto los términos y condiciones</small></div>
-                        </div>
-                    </div>
+
                     <div >
                         <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Registrar" name="submit">
-                    </div>
-                    
-                    <div id="btn-cambio2" class="d-flex gap-1 justify-content-center mt-1">
-                        <div>¿Tienes una cuenta?</div>
-                        <a href="iniciarSesion.php" class="text-decoration-none text-info fw-semibold"
-                        >Iniciar Sesión</a
-                        >
                     </div>
                 </form>
                     
@@ -102,8 +153,6 @@ include '../../Conexion/Conexion.php';
         </div>
         </div>
     </div>
-
-      <a href="#" class="btn-regresar"></a>
 
     <script>
     let uploadButton = document.getElementById("upload-button");
