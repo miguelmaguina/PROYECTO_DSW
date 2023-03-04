@@ -57,8 +57,8 @@ class Lista_FavoritosDAO {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             //$ID_Lista_Favoritos=$favorito->getIdListaFavoritos(); //i
-            $ID_Cliente=$favorito->getIdCliente(); //i
-            $ID_Producto=$favorito->getIdProducto(); //i
+            $ID_Cliente=$favorito->getID_Cliente(); //i
+            $ID_Producto=$favorito->getID_Producto(); //i
             $Fecha=$favorito->getFecha(); //s
 
             mysqli_stmt_bind_param($stmt, "iis", $ID_Cliente, $ID_Producto, $Fecha);
@@ -79,11 +79,11 @@ class Lista_FavoritosDAO {
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            $ID_Cliente=$favorito->getIdCliente(); //i
-            $ID_Producto=$favorito->getIdProducto(); //i
+            $ID_Cliente=$favorito->getID_Cliente(); //i
+            $ID_Producto=$favorito->getID_Producto(); //i
             $Fecha=$favorito->getFecha(); //s
 
-            $ID_Lista_Favoritos->getID_Lista_Favoritos();//i            
+            $ID_Lista_Favoritos=$favorito->getID_Lista_Favoritos();//i            
   
             mysqli_stmt_bind_param($stmt, "iisi", $ID_Cliente, $ID_Producto, $Fecha);
             mysqli_stmt_execute($stmt);
@@ -124,9 +124,9 @@ class Lista_FavoritosDAO {
             if (mysqli_stmt_fetch($stmt)) {
                 $favorito = new Lista_Favoritos();
 
-                $ID_Lista_Favoritos = $favorito->getIdListaFavoritos(); //i
-                $ID_Cliente=$favorito->getIdCliente(); //i
-                $ID_Producto=$favorito->getIdProducto(); //i
+                $ID_Lista_Favoritos = $favorito->getID_Lista_Favoritos(); //i
+                $ID_Cliente=$favorito->getID_Cliente(); //i
+                $ID_Producto=$favorito->getId_Producto(); //i
                 $Fecha=$favorito->getFecha(); //s
             }
 

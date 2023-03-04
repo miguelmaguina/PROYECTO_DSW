@@ -1,7 +1,7 @@
 <?php
 
-//include "../Conexion/Conexion.php";
-//include "../Clases/Emprendimiento.php";
+require_once "../../Conexion/Conexion.php";
+require_once "../../Clases/Emprendimiento.php";
 
 class EmprendimientoDAO {
 
@@ -160,20 +160,20 @@ class EmprendimientoDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $emprendimiento = new Emprendimiento();
-                $ID_Emprendimiento = $emprendimiento->getID_Emprendimiento(); //i
-                $Nombre = $emprendimiento->getNombre(); //s
-                $Usuario = $emprendimiento->getUsuario(); //s
-                $Email = $emprendimiento->getEmail(); //s
-                $Celular = $emprendimiento->getCelular(); //s
-                $Contrasena = $emprendimiento->getContrasena(); //s
-                $Departamento = $emprendimiento->getDepartamento(); //s
-                $Direccion = $emprendimiento->getDireccion(); //s
-                $Logo = $emprendimiento->getLogo(); //s
-                $Fecha_Creacion = $emprendimiento->getFecha_Creacion(); //s
-                $URL_Web = $emprendimiento->getURL_Web(); //s
-                $URL_Facebook = $emprendimiento->getURL_Facebook(); //s
-                $URL_Instagram = $emprendimiento->getURL_Instagram(); //s
-                $URL_Otros = $emprendimiento->getURL_Otros(); //s
+                $emprendimiento->setID_Emprendimiento($ID_Emprendimiento);
+                $emprendimiento->setNombre($Nombre);
+                $emprendimiento->setUsuario($Usuario);
+                $emprendimiento->setEmail($Email);
+                $emprendimiento->setCelular($Celular);
+                $emprendimiento->setContrasena($Contrasena);
+                $emprendimiento->setDepartamento($Departamento);
+                $emprendimiento->setDireccion($Direccion);
+                $emprendimiento->setLogo($Logo);
+                $emprendimiento->setFecha_Creacion($Fecha_Creacion);
+                $emprendimiento->setURL_Web($URL_Web);
+                $emprendimiento->setURL_Facebook($URL_Facebook);
+                $emprendimiento->setURL_Instagram($URL_Instagram);
+                $emprendimiento->setURL_Otros($URL_Otros);
             }
 
         } catch (Exception $e) {

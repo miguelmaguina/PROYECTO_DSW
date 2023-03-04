@@ -163,19 +163,20 @@ class ProductoDAO
             if (mysqli_stmt_fetch($stmt)) {
                 $producto = new Producto();
 
-                $ID_Producto = $producto->getID_Producto(); //i
-                $Nombre=$producto->getNombre(); //s
-                $Precio=$producto->getPrecio(); //d
-                $Descripcion=$producto->getDescripcion(); //s
-                $ID_Categoria=$producto->getID_Categoria(); //i
-                $ID_Subcategoria=$producto->getID_Subcategoria(); //i
-                $Descuento=$producto->getDescuento(); //d
-                $Fecha=$producto->getFecha(); //s
-                $ID_Emprendimiento=$producto->getID_Emprendimiento(); //i
-                $Disponibilidad=$producto->getDisponibilidad(); //i
-                $Foto_Secundaria1=$producto->getFoto_Secundaria1(); //s
-                $Foto_Secundaria2=$producto->getFoto_Secundaria2(); //s
-                $Foto_Secundaria3=$producto->getFoto_Secundaria3(); //s
+
+                $producto->setID_Producto($ID_Producto);
+                $producto->setNombre($Nombre);
+                $producto->setPrecio($Precio);
+                $producto->setDescripcion($Descripcion);
+                $producto->setID_Categoria($ID_Categoria);
+                $producto->setID_Subcategoria($ID_Subcategoria);
+                $producto->setDescuento($Descuento);
+                $producto->setFecha($Fecha);
+                $producto->setID_Emprendimiento($ID_Emprendimiento);
+                $producto->setDisponibilidad($Disponibilidad);
+                $producto->setFoto_Secundaria1($Foto_Secundaria1);
+                $producto->setFoto_Secundaria2($Foto_Secundaria2);
+                $producto->setFoto_Secundaria3($Foto_Secundaria3);
             }
 
         } catch (Exception $e) {

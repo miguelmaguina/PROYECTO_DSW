@@ -103,6 +103,16 @@
     color: var(--colorblanco);
   }
 
+  .botonreview-izq{
+    background-color: var(--colorgreen2);
+    color: var(--colorblanco);
+  }
+  .botonreview:hover{
+    background-color: var(--colorgreen2hover);
+    color: var(--colorblanco);
+  }
+
+
   h2{
     color: var(--colorgreen1);
     font-weight: bold;

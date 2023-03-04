@@ -22,35 +22,59 @@
 </head>
 <body>
     <?php  require 'header.php' ?>
-      
+    <?php
+      require_once '../../DAO/ProductoDAO.php';
+    
+      $idP = isset($_GET['id']);
+
+      $productoDAO_ver = new ProductoDAO();
+      $producto = $productoDAO_ver->listarPorIdProducto($idP);
+    ?> 
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
+                  <div class="ms-5 col-sm-10 col-md-12 col-lg-6 pl-2 border d-flex align-items-center justify-content-center">
+                      <div id="carouselExampleIndicators" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                          <?php
+                                $var1=$producto->getFoto_Secundaria1();
+                                $var2=$producto->getFoto_Secundaria2();
+                                $var3=$producto->getFoto_Secundaria3();
 
-                    <div class=" col-sm-12 col-md-12 col-lg-6 border boder-5  d-flex align-items-center justify-content-center">
-                        <div id="carouselExampleIndicators" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                                $pathFoto1="../../Image/Productos/Foto_Secundaria1/$var1";
+                                $pathFoto2="../../Image/Productos/Foto_Secundaria2/$var2";
+                                $pathFoto3="../../Image/Productos/Foto_Secundaria3/$var3";
 
+                                if(!file_exists($pathFoto1)){
+                                    $pathFoto1="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+                                }
+                                if(!file_exists($pathFoto2)){
+                                    $pathFoto2="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_none.png";  
+                                }
+                                if(!file_exists($pathFoto3)){
+                                    $pathFoto3="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_none.png";  
+                                }
+                            ?>
                             <div class="carousel-inner mx-auto">
                                 <div class="carousel-item carrusel-img active">
-                                  <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+                                  <img src="<?= $pathFoto1?>" class="d-block img-fluid" alt="Imagen 1">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+                                    <img src="<?= $pathFoto2?>" class="d-block img-fluid" alt="Imagen 2">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+                                    <img src="<?= $pathFoto3?>" class="d-block img-fluid" alt="Imagen 3">
                                 </div>
                             </div>
 
                             <ol class="carousel-indicators">
                               <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="<?= $pathFoto1?>" alt="">
                               </li>
                               <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="<?= $pathFoto2?>" alt="">
                               </li>
                               <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="<?= $pathFoto3?>" alt="">
                               </li>
                             </ol>
                             
@@ -63,47 +87,69 @@
                               <span class="visually-hidden">Siguiente</span>
                             </a>
                         </div>
-                    </div>
-                    <?php
-                      require_once '../../DAO/ProductoDAO.php';
-                      
-                      $idProd = isset($_GET['id']) ? $_GET['id'] : '';
-
-                      $productoDAO_ver = new ProductoDAO();
-                      $producto = $productoDAO_ver->listarPorIdProducto(intval($idProd));
-                      
-                    ?>
+                      </div>
                     
+                                        
                     <div class="p1 col-sm-12 col-md-12 col-lg-5">
-                        <div class="row">
+                        <div class="row mb-2">
                             <div class="col-9 col-sm-10">
-                                <h2><?= $producto->getNombre()?>OLA</h2>
+                                <h2><?php echo $producto->getNombre();?></h2>
                             </div>
                             <div class="col-3 col-sm-2">
                                 <button class="btn btn-light w-75 "><i class="far fa-heart"></i></button>
                             </div>
                         </div>
-                        <del><small>S/333.00</small></del>
-                        <p class="fs-2">S/300.00  <small class="desc">10% descuento</small> </p>
+                        <del><medium>S/<?= number_format($producto->getPrecio(),2,'.',','); ?></medium></del>
+                        <p class="fs-2 mt-2">
+                          S/<?= 
+                              $precioBase=$producto->getPrecio();
+                              $desc=$producto->getDescuento();
+                              $precioFinal=number_format($desc*$precioBase);
+                              number_format($precioFinal,2,'.',','); 
+                            ?>  
+                          <small class="desc">
+                            <?= 
+                              $num=$producto->getDescuento();
+                              number_format($num*100);
+                            ?>% descuento
+                          </small> 
+                        </p>
+                        <?php
+                          require_once '../../DAO/EmprendimientoDAO.php';
+
+                          $idEmp = $producto->getID_Emprendimiento();
+
+                          $emprendimientoDAO_ver = new EmprendimientoDAO();
+                          $emprendimiento = $emprendimientoDAO_ver->listarPorIdEmprendimiento($idEmp);
+                        ?>
                         <div class="row">
-                            <div class="col-sm-2">
-                                <p>Marca</p>
-                            </div>
-                            <div class="col-sm-10">
-                                <p>Mantas ecológicas del Perú (Nombre largo)</p>
-                            </div>
+                          <div class="col-sm-2">
+                            <p>Marca:</p>
+                          </div>
+                          <div class="col-sm-10">
+                            <p> <?php echo $emprendimiento->getNombre(); ?> </p>
+                          </div>
+                       
+                          <div class="col-sm-2">
+                            <p>Dirección:</p>
+                          </div>
+                          <div class="col-sm-10">
+                            <p> <?php echo $emprendimiento->getDireccion(); ?> </p>
+                          </div>
                         </div>
-                        <p>Ubicación: Lima</p>
-                        <div class="row mt-5">
-                            <div class="col-sm-10">
-                                <button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>
-                                <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 " onclick="disable(this)">
-                                    Dejar Review
-                                </button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
-                            </div>
+                        <div class="row mt-4">
+                          <div class="col-sm-10">
+                            <button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>
+                            <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 mt-2" onclick="disable(this)">
+                              Dejar Review
+                            </button>
+                            <p class="text-end text-lowercase fst-italic fw-light lh-1 mt-2">
+                              *Para poder dejar una review primero debe hacer clik en el boton de "Dejar Review", posterior a ello el emprendimiento le dara permiso para comentar.
+                            </p>
+                          </div>
+                          <div class="col-sm-2">
+                            <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
+                          </div>
                         </div>
                     </div>
             </div>
@@ -139,9 +185,17 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10">
               <div class="card text-dark">
+                
                 <div class="card-body p-4">
                   <h4 class="mb-0">Reviews</h4>
                   <p class="fw-light mb-4 pb-2">Últimos comentarios de los usuarios</p>
+
+                  <?php 
+                    require_once '../../DAO/ReviewDAO.php';
+                    $reviewDAO_Index = new ReviewDAO();
+                    $reviews = $reviewDAO_Index->listarPorIdReview(1);
+                    foreach($reviews as $review) {
+                  ?>
 
                   <div class="d-flex flex-start">
                     <img class="rounded-circle shadow-1-strong me-3"
@@ -164,31 +218,7 @@
                 </div>
 
                 <hr class="my-0" />
-
-                <div class="card-body p-4">
-                  <div class="d-flex flex-start">
-                    <img class="rounded-circle shadow-1-strong me-3"
-                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
-                    <div>
-                      <h6 class="fw-bold mb-1">Oscar Perez</h6>
-                      <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">
-                          Marzo 01, 2023
-                        </p>
-                      </div>
-                      <p class="mb-0">
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It
-                        has roots in a piece of classical Latin literature from 45 BC, making it
-                        over 2000 years old. Richard McClintock, a Latin professor at
-                        Hampden-Sydney College in Virginia, looked up one of the more obscure
-                        Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                        the cites.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <hr class="my-0" style="height: 1px;" />
+              <?php } ?>             
 
                 <div class="card-body p-4">
                   <div class="d-flex flex-start">
