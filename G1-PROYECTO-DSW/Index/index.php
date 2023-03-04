@@ -1,39 +1,21 @@
 <?php
 session_start();
+
 if(isset($_SESSION['nombre_c'])){
-    echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
+  echo 'su nombre de usuario es: '.$_SESSION['nombre_c']." ";
 }else{
-    echo "sesion no iniciada";
+  echo "sesion no iniciada";
 }
-//session_destroy();
-//session_unset();
-
-require '../Conexion/Conexion.php';
-require 'Components/mensaje.php';
-
-if(isset($_POST["submit1"])){
-    require '../Clases/Cliente.php';
-    require '../DAO/ClienteDAO.php';
-    require 'Usuario/procesoIniciarSesion.php';
-}else{
-    require '../Clases/Emprendimiento.php';
-    require '../DAO/EmprendimientoDAO.php';
-    require 'Empresa/procesoIniciarSesion.php';
-}
-
-
-
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-
+    <title>Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Estilos/styleIndex.css?v=<?php echo time(); ?>">
@@ -53,6 +35,9 @@ if(isset($_POST["submit1"])){
 	</script>
 </head>
 <body>
+
+<header>
+
 <nav class="navbar p-3 navbar-expand-md">
         <div class="container-fluid col">
             <div class="d-flex align-items-center justify-content-between"> 
@@ -67,7 +52,7 @@ if(isset($_POST["submit1"])){
             <div class="mavbar-btand collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="Usuario/inicio.php">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Nosotros</a>
@@ -120,128 +105,188 @@ if(isset($_POST["submit1"])){
              </nav>
         </div>
     </nav>
-</header>    
+</header>  
 
-
-<div class="portada1 container-fluid py-1 d-flex align-items-center justify-content-center">
-        <div class="row d-flex align-items-center">
+    
+<div class="portada1 container-fluid py-1 d-flex align-items-center">
+        <div class="row">
             <div class="contenedor col-lg-9 mx-auto text-center">
-                <p class="title-1 fs-2 h3" style="color: white;">Crea una cuenta en Hallpa</p><p class="title-2 fs-1 fw-bold h2" style="color: #035941;">¿Eres un cliente o emprendimiento?</p>
-                <p class="descripcion">Si eres un cliente podrás acceder a nuestra tienda online y realizar un recorrido por todos los productos que los emprendedores tienen para ti. Además de probar funciones que te ayudarán a contactarlos para que puedas adquirir alguno de sus productos.</p><p class="descripcion">En cambio, si eres emprendedor podrás crear una sección especial para ofertar tus productos, además de poder contar con herramientas para agilizar tus ventas y mejorar la relación con tus potenciales clientes.</p>
-                <div class="btn-group" id="login-btn-user">
-                <a href="#" class="btn btn-izq btn-block mx-4 rounded fw-bold">¡Soy cliente!</a>
+                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 fw-bold h2" style="color: #035941;">por comunidades nativas del Perú</p>
+                <p class="descripcion">Déjese sorprender por la belleza y autenticidad de los productos hechos a mano por las comunidades nativas peruanas. Desde ropa tejida con técnicas tradicionales hasta joyas y objetos de decoración únicos, cada uno de nuestros productos cuenta con una historia y una cultura detrás. Al comprar en nuestro e-commerce, no solo estará llevándose a casa un objeto hermoso, sino que también estará apoyando a las comunidades nativas y preservando sus tradiciones. ¡Descubra la belleza de las comunidades nativas peruanas hoy mismo!</p>
+                <div class="btn-group">
+                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Iniciar!</a>
                 </div>
-                <div class="btn-group" id="login-btn-emprendimiento">
-                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Soy emprendedor!</a>
-                </div>
-                <!-- <div id="login-btn">
-                    <button class="btn1">login</button>
-                    <i class="far fa-user"></i>
-                </div> -->
             </div>
         </div>
     </div>
 
-<div class="login-form-container inicio-usuario">
 
-    <span id="close-login-form-usuario" class="fas fa-times"></span>
-        
-        <div class="content contenedor-newproduct content-sign-in">
-        
-            <form class="mx-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                <div class="text-secondary" >
-                    <div class="d-flex justify-content-center">
-                        <img src="../Image/login-register/login-icon.svg" alt="login-icon" style="height: 7rem"/>
-                    </div>
-                    <div class="text-center fs-1 fw-bold">Inicio Usuario</div>
-                        <div class="input-group mt-4">
-                        
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email *</label></div>
+
+    <!----------------------- PRODUCTOS MAS VENDIDOS  ------------------------------->
+    <div class="section-p container-fluid py-1">
+        <div class="contenedor-p">
+            <div class="row">
+                <div class="col-md-11 mx-auto text-center">
+                    <h2 class="">Productos más vendidos</h2>
+
+                    <div class="carousel">
+                        <div class="carousel__contenedor">
+                            <button aria-label="Anterior" class="carousel__anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <div class="carousel__lista">
+                                
+                                <div class="card card-p mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
+                                        <p class="card-text">Descripción del producto 3.</p>
+                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="card card-p mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
+                                        <p class="card-text">Descripción del producto 3.</p>
+                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
+                                    </div>
+                                </div>
+
+                                <div class="card card-p mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
+                                        <p class="card-text">Descripción del producto 3.</p>
+                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
+                                    </div>
+                                </div>
+
+                                <div class="card card-p mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
+                                        <p class="card-text">Descripción del producto 3.</p>
+                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <button aria-label="Siguiente" class="carousel__siguiente">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
-                        <div class="input-group mt-1">
-                        
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Contraseña *</label></div>
+
+                        <div role="tablist" class="carousel__indicadores"></div>
                     </div>
-                    <div class="d-flex justify-content-around mt-1">
-                        <div class="d-flex align-items-center gap-1">
-                        <input class="form-check-input" type="checkbox" />
-                        <div class="pt-1" style="font-size: 0.9rem">Remember me</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Sección de opiniones -->
+
+
+    <div class="section-p container-fluid py-1">
+        <div class="contenedor-p">
+            <div class="row">
+                <div class="col-md-11 mx-auto text-center">
+                    <h2 class="">Opiniones</h2>
+
+                    <div class="carousel">
+                        <div class="carousel__contenedor">
+                            <button aria-label="Anterior" class="carousel__anterior anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <div class="carousel__lista lista">
+                                
+
+                                <div class="card card-o mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Artesania</h5>
+                                        <p class="card-text">Descripción de la opinion</p>
+                                        <div class="contenido-img-span">
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card card-o mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Artesania</h5>
+                                        <p class="card-text">Descripción de la opinion</p>
+                                        <div class="contenido-img-span">
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card card-o mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Artesania</h5>
+                                        <p class="card-text">Descripción de la opinion</p>
+                                        <div class="contenido-img-span">
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card card-o mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Artesania</h5>
+                                        <p class="card-text">Descripción de la opinion</p>
+                                        <div class="contenido-img-span">
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="card card-o mb-3">
+                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Artesania</h5>
+                                        <p class="card-text">Descripción de la opinion</p>
+                                        <div class="contenido-img-span">
+                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <button aria-label="Siguiente" class="carousel__siguiente siguiente">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
-                        <div class="pt-1">
-                        <a
-                            href="#"
-                            class="text-decoration-none text-info fw-semibold fst-italic"
-                            style="font-size: 0.9rem"
-                            >¿Olvidaste tu contraseña?</a>
-                        </div>
-                    </div>
-                    <div >
-                        <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Iniciar Sesión" name="submit1">
+
+                        <div role="tablist" class="carousel__indicadores indicadores"></div>
                     </div>
                     
-                    <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
-                        <div>¿No tienes una cuenta?</div>
-                        <a href="Usuario/registroUsuario.php" class="text-decoration-none text-info fw-semibold"
-                        >Regístrate</a>
-                    </div>
                 </div>
-            </form>
+            </div>
         </div>
+    </div>
 
-</div>
+    <!-- Sección beneficios -->
 
-<div class="login-form-container inicio-emprendimiento">
 
-    <span id="close-login-form-emprendimiento" class="fas fa-times"></span>
-        
-        <div class="content contenedor-newproduct content-sign-in">
-        
-            <form class="mx-auto" class="mx-auto" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                <div class="text-secondary" >
-                    <div class="d-flex justify-content-center">
-                        <img src="../Image/hallpa.png" alt="login-icon" style="height: 7rem"/>
-                    </div>
-                    <div class="text-center fs-2 fw-bold">Inicio Emprendimiento</div>
-                        <div class="input-group mt-4">
-                        
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingEmail" placeholder="Email" name="email" required> <label for="floatingEmail">Email</label></div>
-                        </div>
-                        <div class="input-group mt-1">
-                        
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Password</label></div>
-                    </div>
-                    <div class="d-flex justify-content-around mt-1">
-                        <div class="d-flex align-items-center gap-1">
-                        <input class="form-check-input" type="checkbox" />
-                        <div class="pt-1" style="font-size: 0.9rem">Remember me</div>
-                        </div>
-                        <div class="pt-1">
-                        <a
-                            href="#"
-                            class="text-decoration-none text-info fw-semibold fst-italic"
-                            style="font-size: 0.9rem"
-                            >Forgot your password?</a>
-                        </div>
-                    </div>
-                    <div >
-                        <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Iniciar Sesión" name="submit2">
-                    </div>
-                    
-                    <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
-                        <div>¿No tienes una cuenta?</div>
-                        <a href="Empresa/registroNuevoEmprendimiento.php" class="text-decoration-none text-info fw-semibold"
-                        >Registrar</a
-                        >
-                    </div>
-                </div>
-            </form>
+    <div class="section-p container-fluid py-1">
+        <div class="contenedor-p text-center">
+            <h2>AQUI VA LOS BENEFICIOS</h2>
         </div>
+    </div>
 
-</div>
-
-
-
- <!-- Footer -->
+    
+    <!-- Footer -->
     
  <footer class="pie-pagina">
         <div class="grupo-1">
@@ -273,30 +318,15 @@ if(isset($_POST["submit1"])){
         </div>
     </footer>
 
-    <script>
-        document.querySelector('#login-btn-user').onclick = () =>{
-        document.querySelector('.inicio-usuario').classList.toggle('active');
-        }
-
-        document.querySelector('#close-login-form-usuario').onclick = () =>{
-        document.querySelector('.inicio-usuario').classList.remove('active');
-        }
-        document.querySelector('#login-btn-emprendimiento').onclick = () =>{
-        document.querySelector('.inicio-emprendimiento').classList.toggle('active');
-        }
-
-        document.querySelector('#close-login-form-emprendimiento').onclick = () =>{
-        document.querySelector('.inicio-emprendimiento').classList.remove('active');
-        }
-    </script>
-
-    <script src="../js/index.js"></script>
-    <script src="../js/carousel.js"></script>
+    <script src="../js/index.js?v=<?php echo time(); ?>"></script>
+    <script src="../js/carousel.js?v=<?php echo time(); ?>"></script>
     <!-- Scripts de Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    
+
 
 </body>
 </html>
