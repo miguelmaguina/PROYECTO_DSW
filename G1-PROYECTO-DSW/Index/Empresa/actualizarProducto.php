@@ -77,90 +77,141 @@ require '../../Conexion/Conexion.php';
 
 
 
-    <div class="section-newproduct container-fluid py-5">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="contenedor-newproduct">
-            
-            
-                    <div class="container my-5">
-                        <h2 class="text-center mb-4">Actualización de producto</h2>
-                        <div class="row">
-                            <form>
-                            <div class="row">
-                                <div class="col-md-6  mb-3">
-                                    <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" required> <label for="floatingNombre">Nombre *</label></div>
-                                </div>
-                                <div class="col-md-6  mb-3">
-                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingPrecio" placeholder="precio" name="precio" required> <label for="floatingPrecio">Precio *</label></div>
-                                </div>
-                            </div>
-
-                        <div class="row">
-                            <div class="col-md-6  mb-3">
-                                <div class="form-floating">
-                                    <select class="form-select" id="categoria" aria-label="Floating label select example">
-                                    <option selected value="ejemplo1">Seleccione una opción</option>
-                                    <option value="ejemplo2">Hogar y Decoración</option>
-                                    <option value="ejemplo3">Bebidas</option>
-                                    <option value="ejemplo4">Alimentos</option>
-                                    <option value="ejemplo5">Moda y Accesorios</option>
-                                    </select>
-                                    <label for="departamento">Categoria</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="inputBox">
-                            <span>Imagen 1 (requerido)</span>
-                                <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-                        </div>
-                        <p></p>
-                        <div class="inputBox">
-                            <span>Imagen 2 (requerido)</span>
-                                <input type="file" name="image_02" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-                        </div>
-                        <p></p>
-                        <div class="inputBox">
-                            <span>Imagen 3 (requerido)</span>
-                                <input type="file" name="image_03" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-                        </div>
-                        <p></p>
-                    
-                        <div class="mb-3">
-                            <div class="col-md-12">
-                                <div class="col-md-6  mb-3">
-                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="descuento" name="descuento" required> <label for="floatingDscto">Descuento *</label></div>
-                                </div>
-                                <div class="col-md-6  mb-3">
-                                    <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disponibilidad" name="disponibilidad" required> <label for="floatingDisp">Disponibilidad *</label></div>
-                                </div>
-                                <div class="form-floating">
-                                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"></textarea>
-                                    <label for="comment">Descripción *</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success w-50 d-flex justify-content-center">Actualizar</button>
-                        </div>
+    <div class="section-newEmpr container-fluid py-5">
+        <div class="contenedor-newEmpr">
+        <div class="container my-5 text-secondary">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img class="img-fluid" id="chosen-image" src="../../Image/nvoProd.png" alt="login-icon" style="max-height: 200px; object-fit:cover;"/>
                         
-                    <figure class="image-container">
-                        <img id="chosen-image">
-                        <figcaption id="file-name"></figcaption>
-                    </figure>
-            
-                    <input class="input-content" type="file" id="upload-button" accept="image/*">
-                    <label class="label-button" for="upload-button">
-                        <i class="fas fa-upload"></i> &nbsp; Actualizar foto principal
-                    </label>      
-                    </form>
-                    </div>
-                    </div>
                 </div>
             </div>
+            <div class="row">
+                
+            <div class="text-center fs-2 fw-bold">Actualizar producto</div>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" pattern="[A-Za-z\s]*" maxlength="20" required> <label for="floatingNombre">Nombre *</label></div>
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingPrecio" placeholder="precio" name="precio" maxlength="9" maxlength="20" required> <label for="floatingPrecio">Precio *</label></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingDesc" placeholder="descripcion" name="descripcion" maxlength="500" required> <label for="floatingDesc">Descripción *</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>
+                                </select>
+                                <label for="departamento">Categoria</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <!--<option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                </select>
+                                <label for="departamento">Subcategoria</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="dscto" name="dscto" maxlength="6" required> <label for="floatingDscto">Descuento *</label></div>
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="date" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" required> <label for="floatingFecha">Fecha *</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <option selected value="ejemplo1">Seleccione una opción</option>
+                                <!--<option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo3">Bebidas</option>
+                                <option value="ejemplo4">Alimentos</option>
+                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                </select>
+                                <label for="departamento">Emprendimiento</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="6" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <p>Actualizar fotos del producto</p>
+                        </div>
+                    </div>
+
+                    <!--Sección de fotos-->
+                    <div class="row">
+
+                        <!--Foto 1-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <label class="label-button" for="upload-button">
+                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                        </div>
+
+                        <!--Foto 2-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <label class="label-button" for="upload-button">
+                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                        </div>
+
+                        <!--Foto 3-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <label class="label-button" for="upload-button">
+                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                        </div>
+                    </div>
+
+                    <div >
+                        <input class="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" type="submit" value="Actualizar" name="submit">
+                    </div>
+                </form>
+                    
+            </div>
+            </div>
         </div>
-      </div>
+        </div>
+    </div>
 
         <!-- Footer -->
         <footer>
