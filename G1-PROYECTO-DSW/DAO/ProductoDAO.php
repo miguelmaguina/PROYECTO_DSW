@@ -189,6 +189,30 @@ class ProductoDAO
         }
         return $producto;
     }
+
+    public function contarProductos() {
+        $query = "SELECT COUNT(*) FROM Producto WHERE Disponibilidad = 1";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            $numProd = 0;
+
+            mysqli_stmt_execute($stmt);
+            
+            mysqli_stmt_bind_result($stmt,$numProd);
+
+            while (mysqli_stmt_fetch($stmt)) {  
+                
+            }
+
+        } catch (Exception $e) {
+            echo "Error al contar productos: " . $e->getMessage();
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $numProd;
+    }
 }
 
 ?>

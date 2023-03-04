@@ -1,7 +1,7 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/Categoria.php";
+require "../../Conexion/Conexion.php";
+require "../../Clases/Categoria.php";
 
 class CategoriaDAO {
     //Atributos

@@ -41,35 +41,37 @@ if(isset($_SESSION['tipo_usuario'])){
     <?php
       require_once '../../DAO/ProductoDAO.php';
     
-      $idP = isset($_GET['id']);
+      $idP = $_GET['id'];
 
       $productoDAO_ver = new ProductoDAO();
       $producto = $productoDAO_ver->listarPorIdProducto($idP);
+
+      $var1=$producto->getFoto_Secundaria1();
+      $var2=$producto->getFoto_Secundaria2();
+      $var3=$producto->getFoto_Secundaria3();
+
+      $pathFoto1="../../Image/Productos/Foto_Secundaria1/$var1";
+      $pathFoto2="../../Image/Productos/Foto_Secundaria2/$var2";
+      $pathFoto3="../../Image/Productos/Foto_Secundaria3/$var3";
+
+      if(!file_exists($pathFoto1)){
+          $pathFoto1="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+      }
+      if(!file_exists($pathFoto2)){
+          $pathFoto2="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_none.png";  
+      }
+      if(!file_exists($pathFoto3)){
+          $pathFoto3="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_none.png";  
+      }
+
     ?> 
+    
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
                   <div class="ms-5 col-sm-10 col-md-12 col-lg-6 pl-2 border d-flex align-items-center justify-content-center">
                       <div id="carouselExampleIndicators" class="carousel carousel-dark slide " data-bs-ride="carousel">
-                          <?php
-                                $var1=$producto->getFoto_Secundaria1();
-                                $var2=$producto->getFoto_Secundaria2();
-                                $var3=$producto->getFoto_Secundaria3();
 
-                                $pathFoto1="../../Image/Productos/Foto_Secundaria1/$var1";
-                                $pathFoto2="../../Image/Productos/Foto_Secundaria2/$var2";
-                                $pathFoto3="../../Image/Productos/Foto_Secundaria3/$var3";
-
-                                if(!file_exists($pathFoto1)){
-                                    $pathFoto1="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
-                                }
-                                if(!file_exists($pathFoto2)){
-                                    $pathFoto2="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_none.png";  
-                                }
-                                if(!file_exists($pathFoto3)){
-                                    $pathFoto3="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_none.png";  
-                                }
-                            ?>
                             <div class="carousel-inner mx-auto">
                                 <div class="carousel-item carrusel-img active">
                                   <img src="<?= $pathFoto1?>" class="d-block img-fluid" alt="Imagen 1">

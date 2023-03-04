@@ -263,26 +263,48 @@ if(isset($_SESSION['tipo_usuario'])){
     <!--parte dinamica-->
 
     <!--inicio de los productos que se mostrarán-->
-
+    <?php 
+        require_once '../../DAO/ProductoDAO.php';
+        $productoDAO_Index = new ProductoDAO();
+        $productos = $productoDAO_Index->listar();
+        $numProd = $productoDAO_Index->contarProductos();
+    ?>
     <div class="container-fluid content-productos">
         <div class="contenedor-t">
         <div class="row border">
             <div class="col-md-3">
                 <h5>Todos</h5>
-                <p>25 productos</p>
+                <p><?= $numProd?> productos</p>
                 <p></p>
-                <h5>Tipos (Sub)</h5>
-                <p>Ropa, Calzado y Sombrero (4)</p>
-                <p>Cerámicas, Juguetes y Bolsos (7)</p>
-                <p>Joyas, Anillos y Pulseras (8)</p>
-                <p>Frutas, Verduras, Bebidas y Postres (6)</p>
+                
+                <h5>Categorías</h5>
+                <p class="text lh-4"> 
+                    <?php
+                        require_once '../../DAO/ProductoConsulta.php';
+                        $cateProd_Consulta = new ProductoConsulta();
+                        $consulta1 = $cateProd_Consulta->listarCategoriasxProductos();
+                    ?>
+                </p>
+
                 <p></p>
-                <h5>Ordenar</h5>
-                <p>Ascendente</p>
-                <p>Descendente</p>
+
+                <h5>SubCategorías</h5>
+                <p class="text lh-4"> 
+                    <?php
+                        $consulta2 = $cateProd_Consulta->listarSubcategoriasxProductos();
+                    ?>
+                </p>
+
                 <p></p>
-                <h5>Tipos (Sub)</h5>
-                <p>Seleccione una ubicacion</p>
+
+                <h5>Emprendimientos</h5>
+                <p class="text lh-4"> 
+                    <?php
+                        $consulta3 = $cateProd_Consulta->listarEmprendimientosxProductos();
+                    ?>
+                </p>
+
+                <p></p>
             </div>
 
             <div class="col-md-9 contenedor-de-producto">
@@ -290,11 +312,8 @@ if(isset($_SESSION['tipo_usuario'])){
 
                 <!--repeticion PRUEBA-->
             
-                <?php 
-                    require_once '../../DAO/ProductoDAO.php';
-                    $productoDAO_Index = new ProductoDAO();
-                    $productos = $productoDAO_Index->listar();
-                    foreach($productos as $producto) {?>
+                
+                <?php    foreach($productos as $producto) {?>
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-t-o position-relative m-2">
                         <a href="verProducto.php?id=<?= $producto->getID_Producto();?>">
