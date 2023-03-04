@@ -1,7 +1,7 @@
 <?php
 
-require_once "../../Conexion/Conexion.php";
-require_once "../../Clases/Emprendimiento.php";
+//require_once "../../Conexion/Conexion.php";
+//require_once "../../Clases/Emprendimiento.php";
 
 class EmprendimientoDAO {
 
@@ -151,7 +151,7 @@ class EmprendimientoDAO {
     public function listarPorIdEmprendimiento($ID_Emprendimiento_Buscado){
 
         $query = "SELECT * FROM Emprendimiento WHERE ID_Emprendimiento=?";
-
+        $emprendimiento=null;
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
             mysqli_stmt_bind_param($stmt, "i", $ID_Emprendimiento_Buscado);

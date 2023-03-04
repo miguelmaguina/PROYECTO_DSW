@@ -1,7 +1,7 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/Lista_Favoritos.php";
+//include "../Conexion/Conexion.php";
+//include "../Clases/Lista_Favoritos.php";
 
 class Lista_FavoritosDAO {
     //Atributos
@@ -139,7 +139,38 @@ class Lista_FavoritosDAO {
             }
         }
         return $favorito;
-    }    
+    }
+
+    public function listarPorIdCliente($idcliente){
+        $query = "SELECT * FROM Lista_Favoritos WHERE ID_Cliente=?";
+        $arrayFavorito=array();
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_bind_param($stmt, "i", $idcliente);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Lista_Favoritos, $ID_Cliente, $ID_Producto, $Fecha);
+
+            if (mysqli_stmt_fetch($stmt)) {
+                $favorito = new Lista_Favoritos();
+                // $ID_Producto=$favorito->getId_Producto(); //i
+                // $Fecha=$favorito->getFecha(); //s
+                $favorito->setID_Lista_Favoritos($ID_Lista_Favoritos);
+                $favorito->setID_Cliente($ID_Cliente);
+                $favorito->setID_Producto($ID_Producto);
+                $favorito->setFecha($Fecha);
+                array_push($arrayFavorito,$favorito);
+            }
+
+        } catch (Exception $e) {
+            echo "Error al listar 1 itema de la lista de favoritos: " . $e->getMessage();
+            $favorito = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $arrayFavorito;
+    }
 
 }
 

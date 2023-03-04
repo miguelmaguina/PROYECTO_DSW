@@ -45,15 +45,63 @@ if(isset($_SESSION['tipo_usuario'])){
             <h2 class="titulo fw-bold py-2 text-center">Lista de Favoritos</h2>
             
             <!-- aqui se repite varias veces, puede ir dentro de un ciclo-->
+        <?php 
+        require '../../Conexion/Conexion.php';
+        require '../../Clases/Lista_Favoritos.php';
+        require '../../DAO/Lista_FavoritosDAO.php';
+        require '../../Clases/Producto.php';
+        require '../../DAO/ProductoDAO.php';
+        require '../../Clases/Emprendimiento.php';
+        require '../../DAO/EmprendimientoDAO.php';
+        if($tipo==0){
+          echo '<div class="row py-2">
+                  <div class="col-12 border border-1 p-3 text-center">
+                      
+                  <h3>No ha iniciado sesión</h3>
+
+                  </div>
+              </div>';
+        }else{
+          $listaFavoritosDAO=new Lista_FavoritosDAO();
+          $listaFavoritos=array();
+          $listaFavoritos=$listaFavoritosDAO->listarPorIdCliente($_SESSION['id_c']);
+
+          if(empty($listaFavoritos)){
+            echo '<div class="row py-2">
+                  <div class="col-12 border border-1 p-3 text-center">
+                      
+                  <h3>No tiene ningún elemento</h3>
+
+                  </div>
+              </div>';
+          }else{
+            foreach($listaFavoritos as $valor){
+              $idProducto=$valor->getID_Producto();
+              $producto=new Producto();
+              $productoDAO=new ProductoDAO();
+              $emprendimiento=new Emprendimiento();
+              $emprendimientoDAO=new EmprendimientoDAO();
+
+              $producto=$productoDAO->listarPorIdProducto($idProducto);
+              $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($producto->getID_Emprendimiento());
+              $vacio=0;
+              $descuentoActual=null;
+              if($producto->getDescuento()!=0){
+                $vacio=1;
+                $descuentoActual=$producto->getPrecio()-$producto->getPrecio()*$producto->getDescuento();
+              }else{
+                $descuentoActual=$producto->getPrecio();
+              }
+              
+              
             
-            <div class="row py-2">
+            echo '<div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
                     <div class="position-absolute cerrar">
                         <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
                     </div>
                     <div class="row p-3">
-                    <div class="col-md-5 col-lg-6">
-                         <!---para usar el carrusel deben cambiar los id de cada carrusel para que al hacer click en la pequeña imagen haga efecto su cambio, sino no lo reconoce como parte del carrusel--->                        
+                    <div class="col-md-5 col-lg-6">                     
                         <div id="carousel1" class="carousel carousel-dark slide " data-bs-ride="carousel">
 
                             <div class="carousel-inner mx-auto">
@@ -96,27 +144,35 @@ if(isset($_SESSION['tipo_usuario'])){
                         
                         <div class="row">
                             <div class="col-12 col-sm-11">
-                                <h3>MANTA ARTESANAL PARA ABRIGARTE</h3>
+                                <h3>'.$producto->getNombre().'</h3>
                             </div>
                         </div>
                         
-                        <del><small>S/333.00</small></del>
-                        <p class="fs-2">S/300.00  <small class="desc">10% descuento</small> </p>
+                        '.($vacio==1 ?'<del><small>S/'.round($descuentoActual,2).'</small></del>' : '').'
+                        <p class="fs-2">S/'.$producto->getPrecio().' '. ($vacio==1?'<small class="desc">'.$producto->getDescuento().'% descuento</small>':'' ).'</p>
                         <div class="row">
                             <div class="col-sm-2">
                                 <p>Marca</p>
                             </div>
                             <div class="col-sm-10">
-                                <p>Mantas ecológicas del Perú (Nombre largo)</p>
+                                <p>'.$emprendimiento->getNombre().'</p>
                             </div>
                         </div>
-                        <p>Ubicación: Lima</p>
+                        <p>Fecha: '.$valor->getFecha().'</p>
 
                     </div>
                     </div>
 
                 </div>
-            </div>
+            </div>';
+
+          }
+        }
+
+      }
+
+      ?>
+
 
             <div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
@@ -190,6 +246,9 @@ if(isset($_SESSION['tipo_usuario'])){
                 </div>
             </div>
 
+
+
+
             <div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
                     <div class="position-absolute cerrar">
@@ -261,6 +320,11 @@ if(isset($_SESSION['tipo_usuario'])){
 
                 </div>
             </div>
+
+            
+
+
+
 
         </div>
     </section>
