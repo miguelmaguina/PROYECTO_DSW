@@ -14,6 +14,13 @@ if(isset($_SESSION['tipo_usuario'])){
 
 ?>
 
+<?php
+
+include "../../DAO/ReporteDAO.php";
+$reporteDAO = new ReporteDAO();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,12 +55,19 @@ if(isset($_SESSION['tipo_usuario'])){
     <div class="col-xxl-4 col-md-6 mb-3">
         <div class="card info-card sales-card">
            <div class="card-body">
-              <h5 class="card-title">Sales <span>| Today</span></h5>
+              <h5 class="card-title">Reviews</h5>
               <div class="d-flex align-items-center">
                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="fa-solid fa-cart-shopping"></i></div>
                  <div class="ps-3">
-                    <h6>145</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <h6><?php echo $reporteDAO->getNumeroDeReviewsTotal(); ?> reviews</h6>
+                      <?php
+                        $reviewsUltimoMes = $reporteDAO->getNumeroDeReviewsUltimoMes();
+                        if ($reviewsUltimoMes == 0) {
+                            echo '<span class="text-danger small pt-1 fw-bold"> +' . $reviewsUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        } else {
+                            echo '<span class="text-success small pt-1 fw-bold"> +' . $reviewsUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        }
+                       ?>
                  </div>
               </div>
            </div>
@@ -64,12 +78,19 @@ if(isset($_SESSION['tipo_usuario'])){
      <div class="col-xxl-4 col-md-6 mb-3">
         <div class="card info-card revenue-card">
            <div class="card-body">
-              <h5 class="card-title">Revenue <span>| This Month</span></h5>
+              <h5 class="card-title">En Favoritos</h5>
               <div class="d-flex align-items-center">
                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-dollar-sign"></i></div>
                  <div class="ps-3">
-                    <h6>$3,264</h6>
-                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <h6><?php echo $reporteDAO->getNumeroDeFavoritosTotal(); ?> favoritos <3</h6>
+                      <?php
+                        $favoritosUltimoMes = $reporteDAO->getNumeroDeFavoritosUltimoMes();
+                        if ($favoritosUltimoMes == 0) {
+                            echo '<span class="text-danger small pt-1 fw-bold"> +' . $favoritosUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        } else {
+                            echo '<span class="text-success small pt-1 fw-bold"> +' . $favoritosUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        }
+                      ?>
                  </div>
               </div>
            </div>
@@ -80,12 +101,19 @@ if(isset($_SESSION['tipo_usuario'])){
      <div class="col-xxl-4 col-xl-12 mb-3">
         <div class="card info-card customers-card">
            <div class="card-body">
-              <h5 class="card-title">Customers <span>| This Year</span></h5>
+              <h5 class="card-title">En Proforma</h5>
               <div class="d-flex align-items-center">
                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-address-card"></i></div>
                  <div class="ps-3">
-                    <h6>1244</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                    <h6><?php echo $reporteDAO->getNumeroDeProformaTotal(); ?> proformas</h6>
+                      <?php
+                        $proformasUltimoMes = $reporteDAO->getNumeroDeProformaUltimoMes();
+                        if ($proformasUltimoMes == 0) {
+                            echo '<span class="text-danger small pt-1 fw-bold"> +' . $proformasUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        } else {
+                            echo '<span class="text-success small pt-1 fw-bold"> +' . $proformasUltimoMes . '</span> <span class="text-muted small pt-2 ps-1">en el ultimo mes.</span>';
+                        }
+                      ?>
                  </div>
               </div>
            </div>
@@ -109,25 +137,20 @@ if(isset($_SESSION['tipo_usuario'])){
                          <li class="dropdown-header text-start">
                             <h6>Filter</h6>
                          </li>
+                         <!-- Lista de filtros -->
                          <li><a class="dropdown-item" href="#">Today</a></li>
                          <li><a class="dropdown-item" href="#">This Month</a></li>
                          <li><a class="dropdown-item" href="#">This Year</a></li>
                       </ul>
                    </div>
                    <div class="card-body">
-                      <h5 class="card-title">Reports <span>/Today</span></h5>
+                      <h5 class="card-title">Recuento historico de Reviews</h5>
                       <div id="reportsChart"></div>
                       <script>document.addEventListener("DOMContentLoaded", () => {
                          new ApexCharts(document.querySelector("#reportsChart"), {
                            series: [{
-                             name: 'Sales',
-                             data: [31, 40, 28, 51, 42, 82, 56],
-                           }, {
-                             name: 'Revenue',
-                             data: [11, 32, 45, 32, 34, 52, 41]
-                           }, {
-                             name: 'Customers',
-                             data: [15, 11, 32, 18, 9, 24, 11]
+                             name: 'Reviews',
+                             data: <?php echo json_encode($reporteDAO->getArrayNumeroDeReviewsPorMes()); ?>
                            }],
                            chart: {
                              height: 350,
@@ -157,14 +180,20 @@ if(isset($_SESSION['tipo_usuario'])){
                              width: 2
                            },
                            xaxis: {
-                             type: 'datetime',
-                             categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                           },
-                           tooltip: {
-                             x: {
-                               format: 'dd/MM/yy HH:mm'
-                             },
-                           }
+                          type: 'datetime',
+                          categories: ['01-01-23', '02-01-23', '03-01-23', '04-01-23', '05-01-23', '06-01-23', '07-01-23', '08-01-23', '09-01-23', '10-01-23', '11-01-23', '12-01-23'],
+                          labels: {
+                            datetimeFormatter: {
+                              year: 'YYYY',
+                              month: 'MMMM'
+                            }
+                          }
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'MMMM'
+                          },
+                        },
                          }).render();
                          });
                       </script> 
@@ -270,7 +299,8 @@ if(isset($_SESSION['tipo_usuario'])){
 
         </div>
 
-        <!-- grafico circular -->
+<!--        
+
 
         <div class="row">
 
@@ -314,7 +344,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
                 </div>
 
-<!-- grafico radar -->
+
 
                 <div class="col-lg-6">
                     <div class="contenedor-grafico">
@@ -375,7 +405,7 @@ if(isset($_SESSION['tipo_usuario'])){
         </div>
 
         
-
+-->
 
 
     </section>
