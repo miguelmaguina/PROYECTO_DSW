@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $clienteDAO=new ClienteDAO();
 
-if($archivo_nombre=='' || $archivo_nombre==null){
+if($archivo_nombre!='' || $archivo_nombre!=null){
     if($clienteDAO->verificaEmail($email)==0){
         if($clienteDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){

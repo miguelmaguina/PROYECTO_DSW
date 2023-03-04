@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $emprendimientoDAO=new EmprendimientoDAO();
 
-if($archivo_nombre=='' || $archivo_nombre==null){
+if($archivo_nombre!='' || $archivo_nombre!=null){
     if($emprendimientoDAO->verificaEmail($email)==0){
         if($emprendimientoDAO->verificaUsuario($usuario)==0){
             if($contrasena==$contrasena2){
