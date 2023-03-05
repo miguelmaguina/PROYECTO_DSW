@@ -150,7 +150,7 @@ class Lista_FavoritosDAO {
             mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $ID_Lista_Favoritos, $ID_Cliente, $ID_Producto, $Fecha);
 
-            if (mysqli_stmt_fetch($stmt)) {
+            while(mysqli_stmt_fetch($stmt)) {
                 $favorito = new Lista_Favoritos();
                 // $ID_Producto=$favorito->getId_Producto(); //i
                 // $Fecha=$favorito->getFecha(); //s

@@ -108,25 +108,25 @@ if(isset($_SESSION['tipo_usuario'])){
 
                             <div class="carousel-inner mx-auto">
                                 <div class="carousel-item carrusel-img active">
-                                  <img src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idproduc.'.png" class="d-block img-fluid" alt="Imagen 1">
+                                  <img src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 1">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idproduc.'.png" class="d-block img-fluid" alt="Imagen 2">
+                                    <img src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 2">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idproduc.'.png" class="d-block img-fluid" alt="Imagen 3">
+                                    <img src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 3">
                                 </div>
                             </div>
 
                             <ol class="carousel-indicators">
                               <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="0" class="active">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idproduc.'.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idProducto.'.png" alt="">
                               </li>
                               <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="1">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idproduc.'.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idProducto.'.png" alt="">
                               </li>
                               <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="2">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idproduc.'.png" alt="">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idProducto.'.png" alt="">
                               </li>
                             </ol>
                             
