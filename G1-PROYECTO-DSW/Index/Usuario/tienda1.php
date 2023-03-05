@@ -32,6 +32,18 @@ if(isset($_SESSION['tipo_usuario'])){
             header.classList.toggle("fixed-top",window.scrollY>0);
 		})
 	</script>
+    <script>
+        // Obtener todas las cards con la clase "card card-t mb-3 border border-none"
+        const cards = document.querySelectorAll('.card.card-t.mb-3.border.border-none');
+
+        // Recorrer todas las cards y agregar el evento de clic
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+            const id = this.id;
+            filtrarPorSubcategoria(id);
+            });
+        });
+    </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
@@ -40,9 +52,6 @@ if(isset($_SESSION['tipo_usuario'])){
 <body>
     
 <?php  require 'header.php' ?>
-
-      
-
 
     <!-- <div class="container-fluid p-0 contenedor-carrusel"> -->
     <div id="myCarousel" class="container-fluid carousel slide contenedor-carrusel p-0" data-bs-ride="carousel">
@@ -134,7 +143,12 @@ if(isset($_SESSION['tipo_usuario'])){
     </section>
 
 <!--parte estatica-->
-
+    <?php
+        require_once "../../DAO/SubCategoriaDAO.php";
+        $subcategoria_tienda1 = new SubCategoriaDAO();
+        $subcategorias=$subcategoria_tienda1->listar();
+    ?>
+    
     <section class="section-t-o container-fluid py-1">
         <div class="contenedor-t">
         <div class="row">
@@ -147,104 +161,32 @@ if(isset($_SESSION['tipo_usuario'])){
                             </button>
 
                             <div class="carousel__lista">
-                                
-                            <div class="card card-t mb-3 border border-none">
+                                <?php foreach($subcategorias as $subcategoria){?>
+                                <div class="card card-t mb-3 border border-none" id="subcategoria<?=$subcategoria->getID_Subcategoria()?>">
                                     <div class="row no-gutters">
                                         <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        <?php
+                                            $var=$subcategoria->getID_SubCategoria();
+                                            $pathFotoSubcat="../../Image/Subcategorias/subcategoria_$var.png";
+                                            if(!file_exists($pathFotoSubcat)){
+                                                $pathFotoSubcat="../../Image/Subcategorias/none.png";  
+                                            }
+                                        ?>
+                                        <img class="card-img" alt="Imagen" src="<?= $pathFotoSubcat?>" >
+                                        </a>
                                         </div>
                                         <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
+                                            <h5 class="card-title"><?= $subcategoria->getNombre()?></h5>
                                             
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div> 
 
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
+                                <?php } ?>
+                            
                                 
                             </div>
 
@@ -314,9 +256,9 @@ if(isset($_SESSION['tipo_usuario'])){
             
                 
                 <?php    foreach($productos as $producto) {?>
-                <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="col-sm-6 col-lg-4 mb-4" id="contenedor-productos">
                     <div class="card card-t-o position-relative m-2">
-                        <a href="verProducto.php?id=<?= $producto->getID_Producto();?>">
+                        <a class="subcategoria-link" href="verProducto.php?id=<?= $producto->getID_Producto();?>">
                         <?php
                             $var=$producto->getFoto_Secundaria1();
                             $pathFoto="../../Image/Productos/Foto_Secundaria1/$var";
@@ -409,276 +351,6 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
 
                 <!--repeticion-->
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-<!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                <!--repeticion-->
-                    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-<!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-<!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-                    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative ">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-            <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-<!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--repeticion-->
-
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
                             <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
