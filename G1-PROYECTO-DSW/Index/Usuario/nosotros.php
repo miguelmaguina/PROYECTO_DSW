@@ -90,6 +90,51 @@ Nuestra visión es ser líderes en la promoción de productos auténticos de las
             <div class="row row-p1">
                 <h2 class="text-center">CO-FUNDADORES</h2>
             </div>
+            <div class="cofundadores">
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Nicolas.png" class="img-fluid" alt="Nicolas Anicama">
+                    <div class="nombres">
+                        <p>Nicolas Anicama</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Diana.png" class="img-fluid" alt="Diana Bardon">
+                    <div class="nombres">
+                        <p>Diana Bardon</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Yan.png" class="img-fluid" alt="Yan Huaman">
+                    <div class="nombres">
+                        <p>Yan Huaman</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Miguel.png" class="img-fluid" alt="Miguel Maguiña">
+                    <div class="nombres">
+                        <p>Miguel Maguiña</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Luis.png" class="img-fluid" alt="Luis Mayta">
+                    <div class="nombres">
+                        <p>Luis Mayta</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Ivan.png" class="img-fluid" alt="Ivan Saenz">
+                    <div class="nombres">
+                        <p>Ivan Saenz</p>
+                    </div>
+                </div>
+                <div class="cofundador">
+                    <img src="../../Image/Cofundadores/Renzo.png" class="img-fluid" alt="Renzo Tacuri">
+                    <div class="nombres">
+                        <p>Renzo Tacuri</p>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </section>
        

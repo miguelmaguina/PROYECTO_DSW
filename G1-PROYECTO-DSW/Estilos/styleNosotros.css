@@ -61,7 +61,26 @@
   }
 
   /*-----------------------------------------------------------------  nosotros.html -------------------------------------------------------*/
+  .cofundadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
+  .cofundador {
+    text-align: center;
+    margin: 5px;
+  }
+
+  .cofundador img {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .nombres {
+    margin-top: 5px;
+    font-size: 14px;
+  }
   
   .content-img img{
     /*height: 350px;*/
