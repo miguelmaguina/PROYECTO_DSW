@@ -85,12 +85,14 @@ Nuestra visión es ser líderes en la promoción de productos auténticos de las
     
        <!-- Sección de co-fundadores -->
 
-
-       <div class="section-p container-fluid py-1">
+    <section class="section-p container-fluid py-1">
         <div class="contenedor-p">
-            <h2 class="text-center">CO-FUNDADORES</h2>
+            <div class="row row-p1">
+                <h2 class="text-center">CO-FUNDADORES</h2>
+            </div>
         </div>
-    </div>
+    </section>
+       
 
     <!----------------------- EMPRESAS  ------------------------------->
     <div class="section-p container-fluid py-1">
