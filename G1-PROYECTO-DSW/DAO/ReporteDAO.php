@@ -355,6 +355,61 @@ class ReporteDAO {
         return $ArrayNroDeProductosPopulares;
     }
 
+    public function getArrayNombresProductos(){
+        $ArrayNombresProductos;
+        
+        $query = "SELECT nombre FROM PRODUCTO WHERE ID_Emprendimiento={$_SESSION['id_e']} ORDER BY nombre ASC";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $nombre);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayNombresProductos [] = $nombre;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de nombres de productos" . $e->getMessage();
+            $ArrayNombresProductos = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayNombresProductos;
+    }
+
+    public function getArrayNroDeReviewsProductos(){
+        $ArrayNroDeReviewsProductos;
+        
+        $query = "  SELECT p.ID_Producto, p.Nombre, COALESCE(COUNT(r.ID_Review), 0) AS numero_reviews
+                    FROM Producto p
+                    LEFT JOIN Review r ON p.ID_Producto = r.ID_Producto
+                    WHERE p.ID_Emprendimiento = {$_SESSION['id_e']}
+                    GROUP BY p.ID_Producto
+                    ORDER BY p.Nombre ASC";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Producto,$Nombre,$numero_reviews);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayNroDeReviewsProductos [] = $numero_reviews;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de numero de reviews de productos" . $e->getMessage();
+            $ArrayNroDeReviewsProductos = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayNroDeReviewsProductos;
+    }
+
 }
 
 ?>

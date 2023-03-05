@@ -269,6 +269,13 @@ $reporteDAO = new ReporteDAO();
                          new ApexCharts(document.querySelector("#barChart1"), {
                            series: [{
                              data: <?php echo json_encode($reporteDAO->getArrayNroProductosPopulares()); ?>,
+                             /*colors: [
+                              'rgb(255, 99, 132)',
+                              'rgb(75, 192, 192)',
+                              'rgb(255, 205, 86)',
+                              'rgb(201, 203, 207)',
+                              'rgb(54, 162, 235)'
+                            ],*/
                            }],
                            chart: {
                              type: 'bar',
@@ -293,174 +300,57 @@ $reporteDAO = new ReporteDAO();
                 </div>
                 </div>
              </div>
-
-             <!-- grafico de barras -->
+             
+             <!-- grafico circular -->
 
              <div class="col-lg-6">
-                <div class="contenedor-grafico">
-                    <div class="card">
-                        <div class="card-body">
-                           <h5 class="card-title">Productos con más reseñas</h5>
-                           <canvas id="barChart" style="max-height: 400px;"></canvas>
-                           <script>document.addEventListener("DOMContentLoaded", () => {
-                              new Chart(document.querySelector('#barChart'), {
-                                type: 'bar',
-                                data: {
-                                  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                                  datasets: [{
-                                    label: 'Bar Chart',
-                                    data: [65, 59, 80, 81, 56, 55, 40],
-                                    backgroundColor: [
-                                      'rgba(255, 99, 132, 0.2)',
-                                      'rgba(255, 159, 64, 0.2)',
-                                      'rgba(255, 205, 86, 0.2)',
-                                      'rgba(75, 192, 192, 0.2)',
-                                      'rgba(54, 162, 235, 0.2)',
-                                      'rgba(153, 102, 255, 0.2)',
-                                      'rgba(201, 203, 207, 0.2)'
-                                    ],
-                                    borderColor: [
-                                      'rgb(255, 99, 132)',
-                                      'rgb(255, 159, 64)',
-                                      'rgb(255, 205, 86)',
-                                      'rgb(75, 192, 192)',
-                                      'rgb(54, 162, 235)',
-                                      'rgb(153, 102, 255)',
-                                      'rgb(201, 203, 207)'
-                                    ],
-                                    borderWidth: 1
-                                  }]
-                                },
-                                options: {
-                                  scales: {
-                                    y: {
-                                      beginAtZero: true
-                                    }
-                                  }
-                                }
-                              });
-                              });
-                           </script> 
-                        </div>
-                     </div>
-                </div>
-             </div>
-
-
-        </div>
-
-<!--        
-
-
-        <div class="row">
-
-            
-
-                <div class="col-lg-6">
-                    <div class="contenedor-grafico">
-                    <div class="card">
-                       <div class="card-body">
-                          <h5 class="card-title">Polar Area Chart</h5>
+              <div class="contenedor-grafico">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">Reseñas por productos</h5>
                           <canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
-                          <script>document.addEventListener("DOMContentLoaded", () => {
-                             new Chart(document.querySelector('#polarAreaChart'), {
-                               type: 'polarArea',
-                               data: {
-                                 labels: [
-                                   'Red',
-                                   'Green',
-                                   'Yellow',
-                                   'Grey',
-                                   'Blue'
-                                 ],
-                                 datasets: [{
-                                   label: 'My First Dataset',
-                                   data: [11, 16, 7, 3, 14],
-                                   backgroundColor: [
-                                     'rgb(255, 99, 132)',
-                                     'rgb(75, 192, 192)',
-                                     'rgb(255, 205, 86)',
-                                     'rgb(201, 203, 207)',
-                                     'rgb(54, 162, 235)'
-                                   ]
-                                 }]
-                               }
-                             });
-                             });
+                          <script>
+                            
+                              // Generar un color aleatorio en formato RGB
+                              function generarColor() {
+                                  var r = Math.floor(Math.random() * 256);
+                                  var g = Math.floor(Math.random() * 256);
+                                  var b = Math.floor(Math.random() * 256);
+                                  return "rgb(" + r + "," + g + "," + b + ")";
+                              }
+
+                              // Obtener los nombres de los productos y el número de reseñas
+                              var nombresProductos = <?php echo json_encode($reporteDAO->getArrayNombresProductos()); ?>;
+                              var nroReviewsProductos = <?php echo json_encode($reporteDAO->getArrayNroDeReviewsProductos()); ?>;
+
+                              // Crear una lista de colores aleatorios con la misma longitud que la lista de productos
+                              var backgroundColors = [];
+                              for (var i = 0; i < nombresProductos.length; i++) {
+                                  backgroundColors.push(generarColor());
+                              }
+
+                              // Crear la gráfica polar
+                              document.addEventListener("DOMContentLoaded", () => {
+                                  new Chart(document.querySelector('#polarAreaChart'), {
+                                      type: 'polarArea',
+                                      data: {
+                                          labels: nombresProductos,
+                                          datasets: [{
+                                              label: 'Reseñas por productos',
+                                              data: nroReviewsProductos,
+                                              backgroundColor: backgroundColors
+                                          }]
+                                      }
+                                  });
+                              });
                           </script> 
-                       </div>
-                    </div>
-                 </div>
-
-                </div>
-
-
-
-                <div class="col-lg-6">
-                    <div class="contenedor-grafico">
-                    <div class="card">
-                       <div class="card-body">
-                          <h5 class="card-title">Radar Chart</h5>
-                          <canvas id="radarChart" style="max-height: 400px;"></canvas>
-                          <script>document.addEventListener("DOMContentLoaded", () => {
-                             new Chart(document.querySelector('#radarChart'), {
-                               type: 'radar',
-                               data: {
-                                 labels: [
-                                   'Eating',
-                                   'Drinking',
-                                   'Sleeping',
-                                   'Designing',
-                                   'Coding',
-                                   'Cycling',
-                                   'Running'
-                                 ],
-                                 datasets: [{
-                                   label: 'First Dataset',
-                                   data: [65, 59, 90, 81, 56, 55, 40],
-                                   fill: true,
-                                   backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                   borderColor: 'rgb(255, 99, 132)',
-                                   pointBackgroundColor: 'rgb(255, 99, 132)',
-                                   pointBorderColor: '#fff',
-                                   pointHoverBackgroundColor: '#fff',
-                                   pointHoverBorderColor: 'rgb(255, 99, 132)'
-                                 }, {
-                                   label: 'Second Dataset',
-                                   data: [28, 48, 40, 19, 96, 27, 100],
-                                   fill: true,
-                                   backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                                   borderColor: 'rgb(54, 162, 235)',
-                                   pointBackgroundColor: 'rgb(54, 162, 235)',
-                                   pointBorderColor: '#fff',
-                                   pointHoverBackgroundColor: '#fff',
-                                   pointHoverBorderColor: 'rgb(54, 162, 235)'
-                                 }]
-                               },
-                               options: {
-                                 elements: {
-                                   line: {
-                                     borderWidth: 3
-                                   }
-                                 }
-                               }
-                             });
-                             });
-                          </script> 
-                       </div>
-                    </div>
-                    </div>
-                 </div>
-
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
-
-        
--->
-
 
     </section>
-
-
         <!-- Footer -->
         <footer>
             <div class="container">
