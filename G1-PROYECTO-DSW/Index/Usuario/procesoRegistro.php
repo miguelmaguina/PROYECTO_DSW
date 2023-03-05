@@ -68,7 +68,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // $dni=$_POST["dni"];
     $fecha=date('Y/m/d');
 
-    $clienteDAO=new $ClienteDAO();
+
+    $clienteDAO=new ClienteDAO();
     $id=$clienteDAO->obtenerUltimoId();
     $id=$id+1;
 

@@ -255,6 +255,7 @@ class ClienteDAO {
         $sql = "SELECT MAX(ID_Cliente) FROM Cliente";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $ID_Cliente);
 
             if(mysqli_stmt_fetch($stmt)){
