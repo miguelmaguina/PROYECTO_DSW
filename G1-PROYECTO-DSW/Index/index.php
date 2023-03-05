@@ -183,10 +183,10 @@ if(isset($_SESSION['tipo_usuario'])){
 <div class="portada1 container-fluid py-1 d-flex align-items-center">
         <div class="row">
             <div class="contenedor col-lg-9 mx-auto text-center">
-                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 fw-bold h2" style="color: #035941;">por comunidades nativas del Perú</p>
-                <p class="descripcion">Déjese sorprender por la belleza y autenticidad de los productos hechos a mano por las comunidades nativas peruanas. Desde ropa tejida con técnicas tradicionales hasta joyas y objetos de decoración únicos, cada uno de nuestros productos cuenta con una historia y una cultura detrás. Al comprar en nuestro e-commerce, no solo estará llevándose a casa un objeto hermoso, sino que también estará apoyando a las comunidades nativas y preservando sus tradiciones. ¡Descubra la belleza de las comunidades nativas peruanas hoy mismo!</p>
+                <p class="title-1 fs-2 h3" style="color: white;">Productos elaborados</p><p class="title-2 fs-1 fw-bold h2" style="color: #F2AC57;">por comunidades del Perú</p>
+                <p class="descripcion">Déjese sorprender por la belleza y autenticidad de los productos hechos a mano por las comunidades campesinas y nativas peruanas. Desde ropa tejida con técnicas tradicionales hasta joyas y objetos de decoración únicos, cada uno de nuestros productos cuenta con una historia y una cultura detrás. Al comprar en nuestro e-commerce, no solo estará llevándose a casa un objeto hermoso, sino que también estará apoyando a las comunidades nativas y preservando sus tradiciones. ¡Descubra la belleza de las comunidades nativas peruanas hoy mismo!</p>
                 <div class="btn-group">
-                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">¡Iniciar!</a>
+                <a href="#" class="btn btn-der btn-block mx-4 rounded fw-bold">Empezar Ahora</a>
                 </div>
             </div>
         </div>
