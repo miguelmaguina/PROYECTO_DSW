@@ -27,6 +27,7 @@ $reporteDAO = new ReporteDAO();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gráficos</title>
+    <link rel="stylesheet" href="../../Estilos/footer.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../../Estilos/vistaDatosGraficos.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
@@ -352,14 +353,10 @@ $reporteDAO = new ReporteDAO();
 
     </section>
         <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>Derechos reservados &copy; 2023 Mi sitio web</p>
-            </div>
-        </footer>
-
+        <?php require '../Usuario/footer.php' ?>
+        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         <script src="../../js/index.js"></script>  
-      <script src="../../js/apexcharts.min.js"></script>
+        <script src="../../js/apexcharts.min.js"></script>
         <script src="../../js/chart.min.js"></script>
         <script src="../../js/echarts.min.js"></script>
       
