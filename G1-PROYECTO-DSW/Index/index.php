@@ -114,7 +114,7 @@ if(isset($_SESSION['tipo_usuario'])){
                             echo'<li class="nav-item dropdown pe-3">';
 
                             echo '
-                            <a href="Usuario/iniciar.php"><button href="#" type="button" class="btn btn-outline-success">!Vamos¡</button></a>
+                            <a href="Usuario/iniciar.php"><button href="#" type="button" class="btn btn-outline-success">Iniciar ahora</button></a>
                             ';
 
                             echo '</li>';
