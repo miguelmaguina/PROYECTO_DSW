@@ -1,7 +1,5 @@
 <?php
 
-include "../../Conexion/Conexion.php";
-
 class ReporteDAO {
     //Atributos
     private $conexion;
@@ -165,6 +163,39 @@ class ReporteDAO {
         return $nroDeFavoritos;
     }
 
+    public function getArrayNumeroDeFavoritosPorMes(){
+        $ArrayNumeroDeFavoritosPorMes;
+        
+        $query = "  SELECT n.numero AS Mes, COUNT(r.ID_Lista_Favoritos) AS nro_de_favoritos
+                    FROM (
+                        SELECT 1 AS numero UNION SELECT 2 UNION SELECT 3 UNION SELECT 4
+                        UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8
+                        UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12
+                    ) n
+                    LEFT JOIN Producto p ON p.ID_Emprendimiento = {$_SESSION['id_e']}
+                    LEFT JOIN Lista_Favoritos r ON p.ID_Producto = r.ID_Producto AND MONTH(r.Fecha) = n.numero
+                    GROUP BY n.numero";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $mes, $nro_de_favoritos);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayNumeroDeFavoritosPorMes[] = $nro_de_favoritos;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de nro de favoritos por mes " . $e->getMessage();
+            $ArrayNumeroDeFavoritosPorMes = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayNumeroDeFavoritosPorMes;
+    }
+
     public function getNumeroDeProformaTotal(){
         $nroDeProforma;
 
@@ -221,6 +252,39 @@ class ReporteDAO {
             }
         }
         return $nroDeProforma;
+    }
+
+    public function getArrayNumeroDeProformasPorMes(){
+        $ArrayNumeroDeProformasPorMes;
+        
+        $query = "  SELECT n.numero AS Mes, COUNT(r.ID_Proforma) AS nro_de_proformas
+                    FROM (
+                        SELECT 1 AS numero UNION SELECT 2 UNION SELECT 3 UNION SELECT 4
+                        UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8
+                        UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12
+                    ) n
+                    LEFT JOIN Producto p ON p.ID_Emprendimiento = {$_SESSION['id_e']}
+                    LEFT JOIN Proforma r ON p.ID_Producto = r.ID_Producto AND MONTH(r.Fecha) = n.numero
+                    GROUP BY n.numero";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $mes, $nro_de_proformas);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $ArrayNumeroDeProformasPorMes[] = $nro_de_proformas;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al conseguir el array de nro de proformas por mes " . $e->getMessage();
+            $ArrayNumeroDeProformasPorMes = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $ArrayNumeroDeProformasPorMes;
     }
 
     public function getArrayProductosPopulares(){
