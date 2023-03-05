@@ -195,6 +195,19 @@ if(isset($_SESSION['tipo_usuario'])){
 
 
     <!----------------------- PRODUCTOS MAS VENDIDOS  ------------------------------->
+    <?php
+        require_once "../DAO/ProductoDAO.php";
+        require_once "../DAO/ReviewDAO.php";
+        require_once "../DAO/ClienteDAO.php";
+
+        $clientexreview = new ClienteDAO();
+        $review_index = new ReviewDAO();
+        $productoxreview = new ProductoDAO();
+
+        $producto_index = new ProductoDAO();
+        $productos = $producto_index->listarProductosPopulares();
+    ?>
+    
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
@@ -209,43 +222,48 @@ if(isset($_SESSION['tipo_usuario'])){
 
                             <div class="carousel__lista">
                                 
+                                <?php  foreach($productos as $producto){ ?>
+                                <?php
+                                    $var=$producto->getFoto_Secundaria1();
+                                    $pathFoto="../Image/Productos/Foto_Secundaria1/$var";
+                                    if(!file_exists($pathFoto)){
+                                        $pathFoto="../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+                                    }
+                                ?>
                                 <div class="card card-p mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
+                                   
+                                    <a href="Usuario/verProducto.php?id=<?= $producto->getID_Producto()?>">
+                                    <img class="card-img-top" alt="" src="<?=$pathFoto?>" >
+                                    </a>
                                     <div class="card-body">
-                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
-                                        <p class="card-text">Descripción del producto 3.</p>
-                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
+                                        <h5 class="card-title line-clamp-2 text-truncate">
+                                            <?= $producto->getNombre()?>
+                                        </h5>
+                                        <p class="card-text line-clamp-2 text-truncate">
+                                            <?= $producto->getDescripcion()?>
+                                        </p>
+                                        <span class="fs-4">
+                                            S/<?= 
+                                                $precioBase=$producto->getPrecio();
+                                                $desc=$producto->getDescuento();
+                                                $precioFinal=number_format($desc*$precioBase);
+                                                number_format($precioFinal,2,'.',','); 
+                                                ?>  
+                                            <small class="desc">
+                                                <?= 
+                                                $num=$producto->getDescuento();
+                                                number_format($num*100);
+                                                ?>% descuento
+                                            </small> 
+                                        </span>
                                     </div>
+                                    
                                 </div>
                                 
-                                <div class="card card-p mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
-                                        <p class="card-text">Descripción del producto 3.</p>
-                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
-                                    </div>
-                                </div>
-
-                                <div class="card card-p mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
-                                        <p class="card-text">Descripción del producto 3.</p>
-                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
-                                    </div>
-                                </div>
-
-                                <div class="card card-p mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Manto artesanal para abrigarte</h5>
-                                        <p class="card-text">Descripción del producto 3.</p>
-                                        <span class="fs-4">S/300.00 <small>10% desc.</small> </span>
-                                    </div>
-                                </div>
-                                
+                                <?php } ?>
                             </div>
+
+                            
 
                             <button aria-label="Siguiente" class="carousel__siguiente">
                                 <i class="fas fa-chevron-right"></i>
@@ -261,13 +279,12 @@ if(isset($_SESSION['tipo_usuario'])){
     </div>
 
         <!-- Sección de opiniones -->
-
-
+    
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
                 <div class="col-md-11 mx-auto text-center">
-                    <h2 class="">Opiniones</h2>
+                    <h2 class="">Reviews</h2>
 
                     <div class="carousel">
                         <div class="carousel__contenedor">
@@ -276,63 +293,47 @@ if(isset($_SESSION['tipo_usuario'])){
                             </button>
 
                             <div class="carousel__lista lista">
+                            
+                            <?php
                                 
-
-                                <div class="card card-o mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Artesania</h5>
-                                        <p class="card-text">Descripción de la opinion</p>
-                                        <div class="contenido-img-span">
-                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card card-o mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Artesania</h5>
-                                        <p class="card-text">Descripción de la opinion</p>
-                                        <div class="contenido-img-span">
-                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card card-o mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Artesania</h5>
-                                        <p class="card-text">Descripción de la opinion</p>
-                                        <div class="contenido-img-span">
-                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card card-o mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Artesania</h5>
-                                        <p class="card-text">Descripción de la opinion</p>
-                                        <div class="contenido-img-span">
-                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <div class="card card-o mb-3">
-                                    <img src="https://via.placeholder.com/300x200" class="card-img-top mx-auto d-block" alt="Producto 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Artesania</h5>
-                                        <p class="card-text">Descripción de la opinion</p>
-                                        <div class="contenido-img-span">
-                                            <img src="../Image/perfil-img.png" alt="Producto 1"><i>por Isabela Merced</i>
-                                        </div>
-                                    </div>
-                                </div>
+                                $reviews = $review_index->listarAlgunasReviews();
                                 
+                                foreach($reviews as $review) {
+                                $producto1 = $productoxreview->listarPorIdProducto($review->getID_Producto());
+                                $cliente1 = $clientexreview->listarPorIdCliente($review->getID_Cliente());
+                                
+                                $var1=$producto1->getFoto_Secundaria1();
+                                $pathR="../Image/Productos/Foto_Secundaria1/$var1";
+                                if(!file_exists($pathR)){
+                                    $pathR="../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+                                }
+
+                                $var2=$cliente1->getFoto_Perfil();
+                                $pathC="../Image/Clientes/$var2";
+                                if(!file_exists($pathC)){
+                                    $pathC="../Image/Clientes/fotoPerfil_none.png";  
+                                }
+
+                            ?>
+                                <div class="card card-o mb-3">
+                                
+                                    <img src="<?= $pathR ?>" class="card-img-top2" alt="" style="border-radius: 10px;object-fit: contain;max-height: 240px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-truncate"><?= $producto1->getNombre(); ?></h5>
+                                        <p class="card-text"><?= $review->getComentario(); ?></p>
+                                        <div class="contenido-img-span">
+                                            <img src="<?=$pathC?>" alt="">
+                                            <i>
+                                                <?=
+                                                    $cliente1->getNombres()." ".$cliente1->getApellidos()
+                                                ?>
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+
+ 
                             </div>
 
                             <button aria-label="Siguiente" class="carousel__siguiente siguiente">
@@ -353,7 +354,48 @@ if(isset($_SESSION['tipo_usuario'])){
 
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p text-center">
-            <h2>AQUI VA LOS BENEFICIOS</h2>
+            <h2>Beneficios</h2>
+            <div class="container px-4 py-1" id="featured-3">
+            <div class="row g-4 py-1 row-cols-1 row-cols-lg-5">
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <img src="../Image/Beneficios/pic1.png"></img>                    </div>
+                    <h2>1</h2> 
+                    <h3 class="fs-5">Ingresa a nuestra tienda virtual</h3>
+
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <img src="../Image/Beneficios/pic2.png"></img>                    </div>
+                    <h2>2</h2>
+                    <h3 class="fs-5">Registra nuestros datos personales</h3>
+
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <img src="../Image/Beneficios/pic3.png"></img>                    </div>
+                    <h2>3</h2>
+                    <h4 class="fs-5">Selecciona los productos de tu preferencia</h4>
+
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <img src="../Image/Beneficios/pic4.png"></img>
+                    </div>
+                    <h2>4</h2>
+                    <h4 class="fs-5">Obten una proforma personalizada</h4>
+           
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <img src="../Image/Beneficios/pic5.png"></img>                    </div>
+                    <h2>5</h2>
+                    <h4 class="fs-5">Contacta a los emprendimientos</h4>
+                    
+                </div>
+                
+            </div>
+        </div>
         </div>
     </div>
 

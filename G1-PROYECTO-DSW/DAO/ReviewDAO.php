@@ -1,7 +1,16 @@
 <?php
+if(empty("../Conexion/Conexion.php")){
+    require_once "../../Conexion/Conexion.php";
+}else{
+    require_once "../Conexion/Conexion.php";
+}
 
-include "../Conexion/Conexion.php";
-include "../Clases/Review.php";
+if(empty("../Conexion/Review.php")){
+    require_once "../../Clases/Review.php";
+}else{
+    require_once "../Clases/Review.php";
+}
+
 
 class ReviewDAO {
 //Atributos
@@ -146,7 +155,40 @@ public function listarPorIdReview($ID_Review_Buscado){
         }
     }
     return $review;
-}        
+}       
+
+public function listarAlgunasReviews(){
+    $reviews = array();
+    $query = "SELECT * FROM Review WHERE ID_Review In (4,11,20,29,33,59)";
+    
+    try{
+        $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $ID_Review, $ID_Cliente, $ID_Producto, $Estado, $Comentario, $Fecha);
+
+        while (mysqli_stmt_fetch($stmt)) {
+            $review = new Review();
+
+            $review->setID_Review($ID_Review);
+            $review->setID_Cliente($ID_Cliente);
+            $review->setID_Producto($ID_Producto);
+            $review->setEstado($Estado);
+            $review->setComentario($Comentario);          
+            $review->setFecha($Fecha);
+
+            $reviews[] = $review;
+        }
+
+    } catch (Exception $e) {
+        echo "Error al listar las reviews: " . $e->getMessage();
+        $reviews = null;
+    } finally{
+        if($stmt){
+            mysqli_stmt_close($stmt);
+        }
+    }
+    return $reviews;
+}
 
 
 }

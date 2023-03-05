@@ -1,7 +1,16 @@
 <?php
-//require '../../Conexion/Conexion.php';
-//require '../../Clases/Cliente.php';
-// si tienes problemas quitale "../"
+
+if(empty("../Conexion/Conexion.php")){
+    require_once "../../Conexion/Conexion.php";
+}else{
+    require_once "../Conexion/Conexion.php";
+}
+
+if(empty("../Conexion/Cliente.php")){
+    require_once "../../Clases/Cliente.php";
+}else{
+    require_once "../Clases/Cliente.php";
+}
 
 class ClienteDAO {
     //Atributos
@@ -153,17 +162,18 @@ class ClienteDAO {
             
             if (mysqli_stmt_fetch($stmt)) {
                 $cliente = new cliente();
-                $ID_Cliente = $cliente->getID_Cliente(); //i
-                $Nombres = $cliente->getNombres(); //s
-                $Apellidos = $cliente->getApellidos(); //s
-                $Email = $cliente->getEmail(); //s
-                $Celular = $cliente->getCelular(); //s
-                $Contrasena = $cliente->getContrasena(); //s
-                $Departamento = $cliente->getDepartamento(); //s
-                $Usuario = $cliente->getUsuario(); //s
-                $DNI = $cliente->getDNI(); //s
-                $Fecha_Creacion = $cliente->getFecha_Creacion(); //s
-                $Foto_Perfil = $cliente->getFoto_Perfil(); //s
+                
+                $cliente->setID_Cliente($ID_Cliente);
+                $cliente->setNombres($Nombres);
+                $cliente->setApellidos($Apellidos);
+                $cliente->setEmail($Email);
+                $cliente->setCelular($Celular);
+                $cliente->setContrasena($Contrasena);
+                $cliente->setDepartamento($Departamento);
+                $cliente->setUsuario($Usuario);
+                $cliente->setDNI($DNI);
+                $cliente->setFecha_Creacion($Fecha_Creacion);
+                $cliente->setFoto_Perfil($Foto_Perfil);
             }
 
         } catch (Exception $e) {

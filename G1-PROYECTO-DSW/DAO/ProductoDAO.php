@@ -1,8 +1,18 @@
 <?php
 
-//Librerías
-//require "../../Conexion/Conexion.php";
-//require "../../Clases/Producto.php";
+if(empty("../Conexion/Conexion.php")){
+    require_once "../../Conexion/Conexion.php";
+}else{
+    require_once "../Conexion/Conexion.php";
+}
+
+if(empty("../Conexion/Producto.php")){
+    require_once "../../Clases/Producto.php";
+}else{
+    require_once "../Clases/Producto.php";
+}
+
+
 
 class ProductoDAO
 {
@@ -231,6 +241,47 @@ class ProductoDAO
         return $productos;
     }
 
+    public function listarProductosPopulares(){
+        $productos = array();
+        $query = "SELECT * FROM Producto WHERE ID_Producto IN (8,9,15,68,25,37)";
+        
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Producto, $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
+
+            while (mysqli_stmt_fetch($stmt)) {
+                $producto = new Producto();
+
+                $producto->setID_Producto($ID_Producto);
+                $producto->setNombre($Nombre);
+                $producto->setPrecio($Precio);
+                $producto->setDescripcion($Descripcion);
+                $producto->setID_Categoria($ID_Categoria);
+                $producto->setID_Subcategoria($ID_Subcategoria);
+                $producto->setDescuento($Descuento);
+                $producto->setFecha($Fecha);
+                $producto->setID_Emprendimiento($ID_Emprendimiento);
+                $producto->setDisponibilidad($Disponibilidad);
+                $producto->setFoto_Secundaria1($Foto_Secundaria1);
+                $producto->setFoto_Secundaria2($Foto_Secundaria2);
+                $producto->setFoto_Secundaria3($Foto_Secundaria3);
+
+
+                $productos[] = $producto;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al listar productos: " . $e->getMessage();
+            $productos = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $productos;
+    }
+
     public function contarProductos() {
         $query = "SELECT COUNT(*) FROM Producto WHERE Disponibilidad = 1";
         try{
@@ -242,7 +293,7 @@ class ProductoDAO
             mysqli_stmt_bind_result($stmt,$numProd);
 
             while (mysqli_stmt_fetch($stmt)) {  
-                
+
             }
 
         } catch (Exception $e) {
@@ -253,31 +304,6 @@ class ProductoDAO
             }
         }
         return $numProd;
-    }
-
-    public function obtenerUltimoId(){
-        $r=0;//1 existe  0 no existe
-        $sql = "SELECT MAX(ID_Producto) FROM producto";
-        try{
-            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
-            mysqli_stmt_bind_result($stmt, $ID_Producto);
-
-            if(mysqli_stmt_fetch($stmt)){
-                $r=$ID_Producto;
-            }
-
-            
-        }catch(PDOException $e){
-            echo $e->getMessage();
-            echo "Error al obtener MaxID: " . $e->getMessage();
-            $r = 0;
-        } finally{
-            if($stmt){
-                mysqli_stmt_close($stmt);
-            }
-        }
-        
-        return $r;
     }
 }
 
