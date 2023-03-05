@@ -13,6 +13,8 @@ if(isset($_SESSION['tipo_usuario'])){
 
 require '../../Conexion/Conexion.php';
 
+require '../Index/Components/mensaje.php';
+require '../Actualizar/ActualizarProducto.php';
 
 ?>
 
@@ -40,7 +42,7 @@ require '../../Conexion/Conexion.php';
 <body>
     <?php require 'headerEmpresa.php';?>
 
-  <section class="container-fluid py-3">
+    <section class="container-fluid py-3">
         <div class="row text-center">
             <div class="col-4 mx-auto">
                 <div class="row d-flex align-items-center">
@@ -89,6 +91,8 @@ require '../../Conexion/Conexion.php';
             <div class="row">
                 
             <div class="text-center fs-2 fw-bold">Actualizar producto</div>
+
+                <!--Formulario registar producto-->
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6 mt-2">
@@ -107,29 +111,61 @@ require '../../Conexion/Conexion.php';
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>
+                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="1">Hogar y Decoración</option>
+                                    <option value="2">Bebidas</option>
+                                    <option value="3">Alimentos</option>
+                                    <option value="4">Moda y Accesorios</option>
                                 </select>
-                                <label for="departamento">Categoria</label>
+                                <label for="categoria">Categoría *</label>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <!--<option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
+                                    <option value="">Seleccione una categoría primero</option>
                                 </select>
-                                <label for="departamento">Subcategoria</label>
+                                <label for="subcategoria">Subcategoría *</label>
                             </div>
                         </div>
+
+                        <script>
+                            // Obtener referencias a los elementos select
+                            var pais = document.getElementById("categoria");
+                            var ciudad = document.getElementById("subcategoria");
+                            
+                            var opcionesCiudades = {
+                                "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
+                                "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
+                                "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
+                                "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
+                            };
+                            // Función que actualiza las opciones del segundo select según la selección del primero
+                            function actualizarCategorias() {
+                                // Obtener el valor seleccionado en el primer select
+                                var valorPais = pais.value;
+                                // Obtener la lista de ciudades correspondiente al valor seleccionado
+                                var ciudades = opcionesCiudades[valorPais] || [];
+                                // Limpiar las opciones del segundo select
+                                ciudad.innerHTML = "";
+                                // Agregar las nuevas opciones al segundo select
+                                for (var i = 0; i < ciudades.length; i++) {
+                                    var opcion = document.createElement("option");
+                                    opcion.value = ciudades[i];
+                                    opcion.textContent = ciudades[i];
+                                    ciudad.appendChild(opcion);
+                                }
+                                // Deshabilitar el segundo select si no hay opciones disponibles
+                                ciudad.disabled = ciudades.length == 0;
+                            }
+                            // Actualizar las opciones del segundo select cuando cambia la selección del primer select
+                            pais.addEventListener("change", actualizarCategorias);
+                            // Actualizar las opciones del segundo select al cargar la página
+                            actualizarCategorias();
+                        </script>
+
                     </div>
 
                     <div class="row">
@@ -142,20 +178,8 @@ require '../../Conexion/Conexion.php';
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6 mt-2">
-                            <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <!--<option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>-->
-                                </select>
-                                <label for="departamento">Emprendimiento</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="6" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                        <div class="col-sm-12 mt-2">
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="4" required> <label for="floatingDisp">Disponibilidad *</label></div>
                         </div>
                     </div>
 
@@ -170,36 +194,37 @@ require '../../Conexion/Conexion.php';
 
                         <!--Foto 1-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            <input class="input-content" type="file" id="upload-button1" name="upload-button1" accept="image/*">
+                            <label class="label-button" for="upload-button1">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                            <figcaption class="text-center text-truncate" id="file-name1"></figcaption>
                         </div>
 
                         <!--Foto 2-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            <input class="input-content" type="file" id="upload-button2" name="upload-button2" accept="image/*">
+                            <label class="label-button" for="upload-button2">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                            <figcaption class="text-center text-truncate" id="file-name2"></figcaption>
                         </div>
 
                         <!--Foto 3-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            <input class="input-content" type="file" id="upload-button3" name="upload-button3" accept="image/*">
+                            <label class="label-button" for="upload-button3">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                            <figcaption class="text-center text-truncate" id="file-name3"></figcaption>
                         </div>
+
                     </div>
 
                     <div >
@@ -213,31 +238,55 @@ require '../../Conexion/Conexion.php';
         </div>
     </div>
 
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>Derechos reservados &copy; 2023 Mi sitio web</p>
-            </div>
-        </footer>
+    <script>
+    
+    //Foto 1
+    let uploadButton1 = document.getElementById("upload-button1");
+    let chosenImage1 = document.getElementById("chosen-image1");
+    let fileName1 = document.getElementById("file-name1");
 
-        <script src="../../js/index.js"></script>
-        <!-- Scripts de Bootstrap 5 -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        
-<script>
-    let uploadButton = document.getElementById("upload-button");
-let chosenImage = document.getElementById("chosen-image");
-let fileName = document.getElementById("file-name");
-
-uploadButton.onchange = () => {
+    uploadButton1.onchange = () => {
     let reader = new FileReader();
-    reader.readAsDataURL(uploadButton.files[0]);
+    reader.readAsDataURL(uploadButton1.files[0]);
     reader.onload = () => {
-        chosenImage.setAttribute("src",reader.result);
+        chosenImage1.setAttribute("src",reader.result);
     }
-    fileName.textContent = uploadButton.files[0].name;
-}
-</script>
+    fileName1.textContent = uploadButton1.files[0].name;
+    }
 
+    //Foto 2
+    let uploadButton2 = document.getElementById("upload-button2");
+    let chosenImage2 = document.getElementById("chosen-image2");
+    let fileName2 = document.getElementById("file-name2");
+
+    uploadButton2.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton2.files[0]);
+    reader.onload = () => {
+        chosenImage2.setAttribute("src",reader.result);
+    }
+    fileName2.textContent = uploadButton2.files[0].name;
+    }
+
+    //Foto 3
+    let uploadButton3 = document.getElementById("upload-button3");
+    let chosenImage3 = document.getElementById("chosen-image3");
+    let fileName3 = document.getElementById("file-name3");
+
+    uploadButton3.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton3.files[0]);
+    reader.onload = () => {
+        chosenImage3.setAttribute("src",reader.result);
+    }
+    fileName3.textContent = uploadButton3.files[0].name;
+    }
+
+    </script>
+
+
+      <!-- Scripts de Bootstrap 5 -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        
 </body>
 </html>
