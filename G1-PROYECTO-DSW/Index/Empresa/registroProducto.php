@@ -33,6 +33,8 @@ require '../../DAO/ProductoDAO.php';
             <div class="row">
                 
             <div class="text-center fs-2 fw-bold">Añadir nuevo producto</div>
+
+                <!--Formulario registar producto-->
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6 mt-2">
@@ -127,7 +129,7 @@ require '../../DAO/ProductoDAO.php';
 
                     <div class="row">
                         <div class="col-sm-12 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="6" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="4" required> <label for="floatingDisp">Disponibilidad *</label></div>
                         </div>
                     </div>
 
@@ -142,13 +144,35 @@ require '../../DAO/ProductoDAO.php';
 
                         <!--Foto 1-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            <input class="input-content" type="file" id="upload-button1" name="upload-button1" accept="image/*">
+                            <label class="label-button" for="upload-button1">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
+                            <figcaption class="text-center text-truncate" id="file-name1"></figcaption>
+                        </div>
+
+                        <!--Foto 2-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button2" name="upload-button2" accept="image/*">
+                            <label class="label-button" for="upload-button2">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name2"></figcaption>
+                        </div>
+
+                        <!--Foto 3-->
+                        <div class="col-md-6 mt-2">
+                            <input class="input-content" type="file" id="upload-button3" name="upload-button3" accept="image/*">
+                            <label class="label-button" for="upload-button3">
+                                <i class="fas fa-upload"></i> &nbsp; Subir una foto
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <figcaption class="text-center text-truncate" id="file-name3"></figcaption>
                         </div>
 
                     </div>
@@ -165,17 +189,47 @@ require '../../DAO/ProductoDAO.php';
     </div>
 
     <script>
-    let uploadButton = document.getElementById("upload-button");
-    let chosenImage = document.getElementById("chosen-image");
-    let fileName = document.getElementById("file-name");
+    
+    //Foto 1
+    let uploadButton1 = document.getElementById("upload-button1");
+    let chosenImage1 = document.getElementById("chosen-image1");
+    let fileName1 = document.getElementById("file-name1");
 
-    uploadButton.onchange = () => {
-        let reader = new FileReader();
-        reader.readAsDataURL(uploadButton.files[0]);
-        reader.onload = () => {
-            chosenImage.setAttribute("src",reader.result);
-        }
-        fileName.textContent = uploadButton.files[0].name;
+    uploadButton1.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton1.files[0]);
+    reader.onload = () => {
+        chosenImage1.setAttribute("src",reader.result);
+    }
+    fileName1.textContent = uploadButton1.files[0].name;
+    }
+
+    //Foto 2
+    let uploadButton2 = document.getElementById("upload-button2");
+    let chosenImage2 = document.getElementById("chosen-image2");
+    let fileName2 = document.getElementById("file-name2");
+
+    uploadButton2.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton2.files[0]);
+    reader.onload = () => {
+        chosenImage2.setAttribute("src",reader.result);
+    }
+    fileName2.textContent = uploadButton2.files[0].name;
+    }
+
+    //Foto 3
+    let uploadButton3 = document.getElementById("upload-button3");
+    let chosenImage3 = document.getElementById("chosen-image3");
+    let fileName3 = document.getElementById("file-name3");
+
+    uploadButton3.onchange = () => {
+    let reader = new FileReader();
+    reader.readAsDataURL(uploadButton3.files[0]);
+    reader.onload = () => {
+        chosenImage3.setAttribute("src",reader.result);
+    }
+    fileName3.textContent = uploadButton3.files[0].name;
     }
 
     </script>
