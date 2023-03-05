@@ -63,13 +63,13 @@ if(isset($_SESSION['tipo_usuario'])){
                         <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
+                        <a class="nav-link" href="Usuario/nosotros.php">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tienda Online</a>
+                        <a class="nav-link" href="Usuario/tienda1.php">Tienda Online</a>
                     </li>
                     
                 </ul>
@@ -133,11 +133,11 @@ if(isset($_SESSION['tipo_usuario'])){
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="Usuario/favorito.php"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="Uusario/proforma.php"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
