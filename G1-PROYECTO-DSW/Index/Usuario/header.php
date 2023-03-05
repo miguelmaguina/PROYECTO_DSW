@@ -15,16 +15,16 @@
             <div class="mavbar-btand collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
+                        <a class="nav-link" href="nosotros.php">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tienda Online</a>
+                        <a class="nav-link" href="tienda1.php">Tienda Online</a>
                     </li>
                 </ul>
             </div>
@@ -62,11 +62,11 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="favorito.php"><i class="fa-solid fa-heart"></i> <span>Favorito</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="proforma.php"> <i class="fa-solid fa-flag"></i></i> <span>Proforma</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -88,7 +88,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="../Empresa/datosGraficos.php"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

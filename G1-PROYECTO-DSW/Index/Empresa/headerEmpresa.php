@@ -15,10 +15,10 @@
             <div class="mavbar-btand collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
+                        <a class="nav-link" href="verProductoEmp1.php">Producto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
@@ -78,7 +78,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="datosGraficos.php"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
