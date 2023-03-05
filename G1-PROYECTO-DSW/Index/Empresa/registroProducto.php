@@ -108,14 +108,6 @@ require '../../DAO/ProductoDAO.php';
                             actualizarCategorias();
                         </script>
 
-                        <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="categoria" placeholder="categoria" name="categoria" maxlength="20" required> <label for="categoria">Categoría *</label></div>
-                        </div>
-
-                        <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="subcategoria" placeholder="subcategoria" name="subcategoria" maxlength="20" required> <label for="subcategoria">Subcategoría *</label></div>
-                        </div>
-
                     </div>
 
                     <div class="row">
