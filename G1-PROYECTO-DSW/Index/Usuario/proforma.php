@@ -613,7 +613,10 @@ if(isset($_SESSION['tipo_usuario'])){
                 <div class="contenedor-p">
                     <h3>Total:</h3>
                     <span>S/4059.99</span>
-                    <button class="btn btn-izq w-100 mt-2">Generar</button>
+                    <form action="DescargarReporte_PDF.php" method="post" accept-charset="utf-8">
+                        <button class="btn btn-izq w-100 mt-2">Generar</button>
+                    </form>
+                    
                 </div>
                 </div>
             </div>
