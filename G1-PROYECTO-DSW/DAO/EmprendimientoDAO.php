@@ -233,12 +233,12 @@ class EmprendimientoDAO {
 
     public function verificaLogin($email,$contra){
         $r=0;//1 existe  0 no existe
-        $sql = "SELECT ID_Emprendimiento, Nombre, Usuario FROM emprendimiento WHERE Email=? AND Contrasena=?";
+        $sql = "SELECT ID_Emprendimiento, Nombre, Usuario, Logo FROM emprendimiento WHERE Email=? AND Contrasena=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
             mysqli_stmt_bind_param($stmt, "ss", $email, $contra);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $ID_Emprendimiento, $Nombre, $Usuario);
+            mysqli_stmt_bind_result($stmt, $ID_Emprendimiento, $Nombre, $Usuario, $Logo);
 
             if(mysqli_stmt_fetch($stmt)){
                 //$_SESSION['user_id']=$row['ID_Emp$ID_Emprendimiento'];
@@ -246,6 +246,7 @@ class EmprendimientoDAO {
                 $_SESSION['id_e'] = $ID_Emprendimiento;
                 $_SESSION['nombre_e'] = $Nombre;
                 $_SESSION['usuario_e'] = $Usuario;
+                $_SESSION['foto_e'] = $Logo;
                 $_SESSION['tipo_usuario'] = 'emprendimiento';
                 $r=1;
             }// }else{

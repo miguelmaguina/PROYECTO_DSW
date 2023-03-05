@@ -223,12 +223,12 @@ class ClienteDAO {
 
     public function verificaLogin($email,$contra){
         $r=0;//1 existe  0 no existe
-        $sql = "SELECT ID_Cliente, Nombres, Usuario FROM Cliente WHERE Email=? AND Contraseña=?";
+        $sql = "SELECT ID_Cliente, Nombres, Usuario, Foto_Perfil FROM Cliente WHERE Email=? AND Contraseña=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
             mysqli_stmt_bind_param($stmt, "ss", $email, $contra);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $ID_Cliente, $Nombres, $Usuario);
+            mysqli_stmt_bind_result($stmt, $ID_Cliente, $Nombres, $Usuario,$Foto_Perfil);
 
             if(mysqli_stmt_fetch($stmt)){
                 //$_SESSION['user_id']=$row['ID_Cliente'];
@@ -236,6 +236,7 @@ class ClienteDAO {
                 $_SESSION['id_c'] = $ID_Cliente;
                 $_SESSION['nombre_c'] = $Nombres;
                 $_SESSION['usuario_c'] = $Usuario;
+                $_SESSION['foto_c'] = $Foto_Perfil;
                 $_SESSION['tipo_usuario'] = 'cliente';
                 $r=1;
             }// }else{
