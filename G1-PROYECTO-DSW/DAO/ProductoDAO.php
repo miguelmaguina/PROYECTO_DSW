@@ -1,8 +1,21 @@
 <?php
 
-//Librerías
-require "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Conexion/Conexion.php";
-require "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
+if(file_exists("../Conexion/Conexion.php")){
+    require_once "../Conexion/Conexion.php";
+}elseif(file_exists("../../Conexion/Conexion.php")){
+    require_once "../../Conexion/Conexion.php";
+}
+
+require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Conexion/Conexion.php";
+
+
+if(file_exists("../Clases/Producto.php")){
+    require_once "../Clases/Producto.php";
+}elseif(file_exists("../../Clases/Producto.php")){
+    require_once "../../Clases/Producto.php";
+}
+require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
+
 
 class ProductoDAO
 {
@@ -190,7 +203,49 @@ class ProductoDAO
         return $producto;
     }
 
-    public function listarPorEmorendimiento(){
+    public function listarProductosPopulares(){
+
+        $query = "SELECT * FROM Producto WHERE ID_Producto IN  (8,14,65,23,41,58)";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Producto, $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
+
+            while (mysqli_stmt_fetch($stmt)) {
+                $producto = new Producto();
+
+                $producto->setID_Producto($ID_Producto);
+                $producto->setNombre($Nombre);
+                $producto->setPrecio($Precio);
+                $producto->setDescripcion($Descripcion);
+                $producto->setID_Categoria($ID_Categoria);
+                $producto->setID_Subcategoria($ID_Subcategoria);
+                $producto->setDescuento($Descuento);
+                $producto->setFecha($Fecha);
+                $producto->setID_Emprendimiento($ID_Emprendimiento);
+                $producto->setDisponibilidad($Disponibilidad);
+                $producto->setFoto_Secundaria1($Foto_Secundaria1);
+                $producto->setFoto_Secundaria2($Foto_Secundaria2);
+                $producto->setFoto_Secundaria3($Foto_Secundaria3);
+
+
+                $productos[] = $producto;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al listar productos: " . $e->getMessage();
+            $productos = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $productos;
+    }
+
+
+    public function listarPorEmprendimiento(){
         $productos = array();
         $query = "SELECT * FROM Producto WHERE ID_Emprendimiento ={$_SESSION['id_e']}";
         
