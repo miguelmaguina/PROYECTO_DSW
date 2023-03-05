@@ -49,31 +49,62 @@ require '../../DAO/ProductoDAO.php';
                     </div>
 
                     <div class="row">
-                        <!--<div class="col-sm-6 mt-2">
+                        <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>
+                                <select class="form-select" id="categorias" aria-label="Floating label select example">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="1">Hogar y Decoración</option>
+                                    <option value="2">Bebidas</option>
+                                    <option value="3">Alimentos</option>
+                                    <option value="4">Moda y Accesorios</option>
                                 </select>
-                                <label for="departamento">Categoria</label>
+                                <label for="categorias">Categoría *</label>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>
+                                <select class="form-select" id="subcategorias" aria-label="Floating label select example">
+                                    <option value="">Seleccione una categoría primero</option>
                                 </select>
-                                <label for="departamento">Subcategoria</label>
+                                <label for="subcategorias">Subcategoría *</label>
                             </div>
-                        </div>-->
+                        </div>
+
+                        <script>
+                            // Obtener referencias a los elementos select
+                            var pais = document.getElementById("categorias");
+                            var ciudad = document.getElementById("subcategorias");
+                            
+                            var opcionesCiudades = {
+                                "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
+                                "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
+                                "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
+                                "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
+                            };
+                            // Función que actualiza las opciones del segundo select según la selección del primero
+                            function actualizarCategorias() {
+                                // Obtener el valor seleccionado en el primer select
+                                var valorPais = pais.value;
+                                // Obtener la lista de ciudades correspondiente al valor seleccionado
+                                var ciudades = opcionesCiudades[valorPais] || [];
+                                // Limpiar las opciones del segundo select
+                                ciudad.innerHTML = "";
+                                // Agregar las nuevas opciones al segundo select
+                                for (var i = 0; i < ciudades.length; i++) {
+                                    var opcion = document.createElement("option");
+                                    opcion.value = ciudades[i];
+                                    opcion.textContent = ciudades[i];
+                                    ciudad.appendChild(opcion);
+                                }
+                                // Deshabilitar el segundo select si no hay opciones disponibles
+                                ciudad.disabled = ciudades.length == 0;
+                            }
+                            // Actualizar las opciones del segundo select cuando cambia la selección del primer select
+                            pais.addEventListener("change", actualizarCategorias);
+                            // Actualizar las opciones del segundo select al cargar la página
+                            actualizarCategorias();
+                        </script>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating"> <input type="text" class="form-control" id="categoria" placeholder="categoria" name="categoria" maxlength="20" required> <label for="categoria">Categoría *</label></div>
