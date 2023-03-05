@@ -51,9 +51,9 @@ if(isset($_SESSION['tipo_usuario'])){
             <div class="d-flex align-items-center justify-content-between"> 
                 <a href="#" class="logo d-flex align-items-center text-decoration-none"> <img src="../Image/hallpa.png" alt=""> <span class="titulo-logo d-none d-lg-block">Hallpa</span> </a>
              </div>
-             <div class="search-bar">
+             <!-- <div class="search-bar">
                 <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
-             </div>
+             </div> -->
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,9 +78,9 @@ if(isset($_SESSION['tipo_usuario'])){
         <div class="container-fluid col ">
             <nav class="header-nav ms-auto position-absolute" style="right: 20px; top:16px;">
                 <ul class="d-flex align-items-center">
-                    <li class="nav-item d-block d-xl-none p-1">
+                    <!-- <li class="nav-item d-block d-xl-none p-1">
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    </li>
+                    </li> -->
                     <li class="nav-item nav-carrito car">
                         <a href="#" class="nav-link nav-icon" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
                     </li>

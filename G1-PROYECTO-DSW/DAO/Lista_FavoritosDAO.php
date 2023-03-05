@@ -98,17 +98,20 @@ class Lista_FavoritosDAO {
 
     public function delete($ID_Lista_Favoritos) {
         $query = "DELETE FROM Lista_Favoritos WHERE ID_Lista_Favoritos=?";
+        $r=1;
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
             mysqli_stmt_bind_param($stmt, "i", $ID_Lista_Favoritos);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
+            $r=0;
             echo "Error al eliminar de la lista de productos: " . $e->getMessage();
         } finally{
             if($stmt){
                 mysqli_stmt_close($stmt);
             }
         }
+        return $r;
     }
 
     public function listarPorIdListaFavoritos($ID_Lista_Fav_Buscado){

@@ -100,7 +100,7 @@ if(isset($_SESSION['tipo_usuario'])){
             echo '<div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
                     <div class="position-absolute cerrar">
-                        <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
+                        <a href="../Components/eliminarFavorito.php?id='.$valor->getID_Lista_Favoritos().'" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
                     </div>
                     <div class="row p-3">
                     <div class="col-md-5 col-lg-6">                     
