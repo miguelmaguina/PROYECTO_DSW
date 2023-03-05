@@ -17,7 +17,7 @@ require '../Components/mensaje.php';
 
 require '../../DAO/ProductoDAO.php';
 
-require 'procesoRegistro.php';
+require 'procesoRegistroProducto.php';
 
 ?>
 
@@ -65,7 +65,7 @@ require 'procesoRegistro.php';
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
                                 <option selected value="ejemplo1">Seleccione una opción</option>
                                 <option value="ejemplo2">Hogar y Decoración</option>
                                 <option value="ejemplo3">Bebidas</option>
@@ -78,7 +78,7 @@ require 'procesoRegistro.php';
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
                                 <option selected value="ejemplo1">Seleccione una opción</option>
                                 <!--<option value="ejemplo2">Hogar y Decoración</option>
                                 <option value="ejemplo3">Bebidas</option>
@@ -102,7 +102,7 @@ require 'procesoRegistro.php';
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <select class="form-select" id="emprendimiento" name="emprendimiento" aria-label="Floating label select example">
                                 <option selected value="ejemplo1">Seleccione una opción</option>
                                 <!--<option value="ejemplo2">Hogar y Decoración</option>
                                 <option value="ejemplo3">Bebidas</option>
@@ -128,7 +128,7 @@ require 'procesoRegistro.php';
 
                         <!--Foto 1-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <input class="input-content" type="file" id="upload-button1" name="upload-button1" accept="image/*">
                             <label class="label-button" for="upload-button">
                             <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
@@ -139,7 +139,7 @@ require 'procesoRegistro.php';
 
                         <!--Foto 2-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <input class="input-content" type="file" id="upload-button2" name="upload-button2" accept="image/*">
                             <label class="label-button" for="upload-button">
                             <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
@@ -150,7 +150,7 @@ require 'procesoRegistro.php';
 
                         <!--Foto 3-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
+                            <input class="input-content" type="file" id="upload-button3" name="upload-button3" accept="image/*">
                             <label class="label-button" for="upload-button">
                             <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
@@ -172,17 +172,37 @@ require 'procesoRegistro.php';
     </div>
 
     <script>
-    let uploadButton = document.getElementById("upload-button");
+    let uploadButton1 = document.getElementById("upload-button1");
+    let uploadButton2 = document.getElementById("upload-button2");
+    let uploadButton3 = document.getElementById("upload-button3");
     let chosenImage = document.getElementById("chosen-image");
     let fileName = document.getElementById("file-name");
 
-    uploadButton.onchange = () => {
+    uploadButton1.onchange = () => {
         let reader = new FileReader();
-        reader.readAsDataURL(uploadButton.files[0]);
+        reader.readAsDataURL(uploadButton1.files[0]);
         reader.onload = () => {
             chosenImage.setAttribute("src",reader.result);
         }
-        fileName.textContent = uploadButton.files[0].name;
+        fileName.textContent = uploadButton1.files[0].name;
+    }
+
+    uploadButton2.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(uploadButton2.files[0]);
+        reader.onload = () => {
+            chosenImage.setAttribute("src",reader.result);
+        }
+        fileName.textContent = uploadButton2.files[0].name;
+    }
+
+    uploadButton3.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(uploadButton3.files[0]);
+        reader.onload = () => {
+            chosenImage.setAttribute("src",reader.result);
+        }
+        fileName.textContent = uploadButton3.files[0].name;
     }
     </script>
 

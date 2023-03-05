@@ -213,6 +213,31 @@ class ProductoDAO
         }
         return $numProd;
     }
+
+    public function obtenerUltimoId(){
+        $r=0;//1 existe  0 no existe
+        $sql = "SELECT MAX(ID_Producto) FROM producto";
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_result($stmt, $ID_Producto);
+
+            if(mysqli_stmt_fetch($stmt)){
+                $r=$ID_Producto;
+            }
+
+            
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            echo "Error al obtener MaxID: " . $e->getMessage();
+            $r = 0;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        
+        return $r;
+    }
 }
 
 ?>
