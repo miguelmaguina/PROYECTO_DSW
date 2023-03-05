@@ -140,76 +140,63 @@ Nuestra visión es ser líderes en la promoción de productos auténticos de las
        
 
     <!----------------------- EMPRESAS  ------------------------------->
+    <?php
+    require "../../DAO/EmprendimientoDAO.php";
+
+    $emprendimiento_dao = new EmprendimientoDAO();
+    $emprendimientos = $emprendimiento_dao->listar();
+    ?>
+
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
                 <div class="col-md-11 mx-auto text-center">
-                    <h2 class="">Empresas</h2>
-                        <div id="carouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <h2 class="">Empresas y/o Emprendimientos</h2>
+                    <div id="carouselControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active carrusel-e">
-                            <div class="row row-p2">
-
-                                <div class="col-sm-6">
-                                    <div class="card card-e mb-3">
-                                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 1">
-                                        <div class="card-body">
-                                            <h3 class="card-title">Manto artesanal para abrigarte</h3>
-                                            <p class="card-text">Descripción del producto 1.</p>
-                                        </div>
+                            <?php foreach(array_chunk($emprendimientos, 2) as $index => $emprendimientoChunk) { ?>
+                                <div class="carousel-item<?= $index === 0 ? ' active' : '' ?>">
+                                    <div class="row">
+                                        <?php foreach($emprendimientoChunk as $emprendimiento){?>
+                                            <div class="col-sm-6">
+                                                <div class="card card-e mb-3">
+                                                                                            
+                                                    <img src="../../Image/Emprendimientos/logo_<?=$emprendimiento->getID_Emprendimiento();?>.png" class="card-img-top" alt="Emprendimiento <?=$emprendimiento->getNombre();?> Imagen">
+                                                    <div class="card-body">
+                                                    <h3 class="card-title"><?=$emprendimiento->getNombre();?></h3>
+                                                    <p class="card-text"><?=$emprendimiento->getEmail();?></p>
+                                                    <div class="red-social">
+                                                        <?php if ($emprendimiento->getURL_Web()) { ?>
+                                                        <a href="<?=$emprendimiento->getURL_Web()?>" class="fa fa-globe" style="font-size: 25px; color: #1A2B42;margin-right: 15px;" target="_blank"></a>
+                                                        <?php } ?>
+                                                        <?php if ($emprendimiento->getURL_Facebook()) { ?>
+                                                        <a href="<?=$emprendimiento->getURL_Facebook()?>" class="fa fa-facebook" style="font-size: 25px; color: #1A2B42;margin-right: 15px;" target="_blank"></a>
+                                                        <?php } ?>
+                                                        <?php if ($emprendimiento->getURL_Instagram()) { ?>
+                                                        <a href="<?=$emprendimiento->getURL_Instagram()?>" class="fa fa-instagram" style="font-size: 25px; color: #1A2B42;margin-right: 15px;" target="_blank"></a>
+                                                        <?php } ?>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="card card-e mb-3">
-                                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 1">
-                                        <div class="card-body">
-                                            <h3 class="card-title">Manto artesanal para abrigarte</h3>
-                                            <p class="card-text">Descripción del producto 1.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-<!--puedes quitarle un card para que sea de uno y cambiarle col-md6 a col-md-12   -->
-                            <div class="carousel-item carrusel-e">
-                            <div class="row row-p2">
-                                <div class="col-md-6">
-                                    <div class="card card-e mb-3">
-                                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 1">
-                                        <div class="card-body">
-                                            <h3 class="card-title">Manto artesanal para abrigarte</h3>
-                                            <p class="card-text">Descripción del producto 1.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card card-e mb-3">
-                                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Producto 2">
-                                        <div class="card-body">
-                                            <h3 class="card-title">Manto artesanal para abrigarte</h3>
-                                            <p class="card-text">Descripción del producto 2.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
+                            <?php } ?>
                         </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-       
-
        
 
         <!-- Footer -->

@@ -24,7 +24,8 @@
   }
 
   .portada1{
-    background-image: url(../Image/Artesanos.png);
+    background-image: url(../Image/fotoNosotros2.jpg);
+    background-size: cover;
     height: 70vh;
   }
 
