@@ -115,19 +115,30 @@ $pdf->SetFont('helvetica','',10);
 //SQL para consultas Empleados
 //$fechaInit = date("Y-m-d", strtotime($_POST['fecha_ingreso']));
 //$fechaFin  = date("Y-m-d", strtotime($_POST['fechaFin']));
+//SELECT proforma.ID_Proforma, producto.Nombre, proforma.Cantidad, producto.Precio
+//FROM proforma
+//INNER JOIN producto
+//ON proforma.ID_Producto = producto.ID_Producto;
 $conexion = mysqli_connect("localhost", "root", "","proyfinal_dsw_g1");
-$sqlProforma = ("SELECT * FROM proforma ");
+$sqlProforma = ("SELECT proforma.ID_Proforma, producto.Nombre, proforma.Cantidad, producto.Precio
+                FROM proforma
+                INNER JOIN producto
+                ON proforma.ID_Producto = producto.ID_Producto;");
 //$sqlTrabajadores = ("SELECT * FROM trabajadores");
 $query = mysqli_query($conexion, $sqlProforma);
+$contador = 0;
 
 while ($dataRow = mysqli_fetch_array($query)) {
-        $pdf->Cell(40,6,($dataRow['ID_Carrito']),1,0,'C');
-        $pdf->Cell(60,6,$dataRow['Nombre'],1,0,'C');
-        $pdf->Cell(60,6,$dataRow['Cantidad'],1,0,'C');
-        $pdf->Cell(35,6,('$ '. $dataRow['Precio']),1,0,'C');        
+        $pdf->Cell(40,6,($dataRow[0]),1,0,'C');
+        $pdf->Cell(60,6,$dataRow[1],1,0,'C');
+        $pdf->Cell(35,6,$dataRow[2],1,0,'C');
+        $pdf->Cell(35,6,('S/ '. $dataRow[3]),1,0,'C');        
+
+            $pdf->Ln(); // Agrega una nueva línea
+        
     }
-
-
+    
+    
 //$pdf->AddPage(); //Agregar nueva Pagina
 
 $pdf->Output('Resumen_Pedido_'.date('d_m_y').'.pdf', 'I'); 
