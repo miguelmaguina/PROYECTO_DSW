@@ -5,8 +5,9 @@ if(file_exists("../Conexion/Conexion.php")){
 }elseif(file_exists("../../Conexion/Conexion.php")){
     require_once "../../Conexion/Conexion.php";
 }
-
-require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Conexion/Conexion.php";
+else{
+    require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Conexion/Conexion.php";
+}
 
 
 if(file_exists("../Clases/Producto.php")){
@@ -14,7 +15,9 @@ if(file_exists("../Clases/Producto.php")){
 }elseif(file_exists("../../Clases/Producto.php")){
     require_once "../../Clases/Producto.php";
 }
-require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
+else{
+    require_once "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
+}
 
 
 class ProductoDAO
@@ -152,7 +155,7 @@ class ProductoDAO
         $query = "DELETE FROM Producto WHERE ID_Producto=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
-            mysqli_stmt_bind_param($stmt, "s", $ID_Producto);
+            mysqli_stmt_bind_param($stmt, "i", $ID_Producto);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
             echo "Error al eliminar producto: " . $e->getMessage();

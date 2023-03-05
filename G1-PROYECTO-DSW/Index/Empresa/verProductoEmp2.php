@@ -172,10 +172,10 @@ $conexion = new PDO($db_name, $user_name, $user_password);
     </section>
 
     <?php
-                        require_once '../../DAO/ProductoDAO.php';
-                        //$conexion=new Conexion();
-                        $productoDAO_Index = new ProductoDAO();
-                        $productos = $productoDAO_Index->listarPorEmorendimiento();
+     require_once '../../DAO/ProductoDAO.php';
+     //$conexion=new Conexion();
+     $productoDAO_Index = new ProductoDAO();
+      $productos = $productoDAO_Index->listarPorEmprendimiento();
                         
                         
     ?>
@@ -204,7 +204,7 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                         $pathFoto="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
                                     }
                                 ?>
-                                <img src="<?= $pathFoto?>" alt="Descripción de la imagen" style="max-width: 50%; max-height:50%;">
+                                <img src="<?= $pathFoto?>" alt="Descripción de la imagen" style="max-width: 55%; max-height:55%;">
                                 </div>
                                 <div class="col-md-6">
                                     <p class="card-titulo"><?= $producto->getNombre() ?></p>
@@ -218,7 +218,11 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                         </a>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
+                                        <form action="../../Eliminar/EliminarProducto.php" method="post" >
+                                            <input type="hidden" name="ID_Producto_Aux" id="ID_Producto_Aux" value="<?= $producto->getID_Producto() ?>">
+                                            <button name= "delete" class="btn btn-danger mb-3 w-100"> Eliminar<?= $producto->getID_Producto() ?></button>
+                                        </form>
+                                        
                                         </div>
                                         
                                     </div>
