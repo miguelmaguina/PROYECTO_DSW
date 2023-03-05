@@ -65,7 +65,7 @@ if(isset($_SESSION['tipo_usuario'])){
           $listaFavoritosDAO=new Lista_FavoritosDAO();
           $listaFavoritos=array();
           $listaFavoritos=$listaFavoritosDAO->listarPorIdCliente($_SESSION['id_c']);
-
+          $i=0;
           if(empty($listaFavoritos)){
             echo '<div class="row py-2">
                   <div class="col-12 border border-1 p-3 text-center">
@@ -76,6 +76,7 @@ if(isset($_SESSION['tipo_usuario'])){
               </div>';
           }else{
             foreach($listaFavoritos as $valor){
+              
               $idProducto=$valor->getID_Producto();
               $producto=new Producto();
               $productoDAO=new ProductoDAO();
@@ -83,7 +84,8 @@ if(isset($_SESSION['tipo_usuario'])){
               $emprendimientoDAO=new EmprendimientoDAO();
 
               $producto=$productoDAO->listarPorIdProducto($idProducto);
-              $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($producto->getID_Emprendimiento());
+              $idproduc=$producto->getID_Emprendimiento();
+              $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($idproduc);
               $vacio=0;
               $descuentoActual=null;
               if($producto->getDescuento()!=0){
@@ -98,41 +100,41 @@ if(isset($_SESSION['tipo_usuario'])){
             echo '<div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
                     <div class="position-absolute cerrar">
-                        <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
+                        <a href="../Components/eliminarFavorito.php?id='.$valor->getID_Lista_Favoritos().'" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
                     </div>
                     <div class="row p-3">
                     <div class="col-md-5 col-lg-6">                     
-                        <div id="carousel1" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                        <div id="carousel'.$i.'" class="carousel carousel-dark slide " data-bs-ride="carousel">
 
                             <div class="carousel-inner mx-auto">
                                 <div class="carousel-item carrusel-img active">
-                                  <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
+                                  <img src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 1">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
+                                    <img src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 2">
                                 </div>
                                 <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
+                                    <img src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idProducto.'.png" class="d-block img-fluid" alt="Imagen 3">
                                 </div>
                             </div>
 
                             <ol class="carousel-indicators">
-                              <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="0" class="active">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_'.$idProducto.'.png" alt="">
                               </li>
-                              <li data-bs-target="#carousel1" data-bs-slide-to="1">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="1">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/Foto_Secundaria2_'.$idProducto.'.png" alt="">
                               </li>
-                              <li data-bs-target="#carousel1" data-bs-slide-to="2">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="2">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/Foto_Secundaria3_'.$idProducto.'.png" alt="">
                               </li>
                             </ol>
                             
-                            <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
+                            <a class="carousel-control-prev" href="#carousel'.$i.'" role="button" data-bs-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Anterior</span>
                             </a>
-                            <a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
+                            <a class="carousel-control-next" href="#carousel'.$i.'" role="button" data-bs-slide="next">
                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Siguiente</span>
                             </a>
@@ -155,6 +157,11 @@ if(isset($_SESSION['tipo_usuario'])){
                                 <p>Marca: '.$emprendimiento->getNombre().'</p>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Ubicación: '.$emprendimiento->getDepartamento().'</p>
+                            </div>
+                        </div>
                         <p>Fecha: '.$valor->getFecha().'</p>
 
                     </div>
@@ -162,7 +169,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
                 </div>
             </div>';
-
+              $i=$i+1;
           }
         }
 
@@ -171,7 +178,7 @@ if(isset($_SESSION['tipo_usuario'])){
       ?>
 
 
-            <div class="row py-2">
+            <!-- <div class="row py-2">
                 <div class="col-12 border border-1 p-3 position-relative">
                     <div class="position-absolute cerrar">
                         <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
@@ -204,7 +211,8 @@ if(isset($_SESSION['tipo_usuario'])){
                                 <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
                               </li>
                             </ol>
-                            <!---para usar el carrusel deben cambiar los id de cada carrusel para que al hacer click en la pequeña imagen haga efecto su cambio, sino no lo reconoce como parte del carrusel--->
+
+                            
                             <a class="carousel-control-prev" href="#carousel2" role="button" data-bs-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Anterior</span>
@@ -316,7 +324,7 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             
 

@@ -15,10 +15,9 @@ if(isset($_SESSION['tipo_usuario'])){
 ?>
 
 <?php
-
+include "../../Conexion/Conexion.php";
 include "../../DAO/ReporteDAO.php";
 $reporteDAO = new ReporteDAO();
-
 ?>
 
 <!DOCTYPE html>
@@ -128,79 +127,132 @@ $reporteDAO = new ReporteDAO();
     <!-- grafico principal -->
         <div class="row">
 
-            <div class="col-12">
-                <div class="contenedor-grafico">
+        <div class="col-12">
+            <div class="contenedor-grafico">
                 <div class="card">
-                   <div class="filter">
-                      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-chevron-down d-flex justify-content-end"></i></a>
-                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                         <li class="dropdown-header text-start">
-                            <h6>Filter</h6>
-                         </li>
-                         <!-- Lista de filtros -->
-                         <li><a class="dropdown-item" href="#">Today</a></li>
-                         <li><a class="dropdown-item" href="#">This Month</a></li>
-                         <li><a class="dropdown-item" href="#">This Year</a></li>
-                      </ul>
-                   </div>
-                   <div class="card-body">
-                      <h5 class="card-title">Recuento historico de Reviews</h5>
-                      <div id="reportsChart"></div>
-                      <script>document.addEventListener("DOMContentLoaded", () => {
-                         new ApexCharts(document.querySelector("#reportsChart"), {
-                           series: [{
-                             name: 'Reviews',
-                             data: <?php echo json_encode($reporteDAO->getArrayNumeroDeReviewsPorMes()); ?>
-                           }],
-                           chart: {
-                             height: 350,
-                             type: 'area',
-                             toolbar: {
-                               show: false
-                             },
-                           },
-                           markers: {
-                             size: 4
-                           },
-                           colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                           fill: {
-                             type: "gradient",
-                             gradient: {
-                               shadeIntensity: 1,
-                               opacityFrom: 0.3,
-                               opacityTo: 0.4,
-                               stops: [0, 90, 100]
-                             }
-                           },
-                           dataLabels: {
-                             enabled: false
-                           },
-                           stroke: {
-                             curve: 'smooth',
-                             width: 2
-                           },
-                           xaxis: {
-                          type: 'datetime',
-                          categories: ['01-01-23', '02-01-23', '03-01-23', '04-01-23', '05-01-23', '06-01-23', '07-01-23', '08-01-23', '09-01-23', '10-01-23', '11-01-23', '12-01-23'],
-                          labels: {
+                    <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-chevron-down d-flex justify-content-end"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li class="dropdown-header text-start">
+                                <h6>Filtros</h6>
+                            </li>
+                            <li><a class="dropdown-item" href="#" data-value="review">Review</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="favoritos">Favoritos</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="proforma">Proforma</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div id="reportsChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const chartData = {
+                    review: <?php echo json_encode($reporteDAO->getArrayNumeroDeReviewsPorMes()); ?>,
+                    favoritos: <?php echo json_encode($reporteDAO->getArrayNumeroDeFavoritosPorMes()); ?>,
+                    proforma: <?php echo json_encode($reporteDAO->getArrayNumeroDeProformasPorMes()); ?>
+                };
+
+                const chart = new ApexCharts(document.querySelector("#reportsChart"), {
+                    series: [{
+                        name: 'Reviews',
+                        data: chartData.review
+                    }],
+                    chart: {
+                        height: 350,
+                        type: 'area',
+                        toolbar: {
+                            show: false
+                        },
+                    },
+                    markers: {
+                        size: 4
+                    },
+                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2
+                    },
+                    title: {
+                      text: 'Recuento histórico de Reviews',
+                      align: 'center',
+                      style: {
+                        fontSize: '24px',
+                        color: '#4154f1'
+                      }
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        categories: ['01-01-23', '02-01-23', '03-01-23', '04-01-23', '05-01-23', '06-01-23', '07-01-23', '08-01-23', '09-01-23', '10-01-23', '11-01-23', '12-01-23'],
+                        labels: {
                             datetimeFormatter: {
-                              year: 'YYYY',
-                              month: 'MMMM'
+                                year: 'YYYY',
+                                month: 'MMMM'
                             }
-                          }
-                        },
-                        tooltip: {
-                          x: {
+                        }
+                    },
+                    tooltip: {
+                        x: {
                             format: 'MMMM'
-                          },
                         },
-                         }).render();
-                         });
-                      </script> 
+                    },
+                });
+
+                const filterLinks = document.querySelectorAll('.dropdown-item');
+                filterLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        const filterValue = link.dataset.value;
+                        let color = '#4154f1'; // color por defecto
+                        let titleText = 'Recuento histórico de Reviews'; // título por defecto
+                        if (filterValue == 'review') {
+                          color = '#4154f1';
+                          titleText = 'Recuento histórico de Reviews';
+                        } else
+                          if(filterValue == 'favoritos'){
+                            color = '#2eca6a';
+                            titleText = 'Recuento histórico de Favoritos';
+                          } else
+                            if(filterValue == 'proforma'){
+                              color = '#ff771d';
+                              titleText = 'Recuento histórico de Proforma';
+                            }
+                            chart.updateOptions({
+                              colors: [color],
+                              title: {
+                                  text: titleText,
+                                  style: {
+                                    color: color
+                                  }
+                              }
+                            });
+                        chart.updateSeries([{
+                            data: chartData[filterValue]
+                        }]);
+                    });
+                });
+
+                chart.render();
+            });
+        </script>
                    </div>
                 </div>
              </div>
-        </div>
+          </div>
         </div>
 
         <!-- grafico de barras -->
