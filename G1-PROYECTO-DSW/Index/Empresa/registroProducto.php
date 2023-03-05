@@ -1,13 +1,9 @@
 <?php
 session_start();
 
-include '../../Conexion/Conexion.php';
-require '../../Clases/Producto.php';
 require '../Components/mensaje.php';
 
 require '../../DAO/ProductoDAO.php';
-
-require 'procesoRegistroProducto.php';
 
 ?>
 
@@ -53,7 +49,7 @@ require 'procesoRegistroProducto.php';
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6 mt-2">
+                        <!--<div class="col-sm-6 mt-2">
                             <div class="form-floating">
                                 <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
                                 <option selected value="ejemplo1">Seleccione una opción</option>
@@ -70,14 +66,23 @@ require 'procesoRegistroProducto.php';
                             <div class="form-floating">
                                 <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
                                 <option selected value="ejemplo1">Seleccione una opción</option>
-                                <!--<option value="ejemplo2">Hogar y Decoración</option>
+                                <option value="ejemplo2">Hogar y Decoración</option>
                                 <option value="ejemplo3">Bebidas</option>
                                 <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>-->
+                                <option value="ejemplo5">Moda y Accesorios</option>
                                 </select>
                                 <label for="departamento">Subcategoria</label>
                             </div>
+                        </div>-->
+
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="categoria" placeholder="categoria" name="categoria" maxlength="20" required> <label for="categoria">Categoría *</label></div>
                         </div>
+
+                        <div class="col-sm-6 mt-2">
+                            <div class="form-floating"> <input type="text" class="form-control" id="subcategoria" placeholder="subcategoria" name="subcategoria" maxlength="20" required> <label for="subcategoria">Subcategoría *</label></div>
+                        </div>
+
                     </div>
 
                     <div class="row">
@@ -90,19 +95,7 @@ require 'procesoRegistroProducto.php';
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-6 mt-2">
-                            <div class="form-floating">
-                                <select class="form-select" id="emprendimiento" name="emprendimiento" aria-label="Floating label select example">
-                                <option selected value="ejemplo1">Seleccione una opción</option>
-                                <!--<option value="ejemplo2">Hogar y Decoración</option>
-                                <option value="ejemplo3">Bebidas</option>
-                                <option value="ejemplo4">Alimentos</option>
-                                <option value="ejemplo5">Moda y Accesorios</option>-->
-                                </select>
-                                <label for="departamento">Emprendimiento</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 mt-2">
+                        <div class="col-sm-12 mt-2">
                             <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="6" required> <label for="floatingDisp">Disponibilidad *</label></div>
                         </div>
                     </div>
@@ -118,7 +111,7 @@ require 'procesoRegistroProducto.php';
 
                         <!--Foto 1-->
                         <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button1" name="upload-button1" accept="image/*">
+                            <input class="input-content" type="file" id="upload-button" name="upload-button" accept="image/*">
                             <label class="label-button" for="upload-button">
                             <i class="fas fa-upload"></i> &nbsp; Subir una foto
                             </label>
@@ -127,27 +120,6 @@ require 'procesoRegistroProducto.php';
                             <figcaption class="text-center text-truncate" id="file-name"></figcaption>
                         </div>
 
-                        <!--Foto 2-->
-                        <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button2" name="upload-button2" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
-                            </label>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
-                        </div>
-
-                        <!--Foto 3-->
-                        <div class="col-md-6 mt-2">
-                            <input class="input-content" type="file" id="upload-button3" name="upload-button3" accept="image/*">
-                            <label class="label-button" for="upload-button">
-                            <i class="fas fa-upload"></i> &nbsp; Subir una foto
-                            </label>
-                        </div>
-                        <div class="col-md-6 mt-2">
-                            <figcaption class="text-center text-truncate" id="file-name"></figcaption>
-                        </div>
                     </div>
 
                     <div >
@@ -162,38 +134,19 @@ require 'procesoRegistroProducto.php';
     </div>
 
     <script>
-    let uploadButton1 = document.getElementById("upload-button1");
-    let uploadButton2 = document.getElementById("upload-button2");
-    let uploadButton3 = document.getElementById("upload-button3");
+    let uploadButton = document.getElementById("upload-button");
     let chosenImage = document.getElementById("chosen-image");
     let fileName = document.getElementById("file-name");
 
-    uploadButton1.onchange = () => {
+    uploadButton.onchange = () => {
         let reader = new FileReader();
-        reader.readAsDataURL(uploadButton1.files[0]);
+        reader.readAsDataURL(uploadButton.files[0]);
         reader.onload = () => {
             chosenImage.setAttribute("src",reader.result);
         }
-        fileName.textContent = uploadButton1.files[0].name;
+        fileName.textContent = uploadButton.files[0].name;
     }
 
-    uploadButton2.onchange = () => {
-        let reader = new FileReader();
-        reader.readAsDataURL(uploadButton2.files[0]);
-        reader.onload = () => {
-            chosenImage.setAttribute("src",reader.result);
-        }
-        fileName.textContent = uploadButton2.files[0].name;
-    }
-
-    uploadButton3.onchange = () => {
-        let reader = new FileReader();
-        reader.readAsDataURL(uploadButton3.files[0]);
-        reader.onload = () => {
-            chosenImage.setAttribute("src",reader.result);
-        }
-        fileName.textContent = uploadButton3.files[0].name;
-    }
     </script>
 
 

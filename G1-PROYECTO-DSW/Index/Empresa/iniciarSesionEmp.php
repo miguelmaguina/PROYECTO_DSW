@@ -79,7 +79,7 @@ require 'procesoIniciarSesion.php';
                     <div id="btn-cambio1" class="d-flex gap-1 justify-content-center mt-1">
                         <div>¿No tienes una cuenta?</div>
                         <a href="registroNuevoEmprendimiento.php" class="text-decoration-none text-info fw-semibold"
-                        >Resgístrate</a
+                        >Regístrate</a
                         >
                     </div>
                 </form>
