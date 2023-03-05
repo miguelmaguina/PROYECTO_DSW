@@ -35,7 +35,7 @@ if(isset($_SESSION['tipo_usuario'])){
     <script>
         // Obtener todas las cards con la clase "card card-t mb-3 border border-none"
         const cards = document.querySelectorAll('.card.card-t.mb-3.border.border-none');
-
+        //jdfhgjndjfkgbjdfbvhbhj
         // Recorrer todas las cards y agregar el evento de clic
         cards.forEach(card => {
             card.addEventListener('click', function() {
