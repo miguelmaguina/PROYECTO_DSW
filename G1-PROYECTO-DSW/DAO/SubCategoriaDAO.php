@@ -1,7 +1,17 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/SubCategoria.php";
+if(file_exists("../Conexion/Conexion.php")){
+    require_once "../Conexion/Conexion.php";
+}else{
+    require_once "../../Conexion/Conexion.php";
+}
+
+if(file_exists("../Clases/SubCategoria.php")){
+    require_once "../Clases/SubCategoria.php";
+}else{
+    require_once "../../Clases/SubCategoria.php";
+}
+
 
 class SubCategoriaDAO {
     //Atributos
