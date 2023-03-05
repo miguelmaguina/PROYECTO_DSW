@@ -149,22 +149,16 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                 </div>
                 <div class="row">
-                    <div class="button-container col-sm-4 col-md-4 mt-4 text-white  d-flex justify-content-center">
+                    <div class="button-container col-sm-6 col-md-6 mt-4 text-white  d-flex justify-content-center">
                         <a href="datosGraficos.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgReporte.png" alt="">
                         <span class="button-text">REPORTE</span>
                         </a>
                     </div>
-                    <div class="button-container h-100 col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
+                    <div class="button-container h-100 col-sm-6 col-md-6 mt-4 text-white d-flex justify-content-center">
                         <a href="verProductoEmp2.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgProducto.png" alt="">
                         <span class="button-text">PRODUCTO</span>
-                        </a>
-                    </div>
-                    <div class="button-container col-sm-4 col-md-4 mt-4 text-white d-flex justify-content-center">
-                        <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/imgClientes.png" alt="">
-                        <span class="button-text">QUITAR OPC</span>
                         </a>
                     </div>
                 </div>
