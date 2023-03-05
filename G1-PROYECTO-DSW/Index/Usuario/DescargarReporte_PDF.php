@@ -102,10 +102,11 @@ $pdf->SetTextColor(0, 0, 0);
 //Almando la cabecera de la Tabla
 $pdf->SetFillColor(232,232,232);
 $pdf->SetFont('helvetica','B',12); //La B es para letras en Negritas
-$pdf->Cell(40,6,'N° de Producto',1,0,'C',1);
-$pdf->Cell(60,6,'Nombre',1,0,'C',1);
-$pdf->Cell(35,6,'Cantidad',1,0,'C',1);
-$pdf->Cell(35,6,'Precio',1,1,'C',1); 
+$pdf->Cell(35,6,'N° de Producto',1,0,'C',1);
+$pdf->Cell(50,6,'Nombre',1,0,'C',1);
+$pdf->Cell(30,6,'Cantidad',1,0,'C',1);
+$pdf->Cell(30,6,'Precio',1,0,'C',1); 
+$pdf->Cell(30,6,'Precio Total',1,1,'C',1); 
 /*El 1 despues de  Fecha Ingreso indica que hasta alli 
 llega la linea */
 
@@ -129,10 +130,11 @@ $query = mysqli_query($conexion, $sqlProforma);
 $contador = 0;
 
 while ($dataRow = mysqli_fetch_array($query)) {
-        $pdf->Cell(40,6,($dataRow[0]),1,0,'C');
-        $pdf->Cell(60,6,$dataRow[1],1,0,'C');
-        $pdf->Cell(35,6,$dataRow[2],1,0,'C');
-        $pdf->Cell(35,6,('S/ '. $dataRow[3]),1,0,'C');        
+        $pdf->Cell(35,6,($dataRow[0]),1,0,'C');
+        $pdf->Cell(50,6,$dataRow[1],1,0,'C');
+        $pdf->Cell(30,6,$dataRow[2],1,0,'C');
+        $pdf->Cell(30,6,('S/ '. $dataRow[3]),1,0,'C');
+        $pdf->Cell(30,6,('S/ '. $dataRow[3]*$dataRow[2]),1,0,'C');         
 
             $pdf->Ln(); // Agrega una nueva línea
         
