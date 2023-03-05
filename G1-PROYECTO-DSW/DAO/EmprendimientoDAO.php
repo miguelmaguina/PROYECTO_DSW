@@ -1,7 +1,16 @@
 <?php
 
-//require_once "../../Conexion/Conexion.php";
-//require_once "../../Clases/Emprendimiento.php";
+if(file_exists("../Conexion/Conexion.php")){
+    require_once "../Conexion/Conexion.php";
+}else{
+    require_once "../../Conexion/Conexion.php";
+}
+
+if(file_exists("../Clases/Emprendimiento.php")){
+    require_once "../Clases/Emprendimiento.php";
+}else{
+    require_once "../../Clases/Emprendimiento.php";
+}
 
 class EmprendimientoDAO {
 

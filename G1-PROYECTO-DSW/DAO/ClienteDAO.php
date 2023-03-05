@@ -1,15 +1,15 @@
 <?php
 
-if(empty("../Conexion/Conexion.php")){
-    require_once "../../Conexion/Conexion.php";
-}else{
+if(file_exists("../Conexion/Conexion.php")){
     require_once "../Conexion/Conexion.php";
+}else{
+    require_once "../../Conexion/Conexion.php";
 }
 
-if(empty("../Conexion/Cliente.php")){
-    require_once "../../Clases/Cliente.php";
-}else{
+if(file_exists("../Clases/Cliente.php")){
     require_once "../Clases/Cliente.php";
+}else{
+    require_once "../../Clases/Cliente.php";
 }
 
 class ClienteDAO {
@@ -162,7 +162,7 @@ class ClienteDAO {
             
             if (mysqli_stmt_fetch($stmt)) {
                 $cliente = new cliente();
-                
+
                 $cliente->setID_Cliente($ID_Cliente);
                 $cliente->setNombres($Nombres);
                 $cliente->setApellidos($Apellidos);

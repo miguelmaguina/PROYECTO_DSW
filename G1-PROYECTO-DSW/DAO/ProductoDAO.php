@@ -1,15 +1,15 @@
 <?php
 
-if(empty("../Conexion/Conexion.php")){
-    require_once "../../Conexion/Conexion.php";
-}else{
+if(file_exists("../Conexion/Conexion.php")){
     require_once "../Conexion/Conexion.php";
+}else{
+    require_once "../../Conexion/Conexion.php";
 }
 
-if(empty("../Conexion/Producto.php")){
-    require_once "../../Clases/Producto.php";
-}else{
+if(file_exists("../Clases/Producto.php")){
     require_once "../Clases/Producto.php";
+}else{
+    require_once "../../Clases/Producto.php";
 }
 
 
