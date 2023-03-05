@@ -1,16 +1,6 @@
 <?php
 session_start();
 
-if(isset($_SESSION['tipo_usuario'])){
-    if($_SESSION['tipo_usuario']== 'producto'){
-        header("Location: ../Empresa/indexEmpresa.php");
-        exit();
-    }else{
-        header("Location: ../index.php");
-        exit();
-    }
-}
-
 include '../../Conexion/Conexion.php';
 require '../../Clases/Producto.php';
 require '../Components/mensaje.php';
