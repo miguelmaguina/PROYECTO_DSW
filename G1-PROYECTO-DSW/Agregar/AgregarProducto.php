@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $productoDAO->insert($prod);
             echo ("Producto registrado exitosamente");
-            header("Location: indexEmpresa.php");
+            //header("Location: indexEmpresa.php");
             exit();
         }
         else{

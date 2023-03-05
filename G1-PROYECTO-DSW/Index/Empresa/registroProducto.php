@@ -52,7 +52,7 @@ require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarProducto.ph
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" aria-label="Floating label select example">
+                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
                                     <option value="">Seleccione una opción</option>
                                     <option value="1">Hogar y Decoración</option>
                                     <option value="2">Bebidas</option>
@@ -65,7 +65,7 @@ require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarProducto.ph
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="subcategoria" aria-label="Floating label select example">
+                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
                                     <option value="">Seleccione una categoría primero</option>
                                 </select>
                                 <label for="subcategoria">Subcategoría *</label>
