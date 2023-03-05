@@ -1,9 +1,8 @@
 <?php
-session_start();
 
-require '../Components/mensaje.php';
 
-require '../../DAO/ProductoDAO.php';
+require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Index/Components/mensaje.php';
+require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarProducto.php';
 
 ?>
 
@@ -53,30 +52,30 @@ require '../../DAO/ProductoDAO.php';
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categorias" aria-label="Floating label select example">
+                                <select class="form-select" id="categoria" aria-label="Floating label select example">
                                     <option value="">Seleccione una opción</option>
                                     <option value="1">Hogar y Decoración</option>
                                     <option value="2">Bebidas</option>
                                     <option value="3">Alimentos</option>
                                     <option value="4">Moda y Accesorios</option>
                                 </select>
-                                <label for="categorias">Categoría *</label>
+                                <label for="categoria">Categoría *</label>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="subcategorias" aria-label="Floating label select example">
+                                <select class="form-select" id="subcategoria" aria-label="Floating label select example">
                                     <option value="">Seleccione una categoría primero</option>
                                 </select>
-                                <label for="subcategorias">Subcategoría *</label>
+                                <label for="subcategoria">Subcategoría *</label>
                             </div>
                         </div>
 
                         <script>
                             // Obtener referencias a los elementos select
-                            var pais = document.getElementById("categorias");
-                            var ciudad = document.getElementById("subcategorias");
+                            var pais = document.getElementById("categoria");
+                            var ciudad = document.getElementById("subcategoria");
                             
                             var opcionesCiudades = {
                                 "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],

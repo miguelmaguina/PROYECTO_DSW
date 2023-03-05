@@ -1,5 +1,5 @@
 <?php
-
+if (!class_exists('Producto')) {
 class Producto
 {
     //Atributos
@@ -152,5 +152,5 @@ class Producto
         $this->Foto_Secundaria3=$Foto_Secundaria3;
     }
 }
-
+}
 ?>
