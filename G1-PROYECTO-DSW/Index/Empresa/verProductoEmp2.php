@@ -11,6 +11,12 @@ if(isset($_SESSION['tipo_usuario'])){
     exit();
 }
 
+$db_name = 'mysql:host=localhost;dbname=proyfinal_dsw_g1';
+$user_name = 'root';
+$user_password = '';
+
+$conexion = new PDO($db_name, $user_name, $user_password);
+
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +43,9 @@ if(isset($_SESSION['tipo_usuario'])){
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
 
 </head>
-<body>
-    
-<?php require 'headerEmpresa.php';?>
+
+<body>    
+    <?php require 'headerEmpresa.php';?>
 
     <section class="section-t-o container-fluid py-1">
         <div class="contenedor-t">
@@ -165,28 +171,46 @@ if(isset($_SESSION['tipo_usuario'])){
         </div>
     </section>
 
+    <?php
+                        require_once '../../DAO/ProductoDAO.php';
+                        //$conexion=new Conexion();
+                        $productoDAO_Index = new ProductoDAO();
+                        $productos = $productoDAO_Index->listarPorEmorendimiento();
+                        
+                        
+    ?>
+
     <section class="container-fluid content-productos">
         <div class="contenedor-t">
         <div class="row border">
             
-
             <div class=" contenedor-de-producto">
                 <div class="row row-cols-sm-2">
 
                     <!-- repeticion -->
-    
+                    
+                    <?php    foreach($productos as $producto) {?>
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
+                        
                             <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
                             <div class="row">
+
                                 <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                <?php
+                                    $var=$producto->getFoto_Secundaria1();
+                                    $pathFoto="../../Image/Productos/Foto_Secundaria1/$var";
+                                    if(!file_exists($pathFoto)){
+                                        $pathFoto="../../Image/Productos/Foto_Secundaria1/Foto_Secundaria1_none.png";  
+                                    }
+                                ?>
+                                <img src="<?= $pathFoto?>" alt="Descripción de la imagen" style="max-width: 50%; max-height:50%;">
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <p class="card-titulo"><?= $producto->getNombre() ?></p>
+                                    <p class="card-texto">Código <span><?= $producto->getID_Producto() ?></span></p>
+                                    <p class="card-texto">Disponible: <span><?= $producto->getDisponibilidad() ?></span></p>
+                                    <p class="text-center">S/ <span><?= number_format($producto->getPrecio(),2,'.',','); ?></span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
                                         <a href="actualizarProducto.php" target="_self">
@@ -206,385 +230,16 @@ if(isset($_SESSION['tipo_usuario'])){
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
                         </div>
+                    
+                    
                     </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- repeticion -->
-    
-                     <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="col-sm-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <button class="btn w-100 m-1 btn-danger">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                        <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <?php } ?>
                     <!-- repeticion -->
                     
                 </div>
-
-
             </div>
 
             <div class="row p-4">
@@ -595,7 +250,7 @@ if(isset($_SESSION['tipo_usuario'])){
                     </li>
                   </ul>
                 </div>
-              </div>
+            </div>
 
         </div>
         </div>

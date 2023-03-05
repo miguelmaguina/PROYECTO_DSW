@@ -1,8 +1,8 @@
 <?php
 
 //Librerías
-//require "../../Conexion/Conexion.php";
-//require "../../Clases/Producto.php";
+require "../../Conexion/Conexion.php";
+require "../../Clases/Producto.php";
 
 class ProductoDAO
 {
@@ -188,6 +188,47 @@ class ProductoDAO
             }
         }
         return $producto;
+    }
+
+    public function listarPorEmorendimiento(){
+        $productos = array();
+        $query = "SELECT * FROM Producto WHERE ID_Emprendimiento ={$_SESSION['id_e']}";
+        
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Producto, $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3);
+
+            while (mysqli_stmt_fetch($stmt)) {
+                $producto = new Producto();
+
+                $producto->setID_Producto($ID_Producto);
+                $producto->setNombre($Nombre);
+                $producto->setPrecio($Precio);
+                $producto->setDescripcion($Descripcion);
+                $producto->setID_Categoria($ID_Categoria);
+                $producto->setID_Subcategoria($ID_Subcategoria);
+                $producto->setDescuento($Descuento);
+                $producto->setFecha($Fecha);
+                $producto->setID_Emprendimiento($ID_Emprendimiento);
+                $producto->setDisponibilidad($Disponibilidad);
+                $producto->setFoto_Secundaria1($Foto_Secundaria1);
+                $producto->setFoto_Secundaria2($Foto_Secundaria2);
+                $producto->setFoto_Secundaria3($Foto_Secundaria3);
+
+
+                $productos[] = $producto;
+            }
+
+        } catch (Exception $e) {
+            echo "Error al listar productos: " . $e->getMessage();
+            $productos = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $productos;
     }
 
     public function contarProductos() {
