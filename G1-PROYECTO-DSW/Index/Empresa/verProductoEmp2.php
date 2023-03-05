@@ -213,14 +213,17 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                     <p class="text-center">S/ <span><?= number_format($producto->getPrecio(),2,'.',','); ?></span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
-                                        <a href="actualizarProducto.php" target="_self">
+                                        <form action="../Actualizar/CargoActualizarForm.php" method="get" class="d-inline-block">
+                                            <input type="hidden" name="idCargo" value="<?= $producto->getID_Producto() ?>">
+                                            <button name="update" class="btn w-100 m-1 btn-success">Editar</button>
+                                        </form>
                                             <button class="btn w-100 m-1 btn-success">Editar</button>
-                                        </a>
+                                        
                                         </div>
                                         <div class="col-lg-6">
                                         <form action="../../Eliminar/EliminarProducto.php" method="post" >
                                             <input type="hidden" name="ID_Producto_Aux" id="ID_Producto_Aux" value="<?= $producto->getID_Producto() ?>">
-                                            <button name= "delete" class="btn btn-danger mb-3 w-100"> Eliminar<?= $producto->getID_Producto() ?></button>
+                                            <button name= "delete" class="btn btn-danger mb-3 w-100"> Eliminar</button>
                                         </form>
                                         
                                         </div>
@@ -229,7 +232,12 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                     <div class="row text-center">
                                         <div class="col-12">
                                         <a href="listaCompradores.php" target="_self">
-                                            <button class="btn btn-primary w-100 m-1">Compradores</button>
+                                        <button type="button" class="btn btn-primary position-relative w-100 m-1">
+                                                Compradores
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                    20
+                                                </span>
+                                        </button>
                                         </a>
                                         </div>
                                     </div>
