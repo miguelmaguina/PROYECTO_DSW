@@ -194,14 +194,15 @@ if(isset($_SESSION['tipo_usuario'])){
                             }
 
                             if($contador0==0){
-                              echo'<button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>';
-                            }elseif($contador0>=1){
+                            ?>
+                            
+                            <button type="button" class="btn btn-izq w-100 " formaction="C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarReview.php">Contactar</button><p></p>
+
+                            <?php }elseif($contador0>=1){ ?>
                               
-                              echo '<button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p>                        ';
-                            }
-
-
-                          ?>
+                            <button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p> 
+                            
+                            <?php }?>
                             <!--Comentando el boton antiguo
                             <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 mt-2" onclick="disable(this)">
                               Dejar Review
@@ -493,14 +494,14 @@ if(isset($_SESSION['tipo_usuario'])){
                           
                             <?php }elseif($contador0>=1){ ?>
                                           
-                            <form method="POST" action="<?= $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php'?>">
+                            <form method="POST" action="../../Actualizar/ActualizarReview.php">
                               <div class="form-outline">
                               <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;"></textarea>
                               <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
                               </div>
                               <div class="d-flex justify-content-between mt-3">
                                 <a type="hidden" class="btn-outline-white" name="id_review" value="<?=$reviewActual?>"></a>
-                                <a type="hidden" class="btn-outline-white" name="id_prod" value="<?=$idProd?>"></a>
+                                <a type="hidden" class="btn-outline-white" name="id_prod" value="<?=$idP?>"></a>
                                 <button type="submit" class="btn btn-success"> 
                                   Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
                                 </button>

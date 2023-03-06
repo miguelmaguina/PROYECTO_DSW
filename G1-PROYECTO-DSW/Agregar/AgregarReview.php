@@ -9,6 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Verifica si se envió el formular
   $idcliente = $_POST["idCliente"];
   $idproducto = $_POST["idProducto"]; // Lee el ID del producto enviado
 
+  echo $idcliente;
+  echo $idproducto;
+
   session_start();
   $cliente=$_SESSION['id_e'];
   //$fecha=date('Y/m/d');
