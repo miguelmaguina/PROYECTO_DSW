@@ -64,6 +64,10 @@ if($tipo==1){
     
 <?php  require 'header.php' ?>
 
+<div class="float-button d-none">
+    <a href="#"><i class="fa-solid fa-eye"></i></a>
+</div>
+
     <!-- <div class="container-fluid p-0 contenedor-carrusel"> -->
     <div id="myCarousel" class="container-fluid carousel slide contenedor-carrusel p-0" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -175,8 +179,12 @@ if($tipo==1){
                             </button>
 
                             <div class="carousel__lista">
-                                <?php foreach($subcategorias as $subcategoria){?>
+                            <?php foreach($subcategorias as $subcategoria){?>
+                                <div>
+                                <a href="#" id="boton-car" class="categoria text-decoration-none" data-categoria="<?= $subcategoria->getNombre()?>">
+
                                 <div class="card card-t mb-3 border border-none" id="subcategoria<?=$subcategoria->getID_Subcategoria()?>">
+
                                     <div class="row no-gutters">
                                         <div class="col-4">
                                         <?php
@@ -198,6 +206,8 @@ if($tipo==1){
                                     </div>
                                     
                                 </div> 
+                                </a>
+                                        </div>
 
                                 <?php } ?>
                             
@@ -269,8 +279,13 @@ if($tipo==1){
                 <!--repeticion PRUEBA-->
             
                 
-                <?php    foreach($productos as $producto) {?>
-                <div class="col-sm-6 col-lg-4 mb-4" id="contenedor-productos">
+                <?php    foreach($productos as $producto) {
+                    $idsubc=$producto->getID_Subcategoria();
+                    $subcatego=new SubCategoriaDAO();
+                    $subcat=$subcatego->listarPorIdSubCategoria($idsubc);
+                    $nombresubcategoria=$subcat->getNombre();
+                    ?>
+                <div class="card-tar tarjeta col-sm-6 col-lg-4 mb-4" id="contenedor-productos" data-categoria="<?php echo $nombresubcategoria; ?>">
                     <div class="card card-t-o position-relative m-2">
                         <a class="subcategoria-link" href="verProducto.php?id=<?= $producto->getID_Producto();?>">
                         <?php
@@ -410,7 +425,7 @@ if($tipo==1){
 
             <div class="row p-4">
                 <div class="col-md-12">
-                  <ul class="pagination justify-content-center">
+                  <ul class=" pagination justify-content-center">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
                     </li>
@@ -427,9 +442,74 @@ if($tipo==1){
         <!-- Footer -->
         <?php require 'footer.php' ?>
 
+        <script>
+        const categorias = document.querySelectorAll('.categoria');
+        const botonFlotante = document.querySelector('.float-button');
+
+        botonFlotante.addEventListener('click', () => {
+
+            botonFlotante.classList.add('boton-flotante-animacion');
+        
+            const productos = document.querySelectorAll('.tarjeta');
+            productos.forEach(producto => {
+                producto.classList.remove('d-none');
+                setTimeout(() => {
+                    botonFlotante.classList.remove('boton-flotante-animacion');
+                    botonFlotante.classList.add('d-none');
+                }, 300);
+                
+            });
+        });
+        
+
+        categorias.forEach(categoria => {
+        categoria.addEventListener('click', () => {
+            const categoriaSeleccionada = categoria.dataset.categoria;
+            
+            const productos = document.querySelectorAll('.tarjeta');
+            productos.forEach(producto => {
+            if (producto.dataset.categoria === categoriaSeleccionada) {
+                producto.classList.remove('d-none');
+            } else {
+                producto.classList.add('d-none');
+            }
+            });
+            botonFlotante.classList.add('boton-flotante-animacion');
+            setTimeout(() => {
+                    botonFlotante.classList.remove('boton-flotante-animacion');
+                    botonFlotante.classList.remove('d-none');
+                }, 300);
+            
+        });
+        });
+  </script>
+
+        
+
         <script src="../../js/index.js?v=<?php echo time(); ?>"></script>
         
         <script src="../../js/script.js"></script>
+
+        <script>
+            const campoBusqueda = document.getElementById('busqueda');
+            
+            campoBusqueda.addEventListener('input', () => {
+            const valorBusqueda = campoBusqueda.value.toLowerCase();
+            const productos = document.querySelectorAll('.tarjeta');
+                productos.forEach(producto => {
+                    const titulo = producto.querySelector('.card-title').textContent.toLowerCase();
+                    const descripcion = producto.querySelector('.card-text').textContent.toLowerCase();
+                    if (titulo.includes(valorBusqueda) || descripcion.includes(valorBusqueda)) {
+                        producto.classList.remove('d-none');
+                        
+                    } else {
+                        producto.classList.add('d-none');
+                        
+                    }
+                });
+            });
+        </script>
+        
 
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

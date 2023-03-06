@@ -1,3 +1,4 @@
+
 const ITEMS_PER_PAGE = 12; // Número de items por página
 let currentPage = 1; // Página actual
 

@@ -9,7 +9,7 @@
              <?php
              if(isset($buscarActivado)){
              echo '<div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
+                <form class="search-form d-flex align-items-center" method="POST" action="#"> <input id="busqueda" type="text" name="query" placeholder="Buscar..." title="Escriba" class="search-form d-flex align-items-center"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
              </div>';
              }
              ?>
