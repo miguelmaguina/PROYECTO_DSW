@@ -52,60 +52,78 @@ require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarProducto.ph
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
-                                    <option value="">Seleccione una opción</option>
-                                    <option value="1">Hogar y Decoración</option>
-                                    <option value="2">Bebidas</option>
-                                    <option value="3">Alimentos</option>
-                                    <option value="4">Moda y Accesorios</option>
-                                </select>
-                                <label for="categoria">Categoría *</label>
+                            <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
+                                <option value="">Seleccione una opción</option>
+                            </select>
+                            <label for="categoria">Categoría *</label>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
-                                    <option value="">Seleccione una categoría primero</option>
-                                </select>
-                                <label for="subcategoria">Subcategoría *</label>
+                            <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
+                                <option value="">Seleccione una categoría primero</option>
+                            </select>
+                            <label for="subcategoria">Subcategoría *</label>
                             </div>
                         </div>
+                    </div>
 
-                        <script>
-                            // Obtener referencias a los elementos select
-                            var pais = document.getElementById("categoria");
-                            var ciudad = document.getElementById("subcategoria");
-                            
-                            var opcionesCiudades = {
-                                "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
-                                "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
-                                "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
-                                "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
-                            };
-                            // Función que actualiza las opciones del segundo select según la selección del primero
-                            function actualizarCategorias() {
-                                // Obtener el valor seleccionado en el primer select
-                                var valorPais = pais.value;
-                                // Obtener la lista de ciudades correspondiente al valor seleccionado
-                                var ciudades = opcionesCiudades[valorPais] || [];
-                                // Limpiar las opciones del segundo select
-                                ciudad.innerHTML = "";
-                                // Agregar las nuevas opciones al segundo select
-                                for (var i = 0; i < ciudades.length; i++) {
-                                    var opcion = document.createElement("option");
-                                    opcion.value = ciudades[i];
-                                    opcion.textContent = ciudades[i];
-                                    ciudad.appendChild(opcion);
-                                }
-                                // Deshabilitar el segundo select si no hay opciones disponibles
-                                ciudad.disabled = ciudades.length == 0;
+                    <script>
+                        // Obtener referencias a los elementos select
+                        var pais = document.getElementById("categoria");
+                        var ciudad = document.getElementById("subcategoria");
+
+                        // Definir las opciones de la lista de categorías
+                        var opcionesCategorias = {
+                            "1": "Hogar y Decoración",
+                            "2": "Bebidas",
+                            "3": "Alimentos",
+                            "4": "Moda y Accesorios"
+                        };
+
+                        // Definir las opciones de la lista de subcategorías
+                        var opcionesCiudades = {
+                            "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
+                            "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
+                            "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
+                            "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
+                        };
+
+                        // Agregar las opciones de la lista de categorías al primer select
+                        for (var valorCategoria in opcionesCategorias) {
+                            var opcionCategoria = document.createElement("option");
+                            opcionCategoria.value = valorCategoria;
+                            opcionCategoria.textContent = opcionesCategorias[valorCategoria];
+                            pais.appendChild(opcionCategoria);
+                        }
+
+                        // Función que actualiza las opciones del segundo select según la selección del primero
+                        function actualizarCategorias() {
+                            // Obtener el valor seleccionado en el primer select
+                            var valorPais = pais.value;
+
+                            // Obtener la lista de ciudades correspondiente al valor seleccionado
+                            var ciudades = opcionesCiudades[valorPais] || [];
+                            // Limpiar las opciones del segundo select
+                            ciudad.innerHTML = "";
+                            // Agregar las nuevas opciones al segundo select
+                            for (var i = 0; i < ciudades.length; i++) {
+                            var opcion = document.createElement("option");
+                            opcion.value = ciudades[i];
+                            opcion.textContent = ciudades[i];
+                            ciudad.appendChild(opcion);
                             }
-                            // Actualizar las opciones del segundo select cuando cambia la selección del primer select
-                            pais.addEventListener("change", actualizarCategorias);
-                            // Actualizar las opciones del segundo select al cargar la página
-                            actualizarCategorias();
-                        </script>
+                            // Deshabilitar el segundo select si no hay opciones disponibles
+                            ciudad.disabled = ciudades.length == 0;
+                        }
+
+                        // Actualizar las opciones del segundo select cuando cambia la selección del primer select
+                        pais.addEventListener("change", actualizarCategorias);
+
+                        // Actualizar las opciones del segundo select al cargar la página
+                        actualizarCategorias();
+                    </script>
 
                     </div>
 

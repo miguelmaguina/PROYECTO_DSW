@@ -2,6 +2,20 @@
 require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ProductoDAO.php';
 require "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
 
+//Llamando a una pequeña conexión
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "proyfinal_dsw_g1";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
 $nombre=$precio=$descripcion=$categoria=$subcategoria=$descuento=$fecha=$emprendimiento=$disponibilidad=$foto1=$foto2=$foto3="";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -24,101 +38,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $descripcion=test_input($_POST["descripcion"]);
     }
 
+    //$_POST["categoria"] ya toma un valor entre 1,2,3 y 4
     if(empty($_POST["categoria"])){
         echo ("Se requiere una categoria");
     }else{
-        //$categoria=test_input($_POST["categoria"]);
-        if ($_POST["categoria"]=='Hogar y Decoración'){
-            $categoria=test_input('1');
-        }
-        else if ($_POST["categoria"]=='Bebidas'){
-            $categoria=test_input('2');
-        }
-        else if ($_POST["categoria"]=='Alimentos'){
-            $categoria=test_input('3');
-        }
-        else if ($_POST["categoria"]=='Moda y Accesorios'){
-            $categoria=test_input('4');
-        }
+        $categoria_nombre = test_input($_POST["categoria"]);
     }
 
+    //Aquí sí normal toma el string
     if(empty($_POST["subcategoria"])){
         echo ("Se requiere una subcategoria");
     }else{
-        //$subcategoria=test_input($_POST["subcategoria"]);
-
-        //Hogar y Decoración
-        if ($_POST["subcategoria"]=='Utensilios de cocina'){
-            $subcategoria=test_input('1');
-        }
-        else if ($_POST["subcategoria"]=='Decoración'){
-            $subcategoria=test_input('2');
-        }
-        else if ($_POST["subcategoria"]=='Joyería'){
-            $subcategoria=test_input('3');
-        }
-        else if ($_POST["subcategoria"]=='Jardinería'){
-            $subcategoria=test_input('4');
-        }
-
-        //Bebidas
-        if ($_POST["subcategoria"]=='Piscos'){
-            $subcategoria=test_input('5');
-        }
-        else if ($_POST["subcategoria"]=='Vinos'){
-            $subcategoria=test_input('6');
-        }
-        else if ($_POST["subcategoria"]=='Cafes'){
-            $subcategoria=test_input('7');
-        }
-        else if ($_POST["subcategoria"]=='Infusiones'){
-            $subcategoria=test_input('8');
-        }
-
-        //Alimentos
-        if ($_POST["subcategoria"]=='Quesos'){
-            $subcategoria=test_input('9');
-        }
-        else if ($_POST["subcategoria"]=='Yogurts'){
-            $subcategoria=test_input('10');
-        }
-        else if ($_POST["subcategoria"]=='Chocolates'){
-            $subcategoria=test_input('11');
-        }
-        else if ($_POST["subcategoria"]=='Verduras'){
-            $subcategoria=test_input('12');
-        }
-        else if ($_POST["subcategoria"]=='Frutas'){
-            $subcategoria=test_input('13');
-        }
-        else if ($_POST["subcategoria"]=='Alimentos organicos'){
-            $subcategoria=test_input('14');
-        }
-        else if ($_POST["subcategoria"]=='Snacks'){
-            $subcategoria=test_input('15');
-        }
-
-        //Moda y Accesorios
-        if ($_POST["subcategoria"]=='Carteras, bolsos y accesorios'){
-            $subcategoria=test_input('16');
-        }
-        else if ($_POST["subcategoria"]=='Textil decorativo'){
-            $subcategoria=test_input('17');
-        }
-        else if ($_POST["subcategoria"]=='Cómputo y de Escritorio'){
-            $subcategoria=test_input('18');
-        }
-        else if ($_POST["subcategoria"]=='Complementos'){
-            $subcategoria=test_input('19');
-        }
-        else if ($_POST["subcategoria"]=='Gorros y sombreros'){
-            $subcategoria=test_input('20');
-        }
-        else if ($_POST["subcategoria"]=='Calzados'){
-            $subcategoria=test_input('21');
-        }
-        else if ($_POST["subcategoria"]=='Bufandas y pashminas'){
-            $subcategoria=test_input('22');
+        $subcategoria_nombre = test_input($_POST["subcategoria"]);
+        $query = "SELECT ID_Subcategoria FROM Subcategoria WHERE Nombre = '$subcategoria_nombre'";
+        $result = mysqli_query($conn, $query);
+        if ($row = mysqli_fetch_assoc($result)) {
+            $subcategoria = $row["ID_Subcategoria"];
+            echo ($subcategoria_nombre . " insertado");
+        } else {
+            echo ("La categoria no existe en la base de datos");
         }
     }
 
@@ -192,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $prod->setNombre($nombre);
             $prod->setPrecio($precio);
             $prod->setDescripcion($descripcion);
-            $prod->setID_Categoria($categoria);
+            $prod->setID_Categoria($categoria_nombre);
             $prod->setID_Subcategoria($subcategoria);
             $prod->setDescuento($descuento);
             $prod->setFecha($fecha);
@@ -204,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $productoDAO->insert($prod);
             echo ("Producto registrado exitosamente");
-            //header("Location: indexEmpresa.php");
+            header("Location: indexEmpresa.php");
             exit();
         }
         else{
