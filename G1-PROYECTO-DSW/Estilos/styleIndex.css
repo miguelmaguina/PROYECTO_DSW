@@ -227,6 +227,22 @@
   }
   
 
+  /* Estilos para los elementos de la sección de beneficios */
+.feature {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Estilos para los elementos de la sección de beneficios cuando se les hace hover */
+.feature:hover {
+  background-color: #f2f2f2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
+
 
 /*--------------- footer  ---------------------*/
 /* footer{
