@@ -52,12 +52,12 @@ $reporteDAO = new ReporteDAO();
 <div class="row container">
 
 
-    <div class="col-xxl-4 col-md-6 mb-3">
+<div class="col-xxl-4 col-md-6 mb-3">
         <div class="card info-card sales-card">
            <div class="card-body">
               <h5 class="card-title">Reviews</h5>
               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="fa-solid fa-cart-shopping"></i></div>
+                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="fas fa-pen text-primary"></i></div>
                  <div class="ps-3">
                     <h6><?php echo $reporteDAO->getNumeroDeReviewsTotal(); ?> reviews</h6>
                       <?php
@@ -80,7 +80,7 @@ $reporteDAO = new ReporteDAO();
            <div class="card-body">
               <h5 class="card-title">En Favoritos</h5>
               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-dollar-sign"></i></div>
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center bg-danger"><i class="fas fa-heart text-white"></i></div>
                  <div class="ps-3">
                     <h6><?php echo $reporteDAO->getNumeroDeFavoritosTotal(); ?> favoritos <3</h6>
                       <?php
@@ -103,7 +103,7 @@ $reporteDAO = new ReporteDAO();
            <div class="card-body">
               <h5 class="card-title">En Proforma</h5>
               <div class="d-flex align-items-center">
-                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-address-card"></i></div>
+                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"><i class="fas fa-file-invoice text-warning"></i></div>
                  <div class="ps-3">
                     <h6><?php echo $reporteDAO->getNumeroDeProformaTotal(); ?> proformas</h6>
                       <?php
@@ -172,7 +172,7 @@ $reporteDAO = new ReporteDAO();
                     markers: {
                         size: 4
                     },
-                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                    colors: ['#4154f1', '#FF0000', '#ff771d'],
                     fill: {
                         type: "gradient",
                         gradient: {
@@ -225,7 +225,7 @@ $reporteDAO = new ReporteDAO();
                           titleText = 'Recuento histórico de Reviews';
                         } else
                           if(filterValue == 'favoritos'){
-                            color = '#2eca6a';
+                            color = '#FF0000';
                             titleText = 'Recuento histórico de Favoritos';
                           } else
                             if(filterValue == 'proforma'){
