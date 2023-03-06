@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $cemprendimientoDAO=new EmprendimientoDAO();
 
     if($cemprendimientoDAO->verificaEmail($email)==1){
-        if($cemprendimientoDAO->verificaLogin($email,$contrasena)==1){
+        if($cemprendimientoDAO->verificaLoginEncriptado($email,$contrasena)==1){
             exito("Sesion iniciada");
             header("Location: ../Empresa/indexEmpresa.php");
             exit();
