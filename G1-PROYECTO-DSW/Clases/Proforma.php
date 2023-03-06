@@ -3,7 +3,7 @@
 class Proforma {
   
     //Atributos
-    private $ID_Carrito;
+    private $ID_Proforma;
     private $ID_Cliente;
     private $ID_Producto;
     private $Cantidad;
@@ -15,8 +15,8 @@ class Proforma {
     }
  
     //Getters
-    public function getID_Carrito(){
-        return $this->ID_Carrito;
+    public function getID_Proforma(){
+        return $this->ID_Proforma;
     }
  
     public function getID_Cliente(){
@@ -37,9 +37,10 @@ class Proforma {
  
  
     //Setters
+    
  
-    public function setID_Carrito($ID_Carrito){
-        $this->ID_Carrito = $ID_Carrito;
+    public function setID_Proforma($ID_Proforma){
+        $this->ID_Proforma = $ID_Proforma;
     }
  
     public function setID_Cliente($ID_Cliente){

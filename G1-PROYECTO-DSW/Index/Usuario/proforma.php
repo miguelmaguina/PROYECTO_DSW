@@ -39,6 +39,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
 </head>
 <body>
+
 <?php  require 'header.php'; ?>
 
     <section class="section-p container-fluid py-1">
@@ -46,9 +47,142 @@ if(isset($_SESSION['tipo_usuario'])){
         
             <div class="col-lg-8">
                 <div class="titulo-1 text-start fs-3 pt-3">Proforma (5 productos)</div>
-                
+        <?php 
+        require '../../Conexion/Conexion.php';
+        require '../../Clases/Proforma.php';
+        require '../../DAO/ProformaDAO.php';
+        require '../../Clases/Producto.php';
+        require '../../DAO/ProductoDAO.php';
+        require '../../Clases/Emprendimiento.php';
+        require '../../DAO/EmprendimientoDAO.php';
+        if($tipo==0){
+          echo '<div class="row py-2">
+                  <div class="col-12 border border-1 p-3 text-center">
+                      
+                  <h3>No ha iniciado sesión</h3>
+
+                  </div>
+              </div>';
+        }else{
+          $proformaDAO=new proformaDAO();
+          $proforma=array();
+          $proforma=$proformaDAO->listarPorIdCliente($_SESSION['id_c']);
+          $i=0;
+          if(empty($proforma)){
+            echo '<div class="row py-2">
+                  <div class="col-12 border border-1 p-3 text-center">
+                      
+                  <h3>No tiene ningún elemento</h3>
+
+                  </div>
+              </div>';
+          }else{
+            foreach($proforma as $valor){
+              
+              $idProducto=$valor->getID_Producto();
+              $producto=new Producto();
+              $productoDAO=new ProductoDAO();
+              $emprendimiento=new Emprendimiento();
+              $emprendimientoDAO=new EmprendimientoDAO();
+
+              $producto=$productoDAO->listarPorIdProducto($idProducto);
+              $idproduc=$producto->getID_Emprendimiento();
+              $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($idproduc);
+              $vacio=0;
+              $descuentoActual=null;
+              if($producto->getDescuento()!=0){
+                $vacio=1;
+                $descuentoActual=$producto->getPrecio()-$producto->getPrecio()*$producto->getDescuento();
+              }else{
+                $descuentoActual=$producto->getPrecio();
+              }
+              
+              
+            
+            echo '<div class="row py-2">
+                <div class="col-12 border border-1 p-3 position-relative">
+                    <div class="position-absolute cerrar">
+                        <a href="../Components/eliminarProforma.php?id='.$valor->getID_Lista_Favoritos().'" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
+                    </div>
+                    <div class="row p-3">
+                    <div class="col-md-5 col-lg-6">                     
+                        <div id="carousel'.$i.'" class="carousel carousel-dark slide " data-bs-ride="carousel">
+
+                            <div class="carousel-inner mx-auto">
+                                <div class="carousel-item carrusel-img active">
+                                  <img src="../../Image/Productos/Foto_Secundaria1/'.$producto->getFoto_Secundaria1().'" class="d-block img-fluid" alt="Imagen 1">
+                                </div>
+                                <div class="carousel-item carrusel-img">
+                                    <img src="../../Image/Productos/Foto_Secundaria2/'.$producto->getFoto_Secundaria2().'" class="d-block img-fluid" alt="Imagen 2">
+                                </div>
+                                <div class="carousel-item carrusel-img">
+                                    <img src="../../Image/Productos/Foto_Secundaria3/'.$producto->getFoto_Secundaria3().'" class="d-block img-fluid" alt="Imagen 3">
+                                </div>
+                            </div>
+
+                            <ol class="carousel-indicators">
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="0" class="active">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/'.$producto->getFoto_Secundaria1().'" alt="">
+                              </li>
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="1">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/'.$producto->getFoto_Secundaria2().'" alt="">
+                              </li>
+                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="2">
+                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/'.$producto->getFoto_Secundaria3().'" alt="">
+                              </li>
+                            </ol>
+                            
+                            <a class="carousel-control-prev" href="#carousel'.$i.'" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Anterior</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel'.$i.'" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Siguiente</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-7 col-lg-6">
+                        
+                        <div class="row">
+                            <div class="col-12 col-sm-11">
+                                <h3>'.$producto->getNombre().'</h3>
+                            </div>
+                        </div>
+                        
+                        '.($vacio==1 ?'<del><small>S/'.round($descuentoActual,2).'</small></del>' : '').'
+                        <p class="fs-2">S/'.$producto->getPrecio().' '. ($vacio==1?'<small class="desc">'.$producto->getDescuento().'% descuento</small>':'' ).'</p>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Marca: '.$emprendimiento->getNombre().'</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Ubicación: '.$emprendimiento->getDepartamento().'</p>
+                            </div>
+                        </div>
+                        <p>Fecha: '.$valor->getFecha().'</p>
+
+                    </div>
+                    </div>
+
+                </div>
+            </div>';
+              $i=$i+1;
+          }
+        }
+
+      }
+
+      ?>
+        
 <!--repeticion-->
 
+
+<!--
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -157,7 +291,7 @@ if(isset($_SESSION['tipo_usuario'])){
                 </div>
 
 
-
+-->
 
 <!--repeticion-->
 

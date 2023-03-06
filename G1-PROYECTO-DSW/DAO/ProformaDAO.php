@@ -1,7 +1,7 @@
 <?php
 
-include "../Conexion/Conexion.php";
-include "../Clases/Proforma.php";
+//include "../Conexion/Conexion.php";
+//include "../Clases/Proforma.php";
 
 class ProformaDAO {
     //Atributos
@@ -25,14 +25,14 @@ class ProformaDAO {
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $ID_Carrito, $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
+            mysqli_stmt_bind_result($stmt, $ID_Proforma, $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
 
             while (mysqli_stmt_fetch($stmt)) {
                 $proforma = new Proforma();
 
-                $proforma->setIdCarrito($ID_Carrito);
-                $proforma->setIdCliente($ID_Cliente);
-                $proforma->setIdProducto($ID_Producto);
+                $proforma->setId_Proforma($ID_Proforma);
+                $proforma->setId_Cliente($ID_Cliente);
+                $proforma->setId_Producto($ID_Producto);
                 $proforma->setCantidad($Cantidad);          
                 $proforma->setFecha($Fecha);
 
@@ -58,8 +58,8 @@ class ProformaDAO {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             //$ID_Carrito=$proforma->getIdCarrito(); //i
-            $ID_Cliente=$proforma->getIdCliente(); //i
-            $ID_Producto=$proforma->getIdProducto(); //i
+            $ID_Cliente=$proforma->getId_Cliente(); //i
+            $ID_Producto=$proforma->getId_Producto(); //i
             $Cantidad=$proforma->getCantidad(); //i
             $Fecha=$proforma->getFecha(); //s
 
@@ -81,12 +81,12 @@ class ProformaDAO {
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-            $ID_Cliente=$proforma->getIdCliente(); //i
-            $ID_Producto=$proforma->getIdProducto(); //i
+            $ID_Cliente=$proforma->getId_Cliente(); //i
+            $ID_Producto=$proforma->getId_Producto(); //i
             $Cantidad=$proforma->getCantidad(); //i
             $Fecha=$proforma->getFecha(); //s
 
-            $ID_Carrito=$proforma->getID_Carrito();//i
+            $ID_Carrito=$proforma->getID_Proforma();//i
   
             mysqli_stmt_bind_param($stmt, "iiisi", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
             mysqli_stmt_execute($stmt);
@@ -127,7 +127,7 @@ class ProformaDAO {
             if (mysqli_stmt_fetch($stmt)) {
                 $proforma = new Proforma();
 
-                $ID_Carrito = $proforma->getID_Carrito(); //i
+                $ID_Carrito = $proforma->getID_Proforma(); //i
                 $ID_Cliente=$proforma->getID_Cliente(); //s
                 $ID_Producto=$proforma->getID_Producto(); //s
                 $Cantidad=$proforma->getCantidad(); //s
@@ -145,7 +145,39 @@ class ProformaDAO {
             }
         }
         return $proforma;
-    }        
+    }
+    
+    public function listarPorIdCliente($idcliente){
+        $query = "SELECT * FROM Proforma WHERE ID_Cliente=?";
+        $arrayProforma=array();
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+            mysqli_stmt_bind_param($stmt, "i", $idcliente);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Proforma, $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
+
+            while(mysqli_stmt_fetch($stmt)) {
+                $proforma = new proforma();
+                // $ID_Producto=$favorito->getId_Producto(); //i
+                // $Fecha=$favorito->getFecha(); //s
+                $proforma->setID_Proforma($ID_Proforma);
+                $proforma->setID_Cliente($ID_Cliente);
+                $proforma->setID_Producto($ID_Producto);
+                $proforma->setCantidad($Cantidad);
+                $proforma->setFecha($Fecha);
+                array_push($arrayProforma,$proforma);
+            }
+
+        } catch (Exception $e) {
+            echo "Error al listar 1 itema de la lista de proforma: " . $e->getMessage();
+            $proforma = null;
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $arrayProforma;
+    }
 
 }
 
