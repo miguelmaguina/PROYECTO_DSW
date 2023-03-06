@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php';
+require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ReviewDAO.php';
 
 require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Review.php';
 
@@ -14,6 +14,11 @@ $comentario = $_POST['comentario'];
 $id_review = $_POST['id_review'];
 $id_cliente=1;
 $id_prod = $_POST['id_prod'];
+
+
+echo $id_review;
+echo $id_prod;
+echo $comentario;
 
 
 // Validar que el comentario no esté vacío

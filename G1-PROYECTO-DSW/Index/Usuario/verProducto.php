@@ -194,14 +194,15 @@ if(isset($_SESSION['tipo_usuario'])){
                             }
 
                             if($contador0==0){
-                              echo'<button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>';
-                            }elseif($contador0>=1){
+                            ?>
+                            
+                            <button type="button" class="btn btn-izq w-100 " formaction="C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarReview.php">Contactar</button><p></p>
+
+                            <?php }elseif($contador0>=1){ ?>
                               
-                              echo '<button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p>                        ';
-                            }
-
-
-                          ?>
+                            <button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p> 
+                            
+                            <?php }?>
                             <!--Comentando el boton antiguo
                             <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 mt-2" onclick="disable(this)">
                               Dejar Review
