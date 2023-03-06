@@ -173,9 +173,11 @@ $conexion = new PDO($db_name, $user_name, $user_password);
 
     <?php
      require_once '../../DAO/ProductoDAO.php';
+     require_once '../../DAO/ReviewDAO.php';
      //$conexion=new Conexion();
      $productoDAO_Index = new ProductoDAO();
-      $productos = $productoDAO_Index->listarPorEmprendimiento();
+     $reviewDAO_Index = new ReviewDAO();
+     $productos = $productoDAO_Index->listarPorEmprendimiento();
                         
                         
     ?>
@@ -193,7 +195,7 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                     <div class="col-sm-6 mb-4">
                         <div class="card card-emp m-2">
                         
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <h4 class="text-cabecera text-center py-1"><?= $producto->getNombre() ?></h4>
                             <div class="row">
 
                                 <div class="col-md-6 d-flex justify-content-center">
@@ -207,17 +209,16 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                 <img src="<?= $pathFoto?>" alt="Descripción de la imagen" style="max-width: 55%; max-height:55%;">
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="card-titulo"><?= $producto->getNombre() ?></p>
+                                    
                                     <p class="card-texto">Código <span><?= $producto->getID_Producto() ?></span></p>
                                     <p class="card-texto">Disponible: <span><?= $producto->getDisponibilidad() ?></span></p>
-                                    <p class="text-center">S/ <span><?= number_format($producto->getPrecio(),2,'.',','); ?></span></p>
+                                    <p >S/ <span><?= number_format($producto->getPrecio(),2,'.',','); ?></span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
-                                        <form action="../Actualizar/CargoActualizarForm.php" method="get" class="d-inline-block">
-                                            <input type="hidden" name="idCargo" value="<?= $producto->getID_Producto() ?>">
-                                            <button name="update" class="btn w-100 m-1 btn-success">Editar</button>
+                                        <form action="../Empresa/actualizarProducto.php" method="get" >
+                                            <input type="hidden" name="$ID_producto_actu" value="<?= $producto->getID_Producto() ?>">
+                                            <button name="update" class="btn btn-success mb-3 w-100 text-trunc">Editar</button>
                                         </form>
-                                            <button class="btn w-100 m-1 btn-success">Editar</button>
                                         
                                         </div>
                                         <div class="col-lg-6">
@@ -235,7 +236,7 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                         <button type="button" class="btn btn-primary position-relative w-100 m-1">
                                                 Compradores
                                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                    20
+                                                    <?= $reviewDAO_Index->getNroDeReviewsPendientes($producto->getID_Producto()) ?>
                                                 </span>
                                         </button>
                                         </a>
@@ -249,6 +250,36 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                     
                     </div>
                     <?php } ?>
+                    <!-- repeticion -->
+
+                    <!-- repeticion -->
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card card-emp m-2">
+                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-titulo">Curaca Amazonian Art</p>
+                                    <p class="card-texto">Código <span>882041329</span></p>
+                                    <p class="card-texto">Disponible: <span>Sí</span></p>
+                                    <p class="text-center">S/ <span>485.99</span></p>
+                                    <div class="row text-center">
+                                        <div class="col-xl-6">
+                                            <button class="btn btn-success mb-3 w-100 text-trunc">Actualizar</button>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <button class="btn btn-danger mb-3 w-100">Eliminar</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- repeticion -->
                     
                 </div>
