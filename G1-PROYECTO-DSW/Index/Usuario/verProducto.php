@@ -493,15 +493,15 @@ if(isset($_SESSION['tipo_usuario'])){
                           
                             <?php }elseif($contador0>=1){ ?>
                                           
-                            <form method="POST" action="<?= $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php'?>">
+                            <form method="POST" action="../../Actualizar/ActualizarReview.php">
                               <div class="form-outline">
                               <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;"></textarea>
                               <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
                               </div>
                               <div class="d-flex justify-content-between mt-3">
-                                <a type="hidden" class="btn-outline-white" name="id_review" value="<?=$reviewActual?>"></a>
-                                <a type="hidden" class="btn-outline-white" name="id_prod" value="<?=$idProd?>"></a>
-                                <button type="submit" class="btn btn-success"> 
+                                <input type="hidden" class="btn-outline-white" name="id_review" id="id_review" value="<?=$reviewActual?>"></input>
+                                <input type="hidden" class="btn-outline-white" name="id_prod" id="id_prod" value="<?=$idP?>"></input>
+                                <button type="submit" class="btn btn-success" name="insert"> 
                                   Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
                                 </button>
                               </div>
