@@ -62,22 +62,22 @@ public function listar(){
 
 public function insert(Review $review){
 
-    $query = "INSERT INTO Review(ID_Cliente, ID_Producto, Comentario, Estado, Fecha) VALUES (?,?,?,?,?)";
+    $query = "INSERT INTO Review(ID_Review,ID_Cliente, ID_Producto,Estado, Comentario, Fecha) VALUES (?,?,?,?,?,?)";
     
     try{
         $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
-        //$ID_Review=$review->getID_Review(); //i
-        $ID_Cliente=$review->getID_Cliente(); //s
-        $ID_Producto=$review->getID_Producto(); //s
+        $ID_Review=$review->getID_Review(); //i
+        $ID_Cliente=$review->getID_Cliente(); //i
+        $ID_Producto=$review->getID_Producto(); //i
         $Estado=$review->getEstado(); //i
         $Comentario=$review->getComentario(); //s
         $Fecha=$review->getFecha(); //s
 
-        mysqli_stmt_bind_param($stmt, "iiiss", $ID_Cliente, $ID_Producto, $Estado, $Comentario, $Fecha);
+        mysqli_stmt_bind_param($stmt, "iiiiss", $ID_Review,$ID_Cliente, $ID_Producto, $Estado, $Comentario, $Fecha);
         mysqli_stmt_execute($stmt);
     } catch (Exception $e) {
-        echo "Error al insertar favorito: " . $e->getMessage();
+        echo "Error al insertar review: " . $e->getMessage();
     } finally{
         if($stmt){
             mysqli_stmt_close($stmt);
@@ -200,7 +200,7 @@ public function listarReviewsxProducto($ID_Producto_Buscar){
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $ID_Review, $ID_Cliente, $ID_Producto, $Estado, $Comentario, $Fecha);
 
-        if (mysqli_stmt_fetch($stmt)) {
+        while (mysqli_stmt_fetch($stmt)) {
             $review = new Review();
             
             $review->setID_Review($ID_Review);
@@ -209,9 +209,10 @@ public function listarReviewsxProducto($ID_Producto_Buscar){
             $review->setEstado($Estado);
             $review->setComentario($Comentario);          
             $review->setFecha($Fecha);
-
+        
             $reviews[] = $review;
         }
+        
 
     } catch (Exception $e) {
         echo "Error al listar la review " . $e->getMessage();

@@ -177,40 +177,58 @@ if(isset($_SESSION['tipo_usuario'])){
                               $idUsuario = $_SESSION['id_c'];
                               require_once "../../DAO/ReviewDAO.php";
                               $review_admitirReview = new ReviewDAO();
+                              $review_ultima = new ReviewDAO();
                               $reviewsPendientesUsuarioxProductoActual = $review_admitirReview->listarReviewsxCliente($idUsuario,$idP);
                             }
-
-                            $botonImpreso = false; // si ya se imprimio el boton
                             $contador0=0;
                             $contador1=0;
-                            foreach($reviewsPendientesUsuarioxProductoActual as $reviewU){
-                              if(($reviewU->getEstado())==1){
-                                $contador1++;
-                              }else{
-                                $contador0++;
-                                $reviewActual=$reviewU->getID_Review();
+                            $contador2=0;
+
+                              $revisiónPendiente = false;
+                              $revisiónEnviada = false;
+                              $reviewestadobase = false;
+                              foreach ($reviewsPendientesUsuarioxProductoActual as $reviewU) {
+                                if ($reviewU->getEstado() == 1) {
+                                  $revisiónEnviada = true;
+                                  $contador1++;
+                                } elseif ($reviewU->getEstado() == 0) {
+                                  $revisiónPendiente = true;
+                                  $contador0++;
+                                  $reviewActual = $reviewU->getID_Review();
+                                } elseif ($reviewU->getEstado() == 2){
+                                  $reviewestadobase = true;
+                                  $contador2++;
+                                } 
                               }
-                      
-                            }
-
-                            if($contador0==0){
-                            ?>
-                            
-                            <button type="button" class="btn btn-izq w-100 " formaction="C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarReview.php">Contactar</button><p></p>
-
-                            <?php }elseif($contador0>=1){ ?>
+                              //echo "contador 0: ".$contador0." - contador 1 : ".$contador1." - contador 2: ".$contador2;
+                              ?>
+                              <?php if ($contador0==1 || $contador1>1) { ?>
+                                <button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button>    
                               
-                            <button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p> 
-                            
-                            <?php }?>
-                            <!--Comentando el boton antiguo
-                            <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 mt-2" onclick="disable(this)">
-                              Dejar Review
-                            </button>
-                            <p class="text-end text-lowercase fst-italic fw-light lh-1 mt-2">
-                              *Para poder dejar una review primero debe hacer clik en el boton de "Dejar Review", posterior a ello el emprendimiento le dara permiso para comentar.
-                            </p>
-                            -->
+                              <?php } elseif ($contador2>1 || $contador2==1){ ?>
+                                <button type="button" class="btn btn-izq w-100" disabled>Pendiente</button>
+                              <?php }else{ 
+                                $ReviewIDBase=$review_ultima->obtenerUltimoIdReview()+1;
+                                $estadobase2=2;
+                                $fechaahoyPreliminar='2023-01-01';
+                                $descripcionPreliminar=null;
+                                
+                              ?>
+                                <form method="POST" action="../../Agregar/AgregarReview.php">
+                                  <input type="hidden" class="btn-outline-white" name="id_review_añadir" id="id_review_añadir" value="<?=$ReviewIDBase?>"></input>
+                                  <input type="hidden" class="btn-outline-white" name="id_prod_añadir" id="id_prod_añadir" value="<?=$idP?>"></input>
+                                  <input type="hidden" class="btn-outline-white" name="id_cliente_añadir" id="id_cliente_añadir" value="<?=$idUsuario?>"></input>
+                                  <input type="hidden" class="btn-outline-white" name="estadobase2" id="estadobase2" value="<?=$estadobase2?>"></input>
+                                  <input type="hidden" class="btn-outline-white" name="comentariobase" id="comentariobase" value="<?$descripcionPreliminar?>"></input>
+                                  <input type="hidden" class="btn-outline-white" name="fechahoy" id="fechahoy" value="<?=$fechaahoyPreliminar?>"></input>
+                                  
+                                  <button type="submit" name="añadir" class="btn btn-izq w-100 ">Contactar</button>
+                                  <p></p>
+                                </form>
+                              <?php } ?>
+
+                            <!--Comentando el boton antiguo-->
+
                           </div>
                           <div class="col-sm-2">
                             <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
@@ -395,10 +413,10 @@ if(isset($_SESSION['tipo_usuario'])){
 
 
                     $review_tienda = new ReviewDAO();
-                    $reviews = $review_tienda->listarReviewsxProducto($idP);
+                    $reviews1 = $review_tienda->listarReviewsxProducto($idP);
                   ?>
                   <?php
-                    if (empty($reviews)) {
+                    if (empty($reviews1)) {
                   ?>
                   <div class="card-body p-4">
                     <div class="d-flex flex-start">
@@ -419,16 +437,17 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                   </div>
 
-                  <?php } ?>
-                  <?php
-                    if(!empty($reviews)) {
+                  <?php }else{
                     require_once "../../DAO/ClienteDAO.php";
                     $cliente_buscar = new ClienteDAO();
 
                   ?>
-                  <?php foreach($reviews as $review) {
+                  <?php foreach($reviews1 as $review1) {
                                         
-                    $cliente=$cliente_buscar->listarPorIdCliente($review->getID_Cliente());
+                    $cliente=$cliente_buscar->listarPorIdCliente($review1->getID_Cliente());
+                    
+
+                   if($review1->getEstado()==1){
                   
                   ?>
                  
@@ -442,7 +461,7 @@ if(isset($_SESSION['tipo_usuario'])){
                         </h6>
                         <div class="d-flex align-items-center mb-3">
                           <?php
-                              $fecha = DateTime::createFromFormat('Y-m-d', $review->getFecha());
+                              $fecha = DateTime::createFromFormat('Y-m-d', $review1->getFecha());
 
                               $fecha_formateada = $fecha->format('F j, Y');
                           ?>
@@ -451,14 +470,14 @@ if(isset($_SESSION['tipo_usuario'])){
                           </p>
                         </div>
                         <p class="mb-0">
-                          <?php echo $review->getComentario()?>
+                          <?php echo $review1->getComentario()?>
                         </p>
                       </div>
                     </div>
                   </div>
-
+                  <?php }}} ?> 
                 </div>
-                <?php }} ?> 
+                
                 
               </div>
             </div>
@@ -478,9 +497,29 @@ if(isset($_SESSION['tipo_usuario'])){
                         <div class="w-100">
                           <h5>Añade una review</h5>
                           
-                          <?php
-                            if($contador0==0){
-                          ?>
+                                                 
+                            <?php if($contador0>=1){ 
+                              $estadobase1=1;
+                            ?>
+                                          
+                            <form method="POST" action="../../Actualizar/ActualizarReview.php">
+                              <div class="form-outline">
+                              <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;"></textarea>
+                              <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                              </div>
+                              <div class="d-flex justify-content-between mt-3">
+                                <input type="hidden" class="btn-outline-white" name="id_review" id="id_review" value="<?=$reviewActual?>"></input>
+                                <input type="hidden" class="btn-outline-white" name="estadobase1" id="estadobase1" value="<?=$estadobase1?>"></input>
+                                <input type="hidden" class="btn-outline-white" name="id_prod" id="id_prod" value="<?=$idP?>"></input>
+                                <input type="hidden" class="btn-outline-white" name="id_cliente" id="id_cliente" value="<?=$idUsuario?>"></input>
+
+                                <button type="submit" class="btn btn-success" name="actualizar"> 
+                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                              </div>
+                            </form> 
+                            <?php }else{
+                            ?>
                               <div class="form-outline">
                               <textarea class="form-control" id="textAreaExample" rows="3" style="padding-right: 40px;" disabled></textarea>
                               <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
@@ -491,24 +530,7 @@ if(isset($_SESSION['tipo_usuario'])){
                                   Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
                                 </button>
                               </div>
-                          
-                            <?php }elseif($contador0>=1){ ?>
-                                          
-                            <form method="POST" action="../../Actualizar/ActualizarReview.php">
-                              <div class="form-outline">
-                              <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;"></textarea>
-                              <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
-                              </div>
-                              <div class="d-flex justify-content-between mt-3">
-                                <input type="hidden" class="btn-outline-white" name="id_review" id="id_review" value="<?=$reviewActual?>"></input>
-                                <input type="hidden" class="btn-outline-white" name="id_prod" id="id_prod" value="<?=$idP?>"></input>
-                                <button type="submit" class="btn btn-success" name="insert"> 
-                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                                </button>
-                              </div>
-                            </form> 
                             <?php } ?>
-
                         </div>
                       </div>
                     </div>
