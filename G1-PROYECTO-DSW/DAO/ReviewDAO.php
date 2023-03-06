@@ -222,7 +222,37 @@ public function listarReviewsxProducto($ID_Producto_Buscar){
         }
     }
     return $reviews;
-}       
+}  
+     
+public function getNroDeReviewsPendientes($ID_Producto){
+
+    $nroDeReviewsPendientes_Aux;
+
+    $query = "  SELECT COUNT(*) as nroDeReviewsPendientes
+                FROM Review 
+                INNER JOIN Producto ON Review.ID_Producto = Producto.ID_Producto
+                WHERE Review.Estado = 0 AND Producto.ID_Producto = {$ID_Producto} 
+                AND Producto.ID_Emprendimiento = {$_SESSION['id_e']}";
+
+    try{
+        $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $nroDeReviewsPendientes);
+
+        if (mysqli_stmt_fetch($stmt)) {
+            $nroDeReviewsPendientes_Aux = $nroDeReviewsPendientes;
+        }
+
+    } catch (Exception $e) {
+        echo "Error al listar las reviews pendientes: " . $e->getMessage();
+        $nroDeReviewsPendientes_Aux = null;
+    } finally{
+        if($stmt){
+            mysqli_stmt_close($stmt);
+        }
+    }
+    return $nroDeReviewsPendientes_Aux;
+}
 
 
 }
