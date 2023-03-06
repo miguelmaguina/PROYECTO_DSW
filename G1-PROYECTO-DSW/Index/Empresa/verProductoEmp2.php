@@ -51,6 +51,10 @@ $conexion = new PDO($db_name, $user_name, $user_password);
         $subcategoria_tienda1 = new SubCategoriaDAO();
         $subcategorias=$subcategoria_tienda1->listar();
     ?>
+
+<div class="float-button d-none">
+    <a href="#"><i class="fa-solid fa-eye"></i></a>
+</div>
     
 
     <section class="section-t-o container-fluid py-1">
@@ -65,9 +69,15 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                             </button>
 
                             <div class="carousel__lista">
-                                <?php foreach($subcategorias as $subcategoria){?>
-                                <div class="card card-t mb-3 border border-none" id="subcategoria<?=$subcategoria->getID_Subcategoria()?>">
-                                    <div class="row no-gutters">
+                            <?php foreach($subcategorias as $subcategoria){?>
+                                <div>
+                                <a href="#" id="boton-car" class="categoria text-decoration-none" data-categoria="<?= $subcategoria->getNombre()?>">
+                                <div class="card card-t mb-3 border border-none">
+                                
+                                
+                                    <div class="row no-gutters ">
+                                    
+                                        
                                         <div class="col-4">
                                         <?php
                                             $var=$subcategoria->getID_SubCategoria();
@@ -77,7 +87,7 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                             }
                                         ?>
                                         <img class="card-img" alt="Imagen" src="<?= $pathFotoSubcat?>" >
-                                        </a>
+                                        
                                         </div>
                                         <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
@@ -85,10 +95,11 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                             
                                             </div>
                                         </div>
-                                    </div>
-                                    
+                                   </div>
+                                
                                 </div> 
-
+                                    </a>
+                                        </div>
                                 <?php } ?>
                             
                                 
@@ -126,11 +137,16 @@ $conexion = new PDO($db_name, $user_name, $user_password);
 
                     <!-- repeticion -->
                     
-                    <?php    foreach($productos as $producto) {?>
-                    <div class="col-sm-6 mb-4">
+                    <?php    foreach($productos as $producto) {
+                        $idsubc=$producto->getID_Subcategoria();
+                        $subcatego=new SubCategoriaDAO();
+                        $subcat=$subcatego->listarPorIdSubCategoria($idsubc);
+                        $nombresubcategoria=$subcat->getNombre();
+                    ?>
+                    <div class="tarjeta col-sm-6 mb-4" data-categoria="<?php echo $nombresubcategoria; ?>">
                         <div class="card card-emp m-2">
                         
-                            <h4 class="text-cabecera text-center py-1"><?= $producto->getNombre() ?></h4>
+                            <h5 class="text-cabecera text-center py-1"><?= $producto->getNombre() ?></h5>
                             <div class="row">
 
                                 <div class="col-md-6 d-flex justify-content-center">
@@ -241,6 +257,48 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                 <p>Derechos reservados &copy; 2023 Mi sitio web</p>
             </div>
         </footer>
+
+    <script>
+        const categorias = document.querySelectorAll('.categoria');
+        const botonFlotante = document.querySelector('.float-button');
+
+        botonFlotante.addEventListener('click', () => {
+
+            botonFlotante.classList.add('boton-flotante-animacion');
+        
+            const productos = document.querySelectorAll('.tarjeta');
+            productos.forEach(producto => {
+                producto.classList.remove('d-none');
+                setTimeout(() => {
+                    botonFlotante.classList.remove('boton-flotante-animacion');
+                    botonFlotante.classList.add('d-none');
+                }, 300);
+                
+            });
+        });
+        
+
+        categorias.forEach(categoria => {
+        categoria.addEventListener('click', () => {
+            const categoriaSeleccionada = categoria.dataset.categoria;
+            
+            const productos = document.querySelectorAll('.tarjeta');
+            productos.forEach(producto => {
+            if (producto.dataset.categoria === categoriaSeleccionada) {
+                producto.classList.remove('d-none');
+            } else {
+                producto.classList.add('d-none');
+            }
+            });
+            botonFlotante.classList.add('boton-flotante-animacion');
+            setTimeout(() => {
+                    botonFlotante.classList.remove('boton-flotante-animacion');
+                    botonFlotante.classList.remove('d-none');
+                }, 300);
+            
+        });
+        });
+  </script>
 
         <script src="../../js/index.js"></script>
         <script src="../../js/script.js"></script>
