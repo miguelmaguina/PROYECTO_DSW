@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $clienteDAO=new ClienteDAO();
 
     if($clienteDAO->verificaEmail($email)==1){
-        if($clienteDAO->verificaLogin($email,$contrasena)==1){
+        if($clienteDAO->verificaLoginEncriptado($email,$contrasena)==1){
             exito("Sesion iniciada");
             header("Location: ../index.php");
             exit();

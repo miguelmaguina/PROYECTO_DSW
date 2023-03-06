@@ -258,6 +258,40 @@ class ClienteDAO {
         return $r;
     }
 
+    public function verificaLoginEncriptado($email, $contrasena_enviada){
+        $r=0; //1 existe  0 no existe
+        $sql = "SELECT ID_Cliente, Nombres, Usuario, Foto_Perfil, Contraseña FROM Cliente WHERE email = ?";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Cliente, $Nombres, $Usuario,$Foto_Perfil, $contrasena_hash);
+
+            if(mysqli_stmt_fetch($stmt)){
+                if(password_verify($contrasena_enviada, $contrasena_hash)){
+                    $r = 1;
+                    $_SESSION['id_c'] = $ID_Cliente;
+                    $_SESSION['nombre_c'] = $Nombres;
+                    $_SESSION['usuario_c'] = $Usuario;
+                    $_SESSION['foto_c'] = $Foto_Perfil;
+                    $_SESSION['tipo_usuario'] = 'cliente';
+                }else{
+                    $r = 0;
+                }
+            } else{
+                $r = 0;
+            }      
+        }catch(Exception $e){
+            echo $e->getMessage();
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $r;  
+    }
+
     public function obtenerUltimoId(){
         $r=0;//1 existe  0 no existe
         $sql = "SELECT MAX(ID_Cliente) FROM Cliente";

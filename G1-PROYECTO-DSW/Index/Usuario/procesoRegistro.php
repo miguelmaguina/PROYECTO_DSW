@@ -32,6 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         alerta("Se requiere el contrasena");
     }else{
         $contrasena=test_input($_POST["password"]);
+        $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
     }
 
     if(empty($_POST["password2"])){
@@ -86,14 +87,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 if($archivo_nombre!='' || $archivo_nombre!=null){
     if($clienteDAO->verificaEmail($email)==0){
         if($clienteDAO->verificaUsuario($usuario)==0){
-            if($contrasena==$contrasena2){
+            if(password_verify($contrasena2, $contrasena_hash)){
                 if (move_uploaded_file($archivo_tmp, '../../Image/Clientes/'.$nuevo_nombre)) {
                     $client=new Cliente();
                     $client->setNombres($nombre);
                     $client->setApellidos($apellido);
                     $client->setEmail($email);
                     $client->setCelular($celular);
-                    $client->setContrasena($contrasena);
+                    $client->setContrasena($contrasena_hash);
                     $client->setDepartamento($departamento);
                     $client->setUsuario($usuario);
                     $client->setDNI($dni);
