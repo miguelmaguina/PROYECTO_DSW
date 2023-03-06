@@ -73,7 +73,7 @@ if($tipo==1){
     </div>
     <div class="carousel-inner">
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png" ></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/fotoTienda1Blur.jpg" ></img>
         <div class="container">
           <div class="carousel-caption text-center">
                 <h1 > ¡Apoya a las comunidades del Perú comprando sus productos!</h1>
@@ -87,7 +87,7 @@ if($tipo==1){
         </div>
       </div>
       <div class="carousel-item active">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/fotoTienda2Blur.jpg"></img>
         <div class="container">
           <div class="carousel-caption text-center">
                 <h1 > ¡Hazte con piezas únicas y especiales hechas por nuestras comunidades!</h1>
@@ -98,7 +98,7 @@ if($tipo==1){
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
+        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/fotoTienda3Blur.jpg"></img>
         <div class="container">
           <div class="carousel-caption text-center">
                 <h1 >¡Compra con responsabilidad ambiental en nuestra tienda!</h1>
