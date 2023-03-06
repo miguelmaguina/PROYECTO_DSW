@@ -25,9 +25,6 @@
                         <a class="nav-link" href="nosotros.php">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="tienda1.php">Tienda Online</a>
                     </li>
                 </ul>
