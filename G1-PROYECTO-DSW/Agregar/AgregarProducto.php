@@ -52,27 +52,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $disponibilidad=test_input($_POST["disp"]);
     }
 
-    if(empty($_POST["upload-button1"])){
-        echo ("Se requiere una foto1");
-    }else{
-        $foto1=test_input($_POST["upload-button1"]);
-    }
+    //if(empty($_POST["upload-button1"])){
+    //    echo ("Se requiere una foto1");
+    //}else{
+    //    $foto1=test_input($_POST["upload-button1"]);
+    //}
 
-    if(empty($_POST["upload-button2"])){
-        echo ("Se requiere una foto2");
-    }else{
-        $foto2=test_input($_POST["upload-button2"]);
-    }
+    //if(empty($_POST["upload-button2"])){
+    //    echo ("Se requiere una foto2");
+    //}else{
+    //    $foto2=test_input($_POST["upload-button2"]);
+    //}
 
-    if(empty($_POST["upload-button3"])){
-        echo ("Se requiere una foto3");
-    }else{
-        $foto3=test_input($_POST["upload-button3"]);
-    }
+    //if(empty($_POST["upload-button3"])){
+    //    echo ("Se requiere una foto3");
+    //}else{
+    //    $foto3=test_input($_POST["upload-button3"]);
+    //}
     
     session_start();
     $emprendimiento=$_SESSION['id_e'];
-    $fecha=date('Y/m/d');
+    //$fecha=date('Y/m/d');
     $productoDAO=new ProductoDAO();
     $id=$productoDAO->obtenerUltimoId()+1;
 
