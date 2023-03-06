@@ -13,8 +13,8 @@ if(isset($_SESSION['tipo_usuario'])){
 
 require '../../Conexion/Conexion.php';
 
-require '../Index/Components/mensaje.php';
-require '../Actualizar/ActualizarProducto.php';
+require '../../Index/Components/mensaje.php';
+require '../../Actualizar/ActualizarProducto.php';
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-require_once '../DAO/ProductoDAO.php';
-require "../Clases/Producto.php";
+require_once '../../DAO/ProductoDAO.php';
+require_once "../../Clases/Producto.php";
 
 $nombre=$precio=$descripcion=$categoria=$subcategoria=$descuento=$fecha=$emprendimiento=$disponibilidad=$foto1=$foto2=$foto3="";
 
@@ -74,7 +74,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $emprendimiento=$_SESSION['id_e'];
     $fecha=date('Y/m/d');
     $productoDAO=new ProductoDAO();
-    $id=$productoDAO->obtenerUltimoId()+1;
 
     //Foto 1
     $archivo_nombre1 = $_FILES['upload-button1']['name'];
