@@ -404,8 +404,8 @@ if(isset($_SESSION['tipo_usuario'])){
     </div>
 
     
-    <!-- Footer -->
-    <?php require 'footer.php' ?>
+    <!-- Footer $_SERVER['DOCUMENT_ROOT'] es mi caso es C:/xampp/htdocs-->
+    <?php require $_SERVER['DOCUMENT_ROOT'] . '/PROYECTO_DSW/G1-PROYECTO-DSW/Index/Usuario/footer.php'; ?>
     <script src="../js/index.js?v=<?php echo time(); ?>"></script>
     <script src="../js/carousel.js?v=<?php echo time(); ?>"></script>
     <!-- Scripts de Bootstrap 5 -->

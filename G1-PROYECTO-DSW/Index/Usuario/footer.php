@@ -9,7 +9,7 @@
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="../../Image/hallpa.png" alt="Logo de SLee Dw">
+                        <img src="<?php $_SERVER['DOCUMENT_ROOT']?>/PROYECTO_DSW/G1-PROYECTO-DSW/Image/hallpa.png" alt="Logo de SLee Dw">
                     </a>
                 </figure>
             </div>
