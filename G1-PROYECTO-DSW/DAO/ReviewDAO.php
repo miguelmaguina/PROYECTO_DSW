@@ -190,6 +190,40 @@ public function listarAlgunasReviews(){
     return $reviews;
 }
 
+public function listarReviewsxProducto($ID_Producto_Buscar){
+    $reviews=array();
+    $query = "SELECT * FROM Review WHERE ID_Producto=?";
+
+    try{
+        $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
+        mysqli_stmt_bind_param($stmt, "i", $ID_Producto_Buscar);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $ID_Review, $ID_Cliente, $ID_Producto, $Estado, $Comentario, $Fecha);
+
+        if (mysqli_stmt_fetch($stmt)) {
+            $review = new Review();
+            
+            $review->setID_Review($ID_Review);
+            $review->setID_Cliente($ID_Cliente);
+            $review->setID_Producto($ID_Producto);
+            $review->setEstado($Estado);
+            $review->setComentario($Comentario);          
+            $review->setFecha($Fecha);
+
+            $reviews[] = $review;
+        }
+
+    } catch (Exception $e) {
+        echo "Error al listar la review " . $e->getMessage();
+        $reviews = null;
+    } finally{
+        if($stmt){
+            mysqli_stmt_close($stmt);
+        }
+    }
+    return $reviews;
+}       
+
 
 }
 

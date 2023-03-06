@@ -1,7 +1,17 @@
 <?php
 
-require "../../Conexion/Conexion.php";
-require "../../Clases/Categoria.php";
+if(file_exists("../Conexion/Conexion.php")){
+    require_once "../Conexion/Conexion.php";
+}else{
+    require_once "../../Conexion/Conexion.php";
+}
+
+if(file_exists("../Clases/Categoria.php")){
+    require_once "../Clases/Categoria.php";
+}else{
+    require_once "../../Clases/Categoria.php";
+}
+
 
 class CategoriaDAO {
     //Atributos
@@ -127,9 +137,9 @@ class CategoriaDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $categoria = new Categoria();
-                $ID_Categoria = $categoria->getID_Categoria(); //i
-                $Nombre = $categoria->getNombre(); //s
-                $Descripcion = $categoria->getDescripcion(); //s                
+                $categoria->setID_Categoria($ID_Categoria);
+                $categoria->setNombre($Nombre);
+                $categoria->setDescripcion($Descripcion);                   
             }
 
         } catch (Exception $e) {

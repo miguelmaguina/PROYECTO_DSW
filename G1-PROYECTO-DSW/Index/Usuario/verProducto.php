@@ -173,114 +173,214 @@ if(isset($_SESSION['tipo_usuario'])){
             </div>
             
             <div class="row accordion-p">
-                <div class="accordion accordion-flush"  id="accordionFlushExample">
-                    <div class="accordion-item" >
-                      <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          Detalles del Vendedor
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quisquam sapiente, qui sit error debitis maxime ipsum, alias dolore nulla veniam unde delectus officia animi perferendis a nihil autem fuga.</div>
+              <div class="accordion accordion-flush"  id="accordionFlushExample">
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Detalles del Vendedor:    <?=$emprendimiento->getNombre(); ?>
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <div class="row pt-3">
+                          <div class="col-md-4 rounded border" style="border-color: #707070; border-radius: 10px;text-align: center;">
+                            <img src="../../Image/Emprendimientos/logo_<?=$emprendimiento->getID_Emprendimiento();?>.png" alt="Imagen del Emprendimiento<?=$emprendimiento->getNombre();?>" class="img-fluid" style=" object-fit: contain;max-height: 240px;">
+                          </div>
+                          <div class="col-md-4 pt-5">
+
+                            <div class="row align-items-center">
+                              <div class="col-4">
+                                <p>Nombre:</p>
+                              </div>
+                              <div class="col-8">
+                                <p><?php echo $emprendimiento->getNombre(); ?> </p>
+                              </div>
+                              <div class="col-4">
+                                <p>Celular:</p>
+                              </div>
+                              <div class="col-8">
+                                <p><?php echo $emprendimiento->getCelular(); ?> </p>
+                              </div>
+                              <div class="col-4">
+                                <p>Dirección:</p>
+                              </div>
+                              <div class="col-8">
+                                <p><?php echo $emprendimiento->getDireccion(); ?> </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4 pt-5">
+                            <div class="row align-items-center">
+                              <div class="col-4">
+                                <p>Email:</p>
+                              </div>
+                              <div class="col-8">
+                                <p><?php echo $emprendimiento->getEmail(); ?> </p>
+                              </div>
+                              <div class="col-4">
+                                <p>Departamento:</p>
+                              </div>
+                              <div class="col-8">
+                                <p><?php echo $emprendimiento->getDepartamento(); ?> </p>
+                              </div>
+                              <div class="col-4">
+                                <p>Redes y/o Web:</p>
+                              </div>
+                              <div class="col-8 d-flex align-items-center">
+                                <?php if ($emprendimiento->getURL_Web()) { ?>
+                                <a href="<?=$emprendimiento->getURL_Web()?>" class="fa fa-globe me-2" style="font-size: 23px; color: #1A2B42;" target="_blank"></a>
+                                <?php } ?>
+                                <?php if ($emprendimiento->getURL_Facebook()) { ?>
+                                <a href="<?=$emprendimiento->getURL_Facebook()?>" class="fa fa-facebook me-2" style="font-size: 23px; color: #1A2B42;" target="_blank"></a>
+                                <?php } ?>
+                                <?php if ($emprendimiento->getURL_Instagram()) { ?>
+                                <a href="<?=$emprendimiento->getURL_Instagram()?>" class="fa fa-instagram me-2" style="font-size: 23px; color: #1A2B42;" target="_blank"></a>
+                                <?php } ?>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                          Detalles del producto
-                        </button>
-                      </h2>
-                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident omnis molestiae itaque modi totam obcaecati quam accusantium cupiditate perferendis dolor natus, dolores amet minus nulla ratione quisquam sint nihil voluptatibus.</div>
+
+                </div>
+
+
+                <div class="accordion-item">
+                 
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Detalles del Producto:    <?=$producto->getNombre(); ?>
+                      </button>
+                    </h2>
+                    <?php
+                      require_once "../../DAO/CategoriaDAO.php";
+                      require_once "../../DAO/SubcategoriaDAO.php";
+                      $subcategoriaindexR = new SubCategoriaDAO();
+                      $categoriaindexR = new CategoriaDAO();
+
+                      $categoria = $categoriaindexR->listarPorIdCategoria($producto->getID_Categoria());
+                      $subcategoria = $subcategoriaindexR->listarPorIdSubCategoria($producto->getID_Subcategoria());
+
+                    ?>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <div class="row pt-3">
+                          <div class="col-md-4 rounded border" style="border-color: #707070; border-radius: 10px;text-align: center;">
+                            <img src="../../Image/Productos/Foto_Secundaria1/<?=$producto->getFoto_Secundaria1();?>" alt="Imagen del Producto <?=$producto->getNombre();?>" class="img-fluid" style=" object-fit: contain;max-height: 290px;"/>
+                          </div>
+                          <div class="col pt-1">
+                            <div class="row flex-column align-items-center">
+                              <div class="row">
+                                <div class="col-5">
+                                  <div class="col-4">
+                                      <p>Nombre:</p>
+                                  </div>
+                                  <div class="col-8">
+                                      <p><?php echo $producto->getNombre() ?></p>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                             
+                            
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    
-                  </div>
+
+                </div>
+
+
+                  
+              </div>
             </div>
 
         <!--Seccion comentarios-->
+        
         <div>
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10">
               <div class="card text-dark">
                 
+
                 <div class="card-body p-4">
-                  <h4 class="mb-0">Reviews</h4>
+
+                  <h4 class="mb-0">Review</h4>
                   <p class="fw-light mb-4 pb-2">Últimos comentarios de los usuarios</p>
+                  <?php
+                    require_once "../../DAO/ReviewDAO.php";
 
-                  <?php 
-                    require_once '../../DAO/ReviewDAO.php';
-                    $reviewDAO_Index = new ReviewDAO();
-                    $reviews = $reviewDAO_Index->listarPorIdReview(1);
-                    foreach($reviews as $review) {
+
+                    $review_tienda = new ReviewDAO();
+                    $reviews = $review_tienda->listarReviewsxProducto($idP);
                   ?>
-
-                  <div class="d-flex flex-start">
+                  <?php
+                    if (empty($reviews)) {
+                  ?>
+                  <div class="card-body p-4">
+                    <div class="d-flex flex-start">
                     <img class="rounded-circle shadow-1-strong me-3"
-                      src="../../Image/usuario_review.png" alt="" width="60" height="60" />
-                    <div>
-                      <h6 class="fw-bold mb-1">Isabela Merced</h6>
-                      <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">
-                          Febrero 20, 2023
-                        </p>
+                        src="../../Image/usuario_review.png" alt="" width="60" height="60" />
+                      <div>
+                        <h6 class="fw-bold mb-1">Usuario</h6>
+                        <div class="d-flex align-items-center mb-3">
+                          <p class="mb-0">
+                          <?php
+                            $fecha_actual = date("F j, Y", strtotime("now"));
+                            echo $fecha_actual;
+                          ?>
+                          </p>
+                        </div>
+                        <p class="mb-0">Todavía no existen reviews para este producto.</p>
                       </div>
-                      <p class="mb-0">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                        since the 1500s, when an unknown printer took a galley of type and
-                        scrambled it.
-                      </p>
                     </div>
                   </div>
-                </div>
 
-                <hr class="my-0" />
-              <?php } ?>             
+                  <?php } ?>
+                  <?php
+                    if(!empty($reviews)) {
+                    require_once "../../DAO/ClienteDAO.php";
+                    $cliente_buscar = new ClienteDAO();
 
-                <div class="card-body p-4">
-                  <div class="d-flex flex-start">
-                    <img class="rounded-circle shadow-1-strong me-3"
-                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
-                    <div>
-                      <h6 class="fw-bold mb-1">Alex Diaz</h6>
-                      <div class="d-flex align-items-center mb-3">
+                  ?>
+                  <?php foreach($reviews as $review) {
+                                        
+                    $cliente=$cliente_buscar->listarPorIdCliente($review->getID_Cliente());
+                  
+                  ?>
+                 
+                  <div class="card-body p-4">
+                    <div class="d-flex flex-start">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="../../Image/Clientes/<?=$cliente->getFoto_Perfil()?>" alt="" width="60" height="60" />
+                      <div>
+                        <h6 class="fw-bold mb-1">
+                          <?php echo $cliente->getNombres();?> <?php echo $cliente->getApellidos();?>
+                        </h6>
+                        <div class="d-flex align-items-center mb-3">
+                          <?php
+                              $fecha = DateTime::createFromFormat('Y-m-d', $review->getFecha());
+
+                              $fecha_formateada = $fecha->format('F j, Y');
+                          ?>
+                          <p class="mb-0">
+                            <?php echo $fecha_formateada?>
+                          </p>
+                        </div>
                         <p class="mb-0">
-                          Enero 05, 2023
+                          <?php echo $review->getComentario()?>
                         </p>
                       </div>
-                      <p class="mb-0">
-                        There are many variations of passages of Lorem Ipsum available, but the
-                        majority have suffered alteration in some form, by injected humour, or
-                        randomised words which don't look even slightly believable. If you are
-                        going to use a passage of Lorem Ipsum, you need to be sure.
-                      </p>
                     </div>
                   </div>
-                </div>
 
-                <hr class="my-0" />
-
-                <div class="card-body p-4">
-                  <div class="d-flex flex-start">
-                    <img class="rounded-circle shadow-1-strong me-3"
-                      src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
-                    <div>
-                      <h6 class="fw-bold mb-1">Patty Casas</h6>
-                      <div class="d-flex align-items-center mb-3">
-                        <p class="mb-0">
-                          Febrero 07, 2023
-                        </p>
-                      </div>
-                      <p class="mb-0">
-                        It uses a dictionary of over 200 Latin words, combined with a handful of
-                        model sentence structures, to generate Lorem Ipsum which looks
-                        reasonable. The generated Lorem Ipsum is therefore always free from
-                        repetition, injected humour, or non-characteristic words etc.
-                      </p>
-                    </div>
-                  </div>
                 </div>
+                <?php }} ?> 
+                
               </div>
             </div>
           </div>
@@ -300,8 +400,8 @@ if(isset($_SESSION['tipo_usuario'])){
                           <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
                         </div>
                         <div class="d-flex justify-content-between mt-3">
-                          <button type="button" class="btn btn-success">Danger</button>
-                          <button type="button" class="btn btn-danger">
+                          <button type="hidden" class="btn "></button>
+                          <button type="button" class="btn btn-success">
                             Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
                           </button>
                         </div>
@@ -315,7 +415,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
 
         </div>
-    </div>
+      </div>
 
         <!-- Footer -->
         <?php require 'footer.php' ?>
