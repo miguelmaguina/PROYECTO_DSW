@@ -34,6 +34,19 @@ if(isset($_SESSION['tipo_usuario'])){
             header.classList.toggle("fixed-top",window.scrollY>0);
 		})
 	</script>
+  <script>
+    function scrollToDiv() {
+      // Desplazarse hasta el div
+      var div = document.getElementById("seccion-destino");
+      div.scrollIntoView();
+
+      // Resaltar el rectángulo por 2 segundos
+      div.classList.add("resaltar");
+      setTimeout(function() {
+        div.classList.remove("resaltar");
+      }, 7000);
+    }
+    </script>
 
 </head>
 <body>
@@ -69,7 +82,7 @@ if(isset($_SESSION['tipo_usuario'])){
     <div class="section-p container-fluid py-1">
         <div class="contenedor-p">
             <div class="row">
-                  <div class="ms-5 col-sm-10 col-md-12 col-lg-6 pl-2 border d-flex align-items-center justify-content-center">
+                  <div class="ms-5 col-sm-10 col-md-12 col-lg-6 pl-2 h-75 border d-flex align-items-center justify-content-center">
                       <div id="carouselExampleIndicators" class="carousel carousel-dark slide " data-bs-ride="carousel">
 
                             <div class="carousel-inner mx-auto">
@@ -108,9 +121,9 @@ if(isset($_SESSION['tipo_usuario'])){
                       </div>
                     
                                         
-                    <div class="p1 col-sm-12 col-md-12 col-lg-5">
-                        <div class="row mb-2">
-                            <div class="col-9 col-sm-10">
+                    <div class="p1 col-sm-12 col-md-12 col-lg-5 pt-4">
+                        <div class="row mb-2 ">
+                            <div class="col-9 col-sm-10 pb-3">
                                 <h2><?php echo $producto->getNombre();?></h2>
                             </div>
                             <div class="col-3 col-sm-2">
@@ -140,7 +153,7 @@ if(isset($_SESSION['tipo_usuario'])){
                           $emprendimientoDAO_ver = new EmprendimientoDAO();
                           $emprendimiento = $emprendimientoDAO_ver->listarPorIdEmprendimiento($idEmp);
                         ?>
-                        <div class="row">
+                        <div class="row pt-3">
                           <div class="col-sm-2">
                             <p>Marca:</p>
                           </div>
@@ -157,13 +170,41 @@ if(isset($_SESSION['tipo_usuario'])){
                         </div>
                         <div class="row mt-4">
                           <div class="col-sm-10">
-                            <button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>
+                          <?php
+                            if($tipo==1){
+                              $idUsuario = $_SESSION['id_c'];
+                              require_once "../../DAO/ReviewDAO.php";
+                              $review_admitirReview = new ReviewDAO();
+                              $reviewsPendientesUsuarioxProductoActual = $review_admitirReview->listarReviewsxCliente($idUsuario,$idP);
+                            }
+
+                            $botonImpreso = false; // si ya se imprimio el boton
+                            $contador0=0;
+                            $contador1=0;
+                            foreach($reviewsPendientesUsuarioxProductoActual as $reviewU){
+                              if(($reviewU->getEstado())==1){
+                                $contador1++;
+                              }else{
+                                $contador0++;
+                              }
+                            }
+
+                            if($contador0==0){
+                              echo'<button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>';
+                            }elseif($contador0>=1){
+                              echo '<button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p>                        ';
+                            }
+
+
+                          ?>
+                            <!--Comentando el boton antiguo
                             <button id="botonreview" type="button" class="btn btn-outline-secondary btn-izq w-100 mt-2" onclick="disable(this)">
                               Dejar Review
                             </button>
                             <p class="text-end text-lowercase fst-italic fw-light lh-1 mt-2">
                               *Para poder dejar una review primero debe hacer clik en el boton de "Dejar Review", posterior a ello el emprendimiento le dara permiso para comentar.
                             </p>
+                            -->
                           </div>
                           <div class="col-sm-2">
                             <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
@@ -302,22 +343,24 @@ if(isset($_SESSION['tipo_usuario'])){
                                   <p>Precio:</p>
                                 </div>
                                 <div class="col-9">
-                                  <p>S/<?php  
-                                        $precioBase=$producto->getPrecio();
-                                        $desc=$producto->getDescuento();
-                                        $precioFinal=number_format($desc*$precioBase);
-                                        ?>
-                                        <?=
-                                        number_format($precioFinal,2,'.',','); 
-                                        ?>
-                                        
+                                  <p>     
+                                    S/<?= 
+                                      $precioBase=$producto->getPrecio();
+                                      $desc=$producto->getDescuento();
+                                      $precioFinal=number_format($desc*$precioBase);
+                                      number_format($precioFinal,2,'.',','); 
+                                    ?>       
                                   </p>
+                                </div>
+                                <div class="col-3 text-end ym-1">
+                                  <p>Disponibilidad:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p>Contactar con el emprendimiento para más información</p>
                                 </div>
                               </div>
                             </div>
-                             
-                            
-                          
+
                         </div>
                       </div>
                     </div>
@@ -416,24 +459,26 @@ if(isset($_SESSION['tipo_usuario'])){
           </div>
 
           <!--AÑADIR MI COMENTARIO/REVIEW-->
-          <div class="row d-flex justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                <div class="card">
-                  <div class="card-body p-4">
-                    <div class="d-flex flex-start w-100">
-                      <img class="rounded-circle shadow-1-strong me-3"
-                        src="../../Image/usuario_review.png" alt="avatar" width="60" height="60" />
-                      <div class="w-100">
-                        <h5>Añade una review</h5>
-                        <div class="form-outline">
-                          <textarea class="form-control" id="textAreaExample" rows="3"></textarea>
-                          <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                          <button type="hidden" class="btn "></button>
-                          <button type="button" class="btn btn-success">
-                            Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                          </button>
+          <div id="seccion-destino" >
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                  <div class="card" style="padding-left: 20px;">
+                    <div  class="card-body p-4">
+                      <div class="d-flex flex-start w-100">
+                        <img class="rounded-circle shadow-1-strong me-3"
+                          src="../../Image/Clientes/<?=$_SESSION['foto_c']?>" alt="avatar" width="60" height="60" />
+                        <div class="w-100">
+                          <h5>Añade una review</h5>
+                          <div class="form-outline">
+                            <textarea class="form-control" id="textAreaExample" rows="3" style="padding-right: 40px;"></textarea>
+                            <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                          </div>
+                          <div class="d-flex justify-content-between mt-3">
+                            <button type="hidden" class="btn "></button>
+                            <button type="button" class="btn btn-success">
+                              Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
