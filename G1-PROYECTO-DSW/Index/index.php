@@ -66,9 +66,6 @@ if(isset($_SESSION['tipo_usuario'])){
                         <a class="nav-link" href="Usuario/nosotros.php">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="Usuario/tienda1.php">Tienda Online</a>
                     </li>
                     
