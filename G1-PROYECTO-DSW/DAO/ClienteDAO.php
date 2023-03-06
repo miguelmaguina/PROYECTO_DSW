@@ -105,14 +105,13 @@ class ClienteDAO {
 
     public function update(Cliente $cliente) {
 
-        $query = "UPDATE Cliente SET Nombres=?, Apellidos=?, Email=?, Celular=?, Departamento=?, DNI=?, Fecha_Creacion=?, Foto_Perfil=? WHERE ID_Cliente=?";
+        $query = "UPDATE Cliente SET Nombres=?, Apellidos=?, Celular=?, Departamento=?, DNI=?, Fecha_Creacion=?, Foto_Perfil=? WHERE ID_Cliente=?";
 
         try {
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
 
             $Nombres = $cliente->getNombres(); //s
             $Apellidos = $cliente->getApellidos(); //s
-            $Email = $cliente->getEmail(); //s
             $Celular = $cliente->getCelular(); //s
             $Departamento = $cliente->getDepartamento(); //s
             $DNI = $cliente->getDNI(); //s
@@ -120,7 +119,7 @@ class ClienteDAO {
             $Foto_Perfil = $cliente->getFoto_Perfil(); //s
             $ID_Cliente = $cliente->getID_Cliente(); //i
 
-            mysqli_stmt_bind_param($stmt, "ssssssssi", $Nombres, $Apellidos, $Email, $Celular, $Departamento, $DNI, $Fecha_Creacion, $Foto_Perfil, $ID_Cliente);
+            mysqli_stmt_bind_param($stmt, "sssssssi", $Nombres, $Apellidos, $Celular, $Departamento, $DNI, $Fecha_Creacion, $Foto_Perfil, $ID_Cliente);
             mysqli_stmt_execute($stmt);
 
         } catch (Exception $e) {

@@ -36,7 +36,8 @@ $cliente=$clienteDAO->listarPorIdCliente($_SESSION['id_c']);
             object-fit: cover;
         }
         .card {
-            max-width: 500px;
+            width: 300px;
+            padding: 15px;
             margin: auto;
         }
         .container{
@@ -53,7 +54,7 @@ $cliente=$clienteDAO->listarPorIdCliente($_SESSION['id_c']);
 </head>
 <body>
     <?php require 'header.php' ?>
-    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="background-color:#E5E1E1;">
+    <div class="container-fluid py-5" style="background-color:#E5E1E1;">
         <div class="card">
             <img class="card-img-top avatar img-fluid"  src="../../Image/Clientes/<?php echo $cliente->getFoto_Perfil(); ?>" alt="Avatar">
             <div class="card-body">

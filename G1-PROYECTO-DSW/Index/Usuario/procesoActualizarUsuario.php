@@ -1,6 +1,6 @@
 <?php
 
-$name = $apellido = $email = $celular = $departamento = $dni = $fecha = $nuevo_nombre = "";
+$name = $apellido = $celular = $departamento = $dni = $fecha = $nuevo_nombre = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -64,7 +64,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $client=new Cliente();
     $client->setNombres($nombre);
     $client->setApellidos($apellido);
-    $client->setEmail($email);
     $client->setCelular($celular);
     $client->setDepartamento($departamento);
     $client->setDNI($dni);
@@ -72,6 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $client->setFoto_Perfil($nuevo_nombre);
     $client->setID_Cliente($_SESSION['id_c']);
     $clienteDAO->update($client);
+    $_SESSION['foto_c']=$nuevo_nombre;
     exito("Actualizado exitosamente");
     header("Location: actualizaUsuario.php");
     exit();

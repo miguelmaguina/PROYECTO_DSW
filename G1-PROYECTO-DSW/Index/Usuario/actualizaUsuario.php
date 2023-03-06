@@ -36,8 +36,13 @@ require 'procesoActualizarUsuario.php';
 
 </head>
 <body>
+
+<div class="float-button">
+    <a href="perfilUsuario.php"><i class="fa-solid fa-angles-left"></i></a>
+</div>
+
     
-    <div class="section-newEmpr container-fluid py-5 vh-100">
+    <div class="section-newEmpr container-fluid py-5">
         <div class="contenedor-newEmpr">
         <div class="container my-5 text-secondary">
             <div class="row">
