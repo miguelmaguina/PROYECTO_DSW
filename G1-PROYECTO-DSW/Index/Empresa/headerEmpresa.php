@@ -71,7 +71,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="actualizarEmprendimiento.php"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="perfilEmprendimiento.php"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

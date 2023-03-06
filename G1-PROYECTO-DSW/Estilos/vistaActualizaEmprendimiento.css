@@ -1,0 +1,117 @@
+*{
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+  --colorgreen1: #035941;
+  --colorgreen1hover:#01412f;
+  --colorgreen2: #7DA641;
+  --colorgreen2hover: #6b9133;
+  --colornaranja1: #F2AC57;
+  --colornaranja2: #F2CEA2;
+  --colorbackground: #E5E1E1;
+  --colorlight: #FAFAFA;
+  --colorblanco: #fff;
+  --colornegro:#000;
+}
+
+.section-newEmpr{
+    background-color: #E5E1E1;
+  }
+  
+  .contenedor-newEmpr { 
+    background-color: #FAFAFA;
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .contenedor-choose{
+    background-color: var(--colorlight);
+    width: 90%;
+    max-width: 700px;
+    justify-content: center;
+    margin: 35px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+  .image-container{
+    width: 90%;
+    margin: 0 auto 30px auto;
+  }
+  .image-container img{
+    display: block;
+    max-width: 100%;
+    max-height: 430px;
+    margin: auto;
+  }
+  figcaption{
+    margin: 20px 0 30px 0;
+    text-align: center;
+    color: #2a292a;
+  }
+  .input-content[type="file"]{
+    display: none;
+  }
+  .label-button{
+    display: flex;
+    justify-content: center;
+    background-color: #157347;
+    color:var(--colorblanco);
+    font-size: 12px;
+    text-align: center;
+    width: auto;
+    padding: 12px 0;
+    border-radius: 5px;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  .alert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    width: 300px;
+  }
+  
+  .alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 0.7rem;
+    color: inherit;
+  }
+
+  .float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.float-button a {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    line-height: 60px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
+}
+
+.float-button a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
