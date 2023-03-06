@@ -46,116 +46,51 @@ $conexion = new PDO($db_name, $user_name, $user_password);
 
 <body>    
     <?php require 'headerEmpresa.php';?>
+    <?php
+        require_once "../../DAO/SubCategoriaDAO.php";
+        $subcategoria_tienda1 = new SubCategoriaDAO();
+        $subcategorias=$subcategoria_tienda1->listar();
+    ?>
+    
 
     <section class="section-t-o container-fluid py-1">
         <div class="contenedor-t">
         <div class="row">
             <div class="col-md-12 mx-auto text-center">
-            <div class="carousel">
+                    
+                    <div class="carousel">
                         <div class="carousel__contenedor">
                             <button aria-label="Anterior" class="carousel__anterior">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
 
                             <div class="carousel__lista">
-                                
-                            <div class="card card-t mb-3 border border-none">
+                                <?php foreach($subcategorias as $subcategoria){?>
+                                <div class="card card-t mb-3 border border-none" id="subcategoria<?=$subcategoria->getID_Subcategoria()?>">
                                     <div class="row no-gutters">
                                         <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
+                                        <?php
+                                            $var=$subcategoria->getID_SubCategoria();
+                                            $pathFotoSubcat="../../Image/Subcategorias/subcategoria_$var.png";
+                                            if(!file_exists($pathFotoSubcat)){
+                                                $pathFotoSubcat="../../Image/Subcategorias/none.png";  
+                                            }
+                                        ?>
+                                        <img class="card-img" alt="Imagen" src="<?= $pathFotoSubcat?>" >
+                                        </a>
                                         </div>
                                         <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
+                                            <h5 class="card-title"><?= $subcategoria->getNombre()?></h5>
                                             
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div> 
 
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="card card-t mb-3 border border-none">
-                                    <div class="row no-gutters">
-                                        <div class="col-4">
-                                            <img src="../../Image/juguete.png" class="card-img" alt="Imagen">
-                                        </div>
-                                        <div class="col-8 d-flex justify-content-center align-items-center">
-                                            <div class="card-body">
-                                            <h5 class="card-title">JUGUETE</h5>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
+                                <?php } ?>
+                            
                                 
                             </div>
 
