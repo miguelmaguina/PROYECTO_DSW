@@ -100,7 +100,7 @@ if(isset($_POST["submit1"])){
                         </div>
                         <div class="input-group mt-1">
                         
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Contraseña *</label></div>
+                        <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Contraseña *</label></div>
                     </div>
                     <div class="d-flex justify-content-around mt-1">
                         <div class="d-flex align-items-center gap-1">
@@ -148,7 +148,7 @@ if(isset($_POST["submit1"])){
                         </div>
                         <div class="input-group mt-1">
                         
-                        <div class="form-floating"> <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Password</label></div>
+                        <div class="form-floating"> <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required> <label for="floatingPassword">Password</label></div>
                     </div>
                     <div class="d-flex justify-content-around mt-1">
                         <div class="d-flex align-items-center gap-1">
