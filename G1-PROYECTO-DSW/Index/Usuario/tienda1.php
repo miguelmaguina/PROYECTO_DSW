@@ -298,9 +298,9 @@ if($tipo==1){
                             <?php
                             
                             if($tipo==1){
-                            echo'<a href="../Components/agregarProforma.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="fas fa-shopping-cart"></i></a>';
+                            echo'<a href="../Components/agregarProforma.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="fa-sharp fa-solid fa-file"></i></a>';
                             }else{
-                                echo'<a href="#" class="btn btn-light disabled" id="alert-link" ><i class="fas fa-shopping-cart"></i></a>
+                                echo'<a href="#" class="btn btn-light disabled" id="alert-link" ><i class="fa-sharp fa-solid fa-file"></i></a>
                                 ';
                             }
                             ?>
