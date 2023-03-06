@@ -11,6 +11,16 @@ if(isset($_SESSION['tipo_usuario'])){
     $tipo=2;
   }
 }
+require '../Components/mensaje.php';
+if($tipo==1){
+    if(isset($_SESSION['mensaje'])){
+        exito($_SESSION['mensaje']);
+        $_SESSION['mensaje']=null;
+    }
+}else{
+    alerta("Sesión no iniciada");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -64,10 +74,13 @@ if(isset($_SESSION['tipo_usuario'])){
       <div class="carousel-item">
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png" ></img>
         <div class="container">
-          <div class="carousel-caption text-start">
-          <h2 >Descubre productos peruanos</h2>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+          <div class="carousel-caption text-center">
+                <h1 > ¡Apoya a las comunidades del Perú comprando sus productos!</h1>
+            <p>Puedes adquirir productos naturales y artesanales de alta calidad en nuestra tienda en línea. Cada compra que realices ayuda a mantener vivas las tradiciones ancestrales y a preservar el patrimonio cultural de estas comunidades.</p>
+            <br>
+            <br>
+            <br>
+            <br>
             
           </div>
         </div>
@@ -76,9 +89,10 @@ if(isset($_SESSION['tipo_usuario'])){
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
           <div class="carousel-caption text-center">
-          <h2 >Descubre productos peruanos</h2>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+                <h1 > ¡Hazte con piezas únicas y especiales hechas por nuestras comunidades!</h1>
+            <p>Nuestros productos están hechos con cariño y dedicación por las manos expertas de las comunidades. Cada pieza es una obra de arte en sí misma, y al adquirirla, estás contribuyendo a mejorar la calidad de vida de estas.</p>
+            <br><br><br>
+            <br>
           </div>
         </div>
       </div>
@@ -86,9 +100,10 @@ if(isset($_SESSION['tipo_usuario'])){
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
           <div class="carousel-caption text-center">
-          <h2 >Descubre productos peruanos</h2>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+                <h1 >¡Compra con responsabilidad ambiental en nuestra tienda!</h1>
+            <p>¿Te preocupa el impacto ambiental de tus compras? En nuestra tienda en línea, encontrarás una amplia selección de productos naturales y artesanales que se producen de manera sostenible y respetuosa con el medio ambiente.</p>
+            <br><br><br>
+            <br>
           </div>
         </div>
       </div>
@@ -268,7 +283,15 @@ if(isset($_SESSION['tipo_usuario'])){
                         <img class="card-img-top" alt="Imagen del producto" src="<?= $pathFoto?>">
               
                         <div class="position-absolute favorito">
-                            <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
+                            <?php
+                            
+                            if($tipo==1){
+                            echo'<a href="../Components/agregarFavorito.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="far fa-heart"></i></a>';
+                            }else{
+                                echo'<a href="#" class="btn btn-light disabled" id="alert-link" ><i class="far fa-heart"></i></a>
+                                ';
+                            }
+                            ?>
                         </div>
                         <div class="position-absolute carrito">
                             <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
@@ -397,6 +420,7 @@ if(isset($_SESSION['tipo_usuario'])){
         <script src="../../js/index.js?v=<?php echo time(); ?>"></script>
         
         <script src="../../js/script.js"></script>
+
         <!-- Scripts de Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

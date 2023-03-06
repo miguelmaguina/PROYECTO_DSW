@@ -50,8 +50,8 @@ class Lista_FavoritosDAO {
     }
 
     public function insert(Lista_Favoritos $favorito){
-
-        $query = "INSERT INTO Lista_Favoritos(ID_Cliente, ID_Producto, Fecha) VALUES (?,?,?,?)";
+        $r=0;
+        $query = "INSERT INTO Lista_Favoritos(ID_Cliente, ID_Producto, Fecha) VALUES (?,?,?)";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
@@ -63,13 +63,16 @@ class Lista_FavoritosDAO {
 
             mysqli_stmt_bind_param($stmt, "iis", $ID_Cliente, $ID_Producto, $Fecha);
             mysqli_stmt_execute($stmt);
+            $r=1;
         } catch (Exception $e) {
+            $r=0;
             echo "Error al insertar favorito: " . $e->getMessage();
         } finally{
             if($stmt){
                 mysqli_stmt_close($stmt);
             }
         }
+        return $r;
     }
 
     public function update(Lista_Favoritos $favorito) {
