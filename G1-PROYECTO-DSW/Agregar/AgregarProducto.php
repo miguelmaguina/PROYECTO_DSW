@@ -27,13 +27,99 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["categoria"])){
         echo ("Se requiere una categoria");
     }else{
-        $categoria=test_input($_POST["categoria"]);
+        //$categoria=test_input($_POST["categoria"]);
+        if ($_POST["categoria"]=='Hogar y Decoración'){
+            $categoria=test_input('1');
+        }
+        else if ($_POST["categoria"]=='Bebidas'){
+            $categoria=test_input('2');
+        }
+        else if ($_POST["categoria"]=='Alimentos'){
+            $categoria=test_input('3');
+        }
+        else if ($_POST["categoria"]=='Moda y Accesorios'){
+            $categoria=test_input('4');
+        }
     }
 
     if(empty($_POST["subcategoria"])){
         echo ("Se requiere una subcategoria");
     }else{
-        $subcategoria=test_input($_POST["subcategoria"]);
+        //$subcategoria=test_input($_POST["subcategoria"]);
+
+        //Hogar y Decoración
+        if ($_POST["subcategoria"]=='Utensilios de cocina'){
+            $subcategoria=test_input('1');
+        }
+        else if ($_POST["subcategoria"]=='Decoración'){
+            $subcategoria=test_input('2');
+        }
+        else if ($_POST["subcategoria"]=='Joyería'){
+            $subcategoria=test_input('3');
+        }
+        else if ($_POST["subcategoria"]=='Jardinería'){
+            $subcategoria=test_input('4');
+        }
+
+        //Bebidas
+        if ($_POST["subcategoria"]=='Piscos'){
+            $subcategoria=test_input('5');
+        }
+        else if ($_POST["subcategoria"]=='Vinos'){
+            $subcategoria=test_input('6');
+        }
+        else if ($_POST["subcategoria"]=='Cafes'){
+            $subcategoria=test_input('7');
+        }
+        else if ($_POST["subcategoria"]=='Infusiones'){
+            $subcategoria=test_input('8');
+        }
+
+        //Alimentos
+        if ($_POST["subcategoria"]=='Quesos'){
+            $subcategoria=test_input('9');
+        }
+        else if ($_POST["subcategoria"]=='Yogurts'){
+            $subcategoria=test_input('10');
+        }
+        else if ($_POST["subcategoria"]=='Chocolates'){
+            $subcategoria=test_input('11');
+        }
+        else if ($_POST["subcategoria"]=='Verduras'){
+            $subcategoria=test_input('12');
+        }
+        else if ($_POST["subcategoria"]=='Frutas'){
+            $subcategoria=test_input('13');
+        }
+        else if ($_POST["subcategoria"]=='Alimentos organicos'){
+            $subcategoria=test_input('14');
+        }
+        else if ($_POST["subcategoria"]=='Snacks'){
+            $subcategoria=test_input('15');
+        }
+
+        //Moda y Accesorios
+        if ($_POST["subcategoria"]=='Carteras, bolsos y accesorios'){
+            $subcategoria=test_input('16');
+        }
+        else if ($_POST["subcategoria"]=='Textil decorativo'){
+            $subcategoria=test_input('17');
+        }
+        else if ($_POST["subcategoria"]=='Cómputo y de Escritorio'){
+            $subcategoria=test_input('18');
+        }
+        else if ($_POST["subcategoria"]=='Complementos'){
+            $subcategoria=test_input('19');
+        }
+        else if ($_POST["subcategoria"]=='Gorros y sombreros'){
+            $subcategoria=test_input('20');
+        }
+        else if ($_POST["subcategoria"]=='Calzados'){
+            $subcategoria=test_input('21');
+        }
+        else if ($_POST["subcategoria"]=='Bufandas y pashminas'){
+            $subcategoria=test_input('22');
+        }
     }
 
     if(!empty($_POST["dscto"])){
