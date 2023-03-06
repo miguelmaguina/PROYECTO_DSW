@@ -1,5 +1,6 @@
 <?php
 session_start();
+$buscarActivado=1; //0 no aparece, 1 aparece
 $tipo=0;//0 no está logueado
 // 1 está logueado como cliente
 // 2 logueado como emprendimiento
