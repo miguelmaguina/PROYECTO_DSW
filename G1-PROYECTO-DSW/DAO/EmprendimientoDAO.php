@@ -211,7 +211,7 @@ class EmprendimientoDAO {
             }
 
             
-        }catch(PDOException $e){
+        }catch(Exception $e){
             echo $e->getMessage();
         }
         
@@ -233,7 +233,7 @@ class EmprendimientoDAO {
             }
 
             
-        }catch(PDOException $e){
+        }catch(Exception $e){
             echo $e->getMessage();
         }
         
@@ -263,11 +263,45 @@ class EmprendimientoDAO {
             // }
 
             
-        }catch(PDOException $e){
+        }catch(Exception $e){
             echo $e->getMessage();
         }
         
         return $r;
+    }
+
+    public function verificaLoginEncriptado($email, $contrasena_enviada){
+        $r=0; //1 existe  0 no existe
+        $sql = "SELECT ID_Emprendimiento, Nombre, Usuario, Logo, Contrasena FROM Emprendimiento WHERE email = ?";
+
+        try{
+            $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $ID_Emprendimiento, $Nombre, $Usuario, $Logo, $contrasena_hash);
+
+            if(mysqli_stmt_fetch($stmt)){
+                if(password_verify($contrasena_enviada, $contrasena_hash)){
+                    $r = 1;
+                    $_SESSION['id_e'] = $ID_Emprendimiento;
+                    $_SESSION['nombre_e'] = $Nombre;
+                    $_SESSION['usuario_e'] = $Usuario;
+                    $_SESSION['foto_e'] = $Logo;
+                    $_SESSION['tipo_usuario'] = 'emprendimiento';
+                }else{
+                    $r = 0;
+                }
+            } else{
+                $r = 0;
+            }      
+        }catch(Exception $e){
+            echo $e->getMessage();
+        } finally{
+            if($stmt){
+                mysqli_stmt_close($stmt);
+            }
+        }
+        return $r;  
     }
 
     public function obtenerUltimoId(){
@@ -283,7 +317,7 @@ class EmprendimientoDAO {
             }
 
             
-        }catch(PDOException $e){
+        }catch(Exception $e){
             echo $e->getMessage();
             echo "Error al obtener MaxID: " . $e->getMessage();
             $r = 0;
