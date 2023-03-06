@@ -5,6 +5,8 @@ if (!isset($_GET['id'])) {
 }
 
 $codigo = $_GET['id'];
+$cantidad = $_GET['cantidad']; //falta aqui pipippii     
+
 require '../../Conexion/Conexion.php';
 require '../../Clases/Proforma.php';
 require '../../DAO/ProformaDAO.php';

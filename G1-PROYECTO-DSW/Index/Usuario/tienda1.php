@@ -295,7 +295,16 @@ if($tipo==1){
                             ?>
                         </div>
                         <div class="position-absolute carrito">
-                            <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
+                            <?php
+                            
+                            if($tipo==1){
+                            echo'<a href="../Components/agregarProforma.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="fas fa-shopping-cart"></i></a>';
+                            }else{
+                                echo'<a href="#" class="btn btn-light disabled" id="alert-link" ><i class="fas fa-shopping-cart"></i></a>
+                                ';
+                            }
+                            ?>
+                            <!--<a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a> -->
                         </div>
 
                         <div class="card-body">
