@@ -32,6 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         alerta("Se requiere el contrasena");
     }else{
         $contrasena=test_input($_POST["password"]);
+        $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
     }
 
     if(empty($_POST["password2"])){
@@ -89,14 +90,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 if($archivo_nombre!='' || $archivo_nombre!=null){
     if($emprendimientoDAO->verificaEmail($email)==0){
         if($emprendimientoDAO->verificaUsuario($usuario)==0){
-            if($contrasena==$contrasena2){
-                if (move_uploaded_file($archivo_tmp, '../../Image/Emprendimiento/'.$nuevo_nombre)) {
+            if(password_verify($contrasena2, $contrasena_hash)){
+                if (move_uploaded_file($archivo_tmp, "{$_SERVER['DOCUMENT_ROOT']}/PROYECTO_DSW/G1-PROYECTO-DSW/Image/Emprendimientos/".$nuevo_nombre)) {
                     $empren=new Emprendimiento();
                     $empren->setNombre($nombre);
                     $empren->setUsuario($usuario);
                     $empren->setEmail($email);
                     $empren->setCelular($celular);
-                    $empren->setContrasena($contrasena);
+                    $empren->setContrasena($contrasena_hash);
                     $empren->setDepartamento($departamento);
                     $empren->setDireccion($direccion);
                     $empren->setLogo($nuevo_nombre);
