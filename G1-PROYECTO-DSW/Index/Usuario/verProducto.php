@@ -271,23 +271,53 @@ if(isset($_SESSION['tipo_usuario'])){
                           <div class="col-md-4 rounded border" style="border-color: #707070; border-radius: 10px;text-align: center;">
                             <img src="../../Image/Productos/Foto_Secundaria1/<?=$producto->getFoto_Secundaria1();?>" alt="Imagen del Producto <?=$producto->getNombre();?>" class="img-fluid" style=" object-fit: contain;max-height: 290px;"/>
                           </div>
-                          <div class="col pt-1">
-                            <div class="row flex-column align-items-center">
-                              <div class="row">
-                                <div class="col-5">
-                                  <div class="col-4">
-                                      <p>Nombre:</p>
-                                  </div>
-                                  <div class="col-8">
-                                      <p><?php echo $producto->getNombre() ?></p>
-                                  </div>
+                          <div class="col pt-3">
+
+                            <div class="row align-items-center">
+                                <div class="col-3 text-end ym-1">
+                                  <p>Nombre:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p><?php echo $producto->getNombre(); ?> </p>
+                                </div>
+                                <div class="col-3 text-end ym-1">
+                                  <p>Descripcion:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p><?php echo $producto->getDescripcion(); ?> </p>
+                                </div>
+                                <div class="col-3 text-end ym-1">
+                                  <p>Categoria:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p><?php echo $categoria->getNombre(); ?> </p>
+                                </div>
+                                <div class="col-3 text-end ym-1">
+                                  <p>Subcategoria:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p><?php echo $subcategoria->getNombre(); ?> </p>
+                                </div>
+                                <div class="col-3 text-end ym-1">
+                                  <p>Precio:</p>
+                                </div>
+                                <div class="col-9">
+                                  <p>S/<?php  
+                                        $precioBase=$producto->getPrecio();
+                                        $desc=$producto->getDescuento();
+                                        $precioFinal=number_format($desc*$precioBase);
+                                        ?>
+                                        <?=
+                                        number_format($precioFinal,2,'.',','); 
+                                        ?>
+                                        
+                                  </p>
                                 </div>
                               </div>
-                              
                             </div>
                              
                             
-                          </div>
+                          
                         </div>
                       </div>
                     </div>

@@ -250,10 +250,14 @@ if(isset($_SESSION['tipo_usuario'])){
                                                 number_format($precioFinal,2,'.',','); 
                                                 ?>  
                                             <small class="desc">
-                                                <?= 
+                                                <?php 
                                                 $num=$producto->getDescuento();
-                                                number_format($num*100);
-                                                ?>% descuento
+                                                
+                                                if($num!=null){
+                                                }else{
+                                                    echo number_format($num*100)." % descuento";
+                                                }
+                                                ?>
                                             </small> 
                                         </span>
                                     </div>

@@ -132,10 +132,10 @@ class SubCategoriaDAO {
 
             if (mysqli_stmt_fetch($stmt)) {
                 $subcategoria = new SubCategoria();
-                $ID_SubCategoria = $subcategoria->getID_SubCategoria(); //i
-                $ID_Categoria = $subcategoria->getID_Categoria(); //i
-                $Nombre = $subcategoria->getNombre(); //s
-                $Descripcion = $subcategoria->getDescripcion(); //s                
+                $subcategoria->setID_SubCategoria($ID_SubCategoria);
+                $subcategoria->setID_Categoria($ID_Categoria);
+                $subcategoria->setNombre($Nombre);
+                $subcategoria->setDescripcion($Descripcion);              
             }
 
         } catch (Exception $e) {

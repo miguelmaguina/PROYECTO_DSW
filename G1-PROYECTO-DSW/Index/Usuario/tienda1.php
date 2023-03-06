@@ -68,29 +68,27 @@ if(isset($_SESSION['tipo_usuario'])){
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
+            
           </div>
         </div>
       </div>
       <div class="carousel-item active">
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
-          <div class="carousel-caption">
+          <div class="carousel-caption text-center">
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada-online.png"></img>
         <div class="container">
-          <div class="carousel-caption text-end">
+          <div class="carousel-caption text-center">
           <h2 >Descubre productos peruanos</h2>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-primary" href="#">¡Aprender más!</a></p>
           </div>
         </div>
       </div>
@@ -284,9 +282,11 @@ if(isset($_SESSION['tipo_usuario'])){
                                     S/<?= number_format($producto->getPrecio(),2,'.',','); ?>
                                 </span> 
                                 <small style="color: green">
-                                    <?= 
-                                        $num=$producto->getDescuento();
-                                        number_format($num*100);
+                                <?php 
+                                    $num=$producto->getDescuento();
+      
+                                    echo number_format($num*100);
+
                                     ?>% descuento
                                 </small>
                         </div>
