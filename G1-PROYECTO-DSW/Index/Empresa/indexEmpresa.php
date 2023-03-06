@@ -52,9 +52,9 @@ if(isset($_SESSION['tipo_usuario'])){
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png" ></img>
         <div class="container">
           <div class="carousel-caption text-start">
-          <h1 >Descubre productos peruanos</h1>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+          <h1 >¡Haz crecer tu negocio con nuestra </h1>
+                <h1 >plataforma de promoción en línea!</h1>
+            <p>Si tienes un negocio artesanal, sabemos que puede ser difícil hacerlo crecer sin los recursos y herramientas adecuados. Con nuestra plataforma de promoción en línea, podrás hacer crecer tu negocio al promocionar tus productos a nivel nacional e internacional.</p>
           </div>
         </div>
       </div>
@@ -62,9 +62,9 @@ if(isset($_SESSION['tipo_usuario'])){
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption">
-          <h1 >Descubre productos peruanos</h1>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+          <h1 >¿Quieres ahorrar tiempo y esfuerzo</h1>
+                <h1 >en la administración de tu negocio?</h1>
+            <p>Nuestras herramientas de generación de productos, gestión de contactos y visualización de reportes te permitirán automatizar muchas tareas y liberar tiempo para enfocarte en lo que realmente importa: ¡hacer crecer tu negocio!</p>
           </div>
         </div>
       </div>
@@ -72,9 +72,9 @@ if(isset($_SESSION['tipo_usuario'])){
         <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
         <div class="container">
           <div class="carousel-caption text-end">
-          <h1 >Descubre productos peruanos</h1>
-                <h1 >de marcas emergentes</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
+          <h1 >¡Es tiempo de despegar y </h1>
+                <h1 >alcanzar el éxito!</h1>
+            <p>Ten en cuenta la calidad de tus productos, así como de conocer y enfocarte en tu mercado objetivo pues son claves para hacerte conocido. Además, no olvides brindar incentivos a tus clientes para mejorar las ventas.</p>
           </div>
         </div>
       </div>
