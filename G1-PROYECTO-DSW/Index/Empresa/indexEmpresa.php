@@ -55,7 +55,6 @@ if(isset($_SESSION['tipo_usuario'])){
           <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -66,7 +65,6 @@ if(isset($_SESSION['tipo_usuario'])){
           <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-izq" href="#">Iniciar</a></p>
           </div>
         </div>
       </div>
@@ -77,7 +75,6 @@ if(isset($_SESSION['tipo_usuario'])){
           <h1 >Descubre productos peruanos</h1>
                 <h1 >de marcas emergentes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vehicula elit, in maximus turpis ultrices at. Ut fermentum ullamcorper tellus, et tristique sapien luctus id</p>
-            <p><a class="btn btn-lg btn-izq" href="#">¡Aprender más!</a></p>
           </div>
         </div>
       </div>
