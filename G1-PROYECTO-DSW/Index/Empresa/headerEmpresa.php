@@ -6,25 +6,22 @@
             <div class="d-flex align-items-center justify-content-between"> 
                 <a href="../index.php" class="logo d-flex align-items-center text-decoration-none"> <img src="../../Image/hallpa.png" alt=""> <span class="d-none d-lg-block">Hallpa</span> </a>
              </div>
-             <div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Buscar..." title="Escriba"> <button type="submit" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button></form>
-             </div>
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="mavbar-btand collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Inicio</a>
+                        <a class="nav-link" href="indexEmpresa.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verProductoEmp1.php">Producto</a>
+                        <a class="nav-link" href="registroProducto.php">Nuevo Producto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link" href="datosGraficos.php">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tienda Online</a>
+                        <a class="nav-link" href="verProductoEmp2.php">Mis Productos</a>
                     </li>
                     
                 </ul>
@@ -74,15 +71,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="datosGraficos.php"> <i class="fa-solid fa-chart-column"></i><span>Reporte</span> </a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li> <a class="dropdown-item d-flex align-items-center" href="#"> <i class="fa-solid fa-layer-group"></i><span>Aqui va algo</span> </a></li>
+                                <li> <a class="dropdown-item d-flex align-items-center" href="actualizarEmprendimiento.php"> <i class="fa-solid fa-shop"></i> <span>Mi perfil</span> </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
