@@ -28,12 +28,14 @@ if(isset($_SESSION['tipo_usuario'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script type="text/javascript">
-		window.addEventListener("scroll", function(){
-			var header = document.querySelector(".navbar");
-            header.classList.toggle("bg-white",window.scrollY>0);
-            header.classList.toggle("fixed-top",window.scrollY>0);
-		})
-	</script>
+      window.addEventListener("scroll", function(){
+        var header = document.querySelector(".navbar");
+              header.classList.toggle("bg-white",window.scrollY>0);
+              header.classList.toggle("fixed-top",window.scrollY>0);
+      })
+    </script>
+
+    
   <script>
     function scrollToDiv() {
       // Desplazarse hasta el div
@@ -46,7 +48,7 @@ if(isset($_SESSION['tipo_usuario'])){
         div.classList.remove("resaltar");
       }, 7000);
     }
-    </script>
+  </script>
 
 </head>
 <body>
@@ -186,12 +188,15 @@ if(isset($_SESSION['tipo_usuario'])){
                                 $contador1++;
                               }else{
                                 $contador0++;
+                                $reviewActual=$reviewU->getID_Review();
                               }
+                      
                             }
 
                             if($contador0==0){
                               echo'<button type="button" class="btn btn-izq w-100 ">Contactar</button><p></p>';
                             }elseif($contador0>=1){
+                              
                               echo '<button href="#seccion-destino" onclick="scrollToDiv()" type="button" class="btn btn-izq w-100 ">Escriba su review</button><p></p>                        ';
                             }
 
@@ -458,8 +463,10 @@ if(isset($_SESSION['tipo_usuario'])){
             </div>
           </div>
 
+
           <!--AÑADIR MI COMENTARIO/REVIEW-->
           <div id="seccion-destino" >
+
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-10">
                   <div class="card" style="padding-left: 20px;">
@@ -469,16 +476,38 @@ if(isset($_SESSION['tipo_usuario'])){
                           src="../../Image/Clientes/<?=$_SESSION['foto_c']?>" alt="avatar" width="60" height="60" />
                         <div class="w-100">
                           <h5>Añade una review</h5>
-                          <div class="form-outline">
-                            <textarea class="form-control" id="textAreaExample" rows="3" style="padding-right: 40px;"></textarea>
-                            <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
-                          </div>
-                          <div class="d-flex justify-content-between mt-3">
-                            <button type="hidden" class="btn "></button>
-                            <button type="button" class="btn btn-success">
-                              Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                            </button>
-                          </div>
+                          
+                          <?php
+                            if($contador0==0){
+                          ?>
+                              <div class="form-outline">
+                              <textarea class="form-control" id="textAreaExample" rows="3" style="padding-right: 40px;" disabled></textarea>
+                              <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                              </div>
+                              <div class="d-flex justify-content-between mt-3">
+                                <a type="hidden" class="btn btn-outline-white" disabled></a>
+                                <button type="button" class="btn btn-success" disabled>
+                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                              </div>
+                          
+                            <?php }elseif($contador0>=1){ ?>
+                                          
+                            <form method="POST" action="<?= $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php'?>">
+                              <div class="form-outline">
+                              <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;"></textarea>
+                              <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                              </div>
+                              <div class="d-flex justify-content-between mt-3">
+                                <a type="hidden" class="btn-outline-white" name="id_review" value="<?=$reviewActual?>"></a>
+                                <a type="hidden" class="btn-outline-white" name="id_prod" value="<?=$idProd?>"></a>
+                                <button type="submit" class="btn btn-success"> 
+                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                              </div>
+                            </form> 
+                            <?php } ?>
+
                         </div>
                       </div>
                     </div>

@@ -288,6 +288,32 @@ public function getNroDeReviewsPendientes($ID_Producto){
     return $nroDeReviewsPendientes_Aux;
 }
 
+public function obtenerUltimoIdReview(){
+    $r=0;//1 existe  0 no existe
+    $sql = "SELECT MAX(ID_Review) FROM review";
+    try{
+        $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $ID_Review);
+
+        if(mysqli_stmt_fetch($stmt)){
+            $r=$ID_Review;
+        }
+
+        
+    }catch(Exception $e){
+        echo $e->getMessage();
+        echo "Error al obtener MaxID: " . $e->getMessage();
+        $r = 0;
+    } finally{
+        if($stmt){
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+    return $r;
+}
+
 
 }
 
