@@ -62,39 +62,61 @@ if(isset($_SESSION['tipo_usuario'])){
     <section class="section-p container-fluid py-1">
         <div class="row d-flex justify-content-center">  
         
-            <div class="col-lg-8">
+            <div class="col-lg-9">
             
-            <div class="col-lg-9 d-flex justify-content-between">
-                <div class="titulo-1 text-start fs-3 pt-3">Proforma</div>
-                <h4 class="text-end pt-4" ><?=$contadorCantProd?> producto(s)</h4>
-            </div>
+                <div class="col-lg-8 d-flex justify-content-between">
+                    <div class="titulo-1 text-start fs-3 pt-3">Proforma</div>
+                    <h4 class="text-end pt-4" ><?=$contadorCantProd?> producto(s)</h4>
+                </div>
 
             
-            <?php if($tipo==0){ ?>
-            <div class="row py-2">
-                <div class="col-12 border border-1 p-3 text-center">                        
-                    <h3>No ha iniciado sesión</h3>
+            <?php if($tipo==0){
+                $noHayProductosEnProforma=false;
+            ?>
+            <section class="section-p container-fluid py-1" style="margin-top: 50px; margin-bottom:210px;">
+                <div class="col-9 border border-1 p-1 justify-content-center fluid" style="border-radius:10px;background-color: var(--colorlight);max-width: 1000px">
+                <div class="row py-2">
+                    <div class="col-9 p-3 text-center">  
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <h3>Inicie sesión para empezar a seleccionar sus productos.</h3>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
-            </div>
-            <?php 
+                </div>
+                </section>
+             
+            <?php
                 }else{
-                $proformaDAO=new proformaDAO();
+                    $proformaDAO=new proformaDAO();
                 $proforma=array();
                 $proforma=$proformaDAO->listarPorIdCliente($_SESSION['id_c']);
                 $i=0;
+                
                 if(empty($proforma)){
-            ?>
-            <section class="section-p container-fluid py-1">
+                $noHayProductosEnProforma=false;?>
+                <section class="section-p container-fluid py-1" style="margin-top: 50px; margin-bottom:210px;">
+                <div class="col-9 border border-1 p-1 justify-content-center fluid" style="border-radius:10px;background-color: var(--colorlight);max-width: 1000px">
                 <div class="row py-2">
-                    <div class="col-12 border border-1 p-3 text-center">  
-                        <h3>No tiene ningún elemento</h3>
+                    <div class="col-9 p-3 text-center">  
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <h3>No ha seleccionado ningún producto.</h3>
+                        <p></p>
+                        <p></p>
+                        <p></p>
                     </div>
                 </div>
-            </section>
-            <?php
+                </div>
+                </section>
+                <?php
                 }else{
                     $contadorTotalPrecio = 0;
-
+                    $noHayProductosEnProforma=true;
                     foreach($proforma as $valor){
                     
                     $idProducto=$valor->getID_Producto();
@@ -277,8 +299,18 @@ if(isset($_SESSION['tipo_usuario'])){
 
             <div class="col-lg-2">
             
-            
-            <?php if($contadorTotalPrecio>0){ ?>
+            <?php if($noHayProductosEnProforma==false ){ ?>
+                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
+                    <div class="contenedor-p">
+                        <h3>Total:</h3>
+                        <span> Seleccione productos para calcular el total. O inicie sesión.</span>
+                        <form action="DescargarReporte_PDF.php" accept-charset="utf-8">
+                            <button class="btn btn-izq w-100 mt-2" disabled>Generar</button>
+                        </form>
+                        
+                    </div>
+                    </div>
+            <?php }elseif($contadorTotalPrecio>0){ ?>
                     <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
                     <div class="contenedor-p">
                         <h3>Total:</h3>
@@ -291,30 +323,7 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                     </div>
 
-            <?php }elseif($contadorTotalPrecio==0){ ?>
-                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
-                    <div class="contenedor-p">
-                        <h3>Total:</h3>
-                        <span> Seleccione productos para calcular el total.</span>
-                        <form action="DescargarReporte_PDF.php" accept-charset="utf-8">
-                            <button class="btn btn-izq w-100 mt-2" disabled>Generar</button>
-                        </form>
-                        
-                    </div>
-                    </div>
-            <?php }elseif($tipo==0){ ?>
-                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
-                    <div class="contenedor-p">
-                        <h3>Total:</h3>
-                        <span> Inicie sesión para calcular el total.</span>
-                        <form action="DescargarReporte_PDF.php" accept-charset="utf-8">
-                            <button class="btn btn-izq w-100 mt-2" disabled>Generar</button>
-                        </form>
-                        
-                    </div>
-                    </div>
             <?php }?>
-                
             </div>
 
         </div>
