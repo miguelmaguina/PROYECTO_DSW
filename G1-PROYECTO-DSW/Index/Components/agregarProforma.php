@@ -5,15 +5,15 @@ if (!isset($_GET['id'])) {
 }
 
 $codigo = $_GET['id'];
-$cantidad = $_GET['cantidad']; //falta aqui pipippii     
+$cantidad ='1'; //falta aqui pipippii     
 
 require '../../Conexion/Conexion.php';
 require '../../Clases/Proforma.php';
 require '../../DAO/ProformaDAO.php';
 
 
-$proformaDAO=new proformaDAO();
-$proforma=new proforma();
+$proformaDAO=new ProformaDAO();
+$proforma=new Proforma();
 $proforma->setID_Cliente($_SESSION['id_c']);
 $proforma->setID_Producto($codigo);
 $proforma->setCantidad($cantidad);
@@ -25,5 +25,8 @@ if($proformaDAO->insert($proforma)==1){
 }else{
     echo "Error";
 }
+
+
+
 
 ?>

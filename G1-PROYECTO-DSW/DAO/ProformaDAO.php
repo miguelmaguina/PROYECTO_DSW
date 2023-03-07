@@ -51,7 +51,7 @@ class ProformaDAO {
     }
 
     public function insert(Proforma $proforma){
-
+        $r=0;
         $query = "INSERT INTO Proforma(ID_Cliente, ID_Producto, Cantidad, Fecha) VALUES (?,?,?,?)";
         
         try{
@@ -65,13 +65,16 @@ class ProformaDAO {
 
             mysqli_stmt_bind_param($stmt, "iiis", $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
             mysqli_stmt_execute($stmt);
+            $r=1;
         } catch (Exception $e) {
+            $r=0;
             echo "Error al insertar favorito: " . $e->getMessage();
         } finally{
             if($stmt){
                 mysqli_stmt_close($stmt);
             }
         }
+        return $r;
     }
 
     public function update(Proforma $proforma) {
@@ -157,7 +160,7 @@ class ProformaDAO {
             mysqli_stmt_bind_result($stmt, $ID_Proforma, $ID_Cliente, $ID_Producto, $Cantidad, $Fecha);
 
             while(mysqli_stmt_fetch($stmt)) {
-                $proforma = new proforma();
+                $proforma = new Proforma();
                 // $ID_Producto=$favorito->getId_Producto(); //i
                 // $Fecha=$favorito->getFecha(); //s
                 $proforma->setID_Proforma($ID_Proforma);
