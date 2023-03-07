@@ -62,7 +62,7 @@ if(isset($_SESSION['tipo_usuario'])){
     <section class="section-p container-fluid py-1">
         <div class="row d-flex justify-content-center">  
         
-            <div class="col-lg-9">
+            <div class="col-lg-8">
             
                 <div class="col-lg-8 d-flex justify-content-between">
                     <div class="titulo-1 text-start fs-3 pt-3">Proforma</div>
@@ -140,7 +140,7 @@ if(isset($_SESSION['tipo_usuario'])){
             ?>
             
             <div class="row py-2">
-                    <div class="col-9 border border-1 p-3 justify-content-center fluid" style="border-radius:10px;background-color: var(--colorlight);max-width: 1000px">
+                    <div class="col-12 border border-1 p-3 justify-content-center fluid" style="border-radius:10px;background-color: var(--colorlight);max-width: 1000px">
                         <div class="position-absolute cerrar">
                             <a href="../Components/eliminarProforma.php?id=<?=$valor->getID_Proforma()?>" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
                         </div>
@@ -297,7 +297,7 @@ if(isset($_SESSION['tipo_usuario'])){
             </div>
 
 
-            <div class="col-lg-2">
+            <div class="col-lg-3">
             
             <?php if($noHayProductosEnProforma==false ){ ?>
                     <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
