@@ -19,12 +19,28 @@
 
   .section-p{
     background-color: var(--colorbackground);
+    
+    
+  }
+
+  .section-productos{
+    background-color: var(--colorbackground);
+    display: grid;
+    grid-column: 2/span 8;
+  }
+
+  .section-resumen{
+    background-color: var(--colorbackground);
+    max-width: 500px;
+    padding-left: 15cm;
+    display: flex;
+    justify-content: flex-start;
   }
 
   .contenedor-p { 
     background-color: var(--colorlight);
-    width: 95%;
-    max-width: 1300px;
+    width: 70%;
+    max-width: 1000px;
     margin: 25px auto;
     padding: 25px;
     border-radius: 10px;

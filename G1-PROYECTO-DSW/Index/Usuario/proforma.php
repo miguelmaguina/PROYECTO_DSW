@@ -28,26 +28,19 @@ if(isset($_SESSION['tipo_usuario'])){
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<script src="../../js/proforma.js"></script>
 <script type="text/javascript">
 		window.addEventListener("scroll", function(){
 			var header = document.querySelector(".navbar");
             header.classList.toggle("bg-white",window.scrollY>0);
             header.classList.toggle("fixed-top",window.scrollY>0);
 		})
-	</script>
+</script>
 
 </head>
 <body>
-
-<?php  require 'header.php'; ?>
-
-    <section class="section-p container-fluid py-1">
-        <div class="row d-flex justify-content-center">  
-        
-            <div class="col-lg-8">
-                <div class="titulo-1 text-start fs-3 pt-3">Proforma (5 productos)</div>
-        <?php 
+<script> var sumaTotalB = 0; </script>
+<?php  require 'header.php'; 
         require '../../Conexion/Conexion.php';
         require '../../Clases/Proforma.php';
         require '../../DAO/ProformaDAO.php';
@@ -55,710 +48,277 @@ if(isset($_SESSION['tipo_usuario'])){
         require '../../DAO/ProductoDAO.php';
         require '../../Clases/Emprendimiento.php';
         require '../../DAO/EmprendimientoDAO.php';
-        if($tipo==0){
-          echo '<div class="row py-2">
-                  <div class="col-12 border border-1 p-3 text-center">
-                      
-                  <h3>No ha iniciado sesión</h3>
 
-                  </div>
-              </div>';
-        }else{
-          $proformaDAO=new proformaDAO();
-          $proforma=array();
-          $proforma=$proformaDAO->listarPorIdCliente($_SESSION['id_c']);
-          $i=0;
-          if(empty($proforma)){
-            echo '<div class="row py-2">
-                  <div class="col-12 border border-1 p-3 text-center">
-                      
-                  <h3>No tiene ningún elemento</h3>
+        $proformaDAO_conteo=new proformaDAO();
+        $contadorCantProd=0;
 
-                  </div>
-              </div>';
-          }else{
-            foreach($proforma as $valor){
-              
-              $idProducto=$valor->getID_Producto();
-              $producto=new Producto();
-              $productoDAO=new ProductoDAO();
-              $emprendimiento=new Emprendimiento();
-              $emprendimientoDAO=new EmprendimientoDAO();
-
-              $producto=$productoDAO->listarPorIdProducto($idProducto);
-              $idproduc=$producto->getID_Emprendimiento();
-              $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($idproduc);
-              $vacio=0;
-              $descuentoActual=null;
-              if($producto->getDescuento()!=0){
-                $vacio=1;
-                $descuentoActual=$producto->getPrecio()-$producto->getPrecio()*$producto->getDescuento();
-              }else{
-                $descuentoActual=$producto->getPrecio();
-              }
-              
-              
+        if($tipo==1){$proformas_conteo=$proformaDAO_conteo->listarPorIdCliente($_SESSION['id_c']);
+    
+        foreach($proformas_conteo as $proformaunidad)
+        {
+            $contadorCantProd++;
+        }}
+    ?>
+    <section class="section-p container-fluid py-1">
+        <div class="row d-flex justify-content-center">  
+        
+            <div class="col-lg-8">
             
-            echo '<div class="row py-2">
-                <div class="col-12 border border-1 p-3 position-relative">
-                    <div class="position-absolute cerrar">
-                        <a href="../Components/eliminarProforma.php?id='.$valor->getID_Proforma().'" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                    </div>
-                    <div class="row p-3">
-                    <div class="col-md-5 col-lg-6">                     
-                        <div id="carousel'.$i.'" class="carousel carousel-dark slide " data-bs-ride="carousel">
+            <div class="col-lg-9 d-flex justify-content-between">
+                <div class="titulo-1 text-start fs-3 pt-3">Proforma</div>
+                <h4 class="text-end pt-4" ><?=$contadorCantProd?> producto(s)</h4>
+            </div>
 
-                            <div class="carousel-inner mx-auto">
-                                <div class="carousel-item carrusel-img active">
-                                  <img src="../../Image/Productos/Foto_Secundaria1/'.$producto->getFoto_Secundaria1().'" class="d-block img-fluid" alt="Imagen 1">
+            
+            <?php if($tipo==0){ ?>
+            <div class="row py-2">
+                <div class="col-12 border border-1 p-3 text-center">                        
+                    <h3>No ha iniciado sesión</h3>
+                </div>
+            </div>
+            <?php 
+                }else{
+                $proformaDAO=new proformaDAO();
+                $proforma=array();
+                $proforma=$proformaDAO->listarPorIdCliente($_SESSION['id_c']);
+                $i=0;
+                if(empty($proforma)){
+            ?>
+            <section class="section-p container-fluid py-1">
+                <div class="row py-2">
+                    <div class="col-12 border border-1 p-3 text-center">  
+                        <h3>No tiene ningún elemento</h3>
+                    </div>
+                </div>
+            </section>
+            <?php
+                }else{
+                    $contadorTotalPrecio = 0;
+
+                    foreach($proforma as $valor){
+                    
+                    $idProducto=$valor->getID_Producto();
+                    $producto=new Producto();
+                    $productoDAO=new ProductoDAO();
+                    $emprendimiento=new Emprendimiento();
+                    $emprendimientoDAO=new EmprendimientoDAO();
+
+                    $producto=$productoDAO->listarPorIdProducto($idProducto);
+                    $idproduc=$producto->getID_Emprendimiento();
+                    $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($idproduc);
+
+                    if($producto->getDescuento()!=0){
+
+                        $vacio=1;
+                        $descuentoActual=$producto->getPrecio()-$producto->getPrecio()*$producto->getDescuento();
+                    }else{
+                        $descuentoActual=$producto->getPrecio();
+                    }
+                    $contadorTotalPrecio = $contadorTotalPrecio + $descuentoActual;
+            ?>
+            
+            <div class="row py-2">
+                    <div class="col-9 border border-1 p-3 justify-content-center fluid" style="border-radius:10px;background-color: var(--colorlight);max-width: 1000px">
+                        <div class="position-absolute cerrar">
+                            <a href="../Components/eliminarProforma.php?id=<?=$valor->getID_Proforma()?>" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
+                        </div>
+                        <div class="row p-3">
+                        <div class="col-md-5 col-lg-6 pt-5">                     
+                            <div id="carousel<?=$i?>" class="carousel carousel-dark slide " data-bs-ride="carousel">
+
+                                <div class="carousel-inner mx-auto">
+                                    <div class="carousel-item carrusel-img active">
+                                    <img src="../../Image/Productos/Foto_Secundaria1/<?=$producto->getFoto_Secundaria1()?>" class="d-block img-fluid" alt="Imagen 1">
+                                    </div>
+                                    <div class="carousel-item carrusel-img">
+                                        <img src="../../Image/Productos/Foto_Secundaria2/<?=$producto->getFoto_Secundaria2()?>" class="d-block img-fluid" alt="Imagen 2">
+                                    </div>
+                                    <div class="carousel-item carrusel-img">
+                                        <img src="../../Image/Productos/Foto_Secundaria3/<?=$producto->getFoto_Secundaria3()?>" class="d-block img-fluid" alt="Imagen 3">
+                                    </div>
                                 </div>
-                                <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/Productos/Foto_Secundaria2/'.$producto->getFoto_Secundaria2().'" class="d-block img-fluid" alt="Imagen 2">
-                                </div>
-                                <div class="carousel-item carrusel-img">
-                                    <img src="../../Image/Productos/Foto_Secundaria3/'.$producto->getFoto_Secundaria3().'" class="d-block img-fluid" alt="Imagen 3">
-                                </div>
+
+                                <ol class="carousel-indicators">
+                                <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="0" class="active">
+                                    <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/<?=$producto->getFoto_Secundaria1()?>" alt="">
+                                </li>
+                                <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="1">
+                                    <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/<?=$producto->getFoto_Secundaria2()?>" alt="">
+                                </li>
+                                <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="2">
+                                    <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/<?=$producto->getFoto_Secundaria3()?>" alt="">
+                                </li>
+                                </ol>
+                                
+                                <a class="carousel-control-prev" href="#carousel<?=$i?>" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel<?=$i?>" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                                </a>
                             </div>
 
-                            <ol class="carousel-indicators">
-                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="0" class="active">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria1/'.$producto->getFoto_Secundaria1().'" alt="">
-                              </li>
-                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="1">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria2/'.$producto->getFoto_Secundaria2().'" alt="">
-                              </li>
-                              <li data-bs-target="#carousel'.$i.'" data-bs-slide-to="2">
-                                <img class="img-thumbnail d-block w-100" src="../../Image/Productos/Foto_Secundaria3/'.$producto->getFoto_Secundaria3().'" alt="">
-                              </li>
-                            </ol>
+                        </div>
+
+                        <div class="col-md-7 col-lg-6">
                             
-                            <a class="carousel-control-prev" href="#carousel'.$i.'" role="button" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carousel'.$i.'" role="button" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Siguiente</span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-7 col-lg-6">
-                        
-                        <div class="row">
-                            <div class="col-12 col-sm-11">
-                                <h3>'.$producto->getNombre().'</h3>
+                            <div class="row">
+                                <div class="col-12 col-sm-11">
+                                    <h3><?=$producto->getNombre()?></h3>
+                                </div>
                             </div>
-                        </div>
-                        
-                        '.($vacio==1 ?'<del><small>S/'.round($descuentoActual,2).'</small></del>' : '').'
-                        <p class="fs-2">S/'.$producto->getPrecio().' '. ($vacio==1?'<small class="desc">'.$producto->getDescuento().'% descuento</small>':'' ).'</p>
-                        <div class="row">
-                            <div class="col-12">
-                                <p>Marca: '.$emprendimiento->getNombre().'</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p>Ubicación: '.$emprendimiento->getDepartamento().'</p>
-                            </div>
-                        </div>
-                        <p>Fecha: '.$valor->getFecha().'</p>
+                            
+                            <del>
+                                <small>S/<?=round($descuentoActual,2)?></small>
+                            </del>
 
+                            <p class="fs-2">
+                                S/<?=$descuentoActual?>
+                                
+                            </p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Marca: <?=$emprendimiento->getNombre()?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Ubicación: <?=$emprendimiento->getDepartamento()?></p>
+                                </div>
+                            </div>
+                            <p>Fecha: <?=$valor->getFecha()?></p>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Departamento: <?=$emprendimiento->getDepartamento()?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Cantidad:
+                                        <div class="align">
+                                        <script>
+                                            
+                                        function capturarValor(value,i,precioU) {
+                                            var valor = document.getElementById("cantidad-"+i).value;
+                                            var precioxUnidad = valor * precioU;
+
+                                            document.getElementById("resultado-"+i).value = precioxUnidad;
+
+                                            base = parseFloat(document.getElementById("total-proforma").value);
+                                            base = base + precioxUnidad;
+                                            document.getElementById("total-proforma").value = base.toFixed(2);
+
+                                            // Llamar a la función actualizarTotal
+                                            actualizarTotal();
+                                        }
+
+                                        window.onload = function() {
+                                            // Obtener todos los campos "cantidad"
+                                            var cantidades = document.querySelectorAll("input[name='cantidad']");
+
+                                            // Iterar sobre cada campo "cantidad"
+                                            for (var i = 0; i < cantidades.length; i++) {
+                                                var cantidad = cantidades[i].value;
+                                                var precioU = cantidades[i].dataset.precio;
+                                                capturarValor(cantidad, i, precioU);
+                                            }
+
+                                            // Llamar a la función actualizarTotal
+                                            actualizarTotal();
+                                        };
+
+                                        function actualizarTotal() {
+                                            var camposResultado = document.querySelectorAll("input[name^='resultado']");
+
+                                            var total = 0;
+                                            for (var i = 0; i < camposResultado.length; i++) {
+                                                total += parseFloat(camposResultado[i].value);
+                                            }
+
+                                            document.getElementById("total-proforma").value = total.toFixed(2);
+                                        }
+
+                                        </script> 
+                                            <input type="number" class="form-control" name="cantidad" id="cantidad-<?=$i?>" style="max-width:45%;" id="cantidad-<?=$i?>" min="1" max="50" value="1" data-precio="<?=$producto->getPrecio()?>" onchange="capturarValor(this.value,<?=$i?>,<?=$producto->getPrecio()?>)">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p >
+                                        <input type="hidden" style="background-color: transparent; border: none;" id="resultado-<?=$i?>" name="resultado-<?=$i?>">
+                                    </p>
+                                </div>
+                            </div>          
                     </div>
                     </div>
 
                 </div>
-            </div>';
-              $i=$i+1;
+            </div>
+        <?php
+        
+        $i++;
           }
         }
-
       }
 
       ?>
+            
+
         
 <!--repeticion-->
 
 
-<!--
-                <div class="row">
-                    <div class="contenedor-p">
-                    
-                        <div class="row py-2">
-                            <div class="col-12 p-3">
-                                
-                                <div class="row p-3">
-                                <div class="col-md-5 col-lg-6 d-flex justify-content-center align-items-center">
-                                                            
-                                <div id="carousel1" class="carousel carousel-dark slide " data-bs-ride="carousel">
-
-<div class="carousel-inner mx-auto">
-    <div class="carousel-item carrusel-img active">
-      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
-    </div>
-</div>
-
-<ol class="carousel-indicators">
-  <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel1" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel1" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-</ol>
-
-<a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Anterior</span>
-</a>
-<a class="carousel-control-next" href="#carousel1" role="button" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Siguiente</span>
-</a>
-</div>
-
-                                </div>
-
-                                <div class="col-md-7 col-lg-6">
-                                    
-                                    <div class="row">
-                                        <div class="col-8 col-sm-8">
-                                            <h2>Bolso ecológico</h2>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute save">
-                                                <a href="#" class="btn"><i class="fa-solid fa-bookmark"></i></a>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute cerrar">
-                                                <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="fs-4">Curaca Amazonian Art</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p class="fs-5">S/ <span>485.99</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>✓ Envio a domicilio</p>
-                                            <p>✓ Retiro en punto</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Código:</span>
-                                            <span class="p-3">882041329</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Vendido por:</span>
-                                            <span class="p-3">Mantas ecológicas del Perú (Nombre largo)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row p-3 col-4 mx-auto">
-                                        
-
-                                        <input type="number" class="input-spinner__input" value="1">
-                                            
-                                    </div>
-
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
--->
-
-<!--repeticion-->
-
-<!--repeticion
-                <div class="row">
-                    <div class="contenedor-p">
-                    
-                        <div class="row py-2">
-                            <div class="col-12 p-3">
-                                
-                                <div class="row p-3">
-                                <div class="col-md-5 col-lg-6 d-flex justify-content-center align-items-center">
-                                                            
-                                <div id="carousel2" class="carousel carousel-dark slide " data-bs-ride="carousel">
-
-<div class="carousel-inner mx-auto">
-    <div class="carousel-item carrusel-img active">
-      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
-    </div>
-</div>
-
-<ol class="carousel-indicators">
-  <li data-bs-target="#carousel2" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel2" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel2" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-</ol>
-
-<a class="carousel-control-prev" href="#carousel2" role="button" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Anterior</span>
-</a>
-<a class="carousel-control-next" href="#carousel2" role="button" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Siguiente</span>
-</a>
-</div>
-
-                                </div>
-
-                                <div class="col-md-7 col-lg-6">
-                                    
-                                    <div class="row">
-                                        <div class="col-8 col-sm-8">
-                                            <h2>Bolso ecológico</h2>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute save">
-                                                <a href="#" class="btn"><i class="fa-solid fa-bookmark"></i></a>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute cerrar">
-                                                <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="fs-4">Curaca Amazonian Art</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p class="fs-5">S/ <span>485.99</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>✓ Envio a domicilio</p>
-                                            <p>✓ Retiro en punto</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Código:</span>
-                                            <span class="p-3">882041329</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Vendido por:</span>
-                                            <span class="p-3">Mantas ecológicas del Perú (Nombre largo)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row p-3 col-4 mx-auto">
-                                        
-
-                                        <input type="number" class="input-spinner__input" value="1">
-                                            
-                                    </div>
-
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
--->
-<!--repeticion
-
-
-
-                <div class="row">
-                    <div class="contenedor-p">
-                    
-                        <div class="row py-2">
-                            <div class="col-12 p-3">
-                                
-                                <div class="row p-3">
-                                <div class="col-md-5 col-lg-6 d-flex justify-content-center align-items-center">
-                                <div id="carousel3" class="carousel carousel-dark slide " data-bs-ride="carousel">
-
-<div class="carousel-inner mx-auto">
-    <div class="carousel-item carrusel-img active">
-      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
-    </div>
-</div>
-
-<ol class="carousel-indicators">
-  <li data-bs-target="#carousel3" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel3" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel3" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-</ol>
-
-<a class="carousel-control-prev" href="#carousel3" role="button" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Anterior</span>
-</a>
-<a class="carousel-control-next" href="#carousel3" role="button" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Siguiente</span>
-</a>
-</div>
-
-                                </div>
-
-                                <div class="col-md-7 col-lg-6">
-                                    
-                                    <div class="row">
-                                        <div class="col-8 col-sm-8">
-                                            <h2>Bolso ecológico</h2>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute save">
-                                                <a href="#" class="btn"><i class="fa-solid fa-bookmark"></i></a>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute cerrar">
-                                                <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="fs-4">Curaca Amazonian Art</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p class="fs-5">S/ <span>485.99</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>✓ Envio a domicilio</p>
-                                            <p>✓ Retiro en punto</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Código:</span>
-                                            <span class="p-3">882041329</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Vendido por:</span>
-                                            <span class="p-3">Mantas ecológicas del Perú (Nombre largo)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row p-3 col-4 mx-auto">
-                                        
-
-                                        <input type="number" class="input-spinner__input" value="1">
-                                            
-                                    </div>
-
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
--->
-<!--repeticion
-
-
-                <div class="row">
-                    <div class="contenedor-p">
-                    
-                        <div class="row py-2">
-                            <div class="col-12 p-3">
-                                
-                                <div class="row p-3">
-                                <div class="col-md-5 col-lg-6 d-flex justify-content-center align-items-center">
-                                <div id="carousel4" class="carousel carousel-dark slide " data-bs-ride="carousel">
-
-<div class="carousel-inner mx-auto">
-    <div class="carousel-item carrusel-img active">
-      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
-    </div>
-</div>
-
-<ol class="carousel-indicators">
-  <li data-bs-target="#carousel4" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel4" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel4" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-</ol>
-
-<a class="carousel-control-prev" href="#carousel4" role="button" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Anterior</span>
-</a>
-<a class="carousel-control-next" href="#carousel4" role="button" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Siguiente</span>
-</a>
-</div>
-
-                                </div>
-
-                                <div class="col-md-7 col-lg-6">
-                                    
-                                    <div class="row">
-                                        <div class="col-8 col-sm-8">
-                                            <h2>Bolso ecológico</h2>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute save">
-                                                <a href="#" class="btn"><i class="fa-solid fa-bookmark"></i></a>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute cerrar">
-                                                <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="fs-4">Curaca Amazonian Art</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p class="fs-5">S/ <span>485.99</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>✓ Envio a domicilio</p>
-                                            <p>✓ Retiro en punto</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Código:</span>
-                                            <span class="p-3">882041329</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Vendido por:</span>
-                                            <span class="p-3">Mantas ecológicas del Perú (Nombre largo)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row p-3 col-4 mx-auto">
-                                        
-
-                                        <input type="number" class="input-spinner__input" value="1">
-                                            
-                                    </div>
-
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
--->
-<!--repeticion
-
-
-
-                <div class="row">
-                    <div class="contenedor-p">
-                    
-                        <div class="row py-2">
-                            <div class="col-12 p-3">
-                                
-                                <div class="row p-3">
-                                <div class="col-md-5 col-lg-6 d-flex justify-content-center align-items-center">
-                                <div id="carousel5" class="carousel carousel-dark slide " data-bs-ride="carousel">
-
-<div class="carousel-inner mx-auto">
-    <div class="carousel-item carrusel-img active">
-      <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 1">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/juguete.png" class="d-block img-fluid" alt="Imagen 2">
-    </div>
-    <div class="carousel-item carrusel-img">
-        <img src="../../Image/vision.jpg" class="d-block img-fluid" alt="Imagen 3">
-    </div>
-</div>
-
-<ol class="carousel-indicators">
-  <li data-bs-target="#carousel5" data-bs-slide-to="0" class="active">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel5" data-bs-slide-to="1">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-  <li data-bs-target="#carousel5" data-bs-slide-to="2">
-    <img class="img-thumbnail d-block w-100" src="../../Image/juguete.png" alt="">
-  </li>
-</ol>
-
-<a class="carousel-control-prev" href="#carousel5" role="button" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Anterior</span>
-</a>
-<a class="carousel-control-next" href="#carousel5" role="button" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Siguiente</span>
-</a>
-</div>
-
-                                </div>
-
-                                <div class="col-md-7 col-lg-6">
-                                    
-                                    <div class="row">
-                                        <div class="col-8 col-sm-8">
-                                            <h2>Bolso ecológico</h2>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute save">
-                                                <a href="#" class="btn"><i class="fa-solid fa-bookmark"></i></a>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-sm-2">
-                                            <div class="position-absolute cerrar">
-                                                <a href="#" class="btn"><i class="fa-regular fa-rectangle-xmark"></i></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p class="fs-4">Curaca Amazonian Art</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p class="fs-5">S/ <span>485.99</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <p>✓ Envio a domicilio</p>
-                                            <p>✓ Retiro en punto</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Código:</span>
-                                            <span class="p-3">882041329</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <span>Vendido por:</span>
-                                            <span class="p-3">Mantas ecológicas del Perú (Nombre largo)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row p-3 col-4 mx-auto">
-                                        
-
-                                        <input type="number" class="input-spinner__input" value="1">
-                                            
-                                    </div>
-
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
--->
-
-                <!--repeticion-->
-
-
             </div>
 
+
             <div class="col-lg-2">
-                <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
-                <div class="contenedor-p">
-                    <h3>Total:</h3>
-                    <span>S/4059.99</span>
-                    <form action="DescargarReporte_PDF.php" method="post" accept-charset="utf-8">
-                        <button class="btn btn-izq w-100 mt-2">Generar</button>
-                    </form>
-                    
-                </div>
-                </div>
+            
+
+            <?php if($contadorTotalPrecio>0){ ?>
+                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
+                    <div class="contenedor-p">
+                        <h3>Total:</h3>
+                        <h4 style="display: inline-block;">S/. <input id="total-proforma" name="total-proforma" value="0" style="background-color: transparent; border: none; display: inline-block;width: 80px;"></h4>
+                        <form action="DescargarReporte_PDF.php" method="post" accept-charset="utf-8">
+                            <button class="btn btn-izq w-100 mt-2">Generar</button>
+                        </form>
+                        
+                        
+                    </div>
+                    </div>
+
+            <?php }elseif($contadorTotalPrecio==0){ ?>
+                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
+                    <div class="contenedor-p">
+                        <h3>Total:</h3>
+                        <span> Seleccione productos para calcular el total.</span>
+                        <form action="DescargarReporte_PDF.php" accept-charset="utf-8">
+                            <button class="btn btn-izq w-100 mt-2" disabled>Generar</button>
+                        </form>
+                        
+                    </div>
+                    </div>
+            <?php }elseif($tipo==0){ ?>
+                    <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
+                    <div class="contenedor-p">
+                        <h3>Total:</h3>
+                        <span> Inicie sesión para calcular el total.</span>
+                        <form action="DescargarReporte_PDF.php" accept-charset="utf-8">
+                            <button class="btn btn-izq w-100 mt-2" disabled>Generar</button>
+                        </form>
+                        
+                    </div>
+                    </div>
+            <?php }?>
+                
             </div>
 
         </div>
     </section>
-
-
 
         <!-- Footer -->
         <?php require 'footer.php' ?>
