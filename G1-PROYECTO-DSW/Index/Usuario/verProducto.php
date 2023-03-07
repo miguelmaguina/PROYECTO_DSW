@@ -248,7 +248,15 @@ if($tipo==1){
                           <!--Comentando el boton antiguo-->
                           </div>
                           <div class="col-sm-2">
-                            <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
+                          <?php
+                            
+                            if($tipo==1){
+                            echo'<a href="../Components/agregarProforma.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="fa-sharp fa-solid fa-file"></i></a>';
+                            }else{
+                                echo'<a href="#" class="btn btn-light disabled" id="alert-link" ><i class="fa-sharp fa-solid fa-file"></i></a>
+                                ';
+                            }
+                            ?>
                           </div>
                         </div>
                     </div>
