@@ -99,43 +99,57 @@ Nuestra visión es ser líderes en la promoción de productos auténticos de las
             </div>
             <div class="cofundadores">
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Nicolas.png" class="img-fluid" alt="Nicolas Anicama">
+                    <a href="https://www.linkedin.com/in/nicolas-leonardo-anicama-espinoza-446b29208/" target="_blank">
+                        <img  src="../../Image/Cofundadores/Nicolas.png" class="img-fluid" alt="Nicolas Anicama">
+                    </a>
                     <div class="nombres">
                         <p>Nicolas Anicama</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Diana.png" class="img-fluid" alt="Diana Bardon">
+                    <a href="https://www.linkedin.com/in/diana-bardon/" target="_blank">
+                        <img  src="../../Image/Cofundadores/Diana.png" class="img-fluid" alt="Diana Bardon">
+                    </a>
                     <div class="nombres">
                         <p>Diana Bardon</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Yan.png" class="img-fluid" alt="Yan Huaman">
+                    <a href="https://www.linkedin.com/in/yan-franco-huaman-flores-9326391b2/" target="_blank">
+                        <img  src="../../Image/Cofundadores/Yan.png" class="img-fluid" alt="Yan Huaman">
+                    </a>
                     <div class="nombres">
                         <p>Yan Huaman</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Miguel.png" class="img-fluid" alt="Miguel Maguiña">
+                    <a href="https://www.linkedin.com/in/miguel-maguina/" target="_blank">
+                        <img src="../../Image/Cofundadores/Miguel.png" class="img-fluid" alt="Miguel Maguiña">
+                    </a>
                     <div class="nombres">
                         <p>Miguel Maguiña</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Luis.png" class="img-fluid" alt="Luis Mayta">
+                    <a href="https://www.linkedin.com/in/luis-angel-mayta-chipana-9141a7264/" target="_blank">
+                        <img src="../../Image/Cofundadores/Luis.png" class="img-fluid" alt="Luis Mayta">
+                    </a>
                     <div class="nombres">
                         <p>Luis Mayta</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Ivan.png" class="img-fluid" alt="Ivan Saenz">
+                    <a href="https://www.linkedin.com/in/ivan-diego-saenz-cotrina-406b6a251/" target="_blank">
+                        <img src="../../Image/Cofundadores/Ivan.png" class="img-fluid" alt="Ivan Saenz">
+                    </a>
                     <div class="nombres">
                         <p>Ivan Saenz</p>
                     </div>
                 </div>
                 <div class="cofundador">
-                    <img src="../../Image/Cofundadores/Renzo.png" class="img-fluid" alt="Renzo Tacuri">
+                    <a href="https://www.linkedin.com/in/renzo-paolo-tacuri-espinoza-2a64a0263/" target="_blank">
+                        <img src="../../Image/Cofundadores/Renzo.png" class="img-fluid" alt="Renzo Tacuri">
+                    </a>
                     <div class="nombres">
                         <p>Renzo Tacuri</p>
                     </div>
