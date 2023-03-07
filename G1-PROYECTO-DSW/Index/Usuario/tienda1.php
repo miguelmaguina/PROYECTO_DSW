@@ -339,76 +339,6 @@ if($tipo==1){
                 </div>
             <?php } ?>
             
-                            
-        
-                    <!-- <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative m-2">
-                            <img src="../../Image/Artesanos.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative m-2">
-                            <img src="../../Image/imgReporte.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative m-2">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text">Nombre del producto</h5>
-                                <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 mb-4">
-                        <div class="card card-t-o position-relative">
-                            <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
-                            <div class="position-absolute favorito">
-                                <a href="#" class="btn btn-light"><i class="far fa-heart"></i></a>
-                            </div>
-                            <div class="position-absolute carrito">
-                                    <a href="#" class="btn btn-light ms-2"><i class="fas fa-shopping-cart"></i></a>
-                            </div>
-                            <div class="card-body">
-                            <h5 class="card-title text">Nombre del producto</h5>
-                            <span class="card-text">S/100.00</span> <small>10% descuento</small>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-                    <!--repeticion-->
-
                 </div>
 
 
@@ -434,27 +364,26 @@ if($tipo==1){
         <?php require 'footer.php' ?>
 
     <script>
-        paginacionItems(18,'.mb-4',1);
-
+        paginacionItems(18,'.mb-4',1);     
+        
         const categorias = document.querySelectorAll('.categoria');
-        const botonFlotante = document.querySelector('.float-button');
+            const botonFlotante = document.querySelector('.float-button');
 
-        botonFlotante.addEventListener('click', () => {
+            botonFlotante.addEventListener('click', () => {
 
-            botonFlotante.classList.add('boton-flotante-animacion');
-        
-            const productos = document.querySelectorAll('.tarjeta');
-            productos.forEach(producto => {
-                producto.classList.remove('d-none');
-                setTimeout(() => {
-                    botonFlotante.classList.remove('boton-flotante-animacion');
-                    botonFlotante.classList.add('d-none');
-                }, 300);
-                
+                botonFlotante.classList.add('boton-flotante-animacion');
+            
+                const productos = document.querySelectorAll('.tarjeta');
+                productos.forEach(producto => {
+                    producto.classList.remove('d-none');
+                    setTimeout(() => {
+                        botonFlotante.classList.remove('boton-flotante-animacion');
+                        botonFlotante.classList.add('d-none');
+                    }, 300);
+                    
+                });
+                paginacionItems(18,'.mb-4',1);
             });
-            paginacionItems(18,'.mb-4',1);
-        });
-        
 
         categorias.forEach(categoria => {
         categoria.addEventListener('click', () => {
@@ -590,6 +519,8 @@ if($tipo==1){
                 // Resaltar el botón de la página actual
                 updatePagination();
             }
+
+            
 
     </script>
 

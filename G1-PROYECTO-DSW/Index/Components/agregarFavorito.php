@@ -16,7 +16,7 @@ $favorito->setID_Cliente($_SESSION['id_c']);
 $favorito->setID_Producto($codigo);
 $favorito->setFecha(date('Y/m/d'));
 
-if($favoritoDAO->verificaIdFavorito($codigo)==0){
+if($favoritoDAO->verificaIdFavorito($codigo,$_SESSION['id_c'])==0){
     if($favoritoDAO->insert($favorito)==1){
         $_SESSION['mensaje_e']="Favorito agregado";
         header('Location: ../Usuario/tienda1.php');
