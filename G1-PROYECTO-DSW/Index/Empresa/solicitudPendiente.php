@@ -40,6 +40,10 @@ $sql = "SELECT DISTINCT C.Foto_Perfil,C.ID_Cliente,C.Nombres,C.Apellidos,C.DNI,C
         INNER JOIN Producto AS P ON R.ID_Producto=P.ID_Producto 
         WHERE R.ID_Producto={$id_producto_aux3} AND R.Estado=2";
 
+//Variables inciales
+$foto='NO';
+$producto='NO';
+
 // Ejecutar consulta
 $resultado = mysqli_query($conn, $sql);
 
@@ -48,35 +52,41 @@ $clientesSolicitantes = array();
 
 // Verificar si la consulta tuvo éxito
 if ($resultado) {
-  // Recuperar los datos del resultado
-  while ($fila = mysqli_fetch_assoc($resultado)) {
-    // Utilizar los datos como sea necesario
-    $fotoPerfil=$fila['Foto_Perfil'];
-    $id_clienteC=$fila['ID_Cliente'];
-    $nombre = $fila['Nombres'];
-    $apellido = $fila['Apellidos'];
-    $dni=$fila["DNI"];
-    $email = $fila['Email'];
-    $celular = $fila['Celular'];
-    $producto = $fila['Nombre'];
-    $foto = $fila['Foto_Secundaria1'];
-    $estado=$fila['Estado'];
-    //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
+    // Obtener el número de filas
+    $num_filas = mysqli_num_rows($resultado);
 
-    //Agregar los valores al array
-    $clientesSolicitantes[]=array(
-        'foto_perfil'=>$fotoPerfil,
-        'idCliente'=>$id_clienteC,
-        'nombre'=>$nombre,
-        'apellido'=>$apellido,
-        'dni'=>$dni,
-        'email'=>$email,
-        'celular'=>$celular,
-        'producto'=>$producto,
-        'foto'=>$foto,
-        'estado'=>$estado
-    );
-  }
+    if ($num_filas != 0)
+    {
+        // Recuperar los datos del resultado
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            // Utilizar los datos como sea necesario
+            $fotoPerfil=$fila['Foto_Perfil'];
+            $id_clienteC=$fila['ID_Cliente'];
+            $nombre = $fila['Nombres'];
+            $apellido = $fila['Apellidos'];
+            $dni=$fila["DNI"];
+            $email = $fila['Email'];
+            $celular = $fila['Celular'];
+            $producto = $fila['Nombre'];
+            $foto = $fila['Foto_Secundaria1'];
+            $estado=$fila['Estado'];
+            //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
+
+            //Agregar los valores al array
+            $clientesSolicitantes[]=array(
+                'foto_perfil'=>$fotoPerfil,
+                'idCliente'=>$id_clienteC,
+                'nombre'=>$nombre,
+                'apellido'=>$apellido,
+                'dni'=>$dni,
+                'email'=>$email,
+                'celular'=>$celular,
+                'producto'=>$producto,
+                'foto'=>$foto,
+                'estado'=>$estado
+            );
+        }
+    }
 
   // Liberar memoria del resultado
   mysqli_free_result($resultado);
@@ -116,7 +126,18 @@ mysqli_close($conn);
 <?php require 'headerEmpresa.php';?>
 
     <section class="section-t-o py-5">
-        <div class="contenedor-t">
+        
+        <?php if($foto=='NO' && $producto='NO'){?>
+            <div class="contenedor-t">
+                <div class="row">
+                    <h4>No se encontraron clientes solicitantes</h4>
+                </div>
+            </div>
+
+        <?php } //Condicional para cuando no se ha encontrado clientes solicitante
+        
+        else {?>
+            <div class="contenedor-t">
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
@@ -125,9 +146,9 @@ mysqli_close($conn);
                         </a>
                     </div>
                 </div>
-                <div class="row">
-                    
-                    <!--<div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
+
+                <!--<div class="row">
+                    <div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
                         <a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
                         <span class="button-text">SOLICITUDES PENDIENTES</span>
@@ -138,13 +159,16 @@ mysqli_close($conn);
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/listComprador.png" alt="">
                         <span class="button-text">LISTADO DE COMPRADORES</span>
                         </a>
-                    </div>-->
+                    </div>
+                </div>-->
+
+                    </div>
+                </div>
+            
                 </div>
             </div>
-        </div>
-            
-        </div>
-        </div>
+        <?php } ?>
+
     </section>
 
     <section class="p-2 content-productos">

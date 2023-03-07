@@ -12,7 +12,7 @@ if(isset($_SESSION['tipo_usuario'])){
 }
 
 $aux=$_POST['ID_Producto_Aux2'];
-echo $aux; //ID requerido
+//echo $aux; //ID requerido
 
 ?>
 
