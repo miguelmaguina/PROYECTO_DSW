@@ -26,10 +26,15 @@ if (!$conn) {
 }
 
 //Solo para el emprendedor correspondiente
-session_start();
+//session_start();
 $emprendimiento=$_SESSION['id_e'];
+echo $emprendimiento;
 
-$idAux=$_POST["id_review_añadir"];
+if (isset($_POST['añadir']))
+{
+    $idAux=$_POST["id_review_añadir"];
+    echo $idAux;
+}
 
 //Realizar consulta
 $sql="SELECT ID_Emprendimiento FROM Producto WHERE ID_Producto=".$idAux;
