@@ -75,8 +75,8 @@ if ($idUsar==$emprendimiento)
         }else {
             echo "No se encontraron resultados";
         }
+    }
 }
-
 
 ?>
 
