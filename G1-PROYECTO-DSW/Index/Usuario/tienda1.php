@@ -143,7 +143,7 @@ if($tipo==1){
                         <img src="../../Image/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
                     </div>
                     <div class="col-md-6 col-lg-8">
-                        <p>Envios garantizados a nivel nacional</p>
+                        <p>Contacta más rápido con los emprendimientos</p>
                     </div>
                 </div>
             </div>
