@@ -295,7 +295,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
 <!--repeticion-->
 
-
+<!--repeticion
                 <div class="row">
                     <div class="contenedor-p">
                     
@@ -403,8 +403,8 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                 </div>
 
-
-<!--repeticion-->
+-->
+<!--repeticion
 
 
 
@@ -514,8 +514,8 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                 </div>
 
-
-<!--repeticion-->
+-->
+<!--repeticion
 
 
                 <div class="row">
@@ -624,8 +624,8 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                 </div>
 
-
-<!--repeticion-->
+-->
+<!--repeticion
 
 
 
@@ -735,7 +735,7 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                 </div>
 
-
+-->
 
                 <!--repeticion-->
 

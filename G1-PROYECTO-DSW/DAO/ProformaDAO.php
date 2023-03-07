@@ -102,19 +102,22 @@ class ProformaDAO {
         }
     }
 
-    public function delete($ID_Carrito) {
-        $query = "DELETE FROM Proforma WHERE ID_Carrito=?";
+    public function delete($ID_Proforma) {
+        $query = "DELETE FROM Proforma WHERE ID_Proforma=?";
+        $r=1;
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
-            mysqli_stmt_bind_param($stmt, "i", $ID_Carrito);
+            mysqli_stmt_bind_param($stmt, "i", $ID_Proforma);
             mysqli_stmt_execute($stmt);
         } catch (Exception $e) {
+            $r=0;
             echo "Error al eliminar la proforma: " . $e->getMessage();
         } finally{
             if($stmt){
                 mysqli_stmt_close($stmt);
             }
         }
+        return $r;
     }
 
     public function listarPorIdProforma($ID_Proforma_Buscado){

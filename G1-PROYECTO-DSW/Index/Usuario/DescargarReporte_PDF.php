@@ -74,10 +74,10 @@ $canal ='Nombre';
 $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
 $pdf->SetXY(15, 20); //Margen en X y en Y
 $pdf->SetTextColor(204,0,0);
-$pdf->Write(0, 'Desarrollador: Hallpa');
+$pdf->Write(0, 'Empresa: Hallpa');
 $pdf->SetTextColor(0, 0, 0); //Color Negrita
 $pdf->SetXY(15, 25);
-$pdf->Write(0, 'Canal: '. $canal);
+$pdf->Write(0, 'Cliente: '. $canal);
 
 
 
@@ -105,8 +105,8 @@ $pdf->SetFont('helvetica','B',12); //La B es para letras en Negritas
 $pdf->Cell(35,6,'N° de Producto',1,0,'C',1);
 $pdf->Cell(50,6,'Nombre',1,0,'C',1);
 $pdf->Cell(30,6,'Cantidad',1,0,'C',1);
-$pdf->Cell(30,6,'Precio',1,0,'C',1); 
-$pdf->Cell(30,6,'Precio Total',1,1,'C',1); 
+$pdf->Cell(35,6,'Precio unitario',1,0,'C',1); 
+$pdf->Cell(30,6,'Precio',1,1,'C',1); 
 /*El 1 despues de  Fecha Ingreso indica que hasta alli 
 llega la linea */
 
@@ -129,16 +129,48 @@ $sqlProforma = ("SELECT proforma.ID_Proforma, producto.Nombre, proforma.Cantidad
 $query = mysqli_query($conexion, $sqlProforma);
 $contador = 0;
 
-while ($dataRow = mysqli_fetch_array($query)) {
+/*while ($dataRow = mysqli_fetch_array($query)) {
         $pdf->Cell(35,6,($dataRow[0]),1,0,'C');
         $pdf->Cell(50,6,$dataRow[1],1,0,'C');
         $pdf->Cell(30,6,$dataRow[2],1,0,'C');
         $pdf->Cell(30,6,('S/ '. $dataRow[3]),1,0,'C');
-        $pdf->Cell(30,6,('S/ '. $dataRow[3]*$dataRow[2]),1,0,'C');         
+        $pdf->Cell(30,6,('S/ '. $dataRow[3]*$dataRow[2]),1,0,'C');
+                
 
             $pdf->Ln(); // Agrega una nueva línea
         
+    }*/
+    $total = 0; // Variable para almacenar la suma
+
+    while ($dataRow = mysqli_fetch_array($query)) {
+        $pdf->Cell(35,6,($dataRow[0]),1,0,'C');
+        $pdf->Cell(50,6,$dataRow[1],1,0,'C');
+        $pdf->Cell(30,6,$dataRow[2],1,0,'C');
+        $pdf->Cell(35,6,('S/ '. $dataRow[3]),1,0,'C');
+        
+        $subtotal = $dataRow[3] * $dataRow[2]; // Multiplicación de la columna 2 y 3
+        $total += $subtotal; // Agregar el subtotal a la variable total
+        
+        $pdf->Cell(30,6,('S/ '. $subtotal),1,0,'C');
+        $pdf->Ln(); // Agrega una nueva línea
     }
+    
+    // Imprimir la suma total fuera del ciclo while
+    //$pdf->Cell(22,40,'Importe Total:',0,0,'C');
+    //$pdf->Cell(20,40,'S/ '. $total,0,0,'C');
+
+    $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
+    $pdf->SetXY(15, 136); //Margen en X y en Y
+    $pdf->SetTextColor(204,0,0);
+    $pdf->Write(0, 'Importe total:');
+
+
+    $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
+    $pdf->SetXY(45, 136); //Margen en X y en Y
+    $pdf->SetTextColor(0,0,0);
+    $pdf->Write(0,'S/ '. $total);
+
+    //$pdf->Cell(100,6,'LISTA DE PRODUCTOS',0,0,'C');
     
     
 //$pdf->AddPage(); //Agregar nueva Pagina
