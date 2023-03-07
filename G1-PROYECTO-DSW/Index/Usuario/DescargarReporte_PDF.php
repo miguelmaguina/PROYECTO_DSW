@@ -163,13 +163,13 @@ $contador = 0;
     //$pdf->Cell(20,40,'S/ '. $total,0,0,'C');
 
     $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
-    $pdf->SetXY(15, 136); //Margen en X y en Y
+    $pdf->SetXY(15, 150); //Margen en X y en Y
     $pdf->SetTextColor(204,0,0);
     $pdf->Write(0, 'Importe total:');
 
 
     $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
-    $pdf->SetXY(40, 136); //Margen en X y en Y
+    $pdf->SetXY(40, 150); //Margen en X y en Y
     $pdf->SetTextColor(0,0,0);
     $pdf->Write(0,'S/ '. $total);
 
@@ -177,6 +177,8 @@ $contador = 0;
     $pdf->SetXY(29, 25); //Margen en X y en Y
     $pdf->SetTextColor(0,0,0);
     $pdf->Write(0,$nombreCliente);
+
+    $pdf->Image('../../Image/marcaDeAgua.jpg', 60, 170, 100);
     
 
     //$pdf->Cell(100,6,'LISTA DE PRODUCTOS',0,0,'C');
