@@ -191,7 +191,13 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                             <button name="compradores" class="btn btn-primary position-relative w-100 m-1">
                                                     Compradores
                                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                        <?= $reviewDAO_Index->getNroDeReviewsPendientes($producto->getID_Producto()) ?>
+                                                        
+                                                        <?php
+                                                            $nroReviews=$reviewDAO_Index->getNroDeReviewsPendientes($producto->getID_Producto());
+                                                            if($nroReviews!=0){
+                                                                echo '<span > +' . $nroReviews . '</span> <span class="text-muted small pt-2 ps-1"></span>';
+                                                            }
+                                                        ?>
                                                     </span>
                                             </button>
                                         </form>

@@ -266,7 +266,7 @@ public function getNroDeReviewsPendientes($ID_Producto){
     $query = "  SELECT COUNT(*) as nroDeReviewsPendientes
                 FROM Review 
                 INNER JOIN Producto ON Review.ID_Producto = Producto.ID_Producto
-                WHERE Review.Estado = 0 AND Producto.ID_Producto = {$ID_Producto} 
+                WHERE Review.Estado = 2 AND Producto.ID_Producto = {$ID_Producto} 
                 AND Producto.ID_Emprendimiento = {$_SESSION['id_e']}";
 
     try{
