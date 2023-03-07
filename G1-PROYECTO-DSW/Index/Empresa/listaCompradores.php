@@ -11,6 +11,49 @@ if(isset($_SESSION['tipo_usuario'])){
     exit();
 }
 
+//Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "proyfinal_dsw_g1";
+
+//Creación de la conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+//Verificación de la conexión
+if ($conn->connect_error) {
+  die("Conexión fallida: " . $conn->connect_error);
+}
+
+if (isset($_POST['añadir']))
+{
+    //Obtención de los valores de los parámetros
+    $id_review = $_POST['id_review_añadir'];
+    $id_prod = $_POST['id_prod_añadir'];
+    $id_cliente = $_POST['id_cliente_añadir'];
+    $estadobase2 = $_POST['estadobase2'];
+    $comentariobase = $_POST['comentariobase'];
+    //$fechahoy = $_POST['fechahoy'];
+
+    //Consulta SQL para obtener Estado=2
+    $sql = "SELECT * FROM Review WHERE Estado = ".$id_review;
+    $result = $conn->query($sql);
+
+    //Verificación de si hay resultados
+    if ($result->num_rows > 0) {
+    //Recorrido de los resultados
+    while($row = $result->fetch_assoc()) {
+        //Haz lo que necesites con cada fila de resultados
+        //...
+    }
+    } else {
+    echo "No se encontraron resultados";
+    }
+
+    //Cierre de la conexión
+    $conn->close();
+}
+
 ?>
 
 <!DOCTYPE html>
