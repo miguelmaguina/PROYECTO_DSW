@@ -79,7 +79,7 @@ if(isset($_SESSION['tipo_usuario'])){
                         <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li> -->
                     <li class="nav-item nav-carrito car">
-                        <a href="Usuario/proforma.php" class="nav-link nav-icon" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
+                        <a href="Usuario/proforma.php" class="nav-link nav-icon" ><i class="icono-1 fa-sharp fa-solid fa-file"></i></a>
                     </li>
                     <!--<li class="nav-item dropdown pe-3">
                       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="../Image/perfil-img.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">admin</span> </a>

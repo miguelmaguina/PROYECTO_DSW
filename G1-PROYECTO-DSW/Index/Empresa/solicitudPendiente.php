@@ -26,11 +26,77 @@ if (!$conn) {
 }
 
 //Solo para el emprendedor correspondiente
-$emprendimiento=$_SESSION['id_e'];
-echo $emprendimiento;
+//$emprendimiento=$_SESSION['id_e'];
+//echo $emprendimiento;
+//No es necesario, dado que solo encontraremos productos del emprendimiento correspondiente
 
+//Rescatar el id del producto seleccionado
 $id_producto_aux3 = $_GET['ID_Producto_Aux3'];
-echo $id_producto_aux3;
+//echo $id_producto_aux3."<br>";
+
+// Consulta SQL
+$sql = "SELECT DISTINCT C.Foto_Perfil,C.ID_Cliente,C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre,P.Foto_Secundaria1,R.Estado
+        FROM Cliente AS C INNER JOIN Review AS R ON C.ID_Cliente=R.ID_Cliente 
+        INNER JOIN Producto AS P ON R.ID_Producto=P.ID_Producto 
+        WHERE R.ID_Producto={$id_producto_aux3} AND R.Estado=2";
+
+//Variables inciales
+$foto='NO';
+$producto='NO';
+
+// Ejecutar consulta
+$resultado = mysqli_query($conn, $sql);
+
+//Array de clientes solicitantes
+$clientesSolicitantes = array();
+
+// Verificar si la consulta tuvo éxito
+if ($resultado) {
+    // Obtener el número de filas
+    $num_filas = mysqli_num_rows($resultado);
+
+    if ($num_filas != 0)
+    {
+        // Recuperar los datos del resultado
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            // Utilizar los datos como sea necesario
+            $fotoPerfil=$fila['Foto_Perfil'];
+            $id_clienteC=$fila['ID_Cliente'];
+            $nombre = $fila['Nombres'];
+            $apellido = $fila['Apellidos'];
+            $dni=$fila["DNI"];
+            $email = $fila['Email'];
+            $celular = $fila['Celular'];
+            $producto = $fila['Nombre'];
+            $foto = $fila['Foto_Secundaria1'];
+            $estado=$fila['Estado'];
+            //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
+
+            //Agregar los valores al array
+            $clientesSolicitantes[]=array(
+                'foto_perfil'=>$fotoPerfil,
+                'idCliente'=>$id_clienteC,
+                'nombre'=>$nombre,
+                'apellido'=>$apellido,
+                'dni'=>$dni,
+                'email'=>$email,
+                'celular'=>$celular,
+                'producto'=>$producto,
+                'foto'=>$foto,
+                'estado'=>$estado
+            );
+        }
+    }
+
+  // Liberar memoria del resultado
+  mysqli_free_result($resultado);
+} else {
+  // Si la consulta falló, mostrar un mensaje de error
+  echo "Error: " . mysqli_error($conn);
+}
+
+// Cerrar la conexión
+mysqli_close($conn);
 
 ?>
 
@@ -60,17 +126,28 @@ echo $id_producto_aux3;
 <?php require 'headerEmpresa.php';?>
 
     <section class="section-t-o py-5">
-        <div class="contenedor-t">
+        
+        <?php if($foto=='NO' && $producto='NO'){?>
+            <div class="contenedor-t">
+                <div class="row">
+                    <h4>No se encontraron clientes solicitantes</h4>
+                </div>
+            </div>
+
+        <?php } //Condicional para cuando no se ha encontrado clientes solicitante
+        
+        else {?>
+            <div class="contenedor-t">
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/productoVEmp.png" alt="">
-                        <span class="col-10 button-text">Manta Artesanal para abrigarte</span>
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/Productos/Foto_Secundaria1/<?= $foto ?>" alt="">
+                        <span class="col-10 button-text"><?= $producto ?></span>
                         </a>
                     </div>
                 </div>
-                <div class="row">
-                    
+
+                <!--<div class="row">
                     <div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
                         <a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
@@ -83,12 +160,15 @@ echo $id_producto_aux3;
                         <span class="button-text">LISTADO DE COMPRADORES</span>
                         </a>
                     </div>
+                </div>-->
+
+                    </div>
+                </div>
+            
                 </div>
             </div>
-        </div>
-            
-        </div>
-        </div>
+        <?php } ?>
+
     </section>
 
     <section class="p-2 content-productos">
@@ -99,116 +179,49 @@ echo $id_producto_aux3;
             <div class=" contenedor-de-producto">
                 <div class="row row-cols-lg-2 d-flex justify-content-center">
 
-                <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
+                <!--Repeticiones-->
+                <?php
+                foreach($clientesSolicitantes as $client)
+                {
+                ?>
+                <div class="card card-emp col-lg-6 m-1">
+                        <h4 class="text-cabecera text-center py-1"><?= $client['nombre'].' '.$client['apellido'] ?></h4>
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                <img src="../../Image/Clientes/<?= $client['foto_perfil'] ?>" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
                             </div>
                             <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
+                                <p class="card-texto">DNI: <span><?= $client['dni'] ?></span></p>
+                                <p class="card-texto text-truncate">Email: <span><?= $client['email'] ?></span></p>
+                                <p class="card-texto">Celular: <span><?= $client['celular'] ?></span></p>
             
                                 <div class="row text-center">
                                     <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
+                                        <form method="POST" action="cambioEstado.php">
+                                            <input type="hidden" name="id_clienteCambio" value="<?= $client['idCliente'] ?>">
+                                                <button class="btn btn-success w-50 m-1">Aceptar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
+                <?php }?>
                     
 
+            </div>
+
+            <!--
+                <div class="row text-center">
+                    <div class="col-12 mx-auto">
+                        <form method="POST" action="procesar-aceptar.php">
+                            <input type="hidden" name="id_cliente" value="<?= $client['id_cliente'] ?>">
+                            <button type="submit" class="btn btn-success w-50 m-1">Aceptar</button>
+                        </form>
+                    </div>
                 </div>
+
+            -->
     
                 
 

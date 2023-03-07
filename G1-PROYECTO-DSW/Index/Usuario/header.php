@@ -41,7 +41,7 @@
                     }
                     ?>
                     <li class="nav-item nav-carrito car">
-                        <a class="nav-link nav-icon" href="#" ><i class="icono-1 fa-solid fa-cart-shopping"></i></a>
+                        <a class="nav-link nav-icon" href="#" ><i class="icono-1 fa-sharp fa-solid fa-file"></i></a>
                     </li>
                     <?php
                         if($tipo==0){

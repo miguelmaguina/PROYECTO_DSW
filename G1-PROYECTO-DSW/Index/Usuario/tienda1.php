@@ -14,9 +14,13 @@ if(isset($_SESSION['tipo_usuario'])){
 }
 require '../Components/mensaje.php';
 if($tipo==1){
-    if(isset($_SESSION['mensaje'])){
-        exito($_SESSION['mensaje']);
-        $_SESSION['mensaje']=null;
+    if(isset($_SESSION['mensaje_e'])){
+        exito($_SESSION['mensaje_e']);
+        $_SESSION['mensaje_e']=null;
+    }
+    if(isset($_SESSION['mensaje_d'])){
+        alerta($_SESSION['mensaje_d']);
+        $_SESSION['mensaje_d']=null;
     }
 }
 
@@ -80,10 +84,6 @@ if($tipo==1){
           <div class="carousel-caption text-center">
                 <h1 > ¡Apoya a las comunidades del Perú comprando sus productos!</h1>
             <p>Puedes adquirir productos naturales y artesanales de alta calidad en nuestra tienda en línea. Cada compra que realices ayuda a mantener vivas las tradiciones ancestrales y a preservar el patrimonio cultural de estas comunidades.</p>
-            <br>
-            <br>
-            <br>
-            <br>
             
           </div>
         </div>
@@ -94,8 +94,7 @@ if($tipo==1){
           <div class="carousel-caption text-center">
                 <h1 > ¡Hazte con piezas únicas y especiales hechas por nuestras comunidades!</h1>
             <p>Nuestros productos están hechos con cariño y dedicación por las manos expertas de las comunidades. Cada pieza es una obra de arte en sí misma, y al adquirirla, estás contribuyendo a mejorar la calidad de vida de estas.</p>
-            <br><br><br>
-            <br>
+
           </div>
         </div>
       </div>
@@ -105,8 +104,7 @@ if($tipo==1){
           <div class="carousel-caption text-center">
                 <h1 >¡Compra con responsabilidad ambiental en nuestra tienda!</h1>
             <p>¿Te preocupa el impacto ambiental de tus compras? En nuestra tienda en línea, encontrarás una amplia selección de productos naturales y artesanales que se producen de manera sostenible y respetuosa con el medio ambiente.</p>
-            <br><br><br>
-            <br>
+
           </div>
         </div>
       </div>
@@ -343,9 +341,7 @@ if($tipo==1){
             
                             
         
-
-                <!--repeticion-->
-                    <div class="col-sm-6 col-lg-4 mb-4">
+                    <!-- <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative m-2">
                             <img src="../../Image/Artesanos.png" class="card-img-top" alt="Imagen del producto">
                             <div class="position-absolute favorito">
@@ -361,7 +357,6 @@ if($tipo==1){
                         </div>
                     </div>
 
-                    <!--repeticion-->
     
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative m-2">
@@ -379,7 +374,6 @@ if($tipo==1){
                         </div>
                     </div>
     
-                    <!--repeticion-->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative m-2">
                             <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
@@ -396,7 +390,6 @@ if($tipo==1){
                         </div>
                     </div>
 
-                <!--repeticion-->
                     <div class="col-sm-6 col-lg-4 mb-4">
                         <div class="card card-t-o position-relative">
                             <img src="../../Image/juguete.png" class="card-img-top" alt="Imagen del producto">
@@ -411,7 +404,7 @@ if($tipo==1){
                             <span class="card-text">S/100.00</span> <small>10% descuento</small>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <!--repeticion-->
@@ -440,7 +433,9 @@ if($tipo==1){
         <!-- Footer -->
         <?php require 'footer.php' ?>
 
-        <script>
+    <script>
+        paginacionItems(18,'.mb-4',1);
+
         const categorias = document.querySelectorAll('.categoria');
         const botonFlotante = document.querySelector('.float-button');
 
@@ -480,15 +475,129 @@ if($tipo==1){
             
         });
         });
-  </script>
+
+        const campoBusqueda = document.getElementById('busqueda');
+            
+            campoBusqueda.addEventListener('input', () => {
+            const valorBusqueda = campoBusqueda.value.toLowerCase();
+            const productos = document.querySelectorAll('.tarjeta');
+            paginacionItems(productos.length,'.mb-4',2);
+            i=0;
+                productos.forEach(producto => {
+                    const titulo = producto.querySelector('.card-title').textContent.toLowerCase();
+                    const descripcion = producto.querySelector('.card-text').textContent.toLowerCase();
+                    if (titulo.includes(valorBusqueda) || descripcion.includes(valorBusqueda)) {
+                        producto.classList.remove('d-none');
+                        
+                    } else {
+                        producto.classList.add('d-none');
+                        
+                    }
+                    i=i+1;
+                });
+                
+                paginacionItems(18,'.tarjeta:not(.d-none)',1);
+
+            });
+
+
+            function paginacionItems(itemPage,texto,tipo){
+                const ITEMS_PER_PAGE = itemPage; // Número de items por página
+                let currentPage = 1; // Página actual
+
+                const items = document.querySelectorAll(texto); // Obtener todos los elementos a paginar
+                const numPages = Math.ceil(items.length / ITEMS_PER_PAGE); // Calcular el número de páginas
+
+                // Función para mostrar los elementos de la página actual
+                function showItems(page) {
+                const startIndex = (page - 1) * ITEMS_PER_PAGE;
+                const endIndex = startIndex + ITEMS_PER_PAGE;
+
+                // Ocultar todos los elementos
+                items.forEach(item => {
+                    item.style.display = 'none';
+                });
+
+                // Mostrar los elementos de la página actual
+                const pageItems = Array.from(items).slice(startIndex, endIndex);
+                pageItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+                }
+
+                function showItemsAll() {
+
+                // Ocultar todos los elementos
+                items.forEach(item => {
+                    item.style.display = 'none';
+                });
+
+                // Mostrar los elementos de la página actual
+                const pageItems = Array.from(items).slice(0, items.length);
+                pageItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+                }
+
+                // Función para actualizar la paginación
+                function updatePagination() {
+                const paginationItems = document.querySelectorAll('.pagination-item');
+                paginationItems.forEach((item, index) => {
+                    if (index === currentPage - 1) {
+                    item.classList.add('active');
+                    } else {
+                    item.classList.remove('active');
+                    }
+                });
+                }
+
+                // Mostrar los elementos de la primera página al cargar la página
+                if(tipo==1){
+                    showItems(currentPage);
+                }else{
+                    showItemsAll();
+                }
+
+                // Agregar los botones de paginación
+                const pagination = document.querySelector('.pagination');
+                pagination.innerHTML = '';
+
+                for (let i = 1; i <= numPages; i++) {
+                const paginationItem = document.createElement('li');
+                paginationItem.classList.add('page-item', 'pagination-item');
+                paginationItem.innerHTML = `
+                    <a class="page-link" href="#" data-page="${i}">${i}</a>
+                `;
+                paginationItem.addEventListener('click', event => {
+                    event.preventDefault();
+                    const page = parseInt(event.target.getAttribute('data-page'));
+                    if (page !== currentPage) {
+                    currentPage = page;
+                    showItems(currentPage);
+                    updatePagination();
+                    }
+                });
+                pagination.appendChild(paginationItem);
+                }
+
+                const paginationItem = document.createElement('li');
+                paginationItem.innerHTML = `
+                <a class="page-link" href="#">Siguiente</a>`;
+                pagination.appendChild(paginationItem);
+
+                // Resaltar el botón de la página actual
+                updatePagination();
+            }
+
+    </script>
 
         
 
         <script src="../../js/index.js?v=<?php echo time(); ?>"></script>
         
-        <script src="../../js/script.js"></script>
+        <!-- <script src="../../js/script.js"></script> -->
 
-        <script>
+        <!-- <script>
             const campoBusqueda = document.getElementById('busqueda');
             
             campoBusqueda.addEventListener('input', () => {
@@ -506,7 +615,7 @@ if($tipo==1){
                     }
                 });
             });
-        </script>
+        </script> -->
         
 
         <!-- Scripts de Bootstrap 5 -->

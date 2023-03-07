@@ -11,11 +11,18 @@ if(isset($_SESSION['tipo_usuario'])){
     exit();
 }
 
-require '../../Conexion/Conexion.php';
 
-require '../../Index/Components/mensaje.php';
-require '../../Actualizar/ActualizarProducto.php';
+require '../Components/mensaje.php';
+require '../../DAO/ProductoDAO.php';
 
+$producto=new Producto();
+$productoDAO=new ProductoDAO();
+
+$ID_Producto=$_POST["ID_producto_actu"];
+echo "El valor de ID_producto_actu es: " . $ID_Producto;
+$producto=$productoDAO->listarPorIdProducto($ID_Producto);
+
+require 'ActualizarProducto2.php';
 ?>
 
 <!DOCTYPE html>
@@ -40,47 +47,11 @@ require '../../Actualizar/ActualizarProducto.php';
 
 </head>
 <body>
-    <?php require 'headerEmpresa.php';?>
-
-    <section class="container-fluid py-3">
-        <div class="row text-center">
-            <div class="col-4 mx-auto">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-6 col-lg-4">
-                        <img src="../../Image/t-o-1.png" class="img-fluid p-2" alt="Producto 1">
-                    </div>
-                    <div class="col-md-6 col-lg-8">
-                        <p>Enfocados en el cumplimiento del ODS 11</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 mx-auto">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-6 col-lg-4">
-                        <img src="../../Image/t-o-2.png" class="img-fluid p-2" alt="Producto 1">
-                    </div>
-                    <div class="col-md-6 col-lg-8">
-                        <p>¡Contacta con clientes a lo largo de todo el territorio nacional!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 mx-auto">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-6 col-lg-4">
-                        <img src="../../Image/t-o-3.png" class="img-fluid p-2" alt="Producto 1">
-                    </div>
-                    <div class="col-md-6 col-lg-8">
-                        <p>Tu trabajo, tu sudor, tu precio</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <div class="section-newEmpr container-fluid py-5">
-        <div class="contenedor-newEmpr">
+<div class="float-button">
+    <a href="verProductoEmp2.php"><i class="fa-solid fa-angles-left"></i></a>
+</div>
+<div class="section-newEmpr container-fluid py-5">
+    <div class="contenedor-newEmpr">
         <div class="container my-5 text-secondary">
             <div class="row">
                 <div class="col-12 text-center">
@@ -91,101 +62,118 @@ require '../../Actualizar/ActualizarProducto.php';
             <div class="row">
                 
             <div class="text-center fs-2 fw-bold">Actualizar producto</div>
-
                 <!--Formulario registar producto-->
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo htmlspecialchars( $_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" pattern="[A-Za-z\s]*" maxlength="20" required> <label for="floatingNombre">Nombre *</label></div>
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" value = "<?php echo $producto->getNombre() ?> " maxlength="100" required> <label for="floatingNombre">Nombre *</label></div>
                         </div>
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingPrecio" placeholder="precio" name="precio" maxlength="9" maxlength="20" required> <label for="floatingPrecio">Precio *</label></div>
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingPrecio" placeholder="precio" name="precio" maxlength="9" value="<?php echo $producto->getPrecio(); ?>" maxlength="20" required > <label for="floatingPrecio">Precio *</label></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 mt-2">
-                            <div class="form-floating"> <input type="text" class="form-control" id="floatingDesc" placeholder="descripcion" name="descripcion" maxlength="500" required> <label for="floatingDesc">Descripción *</label></div>
+                            <div class="form-floating"> <input type="text" class="form-control" id="floatingDesc" placeholder="descripcion" name="descripcion" maxlength="500" value="<?php echo $producto->getDescripcion(); ?>" required> <label for="floatingDesc">Descripción *</label></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="categoria" name="categoria" aria-label="Floating label select example">
-                                    <option value="">Seleccione una opción</option>
-                                    <option value="1">Hogar y Decoración</option>
-                                    <option value="2">Bebidas</option>
-                                    <option value="3">Alimentos</option>
-                                    <option value="4">Moda y Accesorios</option>
-                                </select>
-                                <label for="categoria">Categoría *</label>
+                            <select class="form-select" id="categoria" name="categoria"  aria-label="Floating label select example">
+                                <option value="<?php echo $producto->getID_Categoria(); ?>">Seleccione una opción</option>
+                            </select>
+                            <label for="categoria">Categoría *</label>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating">
-                                <select class="form-select" id="subcategoria" name="subcategoria" aria-label="Floating label select example">
-                                    <option value="">Seleccione una categoría primero</option>
-                                </select>
-                                <label for="subcategoria">Subcategoría *</label>
+                            <select class="form-select" id="subcategoria" name="subcategoria"  aria-label="Floating label select example">
+                                <option value="<?php echo $producto->getID_Subcategoria(); ?>">Seleccione una categoría primero</option>
+                            </select>
+                            <label for="subcategoria"  >Subcategoría *</label>
                             </div>
                         </div>
+                    </div>
 
-                        <script>
-                            // Obtener referencias a los elementos select
-                            var pais = document.getElementById("categoria");
-                            var ciudad = document.getElementById("subcategoria");
-                            
-                            var opcionesCiudades = {
-                                "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
-                                "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
-                                "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
-                                "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
-                            };
-                            // Función que actualiza las opciones del segundo select según la selección del primero
-                            function actualizarCategorias() {
-                                // Obtener el valor seleccionado en el primer select
-                                var valorPais = pais.value;
-                                // Obtener la lista de ciudades correspondiente al valor seleccionado
-                                var ciudades = opcionesCiudades[valorPais] || [];
-                                // Limpiar las opciones del segundo select
-                                ciudad.innerHTML = "";
-                                // Agregar las nuevas opciones al segundo select
-                                for (var i = 0; i < ciudades.length; i++) {
-                                    var opcion = document.createElement("option");
-                                    opcion.value = ciudades[i];
-                                    opcion.textContent = ciudades[i];
-                                    ciudad.appendChild(opcion);
-                                }
-                                // Deshabilitar el segundo select si no hay opciones disponibles
-                                ciudad.disabled = ciudades.length == 0;
+                    <script>
+                        // Obtener referencias a los elementos select
+                        var pais = document.getElementById("categoria");
+                        var ciudad = document.getElementById("subcategoria");
+
+                        // Definir las opciones de la lista de categorías
+                        var opcionesCategorias = {
+                            "1": "Hogar y Decoración",
+                            "2": "Bebidas",
+                            "3": "Alimentos",
+                            "4": "Moda y Accesorios"
+                        };
+
+                        // Definir las opciones de la lista de subcategorías
+                        var opcionesCiudades = {
+                            "1": ["Utensilios de cocina", "Decoración", "Joyería", "Jardinería"],
+                            "2": ["Piscos", "Vinos", "Cafes", "Infusiones"],
+                            "3": ["Quesos", "Yogurts", "Chocolates", "Verduras", "Frutas", "Alimentos organicos", "Snacks"],
+                            "4": ["Carteras, bolsos y accesorios", "Textil decorativo", "Cómputo y de Escritorio", "Complementos", "Gorros y sombreros", "Calzados", "Bufandas y pashminas"]
+                        };
+
+                        // Agregar las opciones de la lista de categorías al primer select
+                        for (var valorCategoria in opcionesCategorias) {
+                            var opcionCategoria = document.createElement("option");
+                            opcionCategoria.value = valorCategoria;
+                            opcionCategoria.textContent = opcionesCategorias[valorCategoria];
+                            pais.appendChild(opcionCategoria);
+                        }
+
+                        // Función que actualiza las opciones del segundo select según la selección del primero
+                        function actualizarCategorias() {
+                            // Obtener el valor seleccionado en el primer select
+                            var valorPais = pais.value;
+
+                            // Obtener la lista de ciudades correspondiente al valor seleccionado
+                            var ciudades = opcionesCiudades[valorPais] || [];
+                            // Limpiar las opciones del segundo select
+                            ciudad.innerHTML = "";
+                            // Agregar las nuevas opciones al segundo select
+                            for (var i = 0; i < ciudades.length; i++) {
+                            var opcion = document.createElement("option");
+                            opcion.value = ciudades[i];
+                            opcion.textContent = ciudades[i];
+                            ciudad.appendChild(opcion);
                             }
-                            // Actualizar las opciones del segundo select cuando cambia la selección del primer select
-                            pais.addEventListener("change", actualizarCategorias);
-                            // Actualizar las opciones del segundo select al cargar la página
-                            actualizarCategorias();
-                        </script>
+                            // Deshabilitar el segundo select si no hay opciones disponibles
+                            ciudad.disabled = ciudades.length == 0;
+                        }
+
+                        // Actualizar las opciones del segundo select cuando cambia la selección del primer select
+                        pais.addEventListener("change", actualizarCategorias);
+
+                        // Actualizar las opciones del segundo select al cargar la página
+                        actualizarCategorias();
+                    </script>
 
                     </div>
 
                     <div class="row">
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="dscto" name="dscto" maxlength="6" required> <label for="floatingDscto">Descuento *</label></div>
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDscto" placeholder="dscto" name="dscto" maxlength="6" value="<?php echo $producto->getDescuento(); ?>" required> <label for="floatingDscto">Descuento *</label></div>
                         </div>
                         <div class="col-sm-6 mt-2">
-                            <div class="form-floating"> <input type="date" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" required> <label for="floatingFecha">Fecha *</label></div>
+                            <div class="form-floating"> <input type="date" class="form-control" id="floatingFecha" placeholder="Fecha" name="fecha" value="<?php echo $producto->getFecha(); ?>" required> <label for="floatingFecha">Fecha *</label></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-12 mt-2">
-                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp" name="disp" maxlength="4" required> <label for="floatingDisp">Disponibilidad *</label></div>
+                            <div class="form-floating"> <input type="number" class="form-control" id="floatingDisp" placeholder="disp"  name="disp" maxlength="4" value="<?php echo $producto->getDisponibilidad(); ?>" required> <label for="floatingDisp">Disponibilidad *</label></div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mt-2">
-                            <p>Actualizar fotos del producto</p>
+                            <p>Colocar fotos del nuevo producto</p>
                         </div>
                     </div>
 
@@ -238,6 +226,7 @@ require '../../Actualizar/ActualizarProducto.php';
         </div>
     </div>
 
+    <a href="#" class="btn-regresar"></a>
     <script>
     
     //Foto 1
