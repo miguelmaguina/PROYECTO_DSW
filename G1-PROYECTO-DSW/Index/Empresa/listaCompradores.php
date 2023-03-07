@@ -11,6 +11,9 @@ if(isset($_SESSION['tipo_usuario'])){
     exit();
 }
 
+$aux=$_POST['ID_Producto_Aux2'];
+echo $aux; //ID requerido
+
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +53,19 @@ if(isset($_SESSION['tipo_usuario'])){
                 <div class="row">
                     
                     <div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
-                        <a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
+                        <!--<a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
+                        <input type="hidden" name="ID_Producto_Aux3" id="ID_Producto_Aux3" value="<?= $aux ?>">
+                        
                         <span class="button-text">SOLICITUDES PENDIENTES</span>
+                        </a>-->
+
+                        <a href="solicitudPendiente.php?ID_Producto_Aux3=<?= $aux ?>" class="btn boton-Vista-Empresa image-button">
+                            <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
+                            
+                            <span class="button-text">SOLICITUDES PENDIENTES</span>
                         </a>
+
                     </div>
                     <div class="button-container col-md-6 mt-4 text-white d-flex justify-content-center">
                         <a href="listaCompradores.php" class="btn boton-Vista-Empresa image-button">
