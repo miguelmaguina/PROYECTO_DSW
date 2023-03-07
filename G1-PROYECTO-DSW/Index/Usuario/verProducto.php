@@ -12,6 +12,14 @@ if(isset($_SESSION['tipo_usuario'])){
   }
 }
 
+require '../Components/mensaje.php';
+if($tipo==1){
+    if(isset($_SESSION['mensaje'])){
+        exito($_SESSION['mensaje']);
+        $_SESSION['mensaje']=null;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +137,13 @@ if(isset($_SESSION['tipo_usuario'])){
                                 <h2><?php echo $producto->getNombre();?></h2>
                             </div>
                             <div class="col-3 col-sm-2">
-                                <button class="btn btn-light w-75 "><i class="far fa-heart"></i></button>
+                              <?php
+                                if($tipo==1){
+                                  echo '<a href="../Components/agregarFavorito.php?id='.$producto->getID_Producto().'" class="btn btn-light"><i class="far fa-heart"></i></i></a>';
+                                }else{
+                                  echo '<a href="#" class="btn btn-light disabled"><i class="far fa-heart"></i></i></a>';
+                                }
+                              ?>
                             </div>
                         </div>
                         <del><medium>S/<?= number_format($producto->getPrecio(),2,'.',','); ?></medium></del>
