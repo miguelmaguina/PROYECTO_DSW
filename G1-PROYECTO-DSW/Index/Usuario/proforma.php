@@ -277,7 +277,7 @@ if(isset($_SESSION['tipo_usuario'])){
 
             <div class="col-lg-2">
             
-
+            <?php $contadorTotalPrecio=0; ?>
             <?php if($contadorTotalPrecio>0){ ?>
                     <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
                     <div class="contenedor-p">
