@@ -14,9 +14,13 @@ if(isset($_SESSION['tipo_usuario'])){
 }
 require '../Components/mensaje.php';
 if($tipo==1){
-    if(isset($_SESSION['mensaje'])){
-        exito($_SESSION['mensaje']);
-        $_SESSION['mensaje']=null;
+    if(isset($_SESSION['mensaje_e'])){
+        exito($_SESSION['mensaje_e']);
+        $_SESSION['mensaje_e']=null;
+    }
+    if(isset($_SESSION['mensaje_d'])){
+        alerta($_SESSION['mensaje_d']);
+        $_SESSION['mensaje_d']=null;
     }
 }
 
