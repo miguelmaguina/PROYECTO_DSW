@@ -77,7 +77,7 @@ $pdf->SetTextColor(204,0,0);
 $pdf->Write(0, 'Empresa: Hallpa');
 $pdf->SetTextColor(0, 0, 0); //Color Negrita
 $pdf->SetXY(15, 25);
-$pdf->Write(0, 'Cliente: '. $canal);
+$pdf->Write(0, 'Cliente: ');
 
 
 
@@ -121,10 +121,12 @@ $pdf->SetFont('helvetica','',10);
 //INNER JOIN producto
 //ON proforma.ID_Producto = producto.ID_Producto;
 $conexion = mysqli_connect("localhost", "root", "","proyfinal_dsw_g1");
-$sqlProforma = ("SELECT proforma.ID_Proforma, producto.Nombre, proforma.Cantidad, producto.Precio
+$sqlProforma = ("SELECT proforma.ID_Proforma, producto.Nombre, proforma.Cantidad, producto.Precio, cliente.Nombres, cliente.Apellidos
                 FROM proforma
                 INNER JOIN producto
-                ON proforma.ID_Producto = producto.ID_Producto;");
+                ON proforma.ID_Producto = producto.ID_Producto
+                INNER JOIN cliente
+                ON proforma.ID_Cliente = cliente.ID_Cliente;");
 //$sqlTrabajadores = ("SELECT * FROM trabajadores");
 $query = mysqli_query($conexion, $sqlProforma);
 $contador = 0;
@@ -150,6 +152,7 @@ $contador = 0;
         
         $subtotal = $dataRow[3] * $dataRow[2]; // Multiplicación de la columna 2 y 3
         $total += $subtotal; // Agregar el subtotal a la variable total
+        $nombreCliente = $dataRow['Nombres'] . ' ' . $dataRow['Apellidos'];
         
         $pdf->Cell(30,6,('S/ '. $subtotal),1,0,'C');
         $pdf->Ln(); // Agrega una nueva línea
@@ -166,13 +169,18 @@ $contador = 0;
 
 
     $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
-    $pdf->SetXY(45, 136); //Margen en X y en Y
+    $pdf->SetXY(40, 136); //Margen en X y en Y
     $pdf->SetTextColor(0,0,0);
     $pdf->Write(0,'S/ '. $total);
 
+    $pdf->SetFont('helvetica','B',10); //Tipo de fuente y tamaño de letra
+    $pdf->SetXY(29, 25); //Margen en X y en Y
+    $pdf->SetTextColor(0,0,0);
+    $pdf->Write(0,$nombreCliente);
+    
+
     //$pdf->Cell(100,6,'LISTA DE PRODUCTOS',0,0,'C');
-    
-    
+  
 //$pdf->AddPage(); //Agregar nueva Pagina
 
 $pdf->Output('Resumen_Pedido_'.date('d_m_y').'.pdf', 'I'); 
