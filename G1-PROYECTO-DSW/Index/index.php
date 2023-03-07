@@ -362,21 +362,21 @@ if(isset($_SESSION['tipo_usuario'])){
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
                     <img src="../Image/Beneficios/pic1.png"></img>                    </div>
                     <h2>1</h2> 
-                    <h3 class="fs-5">Ingresa a nuestra tienda virtual</h3>
+                    <h3 class="fs-5">Contamos con una web didáctica y fácil se usar.</h3>
 
                 </div>
                 <div class="feature col">
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
                     <img src="../Image/Beneficios/pic2.png"></img>                    </div>
                     <h2>2</h2>
-                    <h3 class="fs-5">Registra nuestros datos personales</h3>
+                    <h3 class="fs-5">Registra tus datos personales para acceder a todas las herramientas.</h3>
 
                 </div>
                 <div class="feature col">
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
                     <img src="../Image/Beneficios/pic3.png"></img>                    </div>
                     <h2>3</h2>
-                    <h4 class="fs-5">Selecciona los productos de tu preferencia</h4>
+                    <h4 class="fs-5">Encuentra productos de todo tipo en la tienda online.</h4>
 
                 </div>
                 <div class="feature col">
@@ -384,14 +384,14 @@ if(isset($_SESSION['tipo_usuario'])){
                     <img src="../Image/Beneficios/pic4.png"></img>
                     </div>
                     <h2>4</h2>
-                    <h4 class="fs-5">Obten una proforma personalizada</h4>
+                    <h4 class="fs-5">Obtén una proforma personalizada para realizar tus compras.</h4>
            
                 </div>
                 <div class="feature col">
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
                     <img src="../Image/Beneficios/pic5.png"></img>                    </div>
                     <h2>5</h2>
-                    <h4 class="fs-5">Contacta a los emprendimientos</h4>
+                    <h4 class="fs-5">Contacta directamente con los emprendimientos que necesites.</h4>
                     
                 </div>
                 
