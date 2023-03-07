@@ -267,3 +267,10 @@
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
   }
 
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--colorgreen1);
+  }
+

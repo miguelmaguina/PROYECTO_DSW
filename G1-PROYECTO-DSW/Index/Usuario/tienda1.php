@@ -18,8 +18,6 @@ if($tipo==1){
         exito($_SESSION['mensaje']);
         $_SESSION['mensaje']=null;
     }
-}else{
-    alerta("Sesión no iniciada");
 }
 
 ?>
@@ -43,7 +41,7 @@ if($tipo==1){
             header.classList.toggle("fixed-top",window.scrollY>0);
 		})
 	</script>
-    <script>
+    <!-- <script>
         // Obtener todas las cards con la clase "card card-t mb-3 border border-none"
         const cards = document.querySelectorAll('.card.card-t.mb-3.border.border-none');
         //jdfhgjndjfkgbjdfbvhbhj
@@ -54,7 +52,7 @@ if($tipo==1){
             filtrarPorSubcategoria(id);
             });
         });
-    </script>
+    </script> -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
@@ -183,7 +181,7 @@ if($tipo==1){
                                 <div>
                                 <a href="#" id="boton-car" class="categoria text-decoration-none" data-categoria="<?= $subcategoria->getNombre()?>">
 
-                                <div class="card card-t mb-3 border border-none" id="subcategoria<?=$subcategoria->getID_Subcategoria()?>">
+                                <div class="card card-t mb-3 border border-none">
 
                                     <div class="row no-gutters">
                                         <div class="col-4">
@@ -195,7 +193,7 @@ if($tipo==1){
                                             }
                                         ?>
                                         <img class="card-img" alt="Imagen" src="<?= $pathFotoSubcat?>" >
-                                        </a>
+                                        
                                         </div>
                                         <div class="col-8 d-flex justify-content-center align-items-center">
                                             <div class="card-body">
