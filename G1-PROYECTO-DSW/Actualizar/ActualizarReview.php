@@ -35,7 +35,7 @@ $review->setFecha(date('Y-m-d H:i:s')); // Asignar la fecha actual
 $review_dao->update($review); // Llamar al método update de ReviewDAO para actualizar la review
 
 //Redirigir a la página anterior con un mensaje de éxito
-header("Location: ../Index/Usuario/verProducto.php?id={$id_prod_añadir}.php");  
+header("Location: ../Index/Usuario/verProducto.php?id={$id_prod}.php");  
 //header("Location: ../Index/Usuario/tienda1.php");   
 exit;
 }

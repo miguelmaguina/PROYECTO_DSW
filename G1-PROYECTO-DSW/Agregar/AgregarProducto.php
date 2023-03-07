@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ProductoDAO.php';
-require "C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ProductoDAO.php';
+require $_SERVER['DOCUMENT_ROOT'].'PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Producto.php';
 
 //Llamando a una pequeña conexión
 $servername = "localhost";
