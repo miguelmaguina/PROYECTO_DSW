@@ -205,35 +205,6 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                     <?php } ?>
                     <!-- repeticion -->
 
-                    <!-- repeticion -->
-
-                    <div class="col-md-6 mb-4">
-                        <div class="card card-emp m-2">
-                            <h4 class="text-cabecera text-center py-1">Lorem Lorem Lorem Lorem Lorem</h4>
-                            <div class="row">
-                                <div class="col-md-6 d-flex justify-content-center">
-                                    <img src="../../Image/juguete.png" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="card-titulo">Curaca Amazonian Art</p>
-                                    <p class="card-texto">Código <span>882041329</span></p>
-                                    <p class="card-texto">Disponible: <span>Sí</span></p>
-                                    <p class="text-center">S/ <span>485.99</span></p>
-                                    <div class="row text-center">
-                                        <div class="col-xl-6">
-                                            <button class="btn btn-success mb-3 w-100 text-trunc">Actualizar</button>
-                                        </div>
-                                        <div class="col-xl-6">
-                                            <button class="btn btn-danger mb-3 w-100">Eliminar</button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
                     
                 </div>
             </div>

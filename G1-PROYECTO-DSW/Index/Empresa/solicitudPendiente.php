@@ -35,7 +35,7 @@ $id_producto_aux3 = $_GET['ID_Producto_Aux3'];
 //echo $id_producto_aux3."<br>";
 
 // Consulta SQL
-$sql = "SELECT DISTINCT C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre,P.Foto_Secundaria1 
+$sql = "SELECT DISTINCT C.Foto_Perfil,C.ID_Cliente,C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre,P.Foto_Secundaria1,R.Estado
         FROM Cliente AS C INNER JOIN Review AS R ON C.ID_Cliente=R.ID_Cliente 
         INNER JOIN Producto AS P ON R.ID_Producto=P.ID_Producto 
         WHERE R.ID_Producto={$id_producto_aux3} AND R.Estado=2";
@@ -43,11 +43,16 @@ $sql = "SELECT DISTINCT C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre,P
 // Ejecutar consulta
 $resultado = mysqli_query($conn, $sql);
 
+//Array de clientes solicitantes
+$clientesSolicitantes = array();
+
 // Verificar si la consulta tuvo éxito
 if ($resultado) {
   // Recuperar los datos del resultado
   while ($fila = mysqli_fetch_assoc($resultado)) {
     // Utilizar los datos como sea necesario
+    $fotoPerfil=$fila['Foto_Perfil'];
+    $id_clienteC=$fila['ID_Cliente'];
     $nombre = $fila['Nombres'];
     $apellido = $fila['Apellidos'];
     $dni=$fila["DNI"];
@@ -55,7 +60,22 @@ if ($resultado) {
     $celular = $fila['Celular'];
     $producto = $fila['Nombre'];
     $foto = $fila['Foto_Secundaria1'];
+    $estado=$fila['Estado'];
     //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
+
+    //Agregar los valores al array
+    $clientesSolicitantes[]=array(
+        'foto_perfil'=>$fotoPerfil,
+        'idCliente'=>$id_clienteC,
+        'nombre'=>$nombre,
+        'apellido'=>$apellido,
+        'dni'=>$dni,
+        'email'=>$email,
+        'celular'=>$celular,
+        'producto'=>$producto,
+        'foto'=>$foto,
+        'estado'=>$estado
+    );
   }
 
   // Liberar memoria del resultado
@@ -107,7 +127,7 @@ mysqli_close($conn);
                 </div>
                 <div class="row">
                     
-                    <div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
+                    <!--<div class="button-container h-100 col-md-6 mt-4 text-white d-flex justify-content-center">
                         <a href="solicitudPendiente.php" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/solPend.png" alt="">
                         <span class="button-text">SOLICITUDES PENDIENTES</span>
@@ -118,7 +138,7 @@ mysqli_close($conn);
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/listComprador.png" alt="">
                         <span class="button-text">LISTADO DE COMPRADORES</span>
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -136,30 +156,48 @@ mysqli_close($conn);
                 <div class="row row-cols-lg-2 d-flex justify-content-center">
 
                 <!--Repeticiones-->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1"><?= $nombre.' '.$apellido ?></h4>
+                <?php
+                foreach($clientesSolicitantes as $client)
+                {
+                ?>
+                <div class="card card-emp col-lg-6 m-1">
+                        <h4 class="text-cabecera text-center py-1"><?= $client['nombre'].' '.$client['apellido'] ?></h4>
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
+                                <img src="../../Image/Clientes/<?= $client['foto_perfil'] ?>" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
                             </div>
                             <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI: <span><?= $dni ?></span></p>
-                                <p class="card-texto text-truncate">Email: <span><?= $email ?></span></p>
-                                <p class="card-texto">Celular: <span><?= $celular ?></span></p>
+                                <p class="card-texto">DNI: <span><?= $client['dni'] ?></span></p>
+                                <p class="card-texto text-truncate">Email: <span><?= $client['email'] ?></span></p>
+                                <p class="card-texto">Celular: <span><?= $client['celular'] ?></span></p>
             
                                 <div class="row text-center">
                                     <div class="col-12 mx-auto">
-                                        <button class="btn btn-success w-50 m-1">Aceptar</button>
+                                        <form method="POST" action="cambioEstado.php">
+                                            <input type="hidden" name="id_clienteCambio" value="<?= $client['idCliente'] ?>">
+                                                <button class="btn btn-success w-50 m-1">Aceptar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                
-                
+                <?php }?>
                     
 
             </div>
+
+            <!--
+                <div class="row text-center">
+                    <div class="col-12 mx-auto">
+                        <form method="POST" action="procesar-aceptar.php">
+                            <input type="hidden" name="id_cliente" value="<?= $client['id_cliente'] ?>">
+                            <button type="submit" class="btn btn-success w-50 m-1">Aceptar</button>
+                        </form>
+                    </div>
+                </div>
+
+            -->
     
                 
 
