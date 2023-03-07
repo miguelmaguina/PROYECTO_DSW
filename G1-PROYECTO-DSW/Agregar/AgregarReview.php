@@ -38,7 +38,7 @@ if (isset($_POST['añadir'])) {
   $review_dao->insert($review); // Llama al método crear para guardar la review en la base de datos
   
   echo ("Review registrada exitosamente");
-  header("Location: ../Index/Usuario/tienda1.php");   
+  header("Location: ../Index/Usuario/verProducto.php?id={$id_prod_añadir}.php");   
 
   exit();
 }
