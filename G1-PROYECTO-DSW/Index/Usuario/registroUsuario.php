@@ -35,6 +35,10 @@ require 'procesoRegistro.php';
 
 </head>
 <body>
+
+<div class="float-button">
+    <a href="iniciar.php"><i class="fa-solid fa-angles-left"></i></a>
+</div>
     
     <div class="section-newEmpr container-fluid py-5">
         <div class="contenedor-newEmpr">

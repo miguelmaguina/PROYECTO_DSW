@@ -28,6 +28,7 @@ if(isset($_SESSION['tipo_usuario'])){
     <link rel="stylesheet" href="../../Estilos/vistaIndexEmpresa.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/footerEmprendimiento.css?v=<?php echo time(); ?>">
 
     <script type="text/javascript">
 		window.addEventListener("scroll", function(){
@@ -49,7 +50,7 @@ if(isset($_SESSION['tipo_usuario'])){
     </div>
     <div class="carousel-inner">
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png" ></img>
+        <img class="img-car img-fluid" width="100%" height="20%" src="../../Image/fotoEmprendimiento1Blur_v2.jpg" ></img>
         <div class="container">
           <div class="carousel-caption text-start">
           <h1 >¡Haz crecer tu negocio con nuestra </h1>
@@ -59,7 +60,7 @@ if(isset($_SESSION['tipo_usuario'])){
         </div>
       </div>
       <div class="carousel-item active">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
+        <img class="img-car img-fluid" width="100%" height="20%" src="../../Image/fotoEmprendimiento2Blur_v2.jpg"></img>
         <div class="container">
           <div class="carousel-caption">
           <h1 >¿Quieres ahorrar tiempo y esfuerzo</h1>
@@ -69,7 +70,7 @@ if(isset($_SESSION['tipo_usuario'])){
         </div>
       </div>
       <div class="carousel-item">
-        <img class="img-car img-fluid" width="100%" height="100%" src="../../Image/portada3.png"></img>
+        <img class="img-car img-fluid" width="100%" height="20%" src="../../Image/fotoEmprendimiento3Blur_v2.jpg"></img>
         <div class="container">
           <div class="carousel-caption text-end">
           <h1 >¡Es tiempo de despegar y </h1>

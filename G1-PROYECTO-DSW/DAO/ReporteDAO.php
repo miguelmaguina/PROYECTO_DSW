@@ -20,7 +20,8 @@ class ReporteDAO {
         $query = "  SELECT COUNT(ID_Review) as nroReviews
                     FROM Review
                     INNER JOIN Producto ON Review.ID_Producto = Producto.ID_Producto
-                    WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}";
+                    WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}
+                    AND Review.Estado=1";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
@@ -50,7 +51,8 @@ class ReporteDAO {
                     INNER JOIN Producto ON Review.ID_Producto = Producto.ID_Producto
                     WHERE Producto.ID_Emprendimiento = {$_SESSION['id_e']}
                     AND MONTH(Review.Fecha) = MONTH(NOW())-1
-                    AND YEAR(Review.Fecha) = YEAR(NOW())";
+                    AND YEAR(Review.Fecha) = YEAR(NOW())
+                    AND Review.Estado=1";
         
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $query);
@@ -82,7 +84,7 @@ class ReporteDAO {
                         UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12
                     ) n
                     LEFT JOIN Producto p ON p.ID_Emprendimiento = {$_SESSION['id_e']}
-                    LEFT JOIN Review r ON p.ID_Producto = r.ID_Producto AND MONTH(r.Fecha) = n.numero
+                    LEFT JOIN Review r ON p.ID_Producto = r.ID_Producto AND MONTH(r.Fecha) = n.numero AND r.Estado=1
                     GROUP BY n.numero";
 
         try{
