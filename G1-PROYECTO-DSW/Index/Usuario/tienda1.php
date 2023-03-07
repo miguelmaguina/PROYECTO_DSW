@@ -67,7 +67,7 @@ if($tipo==1){
 <?php  require 'header.php' ?>
 
 <div class="float-button d-none">
-    <a href="#"><i class="fa-solid fa-eye"></i></a>
+    <a style="color:white;"><i class="fa-solid fa-eye"></i></a>
 </div>
 
     <!-- <div class="container-fluid p-0 contenedor-carrusel"> -->
@@ -177,7 +177,7 @@ if($tipo==1){
                             <div class="carousel__lista">
                             <?php foreach($subcategorias as $subcategoria){?>
                                 <div>
-                                <a href="#" id="boton-car" class="categoria text-decoration-none" data-categoria="<?= $subcategoria->getNombre()?>">
+                                <a id="boton-car" class="categoria text-decoration-none" data-categoria="<?= $subcategoria->getNombre()?>">
 
                                 <div class="card card-t mb-3 border border-none">
 
@@ -452,6 +452,7 @@ if($tipo==1){
                 }, 300);
                 
             });
+            paginacionItems(18,'.mb-4',1);
         });
         
 
@@ -460,6 +461,7 @@ if($tipo==1){
             const categoriaSeleccionada = categoria.dataset.categoria;
             
             const productos = document.querySelectorAll('.tarjeta');
+            paginacionItems(productos.length,'.mb-4',2);
             productos.forEach(producto => {
             if (producto.dataset.categoria === categoriaSeleccionada) {
                 producto.classList.remove('d-none');
@@ -472,7 +474,7 @@ if($tipo==1){
                     botonFlotante.classList.remove('boton-flotante-animacion');
                     botonFlotante.classList.remove('d-none');
                 }, 300);
-            
+            paginacionItems(18,'.tarjeta:not(.d-none)',1);
         });
         });
 

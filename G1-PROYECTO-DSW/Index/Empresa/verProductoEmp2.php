@@ -48,6 +48,7 @@ $conexion = new PDO($db_name, $user_name, $user_password);
     <?php require 'headerEmpresa.php';?>
     <?php
         require_once "../../DAO/SubCategoriaDAO.php";
+        
         $subcategoria_tienda1 = new SubCategoriaDAO();
         $subcategorias=$subcategoria_tienda1->listar();
     ?>
@@ -166,8 +167,9 @@ $conexion = new PDO($db_name, $user_name, $user_password);
                                     <p >S/ <span><?= number_format($producto->getPrecio(),2,'.',','); ?></span></p>
                                     <div class="row text-center">
                                         <div class="col-lg-6">
-                                        <form action="../Empresa/actualizarProducto.php" method="get" >
-                                            <input type="hidden" name="$ID_producto_actu" value="<?= $producto->getID_Producto() ?>">
+                                        <form action="actualizarProductoForm.php" method="GET" >
+                                            <input type="hidden" name="update2" id="update2" value="<?php echo $producto->getID_Producto(); ?>">
+                                            
                                             <button name="update" class="btn btn-success mb-3 w-100 text-trunc">Editar</button>
                                         </form>
                                         

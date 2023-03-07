@@ -277,15 +277,15 @@ if(isset($_SESSION['tipo_usuario'])){
 
             <div class="col-lg-2">
             
-
+            
             <?php if($contadorTotalPrecio>0){ ?>
                     <div class="titulo-1 text-start fs-3 pt-3">Resumen</div>
                     <div class="contenedor-p">
                         <h3>Total:</h3>
                         <h4 style="display: inline-block;">S/. <input id="total-proforma" name="total-proforma" value="0" style="background-color: transparent; border: none; display: inline-block;width: 80px;"></h4>
-                        <form action="DescargarReporte_PDF.php" method="post" accept-charset="utf-8">
+                        <form action="DescargarReporte_PDF.php" method="post" accept-charset="utf-8" target="_blank">
                             <button class="btn btn-izq w-100 mt-2">Generar</button>
-                        </form>
+                        </form>                        
                         
                         
                     </div>

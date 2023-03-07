@@ -11,7 +11,7 @@ require '../../DAO/ProformaDAO.php';
 $proformaDAO=new proformaDAO();
 
 if($proformaDAO->delete($codigo)==1){
-    header('Location: ../Usuario/proforma.php');
+    header('Location: ../../Usuario/proforma.php');
 }else{
     echo "Error";
 }

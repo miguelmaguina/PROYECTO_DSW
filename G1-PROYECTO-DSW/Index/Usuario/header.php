@@ -36,12 +36,12 @@
                     <?php
                     if(isset($buscarActivado)){
                     echo '<li class="nav-item d-block d-xl-none p-1">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a class="nav-link nav-icon search-bar-toggle "><i class="fa-solid fa-magnifying-glass"></i></a>
                     </li>';
                     }
                     ?>
                     <li class="nav-item nav-carrito car">
-                        <a class="nav-link nav-icon" href="#" ><i class="icono-1 fa-sharp fa-solid fa-file"></i></a>
+                        <a class="nav-link nav-icon" href="proforma.php" ><i class="icono-1 fa-sharp fa-solid fa-file"></i></a>
                     </li>
                     <?php
                         if($tipo==0){
