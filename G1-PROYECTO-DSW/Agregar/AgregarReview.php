@@ -1,8 +1,9 @@
 <?php
 
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php';
 
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Review.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Actualizar/ActualizarReview.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Review.php';
+
 //estado 2 -> review estado base / el cliente presiona en contactar y emprendimiento recibe esta info
 //estado 0 -> review aceptada para dejar comentario / el emprendimiento cambia a este estado cuando acepta que el cliente puede dejar review
 //estado 1 -> review actualizada con el comentario del cliente usuario
