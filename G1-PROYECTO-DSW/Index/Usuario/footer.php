@@ -21,10 +21,10 @@
             <div class="box">
                 <h2>Descubre más acerca de las ODS</h2>
                 <div class="red-social">
-                    <a href="https://www.facebook.com/ONUPeru/" class="fa fa-facebook"></a>
-                    <a href="https://www.instagram.com/onu.peru/?hl=es" class="fa fa-instagram"></a>
-                    <a href="https://twitter.com/ONUPeru" class="fa fa-twitter"></a>
-                    <a href="https://www.youtube.com/watch?v=oAegdV8_7iw" class="fa fa-youtube"></a>
+                    <a href="https://www.facebook.com/ONUPeru/" class="fa fa-facebook" target="_blank"></a>
+                    <a href="https://www.instagram.com/onu.peru/?hl=es" class="fa fa-instagram" target="_blank"></a>
+                    <a href="https://twitter.com/ONUPeru" class="fa fa-twitter" target="_blank"></a>
+                    <a href="https://www.youtube.com/watch?v=oAegdV8_7iw" class="fa fa-youtube" target="_blank"></a>
                 </div>
             </div>
         </div>
