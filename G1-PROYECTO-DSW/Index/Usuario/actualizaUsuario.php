@@ -102,8 +102,6 @@ require 'procesoActualizarUsuario.php';
         </div>
     </div>
 
-      <a href="#" class="btn-regresar"></a>
-
     <script>
     let uploadButton = document.getElementById("upload-button");
     let chosenImage = document.getElementById("chosen-image");

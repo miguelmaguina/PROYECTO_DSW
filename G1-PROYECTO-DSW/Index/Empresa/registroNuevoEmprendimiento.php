@@ -33,6 +33,10 @@ require 'procesoRegistro.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+<div class="float-button">
+    <a href="../Usuario/iniciar.php"><i class="fa-solid fa-angles-left"></i></a>
+</div>
     
 <div class="section-newEmpr container-fluid py-5">
 

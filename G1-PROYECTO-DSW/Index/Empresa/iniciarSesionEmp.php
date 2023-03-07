@@ -35,6 +35,10 @@ require 'procesoIniciarSesion.php';
     <link rel="stylesheet" href="../../Estilos/vistaIniciarSesionEmp.css?v=<?php echo time(); ?>">
 </head>
 <body>
+
+<div class="float-button">
+    <a href="../Usuario/iniciar.php"><i class="fa-solid fa-angles-left"></i></a>
+</div>
     
 <div class="section-newEmpr container-fluid py-5 d-flex align-items-center">
         <div class="contenedor-newEmpr">
