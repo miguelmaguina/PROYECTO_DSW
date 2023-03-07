@@ -26,6 +26,7 @@ $emprendimiento=$emprendimientoDAO->listarPorIdEmprendimiento($_SESSION['id_e'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/footerEmprendimiento.css?v=<?php echo time(); ?>">
 
     <!-- Estilos personalizados -->
     <style>

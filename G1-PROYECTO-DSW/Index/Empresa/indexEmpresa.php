@@ -28,6 +28,7 @@ if(isset($_SESSION['tipo_usuario'])){
     <link rel="stylesheet" href="../../Estilos/vistaIndexEmpresa.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../../Estilos/footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Estilos/footerEmprendimiento.css?v=<?php echo time(); ?>">
 
     <script type="text/javascript">
 		window.addEventListener("scroll", function(){
