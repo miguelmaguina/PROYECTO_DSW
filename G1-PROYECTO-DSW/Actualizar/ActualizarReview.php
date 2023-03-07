@@ -1,8 +1,8 @@
 <?php
 
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ReviewDAO.php';
 
-require_once 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Review.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/DAO/ReviewDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/PROYECTO_DSW/G1-PROYECTO-DSW/Clases/Review.php';
 
 
 if (isset($_POST['actualizar'])) {
