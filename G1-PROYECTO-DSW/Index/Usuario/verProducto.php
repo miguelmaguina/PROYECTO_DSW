@@ -179,7 +179,7 @@ if(isset($_SESSION['tipo_usuario'])){
                               $review_admitirReview = new ReviewDAO();
                               $review_ultima = new ReviewDAO();
                               $reviewsPendientesUsuarioxProductoActual = $review_admitirReview->listarReviewsxCliente($idUsuario,$idP);
-                            }
+                            
                             $contador0=0;
                             $contador1=0;
                             $contador2=0;
@@ -225,10 +225,13 @@ if(isset($_SESSION['tipo_usuario'])){
                                   <button type="submit" name="añadir" class="btn btn-izq w-100 ">Contactar</button>
                                   <p></p>
                                 </form>
-                              <?php } ?>
+                          <?php } ?>
+                          <?php }elseif($tipo==0){ ?>
+                            <button href="iniciarSesion.php" type="button" class="btn btn-izq w-100 " disabled>Contactar</button>    
+                            
+                          <?php } ?>
 
-                            <!--Comentando el boton antiguo-->
-
+                          <!--Comentando el boton antiguo-->
                           </div>
                           <div class="col-sm-2">
                             <button class="btn btn-light w-100 "><i class="fas fa-shopping-cart"></i></button>
@@ -403,33 +406,29 @@ if(isset($_SESSION['tipo_usuario'])){
             <div class="col-md-12 col-lg-10">
               <div class="card text-dark">
                 
-
                 <div class="card-body p-4">
 
                   <h4 class="mb-0">Review</h4>
                   <p class="fw-light mb-4 pb-2">Últimos comentarios de los usuarios</p>
                   <?php
                     require_once "../../DAO/ReviewDAO.php";
-
-
                     $review_tienda = new ReviewDAO();
                     $reviews1 = $review_tienda->listarReviewsxProducto($idP);
                   ?>
-                  <?php
-                    if (empty($reviews1)) {
-                  ?>
+                  <?php if (empty($reviews1)) { ?>
+                  <!--si no hay reviews-->  
                   <div class="card-body p-4">
                     <div class="d-flex flex-start">
-                    <img class="rounded-circle shadow-1-strong me-3"
+                      <img class="rounded-circle shadow-1-strong me-3"
                         src="../../Image/usuario_review.png" alt="" width="60" height="60" />
                       <div>
                         <h6 class="fw-bold mb-1">Usuario</h6>
                         <div class="d-flex align-items-center mb-3">
                           <p class="mb-0">
-                          <?php
-                            $fecha_actual = date("F j, Y", strtotime("now"));
-                            echo $fecha_actual;
-                          ?>
+                            <?php
+                              $fecha_actual = date("F j, Y", strtotime("now"));
+                              echo $fecha_actual;
+                            ?>
                           </p>
                         </div>
                         <p class="mb-0">Todavía no existen reviews para este producto.</p>
@@ -437,18 +436,14 @@ if(isset($_SESSION['tipo_usuario'])){
                     </div>
                   </div>
 
+                  <!--si hay reviews-->
                   <?php }else{
                     require_once "../../DAO/ClienteDAO.php";
                     $cliente_buscar = new ClienteDAO();
-
                   ?>
                   <?php foreach($reviews1 as $review1) {
-                                        
                     $cliente=$cliente_buscar->listarPorIdCliente($review1->getID_Cliente());
-                    
-
                    if($review1->getEstado()==1){
-                  
                   ?>
                  
                   <div class="card-body p-4">
@@ -456,26 +451,46 @@ if(isset($_SESSION['tipo_usuario'])){
                       <img class="rounded-circle shadow-1-strong me-3"
                         src="../../Image/Clientes/<?=$cliente->getFoto_Perfil()?>" alt="" width="60" height="60" />
                       <div>
-                        <h6 class="fw-bold mb-1">
-                          <?php echo $cliente->getNombres();?> <?php echo $cliente->getApellidos();?>
-                        </h6>
-                        <div class="d-flex align-items-center mb-3">
-                          <?php
-                              $fecha = DateTime::createFromFormat('Y-m-d', $review1->getFecha());
+                      <h6 class="fw-bold mb-1">
+                        <?php echo $cliente->getNombres();?> <?php echo $cliente->getApellidos();?>
+                      </h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <?php
+                            $fecha = DateTime::createFromFormat('Y-m-d', $review1->getFecha());
 
-                              $fecha_formateada = $fecha->format('F j, Y');
-                          ?>
-                          <p class="mb-0">
-                            <?php echo $fecha_formateada?>
-                          </p>
-                        </div>
+                            $fecha_formateada = $fecha->format('F j, Y');
+                        ?>
+                        <p class="mb-0">
+                          <?php echo $fecha_formateada?>
+                        </p>
+                      </div>
                         <p class="mb-0">
                           <?php echo $review1->getComentario()?>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <?php }}} ?> 
+                  <?php }else{ ?>
+                  <!--si no hay reviews-->  
+                  <div class="card-body p-4">
+                    <div class="d-flex flex-start">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="../../Image/usuario_review.png" alt="" width="60" height="60" />
+                      <div>
+                        <h6 class="fw-bold mb-1">Usuario</h6>
+                        <div class="d-flex align-items-center mb-3">
+                          <p class="mb-0">
+                            <?php
+                              $fecha_actual = date("F j, Y", strtotime("now"));
+                              echo $fecha_actual;
+                            ?>
+                          </p>
+                        </div>
+                        <p class="mb-0">Todavía no existen reviews para este producto.</p>
+                      </div>
+                    </div>
+                  </div>
+                <?php }}} ?> 
                 </div>
                 
                 
@@ -485,8 +500,9 @@ if(isset($_SESSION['tipo_usuario'])){
 
 
           <!--AÑADIR MI COMENTARIO/REVIEW-->
+          <?php if($tipo==1){?>
           <div id="seccion-destino" >
-
+          
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-10">
                   <div class="card" style="padding-left: 20px;">
@@ -538,10 +554,44 @@ if(isset($_SESSION['tipo_usuario'])){
                 </div>
               </div>
             </div>
+          </div>
+           
+          <?php }elseif($tipo==0){?>
+          <div >
+          
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                  <div class="card" style="padding-left: 20px;">
+                    <div  class="card-body p-4">
+                      <div class="d-flex flex-start w-100">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="../../Image/usuario_review.png" alt="" width="60" height="60" />
+                        <div class="w-100">
+                          <h5>Añade una review</h5>
+                          
+                          <div class="form-outline">
+                              <textarea class="form-control" id="textAreaExample" name="comentario" rows="3" style="padding-right: 40px;" disabled>Debe iniciar sesion para acceder a esta función.</textarea>
+                              <label class="form-label" for="textAreaExample">Cuentanos mas acerca del producto que compraste.</label>
+                              </div>
+                              <div class="d-flex justify-content-between mt-3">
+                          
+                                <button class="btn btn-success" name="actualizar" disabled> 
+                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                              </div>
+ 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>   
-
-
         </div>
+      
+       <?php } ?>
+
       </div>
 
         <!-- Footer -->
