@@ -178,12 +178,12 @@ class Lista_FavoritosDAO {
         return $arrayFavorito;
     }
 
-    public function verificaIdFavorito($codigo){
+    public function verificaIdFavorito($codigo,$id){
         $r=0;//1 existe  0 no existe
-        $sql = "SELECT ID_Lista_Favoritos FROM Lista_Favoritos WHERE ID_Producto=?";
+        $sql = "SELECT ID_Lista_Favoritos FROM Lista_Favoritos WHERE ID_Producto=? AND ID_Cliente=?";
         try{
             $stmt = mysqli_prepare($this->conexion->getConexion(), $sql);
-            mysqli_stmt_bind_param($stmt, "i", $codigo);
+            mysqli_stmt_bind_param($stmt, "ii", $codigo,$id);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $ID_Lista_Favoritos);
 
