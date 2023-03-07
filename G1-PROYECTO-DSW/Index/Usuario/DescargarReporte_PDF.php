@@ -186,5 +186,6 @@ $contador = 0;
 //$pdf->AddPage(); //Agregar nueva Pagina
 
 $pdf->Output('Resumen_Pedido_'.date('d_m_y').'.pdf', 'I'); 
+
 // Output funcion que recibe 2 parameros, el nombre del archivo, ver archivo o descargar,
 // La D es para Forzar una descarga
