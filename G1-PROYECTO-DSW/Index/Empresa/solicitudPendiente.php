@@ -35,7 +35,7 @@ $id_producto_aux3 = $_GET['ID_Producto_Aux3'];
 //echo $id_producto_aux3."<br>";
 
 // Consulta SQL
-$sql = "SELECT DISTINCT C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre 
+$sql = "SELECT DISTINCT C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre,P.Foto_Secundaria1 
         FROM Cliente AS C INNER JOIN Review AS R ON C.ID_Cliente=R.ID_Cliente 
         INNER JOIN Producto AS P ON R.ID_Producto=P.ID_Producto 
         WHERE R.ID_Producto={$id_producto_aux3} AND R.Estado=2";
@@ -54,6 +54,7 @@ if ($resultado) {
     $email = $fila['Email'];
     $celular = $fila['Celular'];
     $producto = $fila['Nombre'];
+    $foto = $fila['Foto_Secundaria1'];
     //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
   }
 
@@ -99,7 +100,7 @@ mysqli_close($conn);
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
-                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/productoVEmp.png" alt="">
+                        <img class="rounded img-fluid mx-auto d-block" src="../../Image/Productos/Foto_Secundaria1/<?= $foto ?>" alt="">
                         <span class="col-10 button-text"><?= $producto ?></span>
                         </a>
                     </div>
