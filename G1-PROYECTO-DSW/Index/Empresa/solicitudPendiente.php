@@ -26,11 +26,46 @@ if (!$conn) {
 }
 
 //Solo para el emprendedor correspondiente
-$emprendimiento=$_SESSION['id_e'];
-echo $emprendimiento;
+//$emprendimiento=$_SESSION['id_e'];
+//echo $emprendimiento;
+//No es necesario, dado que solo encontraremos productos del emprendimiento correspondiente
 
+//Rescatar el id del producto seleccionado
 $id_producto_aux3 = $_GET['ID_Producto_Aux3'];
-echo $id_producto_aux3;
+//echo $id_producto_aux3."<br>";
+
+// Consulta SQL
+$sql = "SELECT DISTINCT C.Nombres,C.Apellidos,C.DNI,C.Email,C.Celular,P.Nombre 
+        FROM Cliente AS C INNER JOIN Review AS R ON C.ID_Cliente=R.ID_Cliente 
+        INNER JOIN Producto AS P ON R.ID_Producto=P.ID_Producto 
+        WHERE R.ID_Producto={$id_producto_aux3} AND R.Estado=2";
+
+// Ejecutar consulta
+$resultado = mysqli_query($conn, $sql);
+
+// Verificar si la consulta tuvo éxito
+if ($resultado) {
+  // Recuperar los datos del resultado
+  while ($fila = mysqli_fetch_assoc($resultado)) {
+    // Utilizar los datos como sea necesario
+    $nombre = $fila['Nombres'];
+    $apellido = $fila['Apellidos'];
+    $dni=$fila["DNI"];
+    $email = $fila['Email'];
+    $celular = $fila['Celular'];
+    $producto = $fila['Nombre'];
+    //echo "Nombre: ".$nombre ." | Apellido: ".$apellido ." | DNI: ".$dni ." | Email: ".$email ." | Celular: ".$celular ." | Producto: ".$producto."<br>";
+  }
+
+  // Liberar memoria del resultado
+  mysqli_free_result($resultado);
+} else {
+  // Si la consulta falló, mostrar un mensaje de error
+  echo "Error: " . mysqli_error($conn);
+}
+
+// Cerrar la conexión
+mysqli_close($conn);
 
 ?>
 
@@ -65,7 +100,7 @@ echo $id_producto_aux3;
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/productoVEmp.png" alt="">
-                        <span class="col-10 button-text">Manta Artesanal para abrigarte</span>
+                        <span class="col-10 button-text"><?= $producto ?></span>
                         </a>
                     </div>
                 </div>
@@ -99,116 +134,31 @@ echo $id_producto_aux3;
             <div class=" contenedor-de-producto">
                 <div class="row row-cols-lg-2 d-flex justify-content-center">
 
-                <!-- repeticion -->
+                <!--Repeticiones-->
                     <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
+                        <h4 class="text-cabecera text-center py-1"><?= $nombre.' '.$apellido ?></h4>
                         <div class="row">
                             <div class="col-md-6 d-flex justify-content-center">
                                 <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
                             </div>
                             <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
+                                <p class="card-texto">DNI: <span><?= $dni ?></span></p>
+                                <p class="card-texto text-truncate">Email: <span><?= $email ?></span></p>
+                                <p class="card-texto">Celular: <span><?= $celular ?></span></p>
             
                                 <div class="row text-center">
                                     <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
+                                        <button class="btn btn-success w-50 m-1">Aceptar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
-    
-                    <div class="card card-emp col-lg-6 m-1">
-                        <h4 class="text-cabecera text-center py-1">Joy Hurles Ferron Oliva</h4>
-                        <div class="row">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <img src="../../Image/vision.jpg" alt="Descripción de la imagen" style="max-width: 100%; max-height:100%;">
-                            </div>
-                            <div class="col-md-6 pt-4">
-                                <p class="card-texto">DNI:  <span>79566543</span></p>
-                                <p class="card-texto text-truncate">Email: <span>joy.hurles.ferroli@unmsm.edu.pe</span></p>
-                                <p class="card-texto">Celular: <span>968958636</span></p>
-            
-                                <div class="row text-center">
-                                    <div class="col-12 mx-auto">
-                                    <button class="btn btn-success w-50 m-1">Aceptar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- repeticion -->
+                
+                
                     
 
-                </div>
+            </div>
     
                 
 
