@@ -11,6 +11,73 @@ if(isset($_SESSION['tipo_usuario'])){
     exit();
 }
 
+//Llamando a una pequeña conexión
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "proyfinal_dsw_g1";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+//Solo para el emprendedor correspondiente
+session_start();
+$emprendimiento=$_SESSION['id_e'];
+
+$idAux=$_POST["id_review_añadir"];
+
+//Realizar consulta
+$sql="SELECT ID_Emprendimiento FROM Producto WHERE ID_Producto=".$idAux;
+$result = $conn->query($sql);
+
+//Verificación de si hay resultados
+if ($result->num_rows > 0) {
+    //Recorrido de los resultados
+    while($row = $result->fetch_assoc()) {
+      $idUsar=$row["ID_Emprendimiento"];
+      echo $idUsar;
+    }
+  } else {
+    echo "No se encontraron resultados";
+  }
+
+//La idea es que solo aparezcan los productos correspondientes a cada emprendimiento
+if ($idUsar==$emprendimiento)
+{
+    if (isset($_POST['añadir']))
+    {
+        //echo "dentro añadir";
+        $id_review_añadir = $_POST["id_review_añadir"];
+        $id_prod_añadir = $_POST["id_prod_añadir"];
+        $id_cliente_añadir = $_POST["id_cliente_añadir"]; 
+    
+        $estadobase2 = $_POST["estadobase2"];
+        $comentariobase = $_POST["comentariobase"];
+
+        //Datos recuperados
+        echo $id_review_añadir."-".$id_prod_añadir."-".$id_cliente_añadir."-".$estadobase2."-".$comentariobase;
+
+        //Realizar consulta
+        $sql2="SELECT ID_Cliente FROM Review WHERE Estado=".$estadobase2;
+        $result2 = $conn->query($sql2);
+
+        if ($result->num_rows > 0) {
+            //Recorrido de los resultados
+            while($row = $result->fetch_assoc()) {
+              //RAcá debe recuperar en un arreglo todos los id q salen en la tabla
+              
+            } 
+        }else {
+            echo "No se encontraron resultados";
+        }
+}
+
+
 ?>
 
 
@@ -220,5 +287,5 @@ if(isset($_SESSION['tipo_usuario'])){
         
 
 
-</body>
+    </body>
 </html>
