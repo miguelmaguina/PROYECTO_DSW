@@ -32,6 +32,13 @@
     width: 95%;
     max-width: 1300px;
     margin: 0px auto;
+
+    /*Fondo del producto
+    background-image: url(../../Image/fondo-producto.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: relative;*/
 }
 
 .content-productos{
@@ -111,7 +118,21 @@
     }
   }
 
-  
+    
+  /* Agregado */
+  #fondoProducto{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      /*object-fit: contain;*/
+    }
+
+    #productoMostrar{
+      position: relative;
+    }
 
 
 /*--------------- footer  ---------------------*/

@@ -141,6 +141,7 @@ mysqli_close($conn);
                 <div class="row">
                     <div class="button-container col-sm-12 col-md-12 mb-3 mt-4 text-white d-flex justify-content-center ">
                         <a href="#" class="btn boton-Vista-Empresa image-button">
+                        <img class="rounded img-fluid mx-auto d-block" id="fondoProducto" src="../../Image/fondo-producto.jpg" alt="">
                         <img class="rounded img-fluid mx-auto d-block" src="../../Image/Productos/Foto_Secundaria1/<?= $foto ?>" alt="">
                         <span class="col-10 button-text"><?= $producto ?></span>
                         </a>
