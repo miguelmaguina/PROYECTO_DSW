@@ -15,12 +15,21 @@ if(isset($_SESSION['tipo_usuario'])){
 require '../Components/mensaje.php';
 require '../../DAO/ProductoDAO.php';
 
-$producto=new Producto();
-$productoDAO=new ProductoDAO();
+if(isset($_GET['update'])){
+    if (isset($_GET['update2'])){
+        $producto=new Producto();
+        $productoDAO=new ProductoDAO();
+        $ID_Producto = $_GET['update2'];
+        $producto=$productoDAO->listarPorIdProducto($ID_Producto);
+    }
+    else{
+        echo "no hay update 2";
+    }
+}
+else{
+    echo "no hay update 1";
+}
 
-$ID_Producto=$_POST["ID_producto_actu"];
-echo "El valor de ID_producto_actu es: " . $ID_Producto;
-$producto=$productoDAO->listarPorIdProducto($ID_Producto);
 
 require 'ActualizarProducto2.php';
 ?>
@@ -64,6 +73,7 @@ require 'ActualizarProducto2.php';
             <div class="text-center fs-2 fw-bold">Actualizar producto</div>
                 <!--Formulario registar producto-->
                 <form action="<?php echo htmlspecialchars( $_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="idP_Aux" id="idP_Aux" value="<?=$ID_Producto ?>">
                     <div class="row">
                         <div class="col-sm-6 mt-2">
                             <div class="form-floating"> <input type="text" class="form-control" id="floatingNombre" placeholder="nombre" name="nombre" value = "<?php echo $producto->getNombre() ?> " maxlength="100" required> <label for="floatingNombre">Nombre *</label></div>

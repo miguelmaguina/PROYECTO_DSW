@@ -18,6 +18,12 @@ $nombre=$precio=$descripcion=$categoria=$subcategoria=$descuento=$fecha=$emprend
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+    if(empty($_POST["idP_Aux"])){
+        echo ("Se requiere el codigo");
+    }else{
+        $id=test_input($_POST["idP_Aux"]);
+    }
+
     if(empty($_POST["nombre"])){
         echo ("Se requiere el nombre");
     }else{
@@ -96,9 +102,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //session_start();
     $emprendimiento=$_SESSION['id_e'];
     //$fecha=date('Y/m/d');
-    $id=$ID_Producto;
     echo $id ."holassss";
-
+    $producto= new Producto();
+    $productoDAO=new ProductoDAO();
+    $producto=$productoDAO->listarPorIdProducto($id);
     //Foto 1
     $archivo_nombre1 = $_FILES['upload-button1']['name'];
     $archivo_tipo1 = $_FILES['upload-button1']['type'];
@@ -122,13 +129,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
-    if(($archivo_nombre1!='' || $archivo_nombre1!=null) && ($archivo_nombre2!='' || $archivo_nombre2!=null) && ($archivo_nombre3!='' || $archivo_nombre3!=null) )
+    if(($_FILES['upload-button1']['error'] == UPLOAD_ERR_NO_FILE) || ($_FILES['upload-button2']['error'] == UPLOAD_ERR_NO_FILE) || ($_FILES['upload-button3']['error'] == UPLOAD_ERR_NO_FILE) )
     {
+        echo "NO SE SUBIO FOTO";
         $nuevo_nombre1=$producto->getFoto_Secundaria1();
+        echo  $nuevo_nombre1;
         $nuevo_nombre2=$producto->getFoto_Secundaria2();
+        echo  $nuevo_nombre2;
         $nuevo_nombre3=$producto->getFoto_Secundaria3();
+        echo  $nuevo_nombre3;
     }
     else{
+        echo "SE SUBIO FOTO";
+        echo $archivo_ext1;
+        echo "-";
+        echo $archivo_ext2;
+        echo "-";
+        echo $archivo_ext3;
         move_uploaded_file($archivo_tmp1, 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Image/Productos/Foto_Secundaria1/'.$nuevo_nombre1); 
         move_uploaded_file($archivo_tmp2, 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Image/Productos/Foto_Secundaria2/'.$nuevo_nombre2);
         move_uploaded_file($archivo_tmp3, 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Image/Productos/Foto_Secundaria3/'.$nuevo_nombre3);
@@ -136,26 +153,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
         
     $prod=new Producto();
+    
+    $prod->setID_Producto($id);
     $prod->setNombre($nombre);
+    echo $prod->getNombre();
     $prod->setPrecio($precio);
+    echo $prod->getPrecio();
     $prod->setDescripcion($descripcion);
+    echo $prod->getDescripcion();
     $prod->setID_Categoria($categoria_nombre);
+    echo $prod->getID_Categoria();
     $prod->setID_Subcategoria($subcategoria);
+    echo $prod->getID_Subcategoria();
     $prod->setDescuento($descuento);
+    echo $prod->getDescuento();
     $prod->setFecha($fecha);
+    echo $prod->getFecha();
     $prod->setID_Emprendimiento($emprendimiento);
+    echo $prod->getID_Emprendimiento();
     $prod->setDisponibilidad($disponibilidad);
+    echo $prod->getDisponibilidad();
     $prod->setFoto_Secundaria1($nuevo_nombre1);
+    echo $prod->getFoto_Secundaria1();
     $prod->setFoto_Secundaria2($nuevo_nombre2);
+    echo $prod->getFoto_Secundaria2();
     $prod->setFoto_Secundaria3($nuevo_nombre3);
+    echo $prod->getFoto_Secundaria3();
 
-    $productoDAO->update($prod);
-
-    echo ("Producto actualizado exitosamente");
-    $_SESSION['mensaje']="Actualizado exitosamente";
-    header("Location: actualizarProductoForm.php");
-    exit();
-        
+    
+    if($productoDAO->update($prod)==1){
+        echo ("Producto actualizado exitosamente");
+        $_SESSION['mensaje']="Actualizado exitosamente";
+        header("Location: verProductoEmp2.php");
+        exit();
+    }
+    else {
+        echo "HUBO UN ERROR";
+    }
     
 
 }

@@ -118,9 +118,9 @@ class ProductoDAO
             }
         }
     }
-
+    
     public function update(Producto $producto) {
-        
+        $r=0;
         $query = "UPDATE Producto SET Nombre=?, Precio=?, Descripcion=?, ID_Categoria=?, ID_Subcategoria=?, Descuento=?, Fecha=?, ID_Emprendimiento=?, Disponibilidad=?, Foto_Secundaria1=?, Foto_Secundaria2=?, Foto_Secundaria3=?  WHERE ID_Producto=?";
         
         try {
@@ -142,13 +142,16 @@ class ProductoDAO
 
             mysqli_stmt_bind_param($stmt, "sdsiidsiisssi", $Nombre, $Precio, $Descripcion, $ID_Categoria, $ID_Subcategoria, $Descuento, $Fecha, $ID_Emprendimiento, $Disponibilidad, $Foto_Secundaria1, $Foto_Secundaria2, $Foto_Secundaria3, $ID_Producto);
             mysqli_stmt_execute($stmt);
+            $r=1;
         } catch (Exception $e) {
             echo "Error al actualizar producto: " . $e->getMessage();
+            $r=0;
         } finally {
             if ($stmt) {
                 mysqli_stmt_close($stmt);
             }
         }
+        return $r;
     }
 
     public function delete($ID_Producto) {
