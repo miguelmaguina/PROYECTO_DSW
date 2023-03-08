@@ -20,6 +20,7 @@ require 'C:/xampp/htdocs/PROYECTO_DSW/G1-PROYECTO-DSW/Agregar/AgregarProducto.ph
 </head>
 <body>
     
+
     <div class="section-newEmpr container-fluid py-5">
         <div class="contenedor-newEmpr">
         <div class="container my-5 text-secondary">
